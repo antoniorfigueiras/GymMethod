@@ -1,0 +1,254 @@
+2022-10-26 12:16:36 [-][-][-][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'console\controllers\RbacController' in file: C:\wamp64\www\gymmethod/console/controllers/RbacController.php. Namespace missing? in C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\BaseYii.php:296
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('console\\control...')
+#1 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(661): class_exists('console\\control...')
+#2 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(620): yii\base\Module->createControllerByID('rbac')
+#3 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(546): yii\base\Module->createController('init')
+#4 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('rbac/init', Array)
+#5 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('rbac/init', Array)
+#6 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#7 C:\wamp64\www\gymmethod\yii(23): yii\base\Application->run()
+#8 {main}
+2022-10-26 12:16:36 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Agasatta\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-7197PRF'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DriverData' => 'C:\\Windows\\System32\\Drivers\\DriverData'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Agasatta'
+    'LOCALAPPDATA' => 'C:\\Users\\Agasatta\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-7197PRF'
+    'NUMBER_OF_PROCESSORS' => '12'
+    'OneDrive' => 'C:\\Users\\Agasatta\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\wamp64\\bin\\php\\php8.0.13;C:\\Users\\Agasatta\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Agasatta\\AppData\\Local\\ComposerSetup\\bin;C:\\Users\\Agasatta\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Agasatta\\AppData\\Local\\GitHubDesktop\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 165 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => 'a502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-7197PRF'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-7197PRF'
+    'USERNAME' => 'Agasatta'
+    'USERPROFILE' => 'C:\\Users\\Agasatta'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\wamp64\\www\\gymmethod\\'
+    'PHP_SELF' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_NAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_FILENAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'PATH_TRANSLATED' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1666786596.7794
+    'REQUEST_TIME' => 1666786596
+    'argv' => [
+        0 => 'C:\\wamp64\\www\\gymmethod\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]
+2022-10-26 12:17:31 [-][-][-][error][ArgumentCountError] ArgumentCountError: Too few arguments to function yii\rbac\DbManager::addChild(), 1 passed in C:\wamp64\www\gymmethod\console\controllers\RbacController.php on line 31 and exactly 2 expected in C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\rbac\DbManager.php:745
+Stack trace:
+#0 C:\wamp64\www\gymmethod\console\controllers\RbacController.php(31): yii\rbac\DbManager->addChild(Object(yii\rbac\Role))
+#1 [internal function]: console\controllers\RbacController->actionInit()
+#2 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#4 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Controller.php(180): yii\base\Controller->runAction('init', Array)
+#5 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(552): yii\console\Controller->runAction('init', Array)
+#6 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('rbac/init', Array)
+#7 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('rbac/init', Array)
+#8 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#9 C:\wamp64\www\gymmethod\yii(23): yii\base\Application->run()
+#10 {main}
+2022-10-26 12:17:31 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Agasatta\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-7197PRF'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DriverData' => 'C:\\Windows\\System32\\Drivers\\DriverData'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Agasatta'
+    'LOCALAPPDATA' => 'C:\\Users\\Agasatta\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-7197PRF'
+    'NUMBER_OF_PROCESSORS' => '12'
+    'OneDrive' => 'C:\\Users\\Agasatta\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\wamp64\\bin\\php\\php8.0.13;C:\\Users\\Agasatta\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Agasatta\\AppData\\Local\\ComposerSetup\\bin;C:\\Users\\Agasatta\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Agasatta\\AppData\\Local\\GitHubDesktop\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 165 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => 'a502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-7197PRF'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-7197PRF'
+    'USERNAME' => 'Agasatta'
+    'USERPROFILE' => 'C:\\Users\\Agasatta'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\wamp64\\www\\gymmethod\\'
+    'PHP_SELF' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_NAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_FILENAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'PATH_TRANSLATED' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1666786651.3799
+    'REQUEST_TIME' => 1666786651
+    'argv' => [
+        0 => 'C:\\wamp64\\www\\gymmethod\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]
+2022-10-26 12:24:07 [-][-][-][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adicionarAulas' for key 'PRIMARY' in C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute('INSERT INTO `au...')
+#2 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\rbac\DbManager.php(286): yii\db\Command->execute()
+#3 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\rbac\BaseManager.php(132): yii\rbac\DbManager->addItem(Object(yii\rbac\Permission))
+#4 C:\wamp64\www\gymmethod\console\controllers\RbacController.php(26): yii\rbac\BaseManager->add(Object(yii\rbac\Permission))
+#5 [internal function]: console\controllers\RbacController->actionInit()
+#6 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Controller.php(180): yii\base\Controller->runAction('init', Array)
+#9 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(552): yii\console\Controller->runAction('init', Array)
+#10 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('rbac/init', Array)
+#11 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('rbac/init', Array)
+#12 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 C:\wamp64\www\gymmethod\yii(23): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adicionarAulas' for key 'PRIMARY'
+The SQL being executed was: INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES ('adicionarAulas', 2, 'Editar aulas', NULL, NULL, 1666787047, 1666787047) in C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `au...')
+#1 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute('INSERT INTO `au...')
+#2 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\rbac\DbManager.php(286): yii\db\Command->execute()
+#3 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\rbac\BaseManager.php(132): yii\rbac\DbManager->addItem(Object(yii\rbac\Permission))
+#4 C:\wamp64\www\gymmethod\console\controllers\RbacController.php(26): yii\rbac\BaseManager->add(Object(yii\rbac\Permission))
+#5 [internal function]: console\controllers\RbacController->actionInit()
+#6 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Controller.php(180): yii\base\Controller->runAction('init', Array)
+#9 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Module.php(552): yii\console\Controller->runAction('init', Array)
+#10 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('rbac/init', Array)
+#11 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('rbac/init', Array)
+#12 C:\wamp64\www\gymmethod\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 C:\wamp64\www\gymmethod\yii(23): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry 'adicionarAulas' for key 'PRIMARY'
+)
+
+2022-10-26 12:24:07 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Agasatta\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-7197PRF'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DriverData' => 'C:\\Windows\\System32\\Drivers\\DriverData'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Agasatta'
+    'LOCALAPPDATA' => 'C:\\Users\\Agasatta\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-7197PRF'
+    'NUMBER_OF_PROCESSORS' => '12'
+    'OneDrive' => 'C:\\Users\\Agasatta\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\wamp64\\bin\\php\\php8.0.13;C:\\Users\\Agasatta\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Agasatta\\AppData\\Local\\ComposerSetup\\bin;C:\\Users\\Agasatta\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Agasatta\\AppData\\Local\\GitHubDesktop\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 165 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => 'a502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Agasatta\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-7197PRF'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-7197PRF'
+    'USERNAME' => 'Agasatta'
+    'USERPROFILE' => 'C:\\Users\\Agasatta'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\wamp64\\www\\gymmethod\\'
+    'PHP_SELF' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_NAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'SCRIPT_FILENAME' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'PATH_TRANSLATED' => 'C:\\wamp64\\www\\gymmethod\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1666787047.268
+    'REQUEST_TIME' => 1666787047
+    'argv' => [
+        0 => 'C:\\wamp64\\www\\gymmethod\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]
