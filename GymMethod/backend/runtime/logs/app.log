@@ -1,0 +1,296 @@
+2022-10-31 14:41:45 [127.0.0.1][-][112pa1rcv5q0ttk1v0flskmv3i][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php:722
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(722): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(637): yii\db\Connection->createPdoInstance()
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare(true)
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema('user')
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata('{{%user}}', 'schema', false)
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(439): yii\db\Schema->getTableSchema('{{%user}}')
+#12 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(266): yii\db\ActiveRecord::getTableSchema()
+#13 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(238): yii\db\ActiveRecord::filterValidColumnNames(Object(yii\db\Connection), Array)
+#14 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(195): yii\db\ActiveRecord::filterCondition(Array, Array)
+#15 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\BaseActiveRecord.php(110): yii\db\ActiveRecord::findByCondition(Array)
+#16 C:\wamp64\www\GymMethod\common\models\User.php(86): yii\db\BaseActiveRecord::findOne(Array)
+#17 C:\wamp64\www\GymMethod\common\models\LoginForm.php(74): common\models\User::findByUsername('Antonio')
+#18 C:\wamp64\www\GymMethod\common\models\LoginForm.php(45): common\models\LoginForm->getUser()
+#19 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\InlineValidator.php(77): common\models\LoginForm->validatePassword('password', NULL, Object(yii\validators\InlineValidator), 'antonio')
+#20 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\Validator.php(260): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#21 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Model.php(360): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#22 C:\wamp64\www\GymMethod\common\models\LoginForm.php(59): yii\base\Model->validate()
+#23 C:\wamp64\www\GymMethod\backend\controllers\SiteController.php(82): common\models\LoginForm->login()
+#24 [internal function]: backend\controllers\SiteController->actionLogin()
+#25 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#26 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#27 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#28 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#29 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\wamp64\www\GymMethod\backend\web\index.php(18): yii\base\Application->run()
+#31 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php:648
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare(true)
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema('user')
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata('{{%user}}', 'schema', false)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(439): yii\db\Schema->getTableSchema('{{%user}}')
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(266): yii\db\ActiveRecord::getTableSchema()
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(238): yii\db\ActiveRecord::filterValidColumnNames(Object(yii\db\Connection), Array)
+#12 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(195): yii\db\ActiveRecord::filterCondition(Array, Array)
+#13 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\BaseActiveRecord.php(110): yii\db\ActiveRecord::findByCondition(Array)
+#14 C:\wamp64\www\GymMethod\common\models\User.php(86): yii\db\BaseActiveRecord::findOne(Array)
+#15 C:\wamp64\www\GymMethod\common\models\LoginForm.php(74): common\models\User::findByUsername('Antonio')
+#16 C:\wamp64\www\GymMethod\common\models\LoginForm.php(45): common\models\LoginForm->getUser()
+#17 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\InlineValidator.php(77): common\models\LoginForm->validatePassword('password', NULL, Object(yii\validators\InlineValidator), 'antonio')
+#18 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\Validator.php(260): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#19 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Model.php(360): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#20 C:\wamp64\www\GymMethod\common\models\LoginForm.php(59): yii\base\Model->validate()
+#21 C:\wamp64\www\GymMethod\backend\controllers\SiteController.php(82): common\models\LoginForm->login()
+#22 [internal function]: backend\controllers\SiteController->actionLogin()
+#23 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#24 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#25 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#26 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#27 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\wamp64\www\GymMethod\backend\web\index.php(18): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1045
+    [2] => Access denied for user 'root'@'localhost' (using password: NO)
+)
+
+2022-10-31 14:41:45 [127.0.0.1][-][112pa1rcv5q0ttk1v0flskmv3i][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = [
+    '_csrf-backend' => 'mzA5L9AopRmF5MzMv8h-tmNm9LDHuJiTbOwkASZJlyXzfwpAl0PoQbyhnav1mRuBVza88bDcz9kNp3ZQTB6hTA=='
+    'LoginForm' => [
+        'username' => 'Antonio'
+        'password' => 'antonio'
+        'rememberMe' => '1'
+    ]
+    'login-button' => ''
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    'advanced-backend' => '112pa1rcv5q0ttk1v0flskmv3i'
+    '_csrf-backend' => '768163b6b763665eb2637b628092b252ee5fcfc9394253994797ab5fe8764c7ca:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"hO3oGkMX9EQgJQe74PHAwdWJaKRQjW6i\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost/gymMethod/backend/web/'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '240'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_REFERER' => 'http://localhost/gymMethod/backend/web/index.php?r=site%2Flogin'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; advanced-backend=112pa1rcv5q0ttk1v0flskmv3i; _csrf-backend=768163b6b763665eb2637b628092b252ee5fcfc9394253994797ab5fe8764c7ca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22hO3oGkMX9EQgJQe74PHAwdWJaKRQjW6i%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/backend/web/index.php'
+    'REMOTE_PORT' => '51398'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/gymMethod/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/gymMethod/backend/web/index.php'
+    'PHP_SELF' => '/gymMethod/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667227305.0985
+    'REQUEST_TIME' => 1667227305
+]
+2022-10-31 14:43:05 [127.0.0.1][-][112pa1rcv5q0ttk1v0flskmv3i][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php:722
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(722): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(637): yii\db\Connection->createPdoInstance()
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare(true)
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema('user')
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata('{{%user}}', 'schema', false)
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(439): yii\db\Schema->getTableSchema('{{%user}}')
+#12 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(266): yii\db\ActiveRecord::getTableSchema()
+#13 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(238): yii\db\ActiveRecord::filterValidColumnNames(Object(yii\db\Connection), Array)
+#14 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(195): yii\db\ActiveRecord::filterCondition(Array, Array)
+#15 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\BaseActiveRecord.php(110): yii\db\ActiveRecord::findByCondition(Array)
+#16 C:\wamp64\www\GymMethod\common\models\User.php(86): yii\db\BaseActiveRecord::findOne(Array)
+#17 C:\wamp64\www\GymMethod\common\models\LoginForm.php(74): common\models\User::findByUsername('admin')
+#18 C:\wamp64\www\GymMethod\common\models\LoginForm.php(45): common\models\LoginForm->getUser()
+#19 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\InlineValidator.php(77): common\models\LoginForm->validatePassword('password', NULL, Object(yii\validators\InlineValidator), 'admin123')
+#20 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\Validator.php(260): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#21 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Model.php(360): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#22 C:\wamp64\www\GymMethod\common\models\LoginForm.php(59): yii\base\Model->validate()
+#23 C:\wamp64\www\GymMethod\backend\controllers\SiteController.php(82): common\models\LoginForm->login()
+#24 [internal function]: backend\controllers\SiteController->actionLogin()
+#25 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#26 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#27 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#28 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#29 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\wamp64\www\GymMethod\backend\web\index.php(18): yii\base\Application->run()
+#31 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php:648
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare(true)
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema('user')
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata('{{%user}}', 'schema', false)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(439): yii\db\Schema->getTableSchema('{{%user}}')
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(266): yii\db\ActiveRecord::getTableSchema()
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(238): yii\db\ActiveRecord::filterValidColumnNames(Object(yii\db\Connection), Array)
+#12 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\ActiveRecord.php(195): yii\db\ActiveRecord::filterCondition(Array, Array)
+#13 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\db\BaseActiveRecord.php(110): yii\db\ActiveRecord::findByCondition(Array)
+#14 C:\wamp64\www\GymMethod\common\models\User.php(86): yii\db\BaseActiveRecord::findOne(Array)
+#15 C:\wamp64\www\GymMethod\common\models\LoginForm.php(74): common\models\User::findByUsername('admin')
+#16 C:\wamp64\www\GymMethod\common\models\LoginForm.php(45): common\models\LoginForm->getUser()
+#17 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\InlineValidator.php(77): common\models\LoginForm->validatePassword('password', NULL, Object(yii\validators\InlineValidator), 'admin123')
+#18 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\validators\Validator.php(260): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#19 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Model.php(360): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#20 C:\wamp64\www\GymMethod\common\models\LoginForm.php(59): yii\base\Model->validate()
+#21 C:\wamp64\www\GymMethod\backend\controllers\SiteController.php(82): common\models\LoginForm->login()
+#22 [internal function]: backend\controllers\SiteController->actionLogin()
+#23 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#24 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#25 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#26 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#27 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\wamp64\www\GymMethod\backend\web\index.php(18): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1045
+    [2] => Access denied for user 'root'@'localhost' (using password: NO)
+)
+
+2022-10-31 14:43:05 [127.0.0.1][-][112pa1rcv5q0ttk1v0flskmv3i][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = [
+    '_csrf-backend' => 'rin7c0mdUs8N9xnG-kQs08HlVfurMdSlUJjWH2iaodXGZsgcDvYflzSySKGwFUnk9bUdutxVg-8x04ROAs2XvA=='
+    'LoginForm' => [
+        'username' => 'admin'
+        'password' => 'admin123'
+        'rememberMe' => '1'
+    ]
+    'login-button' => ''
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    'advanced-backend' => '112pa1rcv5q0ttk1v0flskmv3i'
+    '_csrf-backend' => '768163b6b763665eb2637b628092b252ee5fcfc9394253994797ab5fe8764c7ca:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"hO3oGkMX9EQgJQe74PHAwdWJaKRQjW6i\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost/gymMethod/backend/web/'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '239'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_REFERER' => 'http://localhost/gymMethod/backend/web/index.php?r=site%2Flogin'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; advanced-backend=112pa1rcv5q0ttk1v0flskmv3i; _csrf-backend=768163b6b763665eb2637b628092b252ee5fcfc9394253994797ab5fe8764c7ca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22hO3oGkMX9EQgJQe74PHAwdWJaKRQjW6i%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/backend/web/index.php'
+    'REMOTE_PORT' => '51451'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/gymMethod/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/gymMethod/backend/web/index.php'
+    'PHP_SELF' => '/gymMethod/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667227385.0216
+    'REQUEST_TIME' => 1667227385
+]

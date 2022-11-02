@@ -1,0 +1,724 @@
+2022-10-31 16:43:01 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][Error] Error: Class "UserAsset" not found in C:\wamp64\www\GymMethod\frontend\views\site\index.php:6
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#5 [internal function]: frontend\controllers\SiteController->actionIndex()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+2022-10-31 16:43:01 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '59748'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667234581.8466
+    'REQUEST_TIME' => 1667234581
+]
+2022-10-31 16:43:19 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][Error] Error: Class "AppAsset" not found in C:\wamp64\www\GymMethod\frontend\views\site\index.php:6
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#5 [internal function]: frontend\controllers\SiteController->actionIndex()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+2022-10-31 16:43:19 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '59750'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667234599.6662
+    'REQUEST_TIME' => 1667234599
+]
+2022-10-31 16:43:20 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][Error] Error: Class "AppAsset" not found in C:\wamp64\www\GymMethod\frontend\views\site\index.php:6
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#5 [internal function]: frontend\controllers\SiteController->actionIndex()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+2022-10-31 16:43:20 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '59751'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667234600.391
+    'REQUEST_TIME' => 1667234600
+]
+2022-10-31 16:47:00 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'app\assets\AppAsset' in file: C:\wamp64\www\GymMethod\frontend/assets/AppAsset.php. Namespace missing? in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php:296
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\assets\\AppA...')
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(507): ReflectionClass->__construct('app\\assets\\AppA...')
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(385): yii\di\Container->getDependencies('app\\assets\\AppA...')
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(170): yii\di\Container->build('app\\assets\\AppA...', Array, Array)
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('app\\assets\\AppA...', Array, Array)
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(292): yii\BaseYii::createObject(Array)
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(265): yii\web\AssetManager->loadBundle('app\\assets\\AppA...', Array, true)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\View.php(294): yii\web\AssetManager->getBundle('app\\assets\\AppA...')
+#8 C:\wamp64\www\GymMethod\frontend\views\site\index.php(6): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require('C:\\wamp64\\www\\G...')
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#12 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#13 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#14 [internal function]: frontend\controllers\SiteController->actionIndex()
+#15 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#16 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#17 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#18 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#19 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#21 {main}
+2022-10-31 16:47:00 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '59802'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667234820.9286
+    'REQUEST_TIME' => 1667234820
+]
+2022-10-31 16:47:23 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][yii\di\NotInstantiableException] ReflectionException: Class "assets\AppAsset" does not exist in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php:507
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(507): ReflectionClass->__construct('assets\\AppAsset')
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(385): yii\di\Container->getDependencies('assets\\AppAsset')
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(170): yii\di\Container->build('assets\\AppAsset', Array, Array)
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('assets\\AppAsset', Array, Array)
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(292): yii\BaseYii::createObject(Array)
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(265): yii\web\AssetManager->loadBundle('assets\\AppAsset', Array, true)
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\View.php(294): yii\web\AssetManager->getBundle('assets\\AppAsset')
+#7 C:\wamp64\www\GymMethod\frontend\views\site\index.php(6): yii\web\View->registerAssetBundle('assets\\AppAsset')
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require('C:\\wamp64\\www\\G...')
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#12 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#13 [internal function]: frontend\controllers\SiteController->actionIndex()
+#14 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#15 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#16 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#17 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#18 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#20 {main}
+
+Next yii\di\NotInstantiableException: Failed to instantiate component or class "assets\AppAsset". in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php:509
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(385): yii\di\Container->getDependencies('assets\\AppAsset')
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\di\Container.php(170): yii\di\Container->build('assets\\AppAsset', Array, Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('assets\\AppAsset', Array, Array)
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(292): yii\BaseYii::createObject(Array)
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\AssetManager.php(265): yii\web\AssetManager->loadBundle('assets\\AppAsset', Array, true)
+#5 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\View.php(294): yii\web\AssetManager->getBundle('assets\\AppAsset')
+#6 C:\wamp64\www\GymMethod\frontend\views\site\index.php(6): yii\web\View->registerAssetBundle('assets\\AppAsset')
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require('C:\\wamp64\\www\\G...')
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#11 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#12 [internal function]: frontend\controllers\SiteController->actionIndex()
+#13 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#14 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#15 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#16 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#17 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#19 {main}
+2022-10-31 16:47:23 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '59806'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667234843.2333
+    'REQUEST_TIME' => 1667234843
+]
+2022-10-31 17:06:55 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'frontend\web\assets\AppAsset' in file: C:\wamp64\www\GymMethod/frontend/web/assets/AppAsset.php. Namespace missing? in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php:296
+Stack trace:
+#0 C:\wamp64\www\GymMethod\frontend\views\site\index.php(7): yii\BaseYii::autoload('frontend\\web\\as...')
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require('C:\\wamp64\\www\\G...')
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#5 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#6 [internal function]: frontend\controllers\SiteController->actionIndex()
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#13 {main}
+2022-10-31 17:06:55 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '60717'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667236015.4492
+    'REQUEST_TIME' => 1667236015
+]
+2022-10-31 17:07:04 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][Error] Error: Class "web\assets\AppAsset" not found in C:\wamp64\www\GymMethod\frontend\views\site\index.php:7
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#5 [internal function]: frontend\controllers\SiteController->actionIndex()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+2022-10-31 17:07:04 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '60721'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667236024.84
+    'REQUEST_TIME' => 1667236024
+]
+2022-10-31 17:11:01 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'frontend\web\assets\AppAsset' in file: C:\wamp64\www\GymMethod/frontend/web/assets/AppAsset.php. Namespace missing? in C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\BaseYii.php:296
+Stack trace:
+#0 C:\wamp64\www\GymMethod\frontend\views\site\index.php(7): yii\BaseYii::autoload('frontend\\web\\as...')
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require('C:\\wamp64\\www\\G...')
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#5 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#6 [internal function]: frontend\controllers\SiteController->actionIndex()
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#11 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#13 {main}
+2022-10-31 17:11:01 [127.0.0.1][-][fl0l8kmfclkal9l9kqikj57auf][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-backend' => 'lljknnvt9pc0d90jth26c06ij4'
+    '_csrf-backend' => '775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd\";}'
+    'advanced-frontend' => 'fl0l8kmfclkal9l9kqikj57auf'
+    '_csrf-frontend' => 'c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-backend=lljknnvt9pc0d90jth26c06ij4; _csrf-backend=775b447eb3a27313c1d6426cd1314db9ab5f6863d240e1730888ab15e0a592f6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22GLZoqzHiqWnIvAIH9jdd8q5_hd6B3_Yd%22%3B%7D; advanced-frontend=fl0l8kmfclkal9l9kqikj57auf; _csrf-frontend=c60477d3f4a267acce166fd3cfe241707889b115180596cca87e43b1d6b758cca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22W7OfAgXqknlqY7q2DhoXUpSnX3jxzhWE%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '60743'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667236261.429
+    'REQUEST_TIME' => 1667236261
+]
+2022-11-02 13:02:20 [127.0.0.1][-][cmq9iq4krk3rhtlt8r45ui35pk][error][Error] Error: Class "frontend\web\assets\AppAsset" not found in C:\wamp64\www\GymMethod\frontend\views\site\index.php:7
+Stack trace:
+#0 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(347): require()
+#1 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\wamp64\\www\\G...', Array)
+#2 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\wamp64\\www\\G...', Array, Object(frontend\controllers\SiteController))
+#3 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#4 C:\wamp64\www\GymMethod\frontend\controllers\SiteController.php(78): yii\base\Controller->render('index')
+#5 [internal function]: frontend\controllers\SiteController->actionIndex()
+#6 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('', Array)
+#9 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\wamp64\www\GymMethod\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\wamp64\www\GymMethod\frontend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+2022-11-02 13:02:20 [127.0.0.1][-][cmq9iq4krk3rhtlt8r45ui35pk][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-frontend' => 'f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a:2:{i:0;s:18:\"_identity-frontend\";i:1;s:46:\"[5,\"-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM\",2592000]\";}'
+    '_identity-backend' => '3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L\",2592000]\";}'
+    'advanced-frontend' => 'cmq9iq4krk3rhtlt8r45ui35pk'
+    '_csrf-frontend' => 'a09bfa8583694b3f02112bd8af7761d67ecd76076598bbcfa9a8ea61e63f5c6ea:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"LkOlT9T64bllDBmbkTmTI7LUkPeeRfci\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => '_identity-frontend=f03b0ba853e97e8ce648d15daf68e9c1d021d21abff6d3d811f6d83965a5c0f7a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22-wIUv7w3VvQjat1dVPG8PWmjkBEcDLCM%22%2C2592000%5D%22%3B%7D; _identity-backend=3300905f6687ce09e00f2c180bd89ec512b5643a405f82093d47ff45efdca099a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22NKTarfsbu_OL9GOYOIc0eUCBulDf-J-L%22%2C2592000%5D%22%3B%7D; advanced-frontend=cmq9iq4krk3rhtlt8r45ui35pk; _csrf-frontend=a09bfa8583694b3f02112bd8af7761d67ecd76076598bbcfa9a8ea61e63f5c6ea%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22LkOlT9T64bllDBmbkTmTI7LUkPeeRfci%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\wamp64\\bin\\php\\php8.1.0;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.51 (Win64) PHP/8.1.0 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.51 (Win64) PHP/8.1.0'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/GymMethod/frontend/web/index.php'
+    'REMOTE_PORT' => '49784'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gymMethod/frontend/web/'
+    'SCRIPT_NAME' => '/gymMethod/frontend/web/index.php'
+    'PHP_SELF' => '/gymMethod/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1667394140.4669
+    'REQUEST_TIME' => 1667394140
+]
