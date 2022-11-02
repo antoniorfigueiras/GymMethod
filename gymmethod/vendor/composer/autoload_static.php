@@ -12,16 +12,16 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         'e3b2795a8a512b6083af088fb53afe6c' => __DIR__ . '/..' . '/codeception/codeception/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '77e7c5c0b74965caa0fbb0a094b7713f' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/bootstrap.php',
     );
 
@@ -34,7 +34,17 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap5\\' => 15,
+            'yii\\bootstrap4\\' => 15,
             'yii\\' => 4,
+        ),
+        'r' => 
+        array (
+            'rmrevin\\yii\\fontawesome\\' => 24,
+        ),
+        'h' => 
+        array (
+            'hail812\\adminlte\\widgets\\' => 25,
+            'hail812\\adminlte3\\' => 18,
         ),
         'c' => 
         array (
@@ -70,6 +80,10 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Masterminds\\' => 12,
         ),
         'G' => 
         array (
@@ -121,9 +135,25 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap5/src',
         ),
+        'yii\\bootstrap4\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap4/src',
+        ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'rmrevin\\yii\\fontawesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
+        ),
+        'hail812\\adminlte\\widgets\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hail812/yii2-adminlte-widgets/src',
+        ),
+        'hail812\\adminlte3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hail812/yii2-adminlte3/src',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -215,8 +245,8 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -229,6 +259,10 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -261,8 +295,8 @@ class ComposerStaticInit57fb973be009294675c944d25d9c1101
         'Codeception\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeception/stub/src',
-            1 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
-            2 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
+            1 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
+            2 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
         ),
     );
 
