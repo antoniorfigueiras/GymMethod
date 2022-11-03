@@ -99,6 +99,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/npm-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/almasaeed2010/adminlte" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap4" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/rmrevin/yii2-fontawesome" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/fontawesome" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

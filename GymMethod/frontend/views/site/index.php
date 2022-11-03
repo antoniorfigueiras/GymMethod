@@ -140,7 +140,7 @@
 
             <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                 <div class="team-thumb">
-                    <img src="../web/assets/images/team/team-image.jpg" class="img-fluid" alt="Trainer">
+                    <img src="../web/images/team/team-image.jpg" class="img-fluid" alt="Trainer">
 
                     <div class="team-info d-flex flex-column">
 
@@ -157,7 +157,7 @@
 
             <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                 <div class="team-thumb">
-                    <img src="../web/assets/images/team/team-image01.jpg" class="img-fluid" alt="Trainer">
+                    <img src="../web/images/team/team-image01.jpg" class="img-fluid" alt="Trainer">
 
                     <div class="team-info d-flex flex-column">
 
@@ -190,7 +190,7 @@
 
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                 <div class="class-thumb">
-                    <img src="../web/assets/images/class/yoga-class.jpg" class="img-fluid" alt="Class">
+                    <img src="../web/images/class/yoga-class.jpg" class="img-fluid" alt="Class">
 
                     <div class="class-info">
                         <h3 class="mb-1">Yoga</h3>
@@ -206,7 +206,7 @@
 
             <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
                 <div class="class-thumb">
-                    <img src="../web/assets/images/class/crossfit-class.jpg" class="img-fluid" alt="Class">
+                    <img src="../web/images/class/crossfit-class.jpg" class="img-fluid" alt="Class">
 
                     <div class="class-info">
                         <h3 class="mb-1">Areobic</h3>
@@ -222,7 +222,7 @@
 
             <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
                 <div class="class-thumb">
-                    <img src="../web/assets/images/class/cardio-class.jpg" class="img-fluid" alt="Class">
+                    <img src="../web/images/class/cardio-class.jpg" class="img-fluid" alt="Class">
 
                     <div class="class-info">
                         <h3 class="mb-1">Cardio</h3>
