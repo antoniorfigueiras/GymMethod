@@ -1,3 +1,9 @@
+<?php
+
+/** @var yii\web\View $this */
+
+$this->title = 'My Yii Application';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
