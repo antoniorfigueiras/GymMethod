@@ -6,36 +6,51 @@
 
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
+use common\widgets\Alert;
+use yii\bootstrap5\Breadcrumbs;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+use frontend\assets\AppAssetLogin;
+AppAssetLogin::register($this);
+$this->title = 'GymMethod';
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('../login/images/bg_2.jpg');"></div>
+    <div class="contents order-2 order-md-1">
 
-    <p>Please fill out the following fields to login:</p>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7">
+                    <h3>Bem vindo de volta ao <strong>GymMethod</strong></h3>
+                    <p class="mb-4">Acede á tua conta para ter acesso ás nossas funcionalidades!</p>
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                        <div class="form-group first">
+                            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                        </div>
+                        <div class="form-group last mb-1">
+                            <?= $form->field($model, 'password')->passwordInput() ?>
+                        </div>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                        <div class="d-flex mb-5 align-items-center">
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                            <label class="control control--checkbox mb-0">
+                                <span class="caption">
+                                    <?php
+                                        echo Html::tag('div',Html::a('Criar uma conta',['site/signup']));
+                                    ?>
+                                </span>
+                            </label>
+                        </div>
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-block btn-primary', 'name' => 'login-button']) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="my-1 mx-0" style="color:#999;">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                    <?php ActiveForm::end(); ?>
                 </div>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
+
+
 </div>

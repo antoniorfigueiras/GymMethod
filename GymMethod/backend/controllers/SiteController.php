@@ -3,11 +3,15 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\User;
+//use PharIo\Manifest\Url;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use function PHPUnit\Framework\isNull;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -22,14 +26,20 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
+                'only' => ['login', 'logout', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
                         'allow' => true,
+                        'actions' => ['login', 'error'],
                     ],
                     [
-                        'actions' => ['logout', 'index'],
                         'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['admin', 'funcionario', 'treinador'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -48,12 +58,27 @@ class SiteController extends Controller
      */
     public function actions()
     {
+
+        /*if (Yii::$app->user->can('loginBo')) { // se user for admin,sem login == guest
+            return [
+                'error' => [
+                    'class' => \yii\web\ErrorAction::class,
+                ],
+            ];
+        }
+
+    if (!Yii::$app->user->can('loginBo')) {
+        Yii::$app->user->logout();
+        //$this->redirect('../../../frontend/web');
+        //var_dump(Yii::$app->user->can('loginBo'));
+    }*/
         return [
             'error' => [
                 'class' => \yii\web\ErrorAction::class,
             ],
         ];
     }
+
 
     /**
      * Displays homepage.
@@ -62,6 +87,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        /*if(Yii::$app->user->can('loginBO')){
+                Yii::$app->getResponse()->redirect(Url::base(true).'../../../frontend/web')->send();
+            //return $this->redirect(Url::base(true).'../../../frontend/web')->send();
+                Yii::$app->end();
+        }*/
+        //var_dump(Yii::$app->user->can('loginBo'));
         return $this->render('index');
     }
 
@@ -80,8 +111,17 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(!Yii::$app->user->can('loginBO')){
+                Yii::$app->user->logout();
+                $this->redirect(Url::base(true).'../../../frontend/web');
+
+            }else
+            {
+                return $this->goBack();
+            }
+
         }
+
 
         $model->password = '';
 
@@ -98,7 +138,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
+
 }

@@ -4,7 +4,7 @@ return [
     'components' => [
         'db' => [
             'class' => \yii\db\Connection::class,
-            'dsn' => 'mysql:host=localhost;dbname=gym_method_db',
+            'dsn' => 'mysql:host=localhost;dbname=gymdb',
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',

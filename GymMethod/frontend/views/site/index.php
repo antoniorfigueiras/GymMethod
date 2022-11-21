@@ -1,464 +1,1106 @@
 <?php
 
-/** @var yii\web\View $this */
+/** @var \yii\web\View $this */
+/** @var string $content */
 
-$this->title = 'My Yii Application';
+use frontend\assets\AppAsset;
+use yii\bootstrap5\Breadcrumbs;
+use yii\bootstrap5\Html;
+use yii\helpers\Url;
+
+AppAsset::register($this);
+$this->title = 'GymMethod';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <title>Gymso Fitness HTML Template</title>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
-<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-
-<!-- MENU BAR -->
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-
-        <a class="navbar-brand" href="index.html">Gymso Fitness</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-lg-auto">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link smoothScroll">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#about" class="nav-link smoothScroll">About Us</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#class" class="nav-link smoothScroll">Classes</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#schedule" class="nav-link smoothScroll">Schedules</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link smoothScroll">Contact</a>
-                </li>
-            </ul>
-
-            <ul class="social-icon ml-lg-3">
-                <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-twitter"></a></li>
-                <li><a href="#" class="fa fa-instagram"></a></li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
-
-
-<!-- HERO -->
-<section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
-
-    <div class="bg-overlay"></div>
-
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-8 col-md-10 mx-auto col-12">
-                <div class="hero-text mt-5 text-center">
-
-                    <h6 data-aos="fade-up" data-aos-delay="300">new way to build a healthy lifestyle!</h6>
-
-                    <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your body at Gymso Fitness</h1>
-
-                    <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
-
-                    <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
-
-                </div>
+<!-- ? Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="index/img/logo/loder.png" alt="">
             </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section class="feature" id="feature">
-    <div class="container">
-        <div class="row">
-
-            <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-3 text-white" data-aos="fade-up">New to the gymso?</h2>
-
-                <h6 class="mb-4 text-white" data-aos="fade-up">Your membership is up to 2 months FREE ($62.50 per month)</h6>
-
-                <p data-aos="fade-up" data-aos-delay="200">Gymso is free HTML template by <a rel="nofollow" href="https://www.tooplate.com" target="_parent">Tooplate</a> for your commercial website. Bootstrap v4.2.1 Layout. Feel free to use it.</p>
-
-                <a href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm">Become a member today</a>
-            </div>
-
-            <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
-                <div class="about-working-hours">
-                    <div>
-
-                        <h2 class="mb-4 text-white" data-aos="fade-up" data-aos-delay="500">Working hours</h2>
-
-                        <strong class="d-block" data-aos="fade-up" data-aos-delay="600">Sunday : Closed</strong>
-
-                        <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Monday - Friday</strong>
-
-                        <p data-aos="fade-up" data-aos-delay="800">7:00 AM - 10:00 PM</p>
-
-                        <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Saturday</strong>
-
-                        <p data-aos="fade-up" data-aos-delay="800">6:00 AM - 4:00 PM</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    </div>
-</section>
-
-
-<!-- ABOUT -->
-<section class="about section" id="about">
-    <div class="container">
-        <div class="row">
-
-            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are Gymso</h2>
-
-                <p data-aos="fade-up" data-aos-delay="400">You are NOT allowed to redistribute this HTML template downloadable ZIP file on any template collection site. You are allowed to use this template for your personal or business websites.</p>
-
-                <p data-aos="fade-up" data-aos-delay="500">If you have any question regarding <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">Gymso Fitness HTML template</a>, you can <a rel="nofollow" href="https://www.tooplate.com/contact" target="_parent">contact Tooplate</a> immediately. Thank you.</p>
-
-            </div>
-
-            <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="team-thumb">
-                    <img src="../web/images/team/team-image.jpg" class="img-fluid" alt="Trainer">
-
-                    <div class="team-info d-flex flex-column">
-
-                        <h3>Mary Yan</h3>
-                        <span>Yoga Instructor</span>
-
-                        <ul class="social-icon mt-3">
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                <div class="team-thumb">
-                    <img src="../web/images/team/team-image01.jpg" class="img-fluid" alt="Trainer">
-
-                    <div class="team-info d-flex flex-column">
-
-                        <h3>Catherina</h3>
-                        <span>Body trainer</span>
-
-                        <ul class="social-icon mt-3">
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- CLASS -->
-<section class="class section" id="class">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-12 col-12 text-center mb-5">
-                <h6 data-aos="fade-up">Get A Perfect Body</h6>
-
-                <h2 data-aos="fade-up" data-aos-delay="200">Our Training Classes</h2>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="class-thumb">
-                    <img src="../web/images/class/yoga-class.jpg" class="img-fluid" alt="Class">
-
-                    <div class="class-info">
-                        <h3 class="mb-1">Yoga</h3>
-
-                        <span><strong>Trained by</strong> - Bella</span>
-
-                        <span class="class-price">$50</span>
-
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
-                <div class="class-thumb">
-                    <img src="../web/images/class/crossfit-class.jpg" class="img-fluid" alt="Class">
-
-                    <div class="class-info">
-                        <h3 class="mb-1">Areobic</h3>
-
-                        <span><strong>Trained by</strong> - Mary</span>
-
-                        <span class="class-price">$66</span>
-
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="class-thumb">
-                    <img src="../web/images/class/cardio-class.jpg" class="img-fluid" alt="Class">
-
-                    <div class="class-info">
-                        <h3 class="mb-1">Cardio</h3>
-
-                        <span><strong>Trained by</strong> - Cathe</span>
-
-                        <span class="class-price">$75</span>
-
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- SCHEDULE -->
-<section class="schedule section" id="schedule">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-12 col-12 text-center">
-                <h6 data-aos="fade-up">our weekly GYM schedules</h6>
-
-                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Workout Timetable</h2>
-            </div>
-
-            <div class="col-lg-12 py-5 col-md-12 col-12">
-                <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
-
-                    <thead class="thead-light">
-                    <th><i class="fa fa-calendar"></i></th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    </thead>
-
-                    <tbody>
-                    <tr>
-                        <td><small>7:00 am</small></td>
-                        <td>
-                            <strong>Cardio</strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                        <td>
-                            <strong>Power Fitness</strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <strong>Yoga Section</strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><small>9:00 am</small></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <strong>Boxing</strong>
-                            <span>8:00 am - 9:00 am</span>
-                        </td>
-                        <td>
-                            <strong>Areobic</strong>
-                            <span>8:00 am - 9:00 am</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong>Cardio</strong>
-                            <span>8:00 am - 9:00 am</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><small>11:00 am</small></td>
-                        <td></td>
-                        <td>
-                            <strong>Boxing</strong>
-                            <span>11:00 am - 2:00 pm</span>
-                        </td>
-                        <td>
-                            <strong>Areobic</strong>
-                            <span>11:30 am - 3:30 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong>Body work</strong>
-                            <span>11:50 am - 5:20 pm</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><small>2:00 pm</small></td>
-                        <td>
-                            <strong>Boxing</strong>
-                            <span>2:00 pm - 4:00 pm</span>
-                        </td>
-                        <td>
-                            <strong>Power lifting</strong>
-                            <span>3:00 pm - 6:00 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong>Cardio</strong>
-                            <span>6:00 pm - 9:00 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong>Crossfit</strong>
-                            <span>5:00 pm - 7:00 pm</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- CONTACT -->
-<section class="contact section" id="contact">
-    <div class="container">
-        <div class="row">
-
-            <div class="ml-auto col-lg-5 col-md-6 col-12">
-                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
-
-                <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                    <input type="text" class="form-control" name="cf-name" placeholder="Name">
-
-                    <input type="email" class="form-control" name="cf-email" placeholder="Email">
-
-                    <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
-
-                    <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
-                </form>
-            </div>
-
-            <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
-
-                <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil</p>
-                <!-- How to change your own map point
-                    1. Go to Google Maps
-                    2. Click on your location point
-                    3. Click "Share" and choose "Embed map" tab
-                    4. Copy only URL and paste it within the src="" field below
-                -->
-                <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                    <iframe src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-
-            <div class="ml-auto col-lg-4 col-md-5">
-                <p class="copyright-text">Copyright &copy; 2020 Gymso Fitness Co.
-
-                    <br>Design: <a href="https://www.tooplate.com">Tooplate</a></p>
-            </div>
-
-            <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
-                <p class="mr-4">
-                    <i class="fa fa-envelope-o mr-1"></i>
-                    <a href="#">hello@company.co</a>
-                </p>
-
-                <p><i class="fa fa-phone mr-1"></i> 010-020-0840</p>
-            </div>
-
-        </div>
-    </div>
-</footer>
-
-<!-- Modal -->
-<div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <h2 class="modal-title" id="membershipFormLabel">Membership Form</h2>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form class="membership-form webform" role="form">
-                    <input type="text" class="form-control" name="cf-name" placeholder="John Doe">
-
-                    <input type="email" class="form-control" name="cf-email" placeholder="Johndoe@gmail.com">
-
-                    <input type="tel" class="form-control" name="cf-phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-
-                    <textarea class="form-control" rows="3" name="cf-message" placeholder="Additional Message"></textarea>
-
-                    <button type="submit" class="form-control" id="submit-button" name="submit">Submit Button</button>
-
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="signup-agree">
-                        <label class="custom-control-label text-small text-muted" for="signup-agree">I agree to the <a href="#">Terms &amp;Conditions</a>
-                        </label>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer"></div>
-
         </div>
     </div>
 </div>
+<!-- Preloader Start -->
+<header>
+    <!--? Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo -->
+                    <div class="col-xl-2 col-lg-2 col-md-1">
+                        <div class="logo">
+                            <a href="#"><img src="index/img/logo/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-10">
+                        <div class="menu-main d-flex align-items-center justify-content-end">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="about.html">Sobre</a></li>
+                                        <li><a href="services.html">Serviços</a></li>
+                                        <li><a href="schedule.html">Horário</a></li>
+                                        <li><a href="gallery.html">gallery</a></li>
+                                        <li><a href="blog.html">Loja</a>
+                                            <ul class="submenu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog_details.html">Blog Details</a></li>
+                                                <li><a href="elements.html">Element</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                <?php
+                                if (Yii::$app->user->isGuest) {
+                                    echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn header-btn']]));
+                                } else {
+                                    echo Html::beginForm(['site/logout'], 'get')
+                                        . Html::submitButton(
+                                            'Logout (' . Yii::$app->user->identity->username . ')',
+                                            ['class' => 'btn header-btn']
+                                        )
+                                        . Html::endForm();
+                                }
+                                ?>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<main>
+    <!--? slider Area Start-->
+    <div class="slider-area position-relative">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
+                            <div class="hero__caption">
+                                <span data-animation="fadeInLeft" data-delay="0.1s">Com António Figueiras</span>
+                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Constrói um corpo perfeito Fica um bicho para uma vida saudável</h1>
+                                <a href="from.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slider -->
+            <div class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
+                            <div class="hero__caption">
+                                <span data-animation="fadeInLeft" data-delay="0.1s">with patrick potter</span>
+                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Build Perfect body Shape for good and Healthy life.</h1>
+                                <a href="from.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Video icon -->
+        <div class="video-icon">
+            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i class="fas fa-play"></i></a>
+        </div>
+    </div>
+    <!-- slider Area End-->
+    <!--? About Area Start -->
+    <section class="about-area section-padding30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <img src="index/img/gallery/about.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-caption">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle3 mb-35">
+                            <span>ABOUT oUR GYM</span>
+                            <h2>Safe Body building proper Solutions That Saves our Valuable Time!</h2>
+                        </div>
+                        <p class="pera-top">Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replication of the designers is intended.</p>
+                        <p class="mb-65 pera-bottom">Brook presents your services with flexible, convefnient and chient anipurpose layouts. You can select your favorite layouts.</p>
+                        <a href="from.html" class="btn">became a member</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-2 Area End -->
+    <!--? Services Area Start -->
+    <section class="services-area pt-100 pb-150 section-bg" data-background="index/img/gallery/section_bg01.png">
+        <!--? Want To work -->
+        <section class="wantToWork-area w-padding">
+            <div class="container">
+                <div class="row align-items-end justify-content-between">
+                    <div class="col-lg-6 col-md-10 col-sm-10">
+                        <div class="section-tittle section-tittle2">
+                            <span>oUR sERVICES FOR YOU</span>
+                            <h2>PUSH YOUR LIMITS FORWARD We Offer to you</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-fitness"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">QUALITY EQUIPMENT</a></h5>
+                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                        </div>
+                        <div class="img-cap">
+                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-healthcare-and-medical"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">health caring</a></h5>
+                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                        </div>
+                        <div class="img-cap">
+                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-clock"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">gym strategies</a></h5>
+                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                        </div>
+                        <div class="img-cap">
+                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Area End -->
+    <!--? About-2 Area Start -->
+    <section class="about-area2 testimonial-area section-padding30 fix">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-11 col-sm-11">
+                    <!-- about-img -->
+                    <div class="about-img2">
+                        <img src="index/img/gallery/about2.png" alt="">
+                        <!-- Shape -->
+                        <div class="shape-qutaion d-none d-sm-block">
+                            <img src="index/img/gallery/qutaion.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-9 col-sm-9">
+                    <div class="about-caption">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-55">
+                            <span>Client Feedback</span>
+                            <h2>What Our Client thik about our gym</h2>
+                        </div>
+                        <!-- Testimonial Start -->
+                        <div class="h1-testimonial-active">
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial">
+                                <div class="testimonial-caption">
+                                    <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
+                                    <div class="rattiong-caption">
+                                        <span>Jhon Smith<span>Gym Trainer</span> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial">
+                                <div class="testimonial-caption">
+                                    <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
+                                    <div class="rattiong-caption">
+                                        <span>Jhon Smith<span>Gym Trainer</span> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-2 Area End -->
+    <!--? Gallery Area Start -->
+    <div class="gallery-area">
+        <div class="container-fluid p-0 fix">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box snake mb-30">
+                        <div class="gallery-img big-img" style="background-image: url(index/img/gallery/gallery1.png);"></div>
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
+                                <h3>Best fitness gallery</h3>
+                                <p>Fitness, Body</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="box snake mb-30">
+                                <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery2.png);"></div>
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>Best fitness gallery</h3>
+                                        <p>Fitness, Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="box snake mb-30">
+                                <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery3.png);"></div>
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>Best fitness gallery</h3>
+                                        <p>Fitness, Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="box snake mb-30">
+                                <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery4.png);"></div>
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>Best fitness gallery</h3>
+                                        <p>Fitness, Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="box snake mb-30">
+                                <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery5.png);"></div>
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>Best fitness gallery</h3>
+                                        <p>Fitness, Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery Area End -->
+    <!--? Want To work -->
+    <section class="wantToWork-area w-padding">
+        <div class="container">
+            <div class="row align-items-end justify-content-between">
+                <div class="col-lg-6 col-md-9 col-sm-9">
+                    <div class="section-tittle">
+                        <span>oUR TEAM MAMBERS</span>
+                        <h2>Our Most Exprienced Trainers</h2>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3">
+                    <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
+    <!--? Team Ara Start -->
+    <div class="team-area pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="index/img/gallery/team1.png" alt="">
+                            <div class="team-caption">
+                                <span>Creative derector</span>
+                                <h3><a href="#">Jhon Sunsaev</a></h3>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="index/img/gallery/team2.png" alt="">
+                            <div class="team-caption">
+                                <span>Creative derector</span>
+                                <h3><a href="#">Jhon Sunsaev</a></h3>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="index/img/gallery/team3.png" alt="">
+                            <div class="team-caption">
+                                <span>Creative derector</span>
+                                <h3><a href="#">Jhon Sunsaev</a></h3>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Ara End -->
+    <!--? Want To work -->
+    <section class="wantToWork-area w-padding section-bg" data-background="index/img/gallery/section_bg02.png">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10">
+                    <div class="wantToWork-caption">
+                        <h2>April membership offer available Now</h2>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3">
+                    <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
+    <!--? Date Tabs Start -->
+    <section class="date-tabs section-padding30">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="section-tittle text-center mb-100">
+                        <span>OUR tIME SCHEDULE</span>
+                        <h2>SELECT THE pERFECT TIME YOU NEED NOW</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Heading & Nav Button -->
+            <div class="row justify-content-center mb-10">
+                <div class="col-lg-11">
+                    <div class="properties__button">
+                        <!--Nav Button  -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Saturday</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Sunday</a>
+                                <a class="nav-item nav-link active" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Monday</a>
+                                <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Tuesday</a>
+                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Language</a>
+                                <a class="nav-item nav-link" id="nav-six" data-toggle="tab" href="#nav-nav-six" role="tab" aria-controls="nav-contact" aria-selected="false">Thursday</a>
+                                <a class="nav-item nav-link" id="nav-seven" data-toggle="tab" href="#nav-nav-seven" role="tab" aria-controls="nav-seven" aria-selected="false">Friday</a>
+                            </div>
+                        </nav>
+                        <!--End Nav Button  -->
+                    </div>
+                </div>
+            </div>
+            <!-- Tab content -->
+            <div class="row justify-content-center">
+                <div class="col-lg-11">
+                    <!-- Nav Card -->
+                    <div class="tab-content" id="nav-tabContent">
+                        <!--  one -->
+                        <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Two -->
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Three -->
+                        <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Fur -->
+                        <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Five -->
+                        <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Six -->
+                        <div class="tab-pane fade" id="nav-nav-six" role="tabpanel" aria-labelledby="nav-six">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  seven -->
+                        <div class="tab-pane fade" id="nav-nav-seven" role="tabpanel" aria-labelledby="nav-seven">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-wrapper">
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single -->
+                                        <div class="single-box">
+                                            <div class="single-caption active text-center">
+                                                <div class="caption">
+                                                    <span>6am - 8am</span>
+                                                    <h3>Kick Boxing</h3>
+                                                    <p><span>by</span> Jhos Kusam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Nav Card -->
+                </div>
+            </div>
+        </div>
 
-</body>
-</html>
+    </section>
+    <!-- Date Tabs End -->
+    <!--? Contact form Start -->
+    <section class="contact-form-main">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-xl-7 col-lg-7">
+                    <div class="form-wrapper">
+                        <!--Section Tittle  -->
+                        <div class="form-tittle">
+                            <div class="row ">
+                                <div class="col-lg-11 col-md-10 col-sm-10">
+                                    <div class="section-tittle">
+                                        <span>Contact Form</span>
+                                        <h2>Feel Free to contact with us!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Section Tittle  -->
+                        <form id="contact-form" action="#" method="POST">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-box user-icon mb-30">
+                                        <input type="text" name="name" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-box email-icon mb-30">
+                                        <input type="text" name="email" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 mb-30">
+                                    <div class="select-itms">
+                                        <select name="select" id="select2">
+                                            <option value="">Boxing</option>
+                                            <option value="">saiful islam</option>
+                                            <option value="">Arafath Miya</option>
+                                            <option value="">Shakil Miya</option>
+                                            <option value="">Tamim Sharker</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-box subject-icon mb-30">
+                                        <input type="Email" name="subject" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-box message-icon mb-65">
+                                        <textarea name="message" id="message" placeholder="Message"></textarea>
+                                    </div>
+                                    <div class="submit-info">
+                                        <button class="btn" type="submit">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- contact left Img-->
+        <div class="from-left d-none d-lg-block">
+            <img src="index/img/gallery/contact_form.png" alt="">
+        </div>
+    </section>
+    <!-- Contact form End -->
+    <!--? Blog Area Start -->
+    <section class="home-blog-area section-padding30">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-9 col-sm-10">
+                    <div class="section-tittle text-center mb-100">
+                        <span>rECENT NEWS FORM BLOG</span>
+                        <h2>gYM TIPS news fOR YOU THAT selected by us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="home-blog-single mb-30">
+                        <div class="blog-img-cap">
+                            <div class="blog-img">
+                                <img src="index/img/gallery/blog1.png" alt="">
+                                <!-- Blog date -->
+                                <div class="blog-date text-center">
+                                    <span>24</span>
+                                    <p>Now</p>
+                                </div>
+                            </div>
+                            <div class="blog-cap">
+                                <span>Creative derector</span>
+                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="home-blog-single mb-30">
+                        <div class="blog-img-cap">
+                            <div class="blog-img">
+                                <img src="index/img/gallery/blog2.png" alt="">
+                                <!-- Blog date -->
+                                <div class="blog-date text-center">
+                                    <span>24</span>
+                                    <p>Now</p>
+                                </div>
+                            </div>
+                            <div class="blog-cap">
+                                <span>Creative derector</span>
+                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Area End -->
+</main>
+<footer>
+    <!--? Footer Start-->
+    <div class="footer-area section-bg" data-background="index/img/gallery/section_bg03.png">
+        <div class="container">
+            <div class="footer-top footer-padding">
+                <!-- Footer Menu -->
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>COMPANY</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Company</a></li>
+                                    <li><a href="#"> Press & Blog</a></li>
+                                    <li><a href="#"> Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Open hour</h4>
+                                <ul>
+                                    <li><a href="#">Monday 11am-7pm</a></li>
+                                    <li><a href="#"> Tuesday-Friday 11am-8pm</a></li>
+                                    <li><a href="#"> Saturday 10am-6pm</a></li>
+                                    <li><a href="#"> Sunday 11am-6pm</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>RESOURCES</h4>
+                                <ul>
+                                    <li><a href="#">Home Insurance</a></li>
+                                    <li><a href="#">Travel Insurance</a></li>
+                                    <li><a href="#"> Car Insurance</a></li>
+                                    <li><a href="#"> Business Insurance</a></li>
+                                    <li><a href="#"> Heal Insurance</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <!-- logo -->
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="index/img/logo/logo2_footer.png" alt=""></a>
+                            </div>
+                            <div class="footer-tittle">
+                                <div class="footer-pera">
+                                    <p class="info1">GThe trade war currently ensuing between te US anfd several natxions around thdhe globe, most fiercely with.</p>
+                                </div>
+                            </div>
+                            <!-- Footer Social -->
+                            <div class="footer-social ">
+                                <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right text-center">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
