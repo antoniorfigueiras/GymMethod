@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'value' => fn() => Html::img($model->getImageUrl(), ['style' => 'width: 50px']),
                             ],
                             [
-                                'attribute' => 'name',
+                                'attribute' => 'nome',
                                 'options' => [
                                     'style' => 'white-space: normal'
                                 ]
