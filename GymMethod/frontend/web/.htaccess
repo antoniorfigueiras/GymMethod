@@ -1,6 +1,0 @@
-RewriteEngine On
-# If a directory or a file exists, use th e request directly
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-# Oth erwise forward th e request to index.ph p
-RewriteRule . index.php
