@@ -26,11 +26,10 @@
                 'items' => [
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
-                   // ['label' => 'Perfil', 'icon' => 'user', 'url' => ['/perfil'],],
+                    ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
+                    ['label' => 'PerflTeste', 'icon' => 'user', 'url' => ['/perfil'],],
                     ['label' => 'Yii2 PROVIDED', 'header' => true],
                     //['label' => 'Logout', 'url' => ['site/logout'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->can("loginBO")],
-
-
 
 
 

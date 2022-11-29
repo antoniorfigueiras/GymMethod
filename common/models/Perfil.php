@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "perfil".
  *
  * @property int $id
- * @property int $iduser
+ * @property int $user_id
  * @property int|null $telemovel
  * @property float|null $peso
  * @property int|null $altura
@@ -19,7 +19,7 @@ use Yii;
  * @property string|null $cidade
  * @property string|null $morada
  *
- * @property User $iduser0
+ * @property User $iduser
  */
 class Perfil extends \yii\db\ActiveRecord
 {
@@ -37,13 +37,13 @@ class Perfil extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['iduser'], 'required'],
-            [['iduser', 'telemovel', 'altura'], 'integer'],
+            [['user_id'], 'required'],
+            [['user_id', 'telemovel', 'altura'], 'integer'],
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
             [['codpostal'], 'string', 'max' => 8],
             [['morada'], 'string', 'max' => 125],
-            [['iduser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['iduser' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -54,7 +54,7 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'iduser' => 'Iduser',
+            'user_id' => 'User_id',
             'telemovel' => 'Telemovel',
             'peso' => 'Peso',
             'altura' => 'Altura',
@@ -68,12 +68,12 @@ class Perfil extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Iduser]].
+     * Gets query for [[user_id]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return \yii\db\ActiveQuery\common\models\query\UserQuery
      */
-    public function getIdUser()
+    public function getUserId()
     {
-        return $this->hasOne(User::class, ['id' => 'iduser']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

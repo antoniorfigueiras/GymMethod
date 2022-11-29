@@ -2,19 +2,17 @@
 
 namespace backend\controllers;
 
-use backend\models\CreateUserForm;
-use mysql_xdevapi\SqlStatementResult;
 use Yii;
 use common\models\User;
-use backend\models\search\FuncionarioSearch;
+use backend\models\search\TreinadorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FuncionarioController implements the CRUD actions for User model.
+ * TreinadorController implements the CRUD actions for User model.
  */
-class FuncionarioController extends Controller
+class TreinadorController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -37,8 +35,9 @@ class FuncionarioController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FuncionarioSearch();
+        $searchModel = new TreinadorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -65,15 +64,10 @@ class FuncionarioController extends Controller
      */
     public function actionCreate()
     {
-        $model = new CreateUserForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+        $model = new User();
 
-            $connection = Yii::$app->getDb();
-            $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-            $userID = $command->queryAll();
-            $user= User::findOne($userID);
-
-            return $this->redirect(['perfil/create','idUser' => $user->getId()]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -130,5 +124,4 @@ class FuncionarioController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\FuncionarioSearch */
+/* @var $searchModel backend\models\search\TreinadorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Funcionarios';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar funcionario', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -32,29 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             'id',
                             'username',
-                            [
-                                'label' => 'Status',
-                                'value' => function($model){
-                                            if ($model->status == 10){
-                                                return "Ativo";
-                                            }else
-                                                return "Inativo";
-                                }
-                            ],
-                            //'auth_key',
-                            //'password_hash',
-                            //'password_reset_token',
+                            'auth_key',
+                            'password_hash',
+                            'password_reset_token',
                             //'email:email',
                             //'status',
                             //'created_at',
                             //'updated_at',
                             //'verification_token',
-                           /* [
-                                'label' => 'Genre',
-                                'value' => function($model) {
-                                    return $model->perfil->apelido;
-                                }
-                            ],*/
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],

@@ -17,7 +17,7 @@ class PerfilSearch extends Perfil
     public function rules()
     {
         return [
-            [['id', 'iduser', 'telemovel', 'altura'], 'integer'],
+            [['id', 'user_id', 'telemovel', 'altura'], 'integer'],
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
         ];
@@ -43,7 +43,14 @@ class PerfilSearch extends Perfil
     {
         $query = Perfil::find();
 
+        $query->select('*')
+            ->from('user');
+        $query->join = [
+            ['JOIN', 'perfil', 'perfil.user_id = user.id'],
+            ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
+        $query->where('auth_assignment.item_name = "funcionario"');
         // add conditions that should always apply here
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,7 +67,7 @@ class PerfilSearch extends Perfil
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'iduser' => $this->iduser,
+            'user_id' => $this->user_id,
             'telemovel' => $this->telemovel,
             'peso' => $this->peso,
             'altura' => $this->altura,

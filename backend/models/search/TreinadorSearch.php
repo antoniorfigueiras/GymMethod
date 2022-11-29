@@ -7,9 +7,9 @@ use yii\data\ActiveDataProvider;
 use common\models\User;
 
 /**
- * TrabalhadorSearch represents the model behind the search form of `common\models\User`.
+ * TreinadorSearch represents the model behind the search form of `common\models\User`.
  */
-class TrabalhadorSearch extends User
+class TreinadorSearch extends User
 {
     /**
      * {@inheritdoc}
