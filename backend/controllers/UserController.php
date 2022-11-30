@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\CreateUserForm;
 use Yii;
 use common\models\User;
 use backend\models\search\UserSearch;
@@ -64,10 +65,15 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new CreateUserForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $connection = Yii::$app->getDb();
+            $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+            $userID = $command->queryAll();
+            $user= User::findOne($userID);
+
+            return $this->redirect(['perfil/create','idUser' => $user->getId()]);
         }
 
         return $this->render('create', [

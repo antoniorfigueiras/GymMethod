@@ -26,6 +26,7 @@
                 'items' => [
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
+
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
                     ['label' => 'PerflTeste', 'icon' => 'user', 'url' => ['/perfil'],],
                     ['label' => 'Yii2 PROVIDED', 'header' => true],

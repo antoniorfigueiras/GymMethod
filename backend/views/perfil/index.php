@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar funcionario', ['funcionario/create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar funcionario', ['user/create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             ],
                             [
-                                'label' => '',
+                                'label' => 'Status',
                                 'value' => function($model) {
                                     if ($model->userId->status == 10){
                                         return "Ativo";
