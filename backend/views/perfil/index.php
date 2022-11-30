@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\PerfilSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Perfils';
+$this->title = 'Funcionarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Create Perfil', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar funcionario', ['funcionario/create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-                           [
+                            [
                                 'label' => 'Id',
                                 'value' => function($model) {
                                     return $model->id;
@@ -44,6 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'label' => 'User',
                                 'value' => function($model) {
                                     return $model->userId->username;
+                                }
+
+                            ],
+                            [
+                                'label' => '',
+                                'value' => function($model) {
+                                    if ($model->userId->status == 10){
+                                        return "Ativo";
+                                    }else
+                                        return "Inativo";
                                 }
 
                             ],
