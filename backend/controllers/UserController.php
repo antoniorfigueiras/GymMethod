@@ -70,10 +70,7 @@ class UserController extends Controller
         {
             $model = new CreateFuncionarioForm();
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $connection = Yii::$app->getDb();
-                $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-                $userID = $command->queryAll();
-                $user= User::findOne($userID);
+                $user = $this->getId();
                 return $this->redirect(['funcionario/create','idUser' => $user->getId()]);
             }
         }
@@ -81,16 +78,21 @@ class UserController extends Controller
         {
             $model = new CreateTreinadorForm();
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $connection = Yii::$app->getDb();
-                $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-                $userID = $command->queryAll();
-                $user= User::findOne($userID);
+                $user = $this->getId();
                 return $this->redirect(['treinador/create','idUser' => $user->getId()]);
             }
         }
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    public function getId()
+    {
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+        $userID = $command->queryAll();
+        return User::findOne($userID);
     }
 
     /**
