@@ -18,23 +18,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'auth_key') ?>
+    <?= $form->field($model, 'telemovel') ?>
 
-    <?= $form->field($model, 'password_hash') ?>
+    <?= $form->field($model, 'peso') ?>
 
-    <?= $form->field($model, 'password_reset_token') ?>
+    <?= $form->field($model, 'altura') ?>
 
-    <?php // echo $form->field($model, 'email') ?>
+    <?php // echo $form->field($model, 'nomeproprio') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'apelido') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
+    <?php // echo $form->field($model, 'codpostal') ?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php // echo $form->field($model, 'pais') ?>
 
-    <?php // echo $form->field($model, 'verification_token') ?>
+    <?php // echo $form->field($model, 'cidade') ?>
+
+    <?php // echo $form->field($model, 'morada') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

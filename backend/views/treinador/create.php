@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\User */
+/* @var $model common\models\Perfil */
 
-$this->title = 'Create User';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->title = 'Create Perfil';
+$this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -2,17 +2,15 @@
 
 namespace backend\controllers;
 
-use backend\models\CreateUserForm;
-use mysql_xdevapi\SqlStatementResult;
 use Yii;
-use common\models\User;
+use common\models\Perfil;
 use backend\models\search\FuncionarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FuncionarioController implements the CRUD actions for User model.
+ * FuncionarioController implements the CRUD actions for Perfil model.
  */
 class FuncionarioController extends Controller
 {
@@ -32,13 +30,14 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Lists all User models.
+     * Lists all Perfil models.
      * @return mixed
      */
     public function actionIndex()
     {
         $searchModel = new FuncionarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -46,8 +45,8 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Displays a single User model.
-     * @param int $id
+     * Displays a single Perfil model.
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -59,21 +58,16 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new Perfil model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($idUser)
     {
-        $model = new CreateUserForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-
-            $connection = Yii::$app->getDb();
-            $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-            $userID = $command->queryAll();
-            $user= User::findOne($userID);
-
-            return $this->redirect(['perfil/create','idUser' => $user->getId()]);
+        $model = new Perfil();
+        $model->user_id = $idUser;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -82,9 +76,9 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Updates an existing User model.
+     * Updates an existing Perfil model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -102,9 +96,9 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Deletes an existing User model.
+     * Deletes an existing Perfil model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -116,19 +110,18 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Perfil model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id
-     * @return User the loaded model
+     * @param int $id ID
+     * @return Perfil the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Perfil::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

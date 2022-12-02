@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\TreinadorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Treinador';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Treinador', ['user/create', 'userType' => 'treinador'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -31,15 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             'id',
-                            'username',
-                            'auth_key',
-                            'password_hash',
-                            'password_reset_token',
-                            //'email:email',
-                            //'status',
-                            //'created_at',
-                            //'updated_at',
-                            //'verification_token',
+                            'nomeproprio',
+                            'telemovel',
+                            'peso',
+                            'altura',
+                            //'nomeproprio',
+                            //'apelido',
+                            //'codpostal',
+                            //'pais',
+                            //'cidade',
+                            //'morada',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],

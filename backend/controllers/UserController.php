@@ -2,7 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\CreateUserForm;
+use backend\models\CreateTreinadorForm;
+use backend\models\CreateFuncionarioForm;
 use Yii;
 use common\models\User;
 use backend\models\search\UserSearch;
@@ -63,19 +64,30 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($userType)
     {
-        $model = new CreateUserForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-
-            $connection = Yii::$app->getDb();
-            $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-            $userID = $command->queryAll();
-            $user= User::findOne($userID);
-
-            return $this->redirect(['perfil/create','idUser' => $user->getId()]);
+        if ($userType == 'funcionario')
+        {
+            $model = new CreateFuncionarioForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $connection = Yii::$app->getDb();
+                $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+                $userID = $command->queryAll();
+                $user= User::findOne($userID);
+                return $this->redirect(['funcionario/create','idUser' => $user->getId()]);
+            }
         }
-
+        if ($userType == 'treinador')
+        {
+            $model = new CreateTreinadorForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $connection = Yii::$app->getDb();
+                $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+                $userID = $command->queryAll();
+                $user= User::findOne($userID);
+                return $this->redirect(['treinador/create','idUser' => $user->getId()]);
+            }
+        }
         return $this->render('create', [
             'model' => $model,
         ]);

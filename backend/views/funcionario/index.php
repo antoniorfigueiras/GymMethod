@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar funcionario', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario' ], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -31,30 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             'id',
-                            'username',
-                            [
-                                'label' => 'Status',
-                                'value' => function($model){
-                                            if ($model->status == 10){
-                                                return "Ativo";
-                                            }else
-                                                return "Inativo";
-                                }
-                            ],
-                            //'auth_key',
-                            //'password_hash',
-                            //'password_reset_token',
-                            //'email:email',
-                            //'status',
-                            //'created_at',
-                            //'updated_at',
-                            //'verification_token',
-                           /* [
-                                'label' => 'Genre',
-                                'value' => function($model) {
-                                    return $model->perfil->apelido;
-                                }
-                            ],*/
+                            'nomeproprio',
+                            'peso',
+                            'altura',
+                            //'nomeproprio',
+                            //'apelido',
+                            //'codpostal',
+                            //'pais',
+                            //'cidade',
+                            //'morada',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
