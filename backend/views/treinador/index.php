@@ -35,6 +35,22 @@ $this->params['breadcrumbs'][] = $this->title;
                             'telemovel',
                             'peso',
                             'altura',
+                            [
+                                'attribute' => 'estado',
+                                'content' => function ($model) {
+                                            if ($model->user_Id->status == '10'){
+                                                return Html::tag('span', 'Ativo', [
+                                                    'class' => 'badge badge-success'
+                                                ]);
+                                            }else
+                                            {
+                                                return Html::tag('span', 'Inativo', [
+                                                    'class' =>'badge badge-danger'
+                                                ]);
+                                            }
+
+                                }
+                            ],
                             //'nomeproprio',
                             //'apelido',
                             //'codpostal',

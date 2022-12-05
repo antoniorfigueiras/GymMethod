@@ -4,15 +4,15 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Perfil;
-use backend\models\search\TreinadorSearch;
+use backend\models\search\NutricionistaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TreinadorController implements the CRUD actions for Perfil model.
+ * NutricionistaController implements the CRUD actions for Perfil model.
  */
-class TreinadorController extends Controller
+class NutricionistaController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -35,7 +35,7 @@ class TreinadorController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TreinadorSearch();
+        $searchModel = new NutricionistaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,7 +65,7 @@ class TreinadorController extends Controller
     public function actionCreate($idUser)
     {
         $model = new Perfil();
-        $model->user_id = $idUser; // Definir o id do user para a criação do perfil
+        $model->user_id = $idUser;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

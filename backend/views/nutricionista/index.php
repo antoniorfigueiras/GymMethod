@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\FuncionarioSearch */
+/* @var $searchModel backend\models\search\NutricionistaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Funcionarios';
+$this->title = 'Nutricionistas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario' ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Nutricionista', ['user/create','userType' => 'nutricionista'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -31,9 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             'id',
-                            'nomeproprio',
-                            'peso',
-                            'altura',
+                            'user_id',
+                            'telemovel',
                             [
                                 'attribute' => 'estado',
                                 'content' => function ($model) {

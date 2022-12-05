@@ -27,7 +27,7 @@
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
-                    ['label' => 'Perfl', 'icon' => 'user', 'url' => ['/perfil'],],
+                    ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],],
                     ['label' => 'Yii2 PROVIDED', 'header' => true],
                     //['label' => 'Logout', 'url' => ['site/logout'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->can("loginBO")],
 

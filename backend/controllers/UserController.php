@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\CreateNutricionistaForm;
 use backend\models\CreateTreinadorForm;
 use backend\models\CreateFuncionarioForm;
 use Yii;
@@ -29,6 +30,51 @@ class UserController extends Controller
                 ],
             ],
         ];
+    }
+
+
+    /**
+     * Creates a new User model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate($userType)
+    {
+        if ($userType == 'funcionario')
+        {
+            $model = new CreateFuncionarioForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $user = $this->getId();
+                return $this->redirect(['funcionario/create','idUser' => $user->getId()]);
+            }
+        }
+        if ($userType == 'treinador')
+        {
+            $model = new CreateTreinadorForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $user = $this->getId();
+                return $this->redirect(['treinador/create','idUser' => $user->getId()]);
+            }
+        }
+        if ($userType == 'nutricionista')
+        {
+            $model = new CreateNutricionistaForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $user = $this->getId();
+                return $this->redirect(['nutricionista/create','idUser' => $user->getId()]);
+            }
+        }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function getId()
+    {
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+        $userID = $command->queryAll();
+        return User::findOne($userID);
     }
 
     /**
@@ -59,41 +105,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new User model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate($userType)
-    {
-        if ($userType == 'funcionario')
-        {
-            $model = new CreateFuncionarioForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $user = $this->getId();
-                return $this->redirect(['funcionario/create','idUser' => $user->getId()]);
-            }
-        }
-        if ($userType == 'treinador')
-        {
-            $model = new CreateTreinadorForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $user = $this->getId();
-                return $this->redirect(['treinador/create','idUser' => $user->getId()]);
-            }
-        }
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
 
-    public function getId()
-    {
-        $connection = Yii::$app->getDb();
-        $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
-        $userID = $command->queryAll();
-        return User::findOne($userID);
-    }
 
     /**
      * Updates an existing User model.

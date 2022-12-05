@@ -9,7 +9,7 @@ use common\models\User;
 /**
  * Signup form
  */
-class CreateTreinadorForm extends Model
+class CreateNutricionistaForm extends Model
 {
     public $username;
     public $email;
@@ -55,8 +55,9 @@ class CreateTreinadorForm extends Model
 
             // the following three lines were added:
             $auth = \Yii::$app->authManager;
-            $Role = $auth->getRole('treinador');
+            $Role = $auth->getRole('nutricionista');
             $auth->assign($Role, $user->getId());
+
             return $user;
         }
 

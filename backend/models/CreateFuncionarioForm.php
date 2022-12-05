@@ -55,10 +55,7 @@ class CreateFuncionarioForm extends Model
 
             // the following three lines were added:
             $auth = \Yii::$app->authManager;
-
             $Role = $auth->getRole('funcionario');
-
-
             $auth->assign($Role, $user->getId());
 
             return $user;

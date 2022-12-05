@@ -72,7 +72,7 @@ class Perfil extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery\common\models\query\UserQuery
      */
-    public function getUserId()
+    public function getUser_Id()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
