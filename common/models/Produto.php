@@ -136,9 +136,35 @@ class Produto extends \yii\db\ActiveRecord
 
     public function getImageUrl()
     {
-        if ($this->imagem) {
-            return Yii::$app->params['frontendUrl'].'/storage'.$this->imagem;
+        return self::formatImageUrl($this->imagem);
+    }
+
+    public static function formatImageUrl($imagePath)
+    {
+        if ($imagePath) {
+            return Yii::$app->params['frontendUrl'] . '/storage' . $imagePath;
         }
-        return Yii::$app->params['frontendUrl'].'/img/imagem_nao_disponivel.jpg';
+
+        return Yii::$app->params['frontendUrl'] . '/img/imagem_nao_disponivel.png';
+    }
+
+    /**
+     * Get short version of the description
+     *
+     * @return string
+     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
+     */
+    public function getShortDescription()
+    {
+        return \yii\helpers\StringHelper::truncateWords(strip_tags($this->descricao), 30);
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        if ($this->imagem) {
+            $dir = Yii::getAlias('@frontend/web/storage'). dirname($this->imagem);
+            FileHelper::removeDirectory($dir);
+        }
     }
 }

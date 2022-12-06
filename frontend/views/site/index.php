@@ -53,6 +53,12 @@ $this->title = 'GymMethod';
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact</a></li>
+                                        <?php
+                                        if (!Yii::$app->user->isGuest)
+                                        {
+                                            echo Html::tag('li',Html::a('Teste',['cliente/abc']));
+                                        }
+                                        ?>
                                     </ul>
                                 </nav>
                             </div>
