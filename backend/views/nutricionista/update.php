@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Perfil */
+/* @var $modelUser common\models\User */
 
 $this->title = 'Update Perfil: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
@@ -15,7 +16,8 @@ $this->params['breadcrumbs'][] = 'Update';
             <div class="row">
                 <div class="col-md-12">
                     <?=$this->render('_form', [
-                        'model' => $model
+                        'model' => $model,
+                        'modelUser' => $modelUser,
                     ]) ?>
                 </div>
             </div>

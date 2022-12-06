@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'estado',
                                 'content' => function ($model) {
-                                            if ($model->user_Id->status == '10'){
+                                            if ($model->user->status == '10'){
                                                 return Html::tag('span', 'Ativo', [
                                                     'class' => 'badge badge-success'
                                                 ]);

@@ -49,6 +49,28 @@ class RbacController extends Controller
         $desativarTrabalhador->description = 'Desativar Trabalhador';
         $auth->add($desativarTrabalhador);
 
+                         /*** Nutricionistas ***/
+
+        // Registar (admin)
+        $adicionarNutricionista = $auth->createPermission('adicionarNutricionista');
+        $adicionarNutricionista->description = 'Adicionar nutricionista';
+        $auth->add($adicionarNutricionista);
+
+        // Editar (admin)
+        $editarNutricionista = $auth->createPermission('editarNutricionista');
+        $editarNutricionista->description = 'Editar nutricionista';
+        $auth->add($editarNutricionista);
+
+        // Consultar (admin)
+        $consultarNutricionista= $auth->createPermission('consultarNutricionista');
+        $consultarNutricionista->description = 'Consultar nutricionista';
+        $auth->add($consultarNutricionista);
+
+        // Desativar (admin)
+        $desativarNutricionista = $auth->createPermission('desativarNutricionista');
+        $desativarNutricionista->description = 'Desativar Nutricionista';
+        $auth->add($desativarNutricionista);
+
                         /*** Clientes ***/
 
         // Registar (admin, funcionário)
@@ -117,22 +139,22 @@ class RbacController extends Controller
 
                          /*** Consultas Nutricionista ***/
 
-        // Criar (admin, funcionario)
+        // Criar (admin, funcionario, nutricionista)
         $criarConsulta = $auth->createPermission('criarConsulta');
         $criarConsulta->description = 'Criar consulta';
         $auth->add($criarConsulta);
 
-        // Editar (admin, funcionario)
+        // Editar (admin, funcionario, nutricionista)
         $editarConsulta = $auth->createPermission('editarConsulta');
         $editarConsulta->description = 'Editar consulta';
         $auth->add($editarConsulta);
 
-        // Consultar (admin, funcionario)
+        // Consultar (admin, funcionario, nutricionista)
         $consultarConsulta = $auth->createPermission('consultarConsulta');
         $consultarConsulta->description = 'Consultar consulta';
         $auth->add($consultarConsulta);
 
-        // Remover (admin, funcionario)
+        // Remover (admin, funcionario, nutricionista)
         $removerConsulta = $auth->createPermission('removerConsulta');
         $removerConsulta->description = 'Remover consulta';
         $auth->add($removerConsulta);
@@ -281,7 +303,6 @@ class RbacController extends Controller
 
                  /*** Roles ***/
 
-
         // Funcionario
         $funcionario = $auth->createRole('funcionario');
         $auth->add($funcionario);
@@ -320,6 +341,15 @@ class RbacController extends Controller
         $auth->addChild($treinador, $removerPlano);
         $auth->addChild($treinador, $consultarCliente);
 
+        // Nutricionista
+        $nutricionista = $auth->createRole('nutricionista');
+        $auth->add($nutricionista);
+        $auth->addChild($nutricionista, $loginBO);
+        $auth->addChild($nutricionista, $criarConsulta);
+        $auth->addChild($nutricionista, $editarConsulta);
+        $auth->addChild($nutricionista, $consultarConsulta);
+        $auth->addChild($nutricionista, $removerConsulta);
+
         // Cliente
         $cliente = $auth->createRole('cliente');
         $auth->add($cliente);
@@ -342,18 +372,23 @@ class RbacController extends Controller
         $auth->addChild($admin, $editarTrabalhador);
         $auth->addChild($admin, $consultarTrabalhador);
         $auth->addChild($admin, $desativarTrabalhador);
+        $auth->addChild($admin, $adicionarNutricionista);
+        $auth->addChild($admin, $editarNutricionista);
+        $auth->addChild($admin, $consultarNutricionista);
+        $auth->addChild($admin, $desativarNutricionista);
         $auth->addChild($admin, $estatisticas);
         $auth->addChild($admin, $funcionario);
         $auth->addChild($admin, $treinador);
+        $auth->addChild($admin, $nutricionista);
 
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
+        /*// Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
 
         $auth->assign($admin, 1);
         $auth->assign($funcionario, 2);
         $auth->assign($treinador, 3);
-        $auth->assign($cliente, 4);
+        $auth->assign($cliente, 4);*/
 
 
     }

@@ -31,12 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             'id',
-                            'user_id',
                             'telemovel',
-                            [
+                            'nomeproprio',
+                            /*[
                                 'attribute' => 'estado',
                                 'content' => function ($model) {
-                                    if ($model->user_Id->status == '10'){
+                                    if ($model->user->status == '1'){
                                         return Html::tag('span', 'Ativo', [
                                             'class' => 'badge badge-success'
                                         ]);
@@ -47,6 +47,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ]);
                                     }
 
+                                }
+                            ],*/
+                            [
+                                'attribute' => 'Status',
+                                'content' => function ($model) {
+                                    /** @var \common\models\Produto $model */
+                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Desativado', [
+                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
+                                    ]);
                                 }
                             ],
                             //'nomeproprio',

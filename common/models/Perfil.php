@@ -64,6 +64,7 @@ class Perfil extends \yii\db\ActiveRecord
             'pais' => 'Pais',
             'cidade' => 'Cidade',
             'morada' => 'Morada',
+            'user_Id.status' => 'Estado',
         ];
     }
 
@@ -72,7 +73,7 @@ class Perfil extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery\common\models\query\UserQuery
      */
-    public function getUser_Id()
+    public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
