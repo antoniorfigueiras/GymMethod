@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\search\UserSearch;
 use common\models\User;
 use Yii;
 use common\models\Perfil;
@@ -42,6 +43,7 @@ class NutricionistaController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+
         ]);
     }
 
@@ -53,6 +55,7 @@ class NutricionistaController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -67,6 +70,7 @@ class NutricionistaController extends Controller
     {
         $model = new Perfil();
         $model->user_id = $idUser;
+        $model->id = $idUser;
         $modelUser = $model->user;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

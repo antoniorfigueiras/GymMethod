@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
+
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
@@ -52,12 +53,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'Status',
                                 'content' => function ($model) {
-                                    /** @var \common\models\Produto $model */
                                     return Html::tag('span', $model->user->status ? 'Ativo' : 'Desativado', [
                                         'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
                                     ]);
                                 }
                             ],
+
+
                             //'nomeproprio',
                             //'apelido',
                             //'codpostal',
