@@ -4,8 +4,11 @@ namespace frontend\controllers;
 
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
+use Symfony\Component\VarDumper\Cloner\Data;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\ActiveDataProvider;
+use yii\debug\models\timeline\DataProvider;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -15,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\Produto;
 
 /**
  * Site controller
@@ -77,7 +81,15 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-
+    public function actionLoja()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Produto::find()->publicado()
+        ]);
+        return $this->render('loja',[
+            'dataProvider' => $dataProvider
+        ]);
+    }
     /**
      * Logs in a user.
      *

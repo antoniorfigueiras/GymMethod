@@ -31,4 +31,11 @@ class ProdutoQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @return \common\models\query\ProdutoQuery
+     */
+    public function publicado(){
+        return $this->andWhere(['estado' => 1]);
+    }
 }

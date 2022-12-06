@@ -5,19 +5,21 @@ namespace backend\models\search;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Perfil;
+use common\models\User;
 
 /**
  * FuncionarioSearch represents the model behind the search form of `common\models\Perfil`.
  */
 class FuncionarioSearch extends Perfil
 {
+    public $user_Id;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'user_id', 'telemovel', 'altura'], 'integer'],
+            [['id', 'user_Id', 'telemovel', 'altura'], 'integer'],
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
         ];
@@ -51,6 +53,7 @@ class FuncionarioSearch extends Perfil
         $query->where('auth_assignment.item_name = "funcionario"');
         // add conditions that should always apply here
 
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -63,13 +66,28 @@ class FuncionarioSearch extends Perfil
             return $dataProvider;
         }
 
+        $dataProvider->sort->attributes['user_Id.username'] = [
+            'asc' => ['username' => SORT_ASC],
+            'desc' => ['username' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['status'] = [
+            'asc' => ['status' => SORT_ASC],
+            'desc' => ['status' => SORT_DESC],
+        ];
+
+        // No search? Then return data Provider
+        if (!($this->load($params) && $this->validate())) {
+            return $dataProvider;
+        }
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'telemovel' => $this->telemovel,
             'peso' => $this->peso,
             'altura' => $this->altura,
+            'user_Id' => $this->user_id,
         ]);
 
         $query->andFilterWhere(['like', 'nomeproprio', $this->nomeproprio])
@@ -78,7 +96,6 @@ class FuncionarioSearch extends Perfil
             ->andFilterWhere(['like', 'pais', $this->pais])
             ->andFilterWhere(['like', 'cidade', $this->cidade])
             ->andFilterWhere(['like', 'morada', $this->morada]);
-
         return $dataProvider;
     }
 }

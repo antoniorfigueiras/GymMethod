@@ -66,7 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             //'created_by',
                             //'updated_by',
 
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn',
+                            'contentOptions' => ['style' => 'width:100px;'],],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [
