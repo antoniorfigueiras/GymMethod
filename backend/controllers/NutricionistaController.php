@@ -38,12 +38,12 @@ class NutricionistaController extends Controller
     public function actionIndex()
     {
         $searchModel = new NutricionistaSearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-
         ]);
     }
 
@@ -70,10 +70,9 @@ class NutricionistaController extends Controller
     {
         $model = new Perfil();
         $model->user_id = $idUser;
-        $model->id = $idUser;
         $modelUser = $model->user;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
         return $this->render('create', [
@@ -97,8 +96,7 @@ class NutricionistaController extends Controller
         if (($model->load(Yii::$app->request->post()) && $model->save()) && ($modelUser->load(Yii::$app->request->post()) && $modelUser->save())) {
             /*var_dump($modelUser->load(Yii::$app->request->post()));
             die();*/
-
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
         return $this->render('update', [

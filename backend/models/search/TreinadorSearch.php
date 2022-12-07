@@ -17,7 +17,7 @@ class TreinadorSearch extends Perfil
     public function rules()
     {
         return [
-            [['id', 'user_id', 'telemovel', 'altura'], 'integer'],
+            [['user_id', 'telemovel', 'altura'], 'integer'],
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
         ];
@@ -42,7 +42,7 @@ class TreinadorSearch extends Perfil
     public function search($params)
     {
         $query = Perfil::find();
-        $query->select('*')
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
@@ -64,8 +64,7 @@ class TreinadorSearch extends Perfil
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => $this->user_id,
+            'perfil.user_id' => $this->user_id,
             'telemovel' => $this->telemovel,
             'peso' => $this->peso,
             'altura' => $this->altura,

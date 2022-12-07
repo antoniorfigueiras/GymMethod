@@ -12,8 +12,6 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
     <?= $form->field($model, 'telemovel')->textInput() ?>
 
     <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
@@ -31,6 +29,8 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($model, 'cidade')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($modelUser, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
