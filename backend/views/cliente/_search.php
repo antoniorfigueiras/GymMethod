@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\NutricionistaSearch */
+/* @var $model backend\models\search\ClienteSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -16,13 +16,25 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
+    <?= $form->field($model, 'user_id') ?>
+
     <?= $form->field($model, 'telemovel') ?>
 
-    <?php  echo $form->field($model, 'nomeproprio') ?>
+    <?= $form->field($model, 'peso') ?>
 
-    <?php  echo $form->field($model, 'apelido') ?>
+    <?= $form->field($model, 'altura') ?>
 
-    <?php echo $form->field($model, 'morada') ?>
+    <?= $form->field($model, 'nomeproprio') ?>
+
+    <?php // echo $form->field($model, 'apelido') ?>
+
+    <?php // echo $form->field($model, 'codpostal') ?>
+
+    <?php // echo $form->field($model, 'pais') ?>
+
+    <?php // echo $form->field($model, 'cidade') ?>
+
+    <?php // echo $form->field($model, 'morada') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

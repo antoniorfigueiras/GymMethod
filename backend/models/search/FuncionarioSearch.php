@@ -53,7 +53,11 @@ class FuncionarioSearch extends Perfil
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        $dataProvider->sort->attributes['user_id'] = [
 
+            'asc' => ['user.status' => SORT_ASC],
+            'desc' => ['user.status' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {

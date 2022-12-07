@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\Perfil */
 
-$this->title = 'Update Perfil: ' . $model->user_id;
+$this->title = 'Atualizar Perfil: ' . $model->nomeproprio;
 $this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->user_id, 'url' => ['view', 'id' => $model->user_id]];
 $this->params['breadcrumbs'][] = 'Update';

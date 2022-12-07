@@ -44,13 +44,13 @@ class NutricionistaSearch extends Perfil
      */
     public function search($params)
     {
-        $query = Perfil::find()->joinWith('user');
-       /* $query->select('perfil.user_id, nomeproprio, apelido, telemovel')//perfil.id, perfil.telemovel, perfil.nomeproprio, user.status
+        $query = Perfil::find();
+       $query->select('perfil.user_id, nomeproprio, apelido, telemovel')//perfil.id, perfil.telemovel, perfil.nomeproprio, user.status
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
             ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
-        $query->where('auth_assignment.item_name = "nutricionista"');*/
+        $query->where('auth_assignment.item_name = "nutricionista"');
 
         // add conditions that should always apply here
 
@@ -75,10 +75,6 @@ class NutricionistaSearch extends Perfil
         // grid filtering conditions
         $query->andFilterWhere([
             'perfil.user_id' => $this->user_id,
-            'nomeproprio' => $this->nomeproprio,
-            'telemovel' => $this->telemovel,
-            'peso' => $this->peso,
-            'altura' => $this->altura,
 
         ]);
 
