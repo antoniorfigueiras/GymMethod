@@ -18,9 +18,9 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'telemovel')->textInput() ?>
 
-    <?php /* <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'altura')->textInput() ?> */?>
+    <?= $form->field($model, 'altura')->textInput() ?>
 
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 

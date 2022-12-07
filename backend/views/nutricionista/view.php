@@ -31,8 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             'telemovel',
-                            'peso',
-                            'altura',
                             'nomeproprio',
                             'apelido',
                             'codpostal',

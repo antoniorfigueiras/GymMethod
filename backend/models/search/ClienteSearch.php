@@ -7,9 +7,9 @@ use yii\data\ActiveDataProvider;
 use common\models\Perfil;
 
 /**
- * TreinadorSearch represents the model behind the search form of `common\models\Perfil`.
+ * ClienteSearch represents the model behind the search form of `common\models\Perfil`.
  */
-class TreinadorSearch extends Perfil
+class ClienteSearch extends Perfil
 {
     /**
      * {@inheritdoc}
@@ -42,24 +42,23 @@ class TreinadorSearch extends Perfil
     public function search($params)
     {
         $query = Perfil::find();
+
         $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
             ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
-        $query->where('auth_assignment.item_name = "treinador"');
+        $query->where('auth_assignment.item_name = "cliente"');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
         $dataProvider->sort->attributes['user_id'] = [
 
             'asc' => ['user.status' => SORT_ASC],
             'desc' => ['user.status' => SORT_DESC],
         ];
-
         $this->load($params);
 
         if (!$this->validate()) {
@@ -70,8 +69,10 @@ class TreinadorSearch extends Perfil
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'perfil.user_id' => $this->user_id,
-
+            'user_id' => $this->user_id,
+            'telemovel' => $this->telemovel,
+            'peso' => $this->peso,
+            'altura' => $this->altura,
         ]);
 
         $query->andFilterWhere(['like', 'nomeproprio', $this->nomeproprio])

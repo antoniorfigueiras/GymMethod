@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\TreinadorSearch */
+/* @var $searchModel backend\models\search\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Treinador';
+$this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Treinador', ['user/create', 'userType' => 'treinador'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Cliente', ['user/create', 'userType' => 'cliente'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        //'filterModel' => $searchModel,
+                        'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ]);
                                 }
                             ],
-                            //'nomeproprio',
                             //'apelido',
                             //'codpostal',
                             //'pais',

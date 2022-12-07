@@ -26,16 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
+                        //'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-
-                            'user_id',
                             'nomeproprio',
                             'apelido',
                             'telemovel',
                             [
-                                'attribute' => 'Estado',
+                                'attribute' => 'user_id',
+                                'label' => 'Estado',
                                 'content' => function ($model) {
                                     return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
                                         'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'

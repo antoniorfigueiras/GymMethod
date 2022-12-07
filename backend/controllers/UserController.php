@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\CreateClienteForm;
 use backend\models\CreateNutricionistaForm;
 use backend\models\CreateTreinadorForm;
 use backend\models\CreateFuncionarioForm;
@@ -62,6 +63,14 @@ class UserController extends Controller
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
                 $user = $this->getId();
                 return $this->redirect(['nutricionista/create','idUser' => $user->getId()]);
+            }
+        }
+        if ($userType == 'cliente')
+        {
+            $model = new CreateClienteForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $user = $this->getId();
+                return $this->redirect(['cliente/create','idUser' => $user->getId()]);
             }
         }
         return $this->render('create', [
