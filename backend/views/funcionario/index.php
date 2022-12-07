@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario' ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -30,28 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-                            'id',
+                            'user_id',
                             'nomeproprio',
-                            'peso',
-                            'altura',
+                            'apelido',
+                            'telemovel',
                             [
-                                'attribute' => 'estado',
+                                'attribute' => 'Estado',
                                 'content' => function ($model) {
-                                    if ($model->user->status == '10'){
-                                        return Html::tag('span', 'Ativo', [
-                                            'class' => 'badge badge-success'
-                                        ]);
-                                    }else
-                                    {
-                                        return Html::tag('span', 'Inativo', [
-                                            'class' =>'badge badge-danger'
-                                        ]);
-                                    }
-
+                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
+                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
+                                    ]);
                                 }
                             ],
-                            //'nomeproprio',
-                            //'apelido',
+
                             //'codpostal',
                             //'pais',
                             //'cidade',

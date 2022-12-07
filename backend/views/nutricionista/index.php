@@ -31,35 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-                            'id',
-                            'telemovel',
+                            'user_id',
                             'nomeproprio',
-                            /*[
-                                'attribute' => 'estado',
+                            'apelido',
+                            'telemovel',
+                           [
+                                'attribute' => 'user_id',
+                                'label' => 'Estado',
                                 'content' => function ($model) {
-                                    if ($model->user->status == '1'){
-                                        return Html::tag('span', 'Ativo', [
-                                            'class' => 'badge badge-success'
-                                        ]);
-                                    }else
-                                    {
-                                        return Html::tag('span', 'Inativo', [
-                                            'class' =>'badge badge-danger'
-                                        ]);
-                                    }
-
-                                }
-                            ],*/
-                            [
-                                'attribute' => 'Status',
-                                'content' => function ($model) {
-                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Desativado', [
+                                   return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
                                         'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
                                     ]);
                                 }
                             ],
-
-
                             //'nomeproprio',
                             //'apelido',
                             //'codpostal',

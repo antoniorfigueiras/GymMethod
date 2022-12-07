@@ -30,25 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-                            'id',
+                            'user_id',
                             'nomeproprio',
+                            'apelido',
                             'telemovel',
-                            'peso',
-                            'altura',
                             [
-                                'attribute' => 'estado',
+                                'attribute' => 'Estado',
                                 'content' => function ($model) {
-                                            if ($model->user->status == '10'){
-                                                return Html::tag('span', 'Ativo', [
-                                                    'class' => 'badge badge-success'
-                                                ]);
-                                            }else
-                                            {
-                                                return Html::tag('span', 'Inativo', [
-                                                    'class' =>'badge badge-danger'
-                                                ]);
-                                            }
-
+                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
+                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
+                                    ]);
                                 }
                             ],
                             //'nomeproprio',
