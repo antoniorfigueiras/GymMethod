@@ -19,6 +19,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Produto;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -103,9 +104,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect('/cliente/index');
         }
-
         $model->password = '';
 
         return $this->render('login', [

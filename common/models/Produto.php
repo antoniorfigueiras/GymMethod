@@ -145,7 +145,7 @@ class Produto extends \yii\db\ActiveRecord
             return Yii::$app->params['frontendUrl'] . '/storage' . $imagePath;
         }
 
-        return Yii::$app->params['frontendUrl'] . '/img/imagem_nao_disponivel.png';
+        return Yii::$app->params['frontendUrl'] . '/img/imagem_nao_disponivel.jpg';
     }
 
     /**

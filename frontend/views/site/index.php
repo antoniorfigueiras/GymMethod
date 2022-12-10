@@ -45,8 +45,9 @@ $this->title = 'GymMethod';
                                         <li><a href="services.html">Serviços</a></li>
                                         <li><a href="schedule.html">Horário</a></li>
                                         <li><a href="gallery.html">gallery</a></li>
-                                        <li><a href="blog.html">Loja</a>
-                                            <ul class="submenu">
+                                        <?php
+                                            echo Html::tag('li',Html::a('Loja',['loja']));
+                                        ?>                                            <ul class="submenu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog_details.html">Blog Details</a></li>
                                                 <li><a href="elements.html">Element</a></li>
@@ -56,7 +57,7 @@ $this->title = 'GymMethod';
                                         <?php
                                         if (!Yii::$app->user->isGuest)
                                         {
-                                            echo Html::tag('li',Html::a('Teste',['cliente/abc']));
+                                            echo Html::tag('li',Html::a('Area CLiente',['cliente/index']));
                                         }
                                         ?>
                                     </ul>
