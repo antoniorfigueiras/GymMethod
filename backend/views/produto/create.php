@@ -9,7 +9,6 @@ $this->title = 'Create Produto';
 $this->params['breadcrumbs'][] = ['label' => 'Produtos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
