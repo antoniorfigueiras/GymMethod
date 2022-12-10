@@ -30,19 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id',
+                            [
+                                'attribute'=>'exemplo',
+                                'value'=> 'data:image/jpg;charset=utf8;base64,'.base64_encode($model->exemplo),
+                                'format' => ['image',['width'=>'100','height'=>'100']],
+                            ],
+
                             'nome',
                             'descricao',
                             'dificuldade',
-                            [
-                                'attribute' => 'exemplo',
-                                'label' => 'Exemplo',
-                                'value' => function($model){?>
-
-                                    <img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($model->exemplo); ?>" />
-
-                                <?php }
-                            ],
                             'equipamento_id',
                             'tipo_exercicio_id',
                         ],
