@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\FuncionarioSearch */
+/* @var $searchModel backend\models\search\PlanoTreinoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Funcionarios';
+$this->title = 'Plano Treinos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create Plano Treino', ['create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -26,26 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        //'filterModel' => $searchModel,
+                        'filterModel' => $searchModel,
                         'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
-                            'nomeproprio',
-                            'apelido',
-                            'telemovel',
-                            [
-                                'attribute' => 'user_id',
-                                'label' => 'Estado',
-                                'content' => function ($model) {
-                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
-                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
-                                    ]);
-                                }
-                            ],
-
-                            //'codpostal',
-                            //'pais',
-                            //'cidade',
-                            //'morada',
+                            'id',
+                            'cliente_id',
+                            'instrutor_id',
+                            'exercicio_plano_id',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],

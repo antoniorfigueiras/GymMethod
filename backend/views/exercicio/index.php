@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\FuncionarioSearch */
+/* @var $searchModel backend\models\search\ExercicioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Funcionarios';
+$this->title = 'Exercicios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,35 +17,32 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Funcionario', ['user/create', 'userType' => 'funcionario'], ['class' => 'btn btn-success']) ?>
+
+                            <?= Html::a('Create Exercicio', ['create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
-
-
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        //'filterModel' => $searchModel,
+                        'filterModel' => $searchModel,
                         'columns' => [
-
-                            'nomeproprio',
-                            'apelido',
-                            'telemovel',
+                            ['class' => 'yii\grid\SerialColumn'],
+                    //return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
+                            'id',
+                            'nome',
+                            'descricao',
+                            'dificuldade',
+                            //'exemplo',
                             [
-                                'attribute' => 'user_id',
-                                'label' => 'Estado',
+                                'attribute' => 'exemplo',
+                                'label' => 'Exemplo',
                                 'content' => function ($model) {
-                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
-                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
-                                    ]);
-                                }
+                                    return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
+                                  }
                             ],
-
-                            //'codpostal',
-                            //'pais',
-                            //'cidade',
-                            //'morada',
+                            //'equipamento_id',
+                            //'tipo_exercicio_id',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
@@ -65,3 +62,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <!--.row-->
 </div>
+
