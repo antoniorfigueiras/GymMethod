@@ -2,9 +2,12 @@
 
 namespace backend\controllers;
 
+use backend\models\search\ClienteSearch;
+use backend\models\search\ExercicioPlanoSearch;
 use Yii;
 use common\models\PlanoTreino;
 use backend\models\search\PlanoTreinoSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +38,7 @@ class PlanoController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new PlanoTreinoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,8 +56,16 @@ class PlanoController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+
+        // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
+        $dataProvider = new ActiveDataProvider([
+            'query' => $model->getExercicioPlanos(),
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -62,17 +74,28 @@ class PlanoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($idCliente)
     {
-        $model = new PlanoTreino();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = new PlanoTreino();
+        $model->nome = "";
+        $model->cliente_id = $idCliente;
+        $model->instrutor_id = Yii::$app->user->id;
+
+        if ($model->save())
+        {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('create', [
+
+        /*if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }*/
+
+        /*return $this->render('create', [
             'model' => $model,
-        ]);
+
+        ]);*/
     }
 
     /**
@@ -92,6 +115,7 @@ class PlanoController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+
         ]);
     }
 
@@ -123,5 +147,17 @@ class PlanoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSelect()
+    {
+        $value = 1;
+        $searchModel = new ClienteSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
+
+        return $this->render('selectClient', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

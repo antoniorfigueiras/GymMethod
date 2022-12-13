@@ -30,9 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id',
                             'nome',
-                            'estado',
+                            [
+                                'attribute'=>'estado',
+                                'value'=> Html::tag('span', $model->estado ? 'Ativo' : 'Inativo', [
+                                    'class' => $model->estado ? 'badge badge-success' : 'badge badge-danger']),
+                                'format' => 'raw',
+                            ],
                         ],
                     ]) ?>
                 </div>

@@ -39,8 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nome',
                             'descricao',
                             'dificuldade',
-                            'equipamento_id',
-                            'tipo_exercicio_id',
+                            [
+                                'attribute'=>'equipamento_id',
+                                'value'=> $model->equipamento->nome,
+                            ],
+                            [
+                                'attribute'=>'tipo_exercicio_id',
+                                'value'=> $model->tipoExercicio->nome,
+                            ],
                         ],
                     ]) ?>
                 </div>

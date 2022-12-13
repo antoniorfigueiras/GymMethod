@@ -8,12 +8,11 @@ use Yii;
  * This is the model class for table "plano_treino".
  *
  * @property int $id
+ * @property string $nome
  * @property int $cliente_id
  * @property int $instrutor_id
- * @property int $exercicio_plano_id
  *
  * @property Perfil $cliente
- * @property ExercicioPlano $exercicioPlano
  * @property ExercicioPlano[] $exercicioPlanos
  * @property Perfil $instrutor
  */
@@ -33,9 +32,9 @@ class PlanoTreino extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cliente_id', 'instrutor_id', 'exercicio_plano_id'], 'required'],
-            [['cliente_id', 'instrutor_id', 'exercicio_plano_id'], 'integer'],
-            [['exercicio_plano_id'], 'exist', 'skipOnError' => true, 'targetClass' => ExercicioPlano::class, 'targetAttribute' => ['exercicio_plano_id' => 'id']],
+            [['cliente_id', 'instrutor_id'], 'required'],
+            [['cliente_id', 'instrutor_id'], 'integer'],
+            [['nome'], 'string', 'max' => 20],
             [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['cliente_id' => 'user_id']],
             [['instrutor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['instrutor_id' => 'user_id']],
         ];
@@ -48,9 +47,9 @@ class PlanoTreino extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'cliente_id' => 'Cliente ID',
-            'instrutor_id' => 'Instrutor ID',
-            'exercicio_plano_id' => 'Exercicio Plano ID',
+            'nome' => 'Nome',
+            'cliente_id' => 'Cliente',
+            'instrutor_id' => 'Instrutor',
         ];
     }
 
@@ -62,16 +61,6 @@ class PlanoTreino extends \yii\db\ActiveRecord
     public function getCliente()
     {
         return $this->hasOne(Perfil::class, ['user_id' => 'cliente_id']);
-    }
-
-    /**
-     * Gets query for [[ExercicioPlano]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getExercicioPlano()
-    {
-        return $this->hasOne(ExercicioPlano::class, ['id' => 'exercicio_plano_id']);
     }
 
     /**

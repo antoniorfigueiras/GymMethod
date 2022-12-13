@@ -17,7 +17,7 @@ class PlanoTreinoSearch extends PlanoTreino
     public function rules()
     {
         return [
-            [['id', 'cliente_id', 'instrutor_id', 'exercicio_plano_id'], 'integer'],
+            [['id', 'cliente_id', 'instrutor_id'], 'integer'],
         ];
     }
 
@@ -60,7 +60,6 @@ class PlanoTreinoSearch extends PlanoTreino
             'id' => $this->id,
             'cliente_id' => $this->cliente_id,
             'instrutor_id' => $this->instrutor_id,
-            'exercicio_plano_id' => $this->exercicio_plano_id,
         ]);
 
         return $dataProvider;

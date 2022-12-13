@@ -2,9 +2,14 @@
 
 namespace backend\controllers;
 
+use backend\models\search\ClienteSearch;
+use common\models\Exercicio;
+use common\models\Parameterizacao;
+use common\models\TipoExercicio;
 use Yii;
 use common\models\ExercicioPlano;
 use backend\models\search\ExercicioPlanoSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,7 +17,7 @@ use yii\filters\VerbFilter;
 /**
  * ExercicioPlanoController implements the CRUD actions for ExercicioPlano model.
  */
-class ExercicioPlanoController extends Controller
+class ExercicioplanoController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -36,6 +41,7 @@ class ExercicioPlanoController extends Controller
     public function actionIndex()
     {
         $searchModel = new ExercicioPlanoSearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -62,16 +68,33 @@ class ExercicioPlanoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($idPlano)
     {
-        $model = new ExercicioPlano();
+        $listaExercicios = ArrayHelper::map(Exercicio::find()
+            ->orderBy(['nome' => SORT_ASC])
+            ->all(), 'id', 'nome');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new ExercicioPlano();
+        $modelParameterizacao = new Parameterizacao();
+        $model->plano_id = $idPlano; //Associar o id do plano recebido ao plano_id da tabela exercicio_plano
+        $modelParameterizacao->data = date("Y/m/d");
+        $modelPlano = $model->plano; // Ir buscar o model do plano atraves da relacao do modelo
+
+
+        if ($modelParameterizacao->load(Yii::$app->request->post()) && $modelParameterizacao->save()) {
+            $model->parameterizacao_id = $modelParameterizacao->id;
+           if($model->load(Yii::$app->request->post()) && $model->save())
+           {
+               return $this->redirect(['plano/view', 'id' => $idPlano]);
+           }
         }
+
 
         return $this->render('create', [
             'model' => $model,
+            'modelPlano' => $modelPlano,
+            'modelParameterizacao' => $modelParameterizacao,
+            'listaExercicios' => $listaExercicios
         ]);
     }
 

@@ -123,6 +123,13 @@ class ExercicioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $lista_equipamentos = ArrayHelper::map(Equipamentos::find()
+            ->orderBy(['nome' => SORT_ASC])
+            ->where('estado = 1')
+            ->all(), 'id', 'nome');
+        $lista_tipo_exercicios = ArrayHelper::map(TipoExercicio::find()
+            ->orderBy(['nome' => SORT_ASC])
+            ->all(), 'id', 'nome');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -130,6 +137,8 @@ class ExercicioController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'lista_equipamentos' => $lista_equipamentos,
+            'lista_tipo_exercicios' => $lista_tipo_exercicios
         ]);
     }
 
