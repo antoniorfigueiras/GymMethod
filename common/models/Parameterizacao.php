@@ -16,6 +16,7 @@ use Yii;
  * @property int|null $peso
  * @property int|null $pesoCliente
  * @property string|null $tempo
+ * @property string|null $tempoCliente
  *
  * @property ExercicioPlano[] $exercicioPlanos
  */
@@ -36,7 +37,7 @@ class Parameterizacao extends \yii\db\ActiveRecord
     {
         return [
             [['data'], 'required'],
-            [['data', 'tempo'], 'safe'],
+            [['data', 'tempo','tempoCliente'], 'safe'],
             [['series', 'seriesCliente', 'repeticoes', 'repeticoesCliente', 'peso', 'pesoCliente'], 'integer'],
         ];
     }
@@ -56,6 +57,7 @@ class Parameterizacao extends \yii\db\ActiveRecord
             'peso' => 'Peso',
             'pesoCliente' => 'Peso Cliente',
             'tempo' => 'Tempo',
+            'tempoCliente' => 'Tempo Cliente',
         ];
     }
 

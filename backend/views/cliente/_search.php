@@ -12,21 +12,13 @@ use yii\widgets\ActiveForm;
     <div class="col-md-12">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['select'], // index -> selectClient
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'user_id') ?>
-
-    <?= $form->field($model, 'telemovel') ?>
-
-    <?= $form->field($model, 'peso') ?>
-
-    <?= $form->field($model, 'altura') ?>
-
     <?= $form->field($model, 'nomeproprio') ?>
 
-    <?php // echo $form->field($model, 'apelido') ?>
+    <?= $form->field($model, 'apelido') ?>
 
     <?php // echo $form->field($model, 'codpostal') ?>
 
@@ -37,8 +29,7 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'morada') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

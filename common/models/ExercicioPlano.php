@@ -14,8 +14,8 @@ use Yii;
  *
  * @property Exercicio $exercicio
  * @property Parameterizacao $parameterizacao
- * @property PlanoTreino $planotreino
- * @property PlanoTreino[] $planoTreinos
+ * @property PlanoTreino $plano
+
  */
 class ExercicioPlano extends \yii\db\ActiveRecord
 {
@@ -48,8 +48,8 @@ class ExercicioPlano extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parameterizacao_id' => 'Parameterizacao ID',
-            'exercicio_id' => 'Exercicio ID',
+            'parameterizacao_id' => 'Parameterizacao',
+            'exercicio_id' => 'Exercicio',
             'plano_id' => 'Plano ID',
         ];
     }
@@ -84,13 +84,4 @@ class ExercicioPlano extends \yii\db\ActiveRecord
         return $this->hasOne(PlanoTreino::class, ['id' => 'plano_id']);
     }
 
-    /**
-     * Gets query for [[PlanoTreinos]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPlanoTreinos()
-    {
-        return $this->hasMany(PlanoTreino::class, ['exercicio_plano_id' => 'id']);
-    }
 }

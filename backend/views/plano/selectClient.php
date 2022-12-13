@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Clientes';
+$this->title = 'Selecione um cliente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -15,14 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row mb-2">
-                        <div class="col-md-12">
-                            <?= Html::a('Criar Cliente', ['user/create', 'userType' => 'cliente'], ['class' => 'btn btn-success']) ?>
-                        </div>
-                    </div>
 
 
-                    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('../cliente/_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
@@ -34,21 +30,43 @@ $this->params['breadcrumbs'][] = $this->title;
                             'apelido',
                             'telemovel',
                             [
-                                'attribute' => 'user_id',
-                                'label' => 'Estado',
-                                'content' => function ($model) {
-                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
-                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
-                                    ]);
+
+                                'format' => 'raw',
+                                'label' => 'Selecionar',
+                                'value' => function($model) {
+
+                                    return Html::a(
+
+                                        '<i class="fa fa-check"></i>',
+
+                                        Url::to(['create', 'idCliente' => $model->user_id]),
+
+                                        [
+
+                                            'id'=>'grid-custom-button',
+
+                                            'data-pjax'=>true,
+
+                                            'action'=>Url::to(['create', 'idCliente' => $model->user_id]),
+
+                                            'class'=>'button btn btn-default',
+
+                                        ]
+
+                                    );
+
                                 }
+
                             ],
+
+
                             //'apelido',
                             //'codpostal',
                             //'pais',
                             //'cidade',
                             //'morada',
 
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [

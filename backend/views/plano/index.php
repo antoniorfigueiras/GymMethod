@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Create Plano Treino', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Plano de Treino', ['select'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'id',
                             'cliente_id',
                             'instrutor_id',
-                            'exercicio_plano_id',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],

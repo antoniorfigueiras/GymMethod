@@ -33,14 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nome',
                             'descricao',
                             'dificuldade',
-                            //'exemplo',
-                            [
+                            /*[
                                 'attribute' => 'exemplo',
                                 'label' => 'Exemplo',
                                 'content' => function ($model) {
                                     return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
                                   }
-                            ],
+                            ],*/
                             //'equipamento_id',
                             //'tipo_exercicio_id',
 

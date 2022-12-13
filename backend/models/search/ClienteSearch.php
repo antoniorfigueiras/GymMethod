@@ -39,7 +39,7 @@ class ClienteSearch extends Perfil
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $value)
     {
         $query = Perfil::find();
 
@@ -49,6 +49,11 @@ class ClienteSearch extends Perfil
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
             ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
         $query->where('auth_assignment.item_name = "cliente"');
+        if ($value == 1)
+        {
+            $query->andWhere('user.status = 1');
+        }
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

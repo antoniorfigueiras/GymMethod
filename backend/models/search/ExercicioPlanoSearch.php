@@ -41,6 +41,17 @@ class ExercicioPlanoSearch extends ExercicioPlano
     {
         $query = ExercicioPlano::find();
 
+
+           /* $query->select('*')->from('exercicio_plano');
+            $query->join = [
+                ['JOIN', 'plano_treino', 'exercicio_plano.plano_id = plano_treino.id'],
+                ['JOIN', 'parameterizacoes', 'exercicio_plano.parameterizacao_id = parameterizacoes.id'],
+                ['JOIN', 'exercicio', 'exercicio.id = exercicio_plano.exercicio_id']];
+
+            $query->Where('exercicio_plano.plano_id = plano_treino.id');*/
+
+
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

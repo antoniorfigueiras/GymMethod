@@ -35,8 +35,9 @@ class ClienteController extends Controller
      */
     public function actionIndex()
     {
+        $value = 0;
         $searchModel = new ClienteSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

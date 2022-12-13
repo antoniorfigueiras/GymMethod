@@ -14,7 +14,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'estado')->Checkbox() ?>
+    <?= $form->field($model, 'estado')->Checkbox()->label('Ativo')?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
