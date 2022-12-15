@@ -18,31 +18,34 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row mb-2">
                         <div class="col-md-12">
 
-                            <?= Html::a('Create Exercicio', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Exercicio', ['create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
+                        //'filterModel' => $searchModel,
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                    //return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
-                            'id',
-                            'nome',
-                            'descricao',
-                            'dificuldade',
-                            /*[
-                                'attribute' => 'exemplo',
-                                'label' => 'Exemplo',
-                                'content' => function ($model) {
-                                    return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
-                                  }
-                            ],*/
-                            //'equipamento_id',
-                            //'tipo_exercicio_id',
 
+                    //return Html::img("data:image/jpg;charset=utf8;base64,".base64_encode($model->exemplo));
+                            'nome',
+
+                            [
+                                'attribute' => 'equipamento_id',
+                                'label' => 'Equipamento',
+                                'content' => function ($model) {
+                                    return $model->equipamento->nome;
+                                }
+                            ],
+                            [
+                                'attribute' => 'tipo_exercicio_id',
+                                'label' => 'Tipo de exercicio',
+                                'content' => function ($model) {
+                                    return $model->tipoExercicio->nome;
+                                }
+                            ],
+                            'dificuldade',
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],

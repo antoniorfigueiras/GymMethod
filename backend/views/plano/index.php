@@ -26,14 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
+                        //'filterModel' => $searchModel,
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-
-                            'id',
-                            'cliente_id',
-                            'instrutor_id',
-
+                                'nome',
+                            [
+                                'attribute' => 'cliente_id',
+                                'label' => 'Cliente',
+                                'content' => function ($model) {
+                                    return $model->cliente->nomeproprio;
+                                }
+                            ],
+                            [
+                                'attribute' => 'instrutor_id',
+                                'label' => 'Instrutor',
+                                'content' => function ($model) {
+                                    return $model->instrutor->nomeproprio;
+                                }
+                            ],
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],

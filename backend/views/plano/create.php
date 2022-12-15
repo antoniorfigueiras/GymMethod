@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\PlanoTreino */
 
-$this->title = 'Selecione um cliente';
+$this->title = 'Nome do Plano';
 $this->params['breadcrumbs'][] = ['label' => 'Plano Treinos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

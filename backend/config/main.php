@@ -11,7 +11,12 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        // Para aceder ao modulo da API
+        'api' => [
+            'class' => 'backend\modules\api\ModuleAPI',
+        ],
+    ],
     'components' => [
         'view' => [
             'theme' => [
@@ -22,6 +27,7 @@ return [
         ],
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'parsers' => [ 'application/json' => 'yii\web\JsonParser', ] // Para receber dados em formato Json
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -48,7 +54,22 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            // Registar as rotas para a API
+            'rules' => [
+                // User
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/user',
+                    'pluralize' => false,
+                ],
+                // Planos de treino
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/plano',
+                    'pluralize' => false,
+                ],
+            ],
+
         ],
+
 
     ],
     'params' => $params,

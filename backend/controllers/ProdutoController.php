@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Produto;
 use backend\models\search\ProdutoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,6 +22,24 @@ class ProdutoController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['funcionario'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

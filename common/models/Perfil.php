@@ -75,4 +75,18 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+
+    public function getFuncionarioByRole($role)
+    {
+        $query = Perfil::find();
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
+            ->from('user');
+        $query->join = [
+            ['JOIN', 'perfil', 'perfil.user_id = user.id'],
+            ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
+        $query->where('auth_assignment.item_name = "funcionario"');
+
+        return $query;
+    }
+
 }

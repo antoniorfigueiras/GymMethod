@@ -8,6 +8,7 @@ use Yii;
 use common\models\PlanoTreino;
 use backend\models\search\PlanoTreinoSearch;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,6 +24,24 @@ class PlanoController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['treinador'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -78,24 +97,16 @@ class PlanoController extends Controller
     {
 
         $model = new PlanoTreino();
-        $model->nome = "";
-        $model->cliente_id = $idCliente;
+        $model->cliente_id = (int)$idCliente;
         $model->instrutor_id = Yii::$app->user->id;
-
-        if ($model->save())
+        if ($model->load(Yii::$app->request->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-
-        /*if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }*/
-
-        /*return $this->render('create', [
+        return $this->render('create', [
             'model' => $model,
-
-        ]);*/
+        ]);
     }
 
     /**

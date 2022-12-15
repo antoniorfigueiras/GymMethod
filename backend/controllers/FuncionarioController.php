@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use common\models\Perfil;
 use backend\models\search\FuncionarioSearch;
+use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +22,24 @@ class FuncionarioController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -35,8 +55,14 @@ class FuncionarioController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Perfil();
+        $role = 'funcionario';
         $searchModel = new FuncionarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $model->getFuncionarioByRole($role),
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
