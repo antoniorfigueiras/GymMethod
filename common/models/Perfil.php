@@ -38,10 +38,12 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'telemovel', 'altura'], 'integer'],
-            [['peso'], 'number'],
+            [['user_id', 'altura','telemovel', 'peso', 'codpostal'], 'integer'],
+            [['telemovel'], 'string', 'max'=> 9],
+            [['peso'], 'string', 'max' => 3],
+            [['peso'], 'number', 'max' => 300],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
-            [['codpostal'], 'string', 'max' => 8],
+            [['codpostal'], 'string', 'max' => 7],
             [['morada'], 'string', 'max' => 125],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];

@@ -11,6 +11,8 @@ use Yii;
  * @property int $id_produto
  * @property int $quantidade
  * @property int|null $created_by
+ * @property User     $createdBy
+ * @property Produto  $produto
  */
 class ItemCarrinho extends \yii\db\ActiveRecord
 {
@@ -30,6 +32,8 @@ class ItemCarrinho extends \yii\db\ActiveRecord
         return [
             [['id_produto', 'quantidade'], 'required'],
             [['id_produto', 'quantidade', 'created_by'], 'integer'],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produto::className(), 'targetAttribute' => ['id_produto' => 'id']],
         ];
     }
 
@@ -45,6 +49,27 @@ class ItemCarrinho extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
         ];
     }
+
+    /**
+     * Gets query for [[CreatedBy]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * Gets query for [[Produto]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\ProdutoQuery
+     */
+    public function getProduto()
+    {
+        return $this->hasOne(Produto::className(), ['id' => 'id_produto']);
+    }
+
 
     /**
      * {@inheritdoc}

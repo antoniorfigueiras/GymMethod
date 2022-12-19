@@ -31,4 +31,24 @@ class ItemCarrinhoQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @param $userId
+     * @return ItemCarrinhoQuery
+     */
+    public function userId($userId)
+    {
+        return $this->andWhere(['created_by' => $userId]);
+    }
+
+    /**
+     * @param $userId
+     * @return void
+     */
+    public function produtoId($produtoId){
+        return $this->andWhere(['id_produto'=>$produtoId]);
+    }
+
+
+
 }
