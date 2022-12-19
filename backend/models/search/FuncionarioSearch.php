@@ -42,12 +42,7 @@ class FuncionarioSearch extends Perfil
     public function search($params)
     {
         $query = Perfil::find();
-        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
-            ->from('user');
-        $query->join = [
-            ['JOIN', 'perfil', 'perfil.user_id = user.id'],
-            ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
-        $query->where('auth_assignment.item_name = "funcionario"');
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

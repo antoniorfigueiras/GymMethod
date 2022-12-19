@@ -29,7 +29,6 @@
                     ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],],
                     ['label' => 'Tipo de Exercicios', 'icon' => 'dumbbell', 'url' => ['/tipoexercicio'],],
                     ['label' => 'Planos de Treino', 'icon' => 'calendar', 'url' => ['/plano'],],
-                    ['label' => 'Exercicio Plano', 'icon' => 'calendar', 'url' => ['/exercicioplano'],],
                     ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
