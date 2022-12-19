@@ -38,4 +38,9 @@ class ProdutoQuery extends \yii\db\ActiveQuery
     public function publicado(){
         return $this->andWhere(['estado' => 1]);
     }
+
+    public function id($id)
+    {
+        return $this->andWhere(['id'=>$id]);
+    }
 }

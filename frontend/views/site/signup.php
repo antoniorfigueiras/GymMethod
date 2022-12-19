@@ -3,6 +3,8 @@
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
 /** @var \frontend\models\SignupForm $model */
+/** @var \frontend\models\Perfil $modelPerfil */
+
 
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
@@ -35,6 +37,27 @@ $this->title = 'GymMethod';
                     <div class="form-group last mb-1">
                         <?= $form->field($model, 'password')->passwordInput() ?>
                     </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'telemovel')-> textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'nomeproprio')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'apelido')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'codpostal')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'pais')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'cidade')->textInput(['autofocus' => true]) ?>
+                    </div><div class="form-group first">
+                        <?= $form->field($modelPerfil, 'morada')->textInput(['autofocus' => true]) ?>
+                    </div>
+
 
                     <div class="d-flex mb-5 align-items-center">
                         <label class="control control--checkbox mb-0">

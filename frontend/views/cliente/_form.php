@@ -12,17 +12,15 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'telemovel')->textInput() ?>
-
-    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'altura')->textInput() ?>
-
     <?= $form->field($model, 'nomeproprio')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'telemovel')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'altura')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true]) ?>
 
@@ -32,6 +30,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
+    <br>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
