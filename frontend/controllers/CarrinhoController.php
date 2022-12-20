@@ -3,11 +3,11 @@
 namespace frontend\controllers;
 
 use common\models\ItemCarrinho;
+use common\models\Produto;
 use yii\filters\ContentNegotiator;
 use yii\web\Controller;
 use Yii;
 use yii\web\NotFoundHttpException;
-use common\models\Produto;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
@@ -31,7 +31,7 @@ class CarrinhoController extends \frontend\base\Controller
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-
+            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
         } else {
             $itensCarrinho = ItemCarrinho::findBySql("SELECT
                                c.id_produto as id,
@@ -61,6 +61,28 @@ class CarrinhoController extends \frontend\base\Controller
         }
 
         if (Yii::$app->user->isGuest) {
+            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
+            $found = false;
+            foreach ($itensCarrinho as &$itemCarrinho) {
+                if ($itemCarrinho['id'] == $id)
+                {
+                    $itemCarrinho['quantidade']++;
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                $itemCarrinho = [
+                    'id' => $id,
+                    'nome' => $produto,
+                    'imagem' =>$produto->imagem,
+                    'preco' => $produto->preco,
+                    'quantidade' => 1,
+                    'total_price' => $produto->preco
+                ];
+                $itensCarrinho[] = $itemCarrinho;
+            }
+            \Yii::$app->session->set(ItemCarrinho::SESSION_KEY, $itensCarrinho);
 
         } else {
             $userId = \Yii::$app->user->id;
@@ -86,6 +108,22 @@ class CarrinhoController extends \frontend\base\Controller
         }
     }
 
-    
 
+    public function actionDelete($id)
+    {
+        if (isGuest()) {
+            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
+            foreach ($itensCarrinho as $i => $itemCarrinho) {
+                if ($itemCarrinho['id'] == $id) {
+                    array_splice($itensCarrinho, $i, 1);
+                    break;
+                }
+            }
+            \Yii::$app->session->set(ItemCarrinho::SESSION_KEY, $itensCarrinho);
+        } else {
+            ItemCarrinho::deleteAll(['id_produto' => $id, 'created_by' => currUserId()]);
+        }
+
+        return $this->redirect(['index']);
+    }
 }

@@ -73,7 +73,7 @@ $this->title = 'GymMethod';
                             <?php echo \yii\helpers\Html::a('Delete', ['/carrinho/delete', 'id' => $item['id']], [
                                 'class' => 'btn btn-outline-danger btn-sm',
                                 'data-method' => 'post',
-                                'data-confirm' => 'Are you sure you want to remove this product from cart?'
+                                'data-confirm' => 'Tem a certeza que deseja remover este produto do seu carrinho?'
                             ]) ?>
                         </td>
                     </tr>
@@ -86,7 +86,7 @@ $this->title = 'GymMethod';
             </div>
         <?php else: ?>
 
-            <p class="text-muted text-center p-5">There are no items in the cart</p>
+            <p class="text-muted text-center p-5">Não existem itens no teu carrinho :(</p>
 
         <?php endif; ?>
 
