@@ -47,17 +47,17 @@ $this->title = 'GymMethod';
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Product</th>
-                    <th>Image</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Action</th>
+                    <th>Produto</th>
+                    <th>Imagem</th>
+                    <th>Preço Unidade</th>
+                    <th>Quantidade</th>
+                    <th>Total Preço</th>
+                    <th>Ação</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($items as $item): ?>
-                    <tr data-id="<?php echo $item['id'] ?>" data-url="<?php echo \yii\helpers\Url::to(['/cart/change-quantity']) ?>">
+                    <tr data-id="<?php echo $item['id'] ?>" data-url="<?php echo \yii\helpers\Url::to(['/carrinho/mudar-quantidade']) ?>">
                         <td><?php echo $item['nome'] ?></td>
                         <td>
                             <img src="<?php echo \common\models\Produto::formatImageUrl($item['imagem']) ?>"
@@ -66,11 +66,11 @@ $this->title = 'GymMethod';
                         </td>
                         <td><?php echo Yii::$app->formatter->asCurrency($item['preco']) ?></td>
                         <td>
-                            <input type="number" min="1" class="form-control item-quantity" style="width: 60px" value="<?php echo $item['quantidade'] ?>">
+                            <input type="number" min="1" class="form-control item-quantidade" style="width: 60px" value="<?php echo $item['quantidade'] ?>">
                         </td>
                         <td><?php echo Yii::$app->formatter->asCurrency($item['preco_total']) ?></td>
                         <td>
-                            <?php echo \yii\helpers\Html::a('Delete', ['/cart/delete', 'id' => $item['id']], [
+                            <?php echo \yii\helpers\Html::a('Delete', ['/carrinho/delete', 'id' => $item['id']], [
                                 'class' => 'btn btn-outline-danger btn-sm',
                                 'data-method' => 'post',
                                 'data-confirm' => 'Are you sure you want to remove this product from cart?'
