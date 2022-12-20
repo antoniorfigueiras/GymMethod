@@ -114,6 +114,7 @@ class CarrinhoController extends \frontend\base\Controller
         }
     }
 
+
     public function actionDelete($id)
     {
         if (isGuest()) {
