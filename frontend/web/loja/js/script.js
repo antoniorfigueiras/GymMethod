@@ -1,6 +1,7 @@
 $(function(){
     const $carrinhoQuantidade = $('#carrinho-quantidade');
     const $adicionarAoCarrinho = $('.btn-adicionar-carrinho');
+    const $itemQuantidades = $('.item-quantidade');
     $adicionarAoCarrinho.click(ev =>{
         ev.preventDefault();
         const $this = $(ev.target);
@@ -13,6 +14,21 @@ $(function(){
             success: function (){
                 console.log(arguments)
                 $carrinhoQuantidade.text(parseInt($carrinhoQuantidade.text() || 0) + 1);
+            }
+        })
+    })
+
+    $itemQuantidades.change(ev => {
+        const $this = $(ev.target);
+        let $tr = $this.closest('tr');
+        const id =
+            $tr.data('id');
+        $.ajax({
+            method: 'post',
+            url: $tr.data('url'),
+            data: {id, quantidade: $this.val()},
+            success: function (quantidadeTotal){
+                $carrinhoQuantidade.text(quantidadeTotal);
             }
         })
     })

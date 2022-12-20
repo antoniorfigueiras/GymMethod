@@ -24,6 +24,12 @@ class CarrinhoController extends \frontend\base\Controller
                 'formats' => [
                     'application/json' => Response::FORMAT_JSON,
                 ],
+            ],
+            [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete' => ['POST', 'DELETE']
+                ]
             ]
         ];
     }
@@ -63,10 +69,10 @@ class CarrinhoController extends \frontend\base\Controller
         if (Yii::$app->user->isGuest) {
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             $found = false;
-            foreach ($itensCarrinho as &$itemCarrinho) {
-                if ($itemCarrinho['id'] == $id)
+            foreach ($itensCarrinho as &$item) {
+                if ($item['id'] == $id)
                 {
-                    $itemCarrinho['quantidade']++;
+                    $item['quantidade']++;
                     $found = true;
                     break;
                 }
@@ -127,4 +133,30 @@ class CarrinhoController extends \frontend\base\Controller
     }
 
 
+    public function actionMudarQuantidade()
+    {
+        $id = \Yii::$app->request->post('id');
+        $produto = Produto::find()->id($id)->publicado()->one();
+        if (!$produto) {
+            throw new NotFoundHttpException("O Produto não existe");
+        }
+        $quantidade = \Yii::$app->request->post('quantidade');
+        if (isGuest()) {
+            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
+            foreach ($itensCarrinho as &$itemCarrinho) {
+                if ($itemCarrinho['id'] === $id) {
+                    $itemCarrinho['quantidade'] = $quantidade;
+                    break;
+                }
+            }
+            \Yii::$app->session->set(ItemCarrinho::SESSION_KEY, $itensCarrinho);
+        } else {
+            $itemCarrinho = ItemCarrinho::find()->userId(currUserId())->produtoId($id)->one();
+            if ($itemCarrinho) {
+                $itemCarrinho->quantidade = $quantidade;
+                $itemCarrinho->save();
+            }
+        }
+        return ItemCarrinho::getTotalQuantityForUser(currUserId());
+    }
 }
