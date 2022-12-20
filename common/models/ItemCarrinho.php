@@ -16,6 +16,7 @@ use Yii;
  */
 class ItemCarrinho extends \yii\db\ActiveRecord
 {
+    const SESSION_KEY = 'ITENS_CARRINHO';
     /**
      * {@inheritdoc}
      */
