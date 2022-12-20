@@ -148,12 +148,7 @@ class Produto extends \yii\db\ActiveRecord
         return Yii::$app->params['frontendUrl'] . '/img/imagem_nao_disponivel.jpg';
     }
 
-    /**
-     * Get short version of the description
-     *
-     * @return string
-     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
-     */
+
     public function getShortDescription()
     {
         return \yii\helpers\StringHelper::truncateWords(strip_tags($this->descricao), 30);
