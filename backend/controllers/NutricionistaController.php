@@ -7,6 +7,7 @@ use common\models\User;
 use Yii;
 use common\models\Perfil;
 use backend\models\search\NutricionistaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,6 +23,24 @@ class NutricionistaController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -38,12 +57,12 @@ class NutricionistaController extends Controller
     public function actionIndex()
     {
         $searchModel = new NutricionistaSearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-
         ]);
     }
 
@@ -70,10 +89,9 @@ class NutricionistaController extends Controller
     {
         $model = new Perfil();
         $model->user_id = $idUser;
-        $model->id = $idUser;
         $modelUser = $model->user;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
         return $this->render('create', [
@@ -97,8 +115,7 @@ class NutricionistaController extends Controller
         if (($model->load(Yii::$app->request->post()) && $model->save()) && ($modelUser->load(Yii::$app->request->post()) && $modelUser->save())) {
             /*var_dump($modelUser->load(Yii::$app->request->post()));
             die();*/
-
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
         return $this->render('update', [

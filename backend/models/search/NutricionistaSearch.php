@@ -2,6 +2,7 @@
 
 namespace backend\models\search;
 
+use common\models\User;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Perfil;
@@ -14,12 +15,14 @@ class NutricionistaSearch extends Perfil
     /**
      * {@inheritdoc}
      */
+
+    public $userStatus;
     public function rules()
     {
         return [
-            [['id', 'user_id', 'telemovel', 'altura'], 'integer'],
+            [['user_id', 'telemovel', 'altura'], 'integer'],
             [['peso'], 'number'],
-            [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
+            [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada', 'userStatus'], 'safe'],
         ];
     }
 
@@ -41,20 +44,25 @@ class NutricionistaSearch extends Perfil
      */
     public function search($params)
     {
-        $query = Perfil::find()->innerJoinWith('user', true);
-        /*$query->select('*')
+        $query = Perfil::find();
+       $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
             ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
-        $query->where('auth_assignment.item_name = "nutricionista"');*/
+        $query->where('auth_assignment.item_name = "nutricionista"');
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['attributes' => ['status']]
+
         ]);
 
+        $dataProvider->sort->attributes['user_id'] = [
+            'asc' => ['user.status' => SORT_ASC],
+            'desc' => ['user.status' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {
@@ -65,11 +73,8 @@ class NutricionistaSearch extends Perfil
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'telemovel' => $this->telemovel,
-            'peso' => $this->peso,
-            'altura' => $this->altura,
+            'perfil.user_id' => $this->user_id,
+
         ]);
 
         $query->andFilterWhere(['like', 'nomeproprio', $this->nomeproprio])
@@ -77,7 +82,8 @@ class NutricionistaSearch extends Perfil
             ->andFilterWhere(['like', 'codpostal', $this->codpostal])
             ->andFilterWhere(['like', 'pais', $this->pais])
             ->andFilterWhere(['like', 'cidade', $this->cidade])
-            ->andFilterWhere(['like', 'morada', $this->morada]);
+            ->andFilterWhere(['like', 'morada', $this->morada])
+            ->andFilterWhere(['like', 'status', $this->userStatus]);
 
         return $dataProvider;
     }

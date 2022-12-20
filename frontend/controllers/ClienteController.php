@@ -12,11 +12,7 @@ use yii\filters\AccessControl;
     /**
  * ClienteController implements the CRUD actions for Perfil model.
  */
-<<<<<<< Updated upstream
-class ClienteController extends Controller
-=======
 class ClienteController extends \frontend\base\Controller
->>>>>>> Stashed changes
 {
     /**
      * {@inheritdoc}

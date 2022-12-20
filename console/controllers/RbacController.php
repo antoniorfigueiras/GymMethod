@@ -119,22 +119,22 @@ class RbacController extends Controller
 
         // Adicionar (admin, treinador)
         $adicionarPlano = $auth->createPermission('adicionarPlano');
-        $adicionarPlano->description = 'Adicionar plano';
+        $adicionarPlano->description = 'Adicionar planotreino';
         $auth->add($adicionarPlano);
 
         // Editar (admin, treinador)
         $editarPlano = $auth->createPermission('editarPlano');
-        $editarPlano->description = 'Editar plano';
+        $editarPlano->description = 'Editar planotreino';
         $auth->add($editarPlano);
 
         // Consultar (admin, treinador)
         $consultarPlano = $auth->createPermission('consultarPlano');
-        $consultarPlano->description = 'Consultar plano';
+        $consultarPlano->description = 'Consultar planotreino';
         $auth->add($consultarPlano);
 
         // Remover (admin, treinador)
         $removerPlano = $auth->createPermission('removerPlano');
-        $removerPlano->description = 'Remover plano';
+        $removerPlano->description = 'Remover planotreino';
         $auth->add($removerPlano);
 
                          /*** Consultas Nutricionista ***/

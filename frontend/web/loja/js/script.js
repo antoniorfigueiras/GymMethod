@@ -1,4 +1,5 @@
 $(function(){
+    const $carrinhoQuantidade = $('#carrinho-quantidade');
     const $adicionarAoCarrinho = $('.btn-adicionar-carrinho');
     $adicionarAoCarrinho.click(ev =>{
         ev.preventDefault();
@@ -10,7 +11,8 @@ $(function(){
             url: $this.attr('href'),
             data: {id},
             success: function (){
-                console.log(arguments);
+                console.log(arguments)
+                $carrinhoQuantidade.text(parseInt($carrinhoQuantidade.text() || 0) + 1);
             }
         })
     })

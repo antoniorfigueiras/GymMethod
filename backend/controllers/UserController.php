@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use backend\models\CreateClienteForm;
 use backend\models\CreateNutricionistaForm;
 use backend\models\CreateTreinadorForm;
 use backend\models\CreateFuncionarioForm;
 use Yii;
 use common\models\User;
 use backend\models\search\UserSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,6 +25,24 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['funcionario'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -62,6 +82,14 @@ class UserController extends Controller
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
                 $user = $this->getId();
                 return $this->redirect(['nutricionista/create','idUser' => $user->getId()]);
+            }
+        }
+        if ($userType == 'cliente')
+        {
+            $model = new CreateClienteForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+                $user = $this->getId();
+                return $this->redirect(['cliente/create','idUser' => $user->getId()]);
             }
         }
         return $this->render('create', [

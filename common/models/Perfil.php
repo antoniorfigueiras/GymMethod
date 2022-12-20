@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "perfil".
  *
- * @property int $id
  * @property int $user_id
  * @property int|null $telemovel
  * @property float|null $peso
@@ -19,7 +18,7 @@ use Yii;
  * @property string|null $cidade
  * @property string|null $morada
  *
- * @property User $iduser
+ * @property User $user
  */
 class Perfil extends \yii\db\ActiveRecord
 {
@@ -45,6 +44,7 @@ class Perfil extends \yii\db\ActiveRecord
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
             [['codpostal'], 'string', 'max' => 7],
             [['morada'], 'string', 'max' => 125],
+            [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -55,28 +55,40 @@ class Perfil extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User_id',
+            'user_id' => 'User ID',
             'telemovel' => 'Telemovel',
             'peso' => 'Peso',
             'altura' => 'Altura',
-            'nomeproprio' => 'Nomeproprio',
+            'nomeproprio' => 'Nome',
             'apelido' => 'Apelido',
             'codpostal' => 'Codpostal',
             'pais' => 'Pais',
             'cidade' => 'Cidade',
             'morada' => 'Morada',
-            'user_Id.status' => 'Estado',
         ];
     }
 
     /**
-     * Gets query for [[user_id]].
+     * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery\common\models\query\UserQuery
+     * @return \yii\db\ActiveQuery
      */
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+
+    public function getFuncionarioByRole($role)
+    {
+        $query = Perfil::find();
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
+            ->from('user');
+        $query->join = [
+            ['JOIN', 'perfil', 'perfil.user_id = user.id'],
+            ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
+        $query->where('auth_assignment.item_name = "funcionario"');
+
+        return $query;
+    }
+
 }

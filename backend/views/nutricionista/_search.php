@@ -16,27 +16,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'user_id') ?>
-
     <?= $form->field($model, 'telemovel') ?>
 
-    <?= $form->field($model, 'peso') ?>
+    <?php  echo $form->field($model, 'nomeproprio') ?>
 
-    <?= $form->field($model, 'altura') ?>
+    <?php  echo $form->field($model, 'apelido') ?>
 
-    <?php // echo $form->field($model, 'nomeproprio') ?>
-
-    <?php // echo $form->field($model, 'apelido') ?>
-
-    <?php // echo $form->field($model, 'codpostal') ?>
-
-    <?php // echo $form->field($model, 'pais') ?>
-
-    <?php // echo $form->field($model, 'cidade') ?>
-
-    <?php // echo $form->field($model, 'morada') ?>
+    <?php echo $form->field($model, 'morada') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

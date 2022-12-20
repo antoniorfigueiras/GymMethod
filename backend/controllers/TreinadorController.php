@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Perfil;
 use backend\models\search\TreinadorSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,24 @@ class TreinadorController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -66,13 +85,15 @@ class TreinadorController extends Controller
     public function actionCreate($idUser)
     {
         $model = new Perfil();
-        $model->user_id = $idUser; // Definir o id do user para a criação do perfil
+        $model->user_id = $idUser;// Definir o id do user para a criação do perfil
+        $modelUser = $model->user;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view','id' => $model->user_id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'modelUser' => $modelUser,
         ]);
     }
 
@@ -86,13 +107,14 @@ class TreinadorController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $modelUser = $model->user;
+        if(($model->load(Yii::$app->request->post()) && $model->save()) && ($modelUser->load(Yii::$app->request->post()) && $modelUser->save())){
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelUser' => $modelUser,
         ]);
     }
 

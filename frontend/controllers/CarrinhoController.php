@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
 use yii\web\BadRequestHttpException;
 
-class CarrinhoController extends Controller
+class CarrinhoController extends \frontend\base\Controller
 {
     public function behaviors()
     {
@@ -86,7 +86,7 @@ class CarrinhoController extends Controller
 
         } else {
             $userId = \Yii::$app->user->id;
-            $ItemCarrinho = ItemCarrinho::find()->userId($userId)->idproduto($id)->one();
+            $ItemCarrinho = ItemCarrinho::find()->userId($userId)->produtoId($id)->one();
             if ($ItemCarrinho) {
                 $ItemCarrinho->quantidade++;
             } else {

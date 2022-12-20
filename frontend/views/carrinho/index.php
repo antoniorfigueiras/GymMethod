@@ -11,13 +11,32 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 use yii\helpers\Url;
+$carrinhoItemCount = $this->params['carrinhoItemCount'];
 
 use frontend\assets\AppAssetLoja;
 AppAssetLoja::register($this);
 $this->title = 'GymMethod';
 ?>
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <?php
+        echo Html::a('GYMMETHOD',['../'],['class' => ['navbar-brand']]);
+        ?>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            </ul>
+            <form class="d-flex" action="/carrinho/index">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>Carrinho
+                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="carrinho-quantidade"><?php echo $carrinhoItemCount ?></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
 <div class="card">
     <div class="card-header">
         <h3>Your cart items</h3>

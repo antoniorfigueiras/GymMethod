@@ -25,9 +25,15 @@
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],],
+                    ['label' => 'Exercicios', 'icon' => 'walking', 'url' => ['/exercicio'],],
+                    ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],],
+                    ['label' => 'Tipo de Exercicios', 'icon' => 'dumbbell', 'url' => ['/tipoexercicio'],],
+                    ['label' => 'Planos de Treino', 'icon' => 'calendar', 'url' => ['/plano'],],
+                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
                     ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],],
+
                     ['label' => 'Yii2 PROVIDED', 'header' => true],
                     //['label' => 'Logout', 'url' => ['site/logout'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->can("loginBO")],
 

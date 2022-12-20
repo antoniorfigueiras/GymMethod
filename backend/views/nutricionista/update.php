@@ -4,9 +4,9 @@
 /* @var $model common\models\Perfil */
 /* @var $modelUser common\models\User */
 
-$this->title = 'Update Perfil: ' . $model->id;
+$this->title = 'Update Perfil: ' . $model->user_id;
 $this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->user_id, 'url' => ['view', 'id' => $model->user_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 

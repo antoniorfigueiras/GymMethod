@@ -13,6 +13,8 @@ use yii\helpers\Url;
 
 use frontend\assets\AppAssetLoja;
 AppAssetLoja::register($this);
+
+$carrinhoItemCount = $this->params['carrinhoItemCount'];
 $this->title = 'GymMethod';
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -28,7 +30,7 @@ $this->title = 'GymMethod';
             <form class="d-flex" action="/carrinho/index">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>Carrinho
-                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="carrinho-quantidade">0</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="carrinho-quantidade"><?php echo $carrinhoItemCount ?></span>
                 </button>
             </form>
         </div>
