@@ -25,6 +25,22 @@ class ItemCarrinho extends \yii\db\ActiveRecord
         return '{{%itens_carrinho}}';
     }
 
+    public static function getTotalQuantityForUser($currUserId)
+    {
+        if(isGuest()){
+            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
+            $sum = 0;
+            foreach ($itensCarrinho as $itemCarrinho) {
+                $sum += $itemCarrinho['quantidade'];
+            }
+        }else {
+            $sum =
+                ItemCarrinho::findBySql(
+                    "SELECT SUM(quantidade) FROM itens_carrinho WHERE created_by = :userId", ['userId' => $currUserId]
+                )->scalar();
+        }
+        return $sum;
+    }
     /**
      * {@inheritdoc}
      */
