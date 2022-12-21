@@ -9,7 +9,7 @@ use common\models\User;
 /**
  * Signup form
  */
-class CreateClienteForm extends Model
+class CreateUserForm extends Model
 {
     public $username;
     public $email;
@@ -43,7 +43,7 @@ class CreateClienteForm extends Model
      *
      * @return bool whether the creating new account was successful and email was sent
      */
-    public function signup()
+    public function signup($userType)
     {
         if ($this->validate()) {
             $user = new User();
@@ -55,7 +55,7 @@ class CreateClienteForm extends Model
 
             // the following three lines were added:
             $auth = \Yii::$app->authManager;
-            $Role = $auth->getRole('cliente');
+            $Role = $auth->getRole($userType);
             $auth->assign($Role, $user->getId());
 
             return $user;
