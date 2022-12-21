@@ -13,6 +13,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'exercicio_id')->dropDownList($listaExercicios, ['prompt' => '-Escolha um exercicio-']) ?>
+
     <?= $form->field($modelParameterizacao, 'series')->textInput() ?>
 
 
@@ -25,7 +27,7 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($modelParameterizacao, 'tempo')->textInput() ?>
 
     <?php /*= $form->field($model, 'exercicio_id')->textInput() */?>
-    <?= $form->field($model, 'exercicio_id')->dropDownList($listaExercicios, ['prompt' => '-Escolha um exercicio-']) ?>
+
 
 
     <div class="form-group">

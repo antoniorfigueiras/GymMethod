@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ExercicioPlano */
 
-$this->title = 'Criar Exercicio para: '. $modelPlano->nome;
+$this->title = 'Criar exercicio para o plano: '. $modelPlano->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Exercicio Planos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

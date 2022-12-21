@@ -7,6 +7,7 @@ use common\models\TipoExercicio;
 use Yii;
 use common\models\Exercicio;
 use backend\models\search\ExercicioSearch;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -27,11 +28,22 @@ class ExercicioController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'roles' => ['treinador'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+
             ],
         ];
     }
@@ -101,10 +113,6 @@ class ExercicioController extends Controller
 
             }
         }
-        /*if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            return $this->redirect(['view', 'id' => $model->id]);
-        }*/
 
         return $this->render('create', [
             'model' => $model,
@@ -123,6 +131,7 @@ class ExercicioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $img = $model->exemplo;
         $lista_equipamentos = ArrayHelper::map(Equipamentos::find()
             ->orderBy(['nome' => SORT_ASC])
             ->where('estado = 1')
@@ -131,8 +140,35 @@ class ExercicioController extends Controller
             ->orderBy(['nome' => SORT_ASC])
             ->all(), 'id', 'nome');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if($model->load(Yii::$app->request->post())) {
+            // Get file info
+            $file = UploadedFile::getInstance($model, 'exemplo');
+
+            // Se uma imagem for introduzida, introduz esta no campo exemplo
+            if (isset($file)){
+                $fileName = $file->name;
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+                // Allow certain file formats
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $file->tempName;
+                    $imgContent = file_get_contents($image);
+
+                    // Insert image content into database
+                    $model->exemplo = $imgContent;
+                    $model->save();
+
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }else
+            {
+
+                $model->exemplo = $img;
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+
         }
 
         return $this->render('update', [
