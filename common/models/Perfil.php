@@ -41,6 +41,7 @@ class Perfil extends \yii\db\ActiveRecord
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
             [['codpostal'], 'string', 'max' => 8],
+            [['telemovel'], 'string', 'max' => 9],
             [['morada'], 'string', 'max' => 125],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -76,7 +77,7 @@ class Perfil extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
-    public function getFuncionarioByRole($role)
+    /*public function getFuncionarioByRole($role)
     {
         $query = Perfil::find();
         $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
@@ -87,6 +88,15 @@ class Perfil extends \yii\db\ActiveRecord
         $query->where('auth_assignment.item_name = "funcionario"');
 
         return $query;
+    }*/
+
+    public function getPlanosCliente()
+    {
+        return $this->hasMany(PlanoTreino::class, ['cliente_id' => 'user_id']);
+    }
+    public function getPlanos()
+    {
+        return $this->hasMany(PlanoTreino::class, ['instrutor_id' => 'user_id']);
     }
 
 }

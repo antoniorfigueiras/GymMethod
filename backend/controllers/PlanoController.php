@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use backend\models\search\ClienteSearch;
 use backend\models\search\ExercicioPlanoSearch;
+use common\models\Perfil;
+use common\models\User;
 use Yii;
 use common\models\PlanoTreino;
 use backend\models\search\PlanoTreinoSearch;
@@ -29,16 +31,7 @@ class PlanoController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
-                    ],
-                    [
-                        'allow' => true,
                         'roles' => ['treinador'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -57,9 +50,16 @@ class PlanoController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new PlanoTreinoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = Perfil::findOne(Yii::$app->user->getId());
+
+            // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
+            $dataProvider = new ActiveDataProvider([
+                'query' => $model->getPlanos(),
+            ]);
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -160,15 +160,4 @@ class PlanoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionSelect()
-    {
-        $value = 1;
-        $searchModel = new ClienteSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
-
-        return $this->render('selectClient', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 }

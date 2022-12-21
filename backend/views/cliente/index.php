@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Cliente', ['user/create', 'userType' => 'cliente'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Cliente', ['user/create', 'userType' => 'cliente'], ['class' => 'btn btn-success', ]) ?>
                         </div>
                     </div>
 
@@ -38,8 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'label' => 'Estado',
                                 'content' => function ($model) {
                                     return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
-                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger'
-                                    ]);
+                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger']);
                                 }
                             ],
                             //'apelido',

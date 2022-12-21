@@ -8,9 +8,9 @@ use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
 
-class PlanoController extends ActiveController
+class ExercicioplanoController extends ActiveController
 {
-    public $modelClass = 'common\models\PlanoTreino'; // Para ir buscar o modelo a ser usado no controlador
+    public $modelClass = 'common\models\ExercicioPlano'; // Para ir buscar o modelo a ser usado no controlador
 
     public function behaviors()
     {
@@ -39,22 +39,12 @@ class PlanoController extends ActiveController
         }*/
     }
 
-    public function actionPlano($id)
+    public function actionGet_exercicio_by_plano($id)
     {
-       $model = new $this->modelClass;
-       /*$plano=$model::find()
-        //->select('plano_treino.id, nome, perfil.nomeproprio')
-        ->where(['cliente_id'=>$id])
-        ->one();*/
-       $planos = $model::find()
-           ->select(['*'])
-           ->where(['cliente_id'=>$id])
-           ->joinWith('instrutor')
-           ->asArray()
-           //->andWhere(['perfil.user_id' => $plano->instrutor_id])
-           ->all();
+        $model = new $this->modelClass;
+        $exercicios = $model::find()->where(['plano_id'=>$id])->all();
 
-       return $planos;
+        return $exercicios;
     }
 
 }

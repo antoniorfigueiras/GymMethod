@@ -99,6 +99,11 @@ class SiteController extends Controller
 
             }else
             {
+                if (Yii::$app->user->can('treinador'))
+                {
+
+                    return $this->redirect('/plano');
+                }
                 return $this->goBack();
             }
 

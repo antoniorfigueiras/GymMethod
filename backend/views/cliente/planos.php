@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\PlanoTreinoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Plano Treinos';
+$this->title = 'Planos de Treino';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">

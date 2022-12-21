@@ -56,15 +56,36 @@ return [
             'showScriptName' => false,
             // Registar as rotas para a API
             'rules' => [
-                // User
+                // Perfil
                 ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/user',
+                    'controller' => 'api/perfil',
                     'pluralize' => false,
                 ],
                 // Planos de treino
                 ['class' => 'yii\rest\UrlRule',
                     'controller' => 'api/plano',
                     'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'GET plano/{id}' => 'plano',
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>',
+                        '{plano}' => '<plano:\\d+>',
+                    ],
+                ],
+                // Exercicios do plano
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/exercicioplano',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'GET get_exercicio_by_plano/{id}' => 'get_exercicio_by_plano',
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>',
+                        '{plano}' => '<plano:\\d+>',
+                    ],
                 ],
             ],
 

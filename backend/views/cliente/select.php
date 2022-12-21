@@ -1,5 +1,6 @@
 <?php
 
+use hail812\adminlte3\yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
@@ -8,7 +9,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\search\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Selecione um cliente';
+$this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -22,43 +23,54 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
+                        //'filterModel' => $searchModel,
                         'columns' => [
 
 
                             'nomeproprio',
                             'apelido',
-                            'telemovel',
                             [
-
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => [],
+                                'header'=>'Ver Cliente',
+                                'template' => '{view}',
+                            ],
+                            [
                                 'format' => 'raw',
-                                'label' => 'Selecionar',
+                                'label' => 'Criar plano',
+
                                 'value' => function($model) {
 
-                                    return Html::a(
-
-                                        '<i class="fa fa-check"></i>',
-
-                                        Url::to(['create', 'idCliente' => $model->user_id]),
-
+                                    return Html::a('<i class="fa fa-check"></i>',
+                                        Url::to(['plano/create', 'idCliente' => $model->user_id]),
                                         [
-
                                             'id'=>'grid-custom-button',
-
                                             'data-pjax'=>true,
-
-                                            'action'=>Url::to(['create', 'idCliente' => $model->user_id]),
-
                                             'class'=>'button btn btn-default',
-
                                         ]
+                                    );
 
+                                }
+                            ],
+                            [
+                                'format' => 'raw',
+                                'label' => 'Ver planos',
+
+                                'value' => function($model) {
+
+                                    return Html::a('<i class="fa fa-check"></i>',
+                                        Url::to(['planos', 'id' => $model->user_id]),
+                                        [
+                                            'id'=>'grid-custom-button',
+                                            'data-pjax'=>true,
+                                            'class'=>'button btn btn-default',
+                                        ]
                                     );
 
                                 }
 
-                            ],
 
+                            ],
 
                             //'apelido',
                             //'codpostal',

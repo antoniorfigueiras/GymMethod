@@ -9,7 +9,8 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="row mt-2">
-    <div class="col-md-12">
+    <div class="col-md-3">
+    <h2>Pesquisar cliente</h2>
 
     <?php $form = ActiveForm::begin([
         'action' => ['select'], // index -> selectClient
