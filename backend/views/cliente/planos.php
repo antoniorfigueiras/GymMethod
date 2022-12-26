@@ -43,7 +43,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $model->instrutor->nomeproprio;
                                 }
                             ],
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => [],
+                                'template' => '{view} {update}',
+                                'controller' => 'plano'
+                            ],
+
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [

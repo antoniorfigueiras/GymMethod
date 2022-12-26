@@ -2,8 +2,12 @@
 
 namespace backend\modules\api\controllers;
 
+use common\models\Exercicio;
+use common\models\ExercicioPlano;
 use common\models\PlanoTreino;
 use common\models\User;
+use Psy\Util\Json;
+use Symfony\Component\Mime\Encoder\Base64Encoder;
 use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
@@ -39,12 +43,48 @@ class ExercicioplanoController extends ActiveController
         }*/
     }
 
-    public function actionGet_exercicio_by_plano($id)
+    // GET dos exercicios do plano
+    public function actionExercicios_plano($idPlano)
     {
         $model = new $this->modelClass;
-        $exercicios = $model::find()->where(['plano_id'=>$id])->all();
+        $exercicios = $model::find()
+            ->select(['plano_id', 'nome', 'descricao', 'dificuldade', 'exemplo', 'series', 'repeticoes', 'peso', 'tempo'])//
+            ->where(['plano_id'=>$idPlano])
+            ->joinWith('exercicio', [])
+            ->joinWith('parameterizacao', [])
+            ->asArray()
+            ->all();
 
         return $exercicios;
     }
+
+    //GET parameterizacao cliente
+    public function actionParameterizacao_cliente($idPlano)
+    {
+        $model = new $this->modelClass;
+        $exercicios = $model::find()
+            ->select(['plano_id','seriesCliente', 'repeticoesCliente', 'pesoCliente', 'tempoCliente'])
+            ->where(['plano_id'=>$idPlano])
+            ->JoinWith('parameterizacao', [])
+            ->asArray()
+            ->all();
+
+        return $exercicios;
+    }
+
+    //GET parameterizacao cliente
+    public function actionAtualizar_parameterizacao_cliente($idPlano)
+    {
+        $model = new $this->modelClass;
+        $exercicios = $model::find()
+            ->select(['plano_id','seriesCliente', 'repeticoesCliente', 'pesoCliente', 'tempoCliente'])
+            ->where(['plano_id'=>$idPlano])
+            ->JoinWith('parameterizacao', [])
+            ->asArray()
+            ->all();
+
+        return $exercicios;
+    }
+
 
 }

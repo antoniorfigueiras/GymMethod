@@ -66,11 +66,12 @@ return [
                     'controller' => 'api/plano',
                     'pluralize' => false,
 
+                    // GET planos do cliente
                     'extraPatterns' =>[
-                        'GET plano/{id}' => 'plano',
+                        'GET planos/{idClient}' => 'planos',
                     ],
                     'tokens' => [
-                        '{id}' => '<id:\\d+>',
+                        '{idClient}' => '<idClient:\\d+>',
                         '{plano}' => '<plano:\\d+>',
                     ],
                 ],
@@ -80,10 +81,13 @@ return [
                     'pluralize' => false,
 
                     'extraPatterns' =>[
-                        'GET get_exercicio_by_plano/{id}' => 'get_exercicio_by_plano',
+                        'GET exercicios_plano/{idPlano}' => 'exercicios_plano',
+                        'GET parameterizacao_cliente/{idPlano}' => 'parameterizacao_cliente',
+                        'PUT atualizar_parameterizacao_cliente/{idExercicio}' => 'atualizar_parameterizacao_cliente',
                     ],
                     'tokens' => [
-                        '{id}' => '<id:\\d+>',
+                        '{idPlano}' => '<idPlano:\\d+>',
+                        '{idExercicio}' => '<idExercicio:\\d+>',
                         '{plano}' => '<plano:\\d+>',
                     ],
                 ],

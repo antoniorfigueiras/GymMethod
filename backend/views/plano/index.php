@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Plano de Treino', ['cliente/select'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Plano de Treino', ['select_client'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'instrutor_id',
+                                'visible' => Yii::$app->user->can('admin'),
                                 'label' => 'Instrutor',
                                 'content' => function ($model) {
                                     return $model->instrutor->nomeproprio;

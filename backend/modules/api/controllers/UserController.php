@@ -6,7 +6,7 @@ use common\models\User;
 use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 
-class PerfilController extends ActiveController
+class UserController extends ActiveController
 {
     public $modelClass = 'common\models\Perfil'; // Para ir buscar o modelo a ser usado no controlador
 

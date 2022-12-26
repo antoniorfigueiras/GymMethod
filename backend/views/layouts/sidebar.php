@@ -2,8 +2,6 @@
 
 use common\models\User;
 use hail812\adminlte\widgets\Menu;
-
-$user = new User();
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -26,9 +24,6 @@ $user = new User();
 
 
 
-
-
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
@@ -47,25 +42,25 @@ $user = new User();
 
                             ],
                     ],*/
-                    ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("funcionario")],
+                    ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("consultarProdutos")],
 
                     /** Planos de treino **/
-                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente/select'],'visible' => Yii::$app->user->can("treinador")],
-                    ['label' => 'Planos de Treino', 'icon' => 'calendar', 'url' => ['/plano'],'visible' => Yii::$app->user->can("treinador")],
-                    ['label' => 'Exercicios', 'icon' => 'walking', 'url' => ['/exercicio'],'visible' => Yii::$app->user->can("treinador")],
-                    ['label' => 'Tipo de Exercicios', 'icon' => 'dumbbell', 'url' => ['/tipoexercicio'],'visible' => Yii::$app->user->can("treinador")],
+                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente/clientes'],'visible' => Yii::$app->user->can("treinador")&&!Yii::$app->user->can("admin")],
+                    ['label' => 'Planos de Treino', 'icon' => 'calendar', 'url' => ['/plano'],'visible' => Yii::$app->user->can("consultarPlano")],
+                    ['label' => 'Exercicios', 'icon' => 'walking', 'url' => ['/exercicio'],'visible' => Yii::$app->user->can("consultarPlano")],
+                    ['label' => 'Tipo de Exercicios', 'url' => ['/tipoexercicio'],'visible' => Yii::$app->user->can("consultarPlano")],
 
                     /** Ginasio **/
-                    ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],/*'visible' => Yii::$app->user->can("funcionario")*/],
+                    ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamentos")],
 
                     /** Utilizadores **/
-                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],'visible' => Yii::$app->user->can("funcionario")],
-                    ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],'visible' => Yii::$app->user->can("funcionario")],
-                    ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],'visible' => Yii::$app->user->can("funcionario")],
-                    ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],'visible' => Yii::$app->user->can("funcionario")],
+                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],'visible' => Yii::$app->user->can("consultarCliente")],
+                    ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
+                    ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
+                    ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],'visible' => Yii::$app->user->can("consultarNutricionista")],
 
                     /** Consultas **/
-                    ['label' => 'Consultas', 'icon' => 'walking', 'url' => ['/consulta'],'visible' => Yii::$app->user->can("criarConsulta")],
+                    ['label' => 'Consultas', 'url' => ['/consulta'],'visible' => Yii::$app->user->can("consultarConsulta")],
 
 
 

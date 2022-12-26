@@ -94,23 +94,30 @@ class ExercicioController extends Controller
 
 
         if($model->load(Yii::$app->request->post())) {
-            // Get file info
             $file = UploadedFile::getInstance($model, 'exemplo');
+
+            if (isset($file)){
+            // File info
             $fileName = $file->name;
             $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
 
-            // Allow certain file formats
             $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
             if (in_array($fileType, $allowTypes)) {
                 $image = $file->tempName;
-                $imgContent = file_get_contents($image);
-
-                // Insert image content into database
+                $imgContent = base64_encode(file_get_contents($image));
+                /*var_dump($imgContent);
+                die();*/
                 $model->exemplo = $imgContent;
                 $model->save();
 
                 return $this->redirect(['view', 'id' => $model->id]);
 
+            }
+        }else
+            {
+                $model->exemplo = '';
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         }
 

@@ -1,5 +1,8 @@
 <?php
 
+
+use kartik\select2\Select2;
+use kartik\time\TimePicker;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
@@ -13,7 +16,13 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'exercicio_id')->dropDownList($listaExercicios, ['prompt' => '-Escolha um exercicio-']) ?>
+    <?php /*$form->field($model, 'exercicio_id')->widget(Select2::classname(), [
+        'data' => $listaExercicios,
+        'options' => ['placeholder' => 'Escolha um tipo de exercicio'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); */?>
 
     <?= $form->field($modelParameterizacao, 'series')->textInput() ?>
 
@@ -26,9 +35,9 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($modelParameterizacao, 'tempo')->textInput() ?>
 
-    <?php /*= $form->field($model, 'exercicio_id')->textInput() */?>
 
 
+      <?php // $form->field($modelParameterizacao, 'tempo')->widget(TimePicker::classname(), []);?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

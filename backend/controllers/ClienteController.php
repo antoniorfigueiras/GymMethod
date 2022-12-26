@@ -37,7 +37,7 @@ class ClienteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'select', 'planos'],
+                        'actions' => ['index', 'view', 'clientes', 'planos'],
                         'roles' => ['treinador'],
                     ],
                     [
@@ -56,13 +56,13 @@ class ClienteController extends Controller
         ];
     }
 
-    public function actionSelect()
+    public function actionClientes()
     {
         $value = 1;
         $searchModel = new ClienteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
 
-        return $this->render('select', [
+        return $this->render('clientes', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

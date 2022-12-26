@@ -22,7 +22,13 @@
         "rmrevin/yii2-fontawesome": "2.10.*",
         "loveorigami/yii2-icofont": "*",
         "2amigos/yii2-ckeditor-widget": "2.1.0",
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "kartik-v/yii2-widget-typeahead": "*",
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "kartik-v/yii2-widget-timepicker": "dev-master",
+        "kartik-v/yii2-icons": "@dev",
+        "ext-json": "*",
+        "ext-gd": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

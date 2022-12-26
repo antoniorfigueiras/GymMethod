@@ -39,19 +39,16 @@ class PlanoController extends ActiveController
         }*/
     }
 
-    public function actionPlano($id)
+    // GET dos planos do cliente
+    public function actionPlanos($idClient)
     {
        $model = new $this->modelClass;
-       /*$plano=$model::find()
-        //->select('plano_treino.id, nome, perfil.nomeproprio')
-        ->where(['cliente_id'=>$id])
-        ->one();*/
+
        $planos = $model::find()
-           ->select(['*'])
-           ->where(['cliente_id'=>$id])
-           ->joinWith('instrutor')
+           ->select(['id', 'nome Plano', 'nomeproprio treinador'])
+           ->where(['cliente_id'=>$idClient])
+           ->joinWith('instrutor', [])
            ->asArray()
-           //->andWhere(['perfil.user_id' => $plano->instrutor_id])
            ->all();
 
        return $planos;

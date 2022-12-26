@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
     <h2>Pesquisar cliente</h2>
 
     <?php $form = ActiveForm::begin([
-        'action' => ['clientes'], // index -> selectClient
+        'action' => ['select_client'], // index -> selectClient
         'method' => 'get',
     ]); ?>
 
@@ -21,9 +21,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'apelido') ?>
 
-    <?= $form->field($model, 'nif') ?>
-
     <?php // echo $form->field($model, 'codpostal') ?>
+
+    <?php // echo $form->field($model, 'pais') ?>
 
     <?php // echo $form->field($model, 'cidade') ?>
 

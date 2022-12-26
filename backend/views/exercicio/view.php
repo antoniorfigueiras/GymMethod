@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Exercicio */
 
-$this->title = $model->id;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Exercicios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attributes' => [
                             [
                                 'attribute'=>'exemplo',
-                                'value'=> 'data:image/jpg;charset=utf8;base64,'.base64_encode($model->exemplo),
+                                'value'=> 'data:image/jpg;charset=utf8;base64,'. $model->exemplo,
                                 'format' => ['image',['width'=>'100','height'=>'100']],
                             ],
 
@@ -40,8 +40,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             'descricao',
                             'dificuldade',
                             [
-                                'attribute'=>'equipamento_id',
-                                'value'=> $model->equipamento->nome,
+                                'attribute' => 'equipamento_id',
+                                'label' => 'Equipamento',
+                                'value' => function ($model) {
+                                    if (isset($model->equipamento->nome))
+                                    {
+                                        return $model->equipamento->nome;
+                                    }
+                                    return 'Sem equipamento';
+
+                                }
                             ],
                             [
                                 'attribute'=>'tipo_exercicio_id',

@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nomeproprio',
                             'apelido',
                             'telemovel',
+                            'nif',
                             'peso',
                             'altura',
                             'pais',

@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\search\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Clientes';
+$this->title = 'Selecione um cliente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
 
 
-                    <?php echo $this->render('../cliente/_search', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('_searchClient', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
@@ -29,12 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             'nomeproprio',
                             'apelido',
-                            [
-                                'class' => 'yii\grid\ActionColumn',
-                                'contentOptions' => [],
-                                'header'=>'Ver Cliente',
-                                'template' => '{view}',
-                            ],
                             [
                                 'format' => 'raw',
                                 'label' => 'Criar plano',
@@ -51,25 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     );
 
                                 }
-                            ],
-                            [
-                                'format' => 'raw',
-                                'label' => 'Ver planos',
-
-                                'value' => function($model) {
-
-                                    return Html::a('<i class="fa fa-check"></i>',
-                                        Url::to(['planos', 'id' => $model->user_id]),
-                                        [
-                                            'id'=>'grid-custom-button',
-                                            'data-pjax'=>true,
-                                            'class'=>'button btn btn-default',
-                                        ]
-                                    );
-
-                                }
-
-
                             ],
 
                             //'apelido',

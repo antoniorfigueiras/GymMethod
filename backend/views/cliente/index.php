@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nomeproprio',
                             'apelido',
                             'telemovel',
+                            'nif',
                             [
                                 'attribute' => 'user_id',
                                 'label' => 'Estado',
