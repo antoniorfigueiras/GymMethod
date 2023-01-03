@@ -106,20 +106,6 @@ class ClienteController extends \frontend\base\Controller
     }
 
     /**
-     * Deletes an existing Perfil model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $user_id User ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($user_id)
-    {
-        $this->findModel($user_id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
      * Finds the Perfil model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $user_id User ID

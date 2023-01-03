@@ -35,7 +35,7 @@ $this->title = 'GymMethod';
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <?php
-                echo Html::tag('li',Html::a('Settings',['view','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
+                echo Html::tag('li',Html::a('Perfil',['view','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
                 ?>
                 <li><a class="dropdown-item" href="../site/logout">Logout</a></li>
             </ul>
@@ -72,7 +72,7 @@ $this->title = 'GymMethod';
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; GYMMETHOD 2022</div>
+                    <div class="text-muted">Copyright &copy; GymMethod 2022</div>
                 </div>
             </div>
         </footer>

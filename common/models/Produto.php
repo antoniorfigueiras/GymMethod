@@ -83,6 +83,25 @@ class Produto extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[ItemCarrinho]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\ItemCarrinhoQuery
+     */
+    public function getItensCarrinho()
+    {
+        return $this->hasMany(ItemCarrinho::className(), ['id_produto' => 'id']);
+    }
+
+    /**
+     * Gets query for [[ItemVenda]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\ItemVendaQuery
+     */
+    public function getItensVenda()
+    {
+        return $this->hasMany(ItemVenda::className(), ['id_produto' => 'id']);
+    }
+    /**
      * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery

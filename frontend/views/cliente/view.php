@@ -35,7 +35,7 @@ $this->title = 'GymMethod';
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <?php
-                echo Html::tag('li',Html::a('Settings',['update','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
+                echo Html::tag('li',Html::a('Perfil',['view','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
                 ?>
                 <li><a class="dropdown-item" href="../site/logout">Logout</a></li>
             </ul>
@@ -61,20 +61,21 @@ $this->title = 'GymMethod';
                         <div class="row">
                             <div class="col-md-12">
                                 <p>
-                                    <?= Html::a('Update', ['update', 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
+                                    <?= Html::a('Atualizar', ['update', 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
                                 </p>
                                 <?= DetailView::widget([
                                     'model' => $model,
                                     'attributes' => [
-                                        'telemovel',
-                                        'peso',
-                                        'altura',
                                         'nomeproprio',
                                         'apelido',
+                                        'telemovel',
+                                        'nif',
+                                        'peso',
+                                        'altura',
+                                        'morada',
+                                        'cidade',
                                         'codpostal',
                                         'pais',
-                                        'cidade',
-                                        'morada',
                                     ],
                                 ]) ?>
                             </div>
@@ -88,7 +89,7 @@ $this->title = 'GymMethod';
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                    <div class="text-muted">Copyright &copy; GymMethod 2023</div>
                     <div>
                         <a href="#">Privacy Policy</a>
                         &middot;

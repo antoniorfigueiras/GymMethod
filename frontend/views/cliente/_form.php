@@ -18,6 +18,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'telemovel')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'nif')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'altura')->textInput(['maxlength' => true]) ?>
@@ -26,10 +28,13 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cidade')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'cidade')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
     <br>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

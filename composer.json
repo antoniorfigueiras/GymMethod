@@ -22,7 +22,9 @@
         "rmrevin/yii2-fontawesome": "2.10.*",
         "loveorigami/yii2-icofont": "*",
         "2amigos/yii2-ckeditor-widget": "2.1.0",
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "yiisoft/yii2-swiftmailer": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

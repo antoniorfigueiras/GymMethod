@@ -47,7 +47,7 @@ $this->title = 'GymMethod';
                                         <?php
                                         if (!Yii::$app->user->isGuest)
                                         {
-                                            echo Html::tag('li',Html::a('AREA CLIENTE',['cliente/index']));
+                                            echo Html::tag('li',Html::a('AREA CLIENTE',['/cliente/view','user_id'=>Yii::$app->user->id]));
                                         }
                                         ?>
                                     </ul>
