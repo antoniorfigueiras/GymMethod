@@ -3,11 +3,11 @@
 namespace common\models\query;
 
 /**
- * This is the ActiveQuery class for [[\common\models\PedidoMorada]].
+ * This is the ActiveQuery class for [[\common\models\Pedido]].
  *
- * @see \common\models\PedidoMorada
+ * @see \common\models\Venda
  */
-class PedidoMoradaQuery extends \yii\db\ActiveQuery
+class VendaQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class PedidoMoradaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\PedidoMorada[]|array
+     * @return \common\models\Venda[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class PedidoMoradaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\PedidoMorada|array|null
+     * @return \common\models\Venda|array|null
      */
     public function one($db = null)
     {

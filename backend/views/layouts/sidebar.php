@@ -9,11 +9,8 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="<?=$assetDir?>/img/user1-128x128.jpg" class="fa-solid fa-user img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block"><?= Yii::$app->user->identity->username; ?></a>
+                <a class="d-block">Bem Vindo: <?= Yii::$app->user->identity->username; ?></a>
             </div>
         </div>
 
@@ -33,15 +30,6 @@
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],],
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],],
                     ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],],
-
-                    ['label' => 'Yii2 PROVIDED', 'header' => true],
-                    //['label' => 'Logout', 'url' => ['site/logout'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->can("loginBO")],
-
-
-
-                    /* YII & DEBUG*/
-                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
-                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
                 ],
             ]);
             ?>

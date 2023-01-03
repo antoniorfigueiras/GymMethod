@@ -56,7 +56,7 @@ $this->title = 'GymMethod';
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($items as $item): ?>
+                <?php foreach ($items as $item):?>
                     <tr data-id="<?php echo $item['id'] ?>" data-url="<?php echo \yii\helpers\Url::to(['/carrinho/mudar-quantidade']) ?>">
                         <td><?php echo $item['nome'] ?></td>
                         <td>
@@ -82,7 +82,7 @@ $this->title = 'GymMethod';
             </table>
 
             <div class="card-body text-right">
-                <a href="<?php echo \yii\helpers\Url::to(['/cart/checkout']) ?>" class="btn btn-primary">Checkout</a>
+                <a href="<?php echo \yii\helpers\Url::to(['/carrinho/checkout']) ?>" class="btn btn-primary">Checkout</a>
             </div>
         <?php else: ?>
 

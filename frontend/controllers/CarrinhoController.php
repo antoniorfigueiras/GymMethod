@@ -3,15 +3,24 @@
 namespace frontend\controllers;
 
 use common\models\ItemCarrinho;
+use common\models\Perfil;
+use common\models\Venda;
+use common\models\VendaMorada;
 use common\models\Produto;
+use PayPalCheckoutSdk\Core\PayPalHttpClient;
+use PayPalCheckoutSdk\Core\SandboxEnvironment;
+use PayPalCheckoutSdk\Orders\OrdersGetRequest;
+use PayPalCheckoutSdk\Payments\AuthorizationsGetRequest;
+use Sample\PayPalClient;
 use yii\filters\ContentNegotiator;
+use yii\rbac\Item;
 use yii\web\Controller;
 use Yii;
-use yii\web\NotFoundHttpException;
-use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class CarrinhoController extends \frontend\base\Controller
 {
@@ -20,7 +29,7 @@ class CarrinhoController extends \frontend\base\Controller
         return [
             [
                 'class' => ContentNegotiator::class,
-                'only' => ['add'],
+                'only' => ['add', 'create-venda','submeter-pagamento'],
                 'formats' => [
                     'application/json' => Response::FORMAT_JSON,
                 ],
@@ -28,7 +37,8 @@ class CarrinhoController extends \frontend\base\Controller
             [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'delete' => ['POST', 'DELETE']
+                    'delete' => ['POST', 'DELETE'],
+                    'create-venda' => ['POST'],
                 ]
             ]
         ];
@@ -36,22 +46,7 @@ class CarrinhoController extends \frontend\base\Controller
 
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest) {
-            $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
-        } else {
-            $itensCarrinho = ItemCarrinho::findBySql("SELECT
-                               c.id_produto as id,
-                               p.imagem,
-                               p.nome,
-                               p.preco,
-                               c.quantidade,
-                               p.preco * c.quantidade as preco_total
-                        FROM itens_carrinho c
-                                 LEFT JOIN produtos p on p.id = c.id_produto
-                         WHERE c.created_by = :userId", ['userId' => Yii::$app->user->id])
-                ->asArray()
-                ->all();
-        }
+        $itensCarrinho = ItemCarrinho::getItemsForUser(currUserId());
 
         return $this->render('index', [
             'items' => $itensCarrinho
@@ -70,8 +65,7 @@ class CarrinhoController extends \frontend\base\Controller
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             $found = false;
             foreach ($itensCarrinho as &$item) {
-                if ($item['id'] == $id)
-                {
+                if ($item['id'] == $id) {
                     $item['quantidade']++;
                     $found = true;
                     break;
@@ -80,11 +74,11 @@ class CarrinhoController extends \frontend\base\Controller
             if (!$found) {
                 $itemCarrinho = [
                     'id' => $id,
-                    'nome' => $produto,
-                    'imagem' =>$produto->imagem,
+                    'nome' => $produto->nome,
+                    'imagem' => $produto->imagem,
                     'preco' => $produto->preco,
                     'quantidade' => 1,
-                    'total_price' => $produto->preco
+                    'preco_total' => $produto->preco
                 ];
                 $itensCarrinho[] = $itemCarrinho;
             }
@@ -160,4 +154,91 @@ class CarrinhoController extends \frontend\base\Controller
         }
         return ItemCarrinho::getTotalQuantityForUser(currUserId());
     }
+
+
+    public function actionCheckout()
+    {
+        $itensCarrinho = ItemCarrinho::getItemsForUser(currUserId());
+        $produtoQuantidade= ItemCarrinho::getTotalQuantityForUser(currUserId());
+        $precoTotal = ItemCarrinho::getTotalPriceForUser(currUserId());
+
+        if (empty($itensCarrinho)) {
+            return $this->redirect('/site/loja');
+        }
+        $venda = new Venda();
+
+        $venda->preco_total = $precoTotal;
+        $venda->estado = Venda::STATUS_DRAFT;
+        $venda->created_at = time();
+        $venda->created_by = currUserId();
+        $transacao = Yii::$app->db->beginTransaction();
+        if ($venda->load(Yii::$app->request->post())
+            && $venda->save()
+            && $venda->saveMorada(Yii::$app->request->post())
+            && $venda->saveItensVenda()) {
+            $transacao->commit();
+
+            //ItemCarrinho::clearItensCarrinho(currUserId());
+
+            return $this->render('pay-now', [
+                'venda' => $venda,
+            ]);
+        }
+
+        $vendaMorada = new VendaMorada();
+        if (!isGuest()) {
+            $perfil = Perfil::findOne(Yii::$app->user->getId());
+            $user = Yii::$app->user->identity;
+
+            $venda->nomeproprio = $perfil->nomeproprio;
+            $venda->apelido = $perfil->apelido;
+            $venda->email = $user->email;
+            $venda->estado = Venda::STATUS_DRAFT;
+
+            $vendaMorada->morada = $perfil->morada;
+            $vendaMorada->cidade = $perfil->cidade;
+            $vendaMorada->pais = $perfil->pais;
+            $vendaMorada->codpostal = $perfil->codpostal;
+        }
+
+        return $this->render('checkout', [
+            'venda' => $venda,
+            'vendaMorada' => $vendaMorada,
+            'itensCarrinho' => $itensCarrinho,
+            'produtoQuantidade' => $produtoQuantidade,
+            'precoTotal' => $precoTotal
+        ]);
+    }
+
+    public function actionSubmeterPagamento($vendaId)
+    {
+        $where = ['id' => $vendaId, 'estado' => Venda::STATUS_DRAFT];
+        if (!isGuest())
+        {
+            $where['created_by'] = currUserId();
+        }
+        $venda = Venda::findOne($where);
+        if (!$venda)
+        {
+            throw new NotFoundHttpException();
+        }
+
+        /*$req = Yii::$app->request;
+        $paypalVendaId = $req->post('vendaId');
+        $exists = Venda::find()->andWhere(['paypal_order_id' => $paypalVendaId])->exists();
+        if ($exists)
+        {
+            throw new BadRequestHttpException();
+        }
+
+
+        $environment = new SandboxEnvironment(Yii::$app->params['paypalClientId'], Yii::$app->params['paypalSecret']);
+        $cliente = new PayPalHttpClient($environment);
+
+        $response = $cliente->execute(new OrdersGetRequest($paypalVendaId));*/
+
+        }
+
+
+
 }
