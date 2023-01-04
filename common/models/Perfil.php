@@ -11,6 +11,7 @@ use Yii;
  * @property int $telemovel
  * @property int $nif
  * @property float|null $peso
+ * @property int|null $nif
  * @property int|null $altura
  * @property string $nomeproprio
  * @property string $apelido
@@ -67,6 +68,7 @@ class Perfil extends \yii\db\ActiveRecord
             'pais' => 'Pais',
             'cidade' => 'Cidade',
             'morada' => 'Morada',
+            'nif' => 'NIF'
         ];
     }
 
@@ -79,6 +81,7 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+
 
     /*public function getFuncionarioByRole($role)
     {

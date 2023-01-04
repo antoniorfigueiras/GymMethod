@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Perfil;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Symfony\Component\VarDumper\Cloner\Data;
@@ -19,11 +20,13 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Produto;
+use yii\helpers\Url;
+use common\models\User;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends \frontend\base\Controller
 {
     /**
      * {@inheritdoc}
@@ -103,9 +106,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(['/cliente/view', 'user_id' =>Yii::$app->user->id]);
         }
-
         $model->password = '';
 
         return $this->render('login', [
@@ -125,37 +127,12 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
+    public function getId()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
-
-            return $this->refresh();
-        }
-
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("SELECT id FROM user ORDER BY id DESC LIMIT 1");
+        $userID = $command->queryAll();
+        return User::findOne($userID);
     }
 
     /**
@@ -166,21 +143,23 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+        $modelPerfil = new Perfil();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
+            $user=$this->getId();
+            $modelPerfil->user_id=$user->getId();
+            if($modelPerfil->load(Yii::$app->request->post()) && $modelPerfil->save())
+            {
+                return $this->goHome();
+            }
         }
 
         return $this->render('signup', [
             'model' => $model,
+            'modelPerfil' => $modelPerfil,
         ]);
     }
 
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
@@ -189,9 +168,9 @@ class SiteController extends Controller
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
                 return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
-
-            Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
         }
 
         return $this->render('requestPasswordResetToken', [
@@ -239,9 +218,11 @@ class SiteController extends Controller
         } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
-        if (($user = $model->verifyEmail()) && Yii::$app->user->login($user)) {
-            Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
-            return $this->goHome();
+        if ($user = $model->verifyEmail()) {
+            if (Yii::$app->user->login($user)) {
+                Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
+                return $this->goHome();
+            }
         }
 
         Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');

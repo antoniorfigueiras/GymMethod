@@ -14,11 +14,8 @@ use hail812\adminlte\widgets\Menu;
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="<?=$assetDir?>/img/user1-128x128.jpg" class="fa-solid fa-user img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block"><?= Yii::$app->user->identity->username;?></a>
+                <a class="d-block">Bem Vindo: <?= Yii::$app->user->identity->username; ?></a>
             </div>
         </div>
 
@@ -43,6 +40,13 @@ use hail812\adminlte\widgets\Menu;
                             ],
                     ],*/
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("consultarProdutos")],
+                    
+                    ['label' => 'Aulas', 'icon' => 'store', 'items' => [
+                        ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
+                        ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
+                        ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
+                        ['label' => 'Inscrições', 'icon' => 'store', 'url' => ['/inscricoes'],],
+                    ] ],
 
                     /** Planos de treino **/
                     ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente/clientes'],'visible' => Yii::$app->user->can("treinador")&&!Yii::$app->user->can("admin")],
@@ -61,14 +65,6 @@ use hail812\adminlte\widgets\Menu;
 
                     /** Consultas **/
                     ['label' => 'Consultas', 'url' => ['/consulta'],'visible' => Yii::$app->user->can("consultarConsulta")],
-
-
-
-                    ['label' => 'Yii2 PROVIDED', 'header' => true],
-
-                    /* YII & DEBUG*/
-                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
-                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
                 ],
 
             ]);

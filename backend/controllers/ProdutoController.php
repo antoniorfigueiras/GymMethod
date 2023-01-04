@@ -106,6 +106,7 @@ class ProdutoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

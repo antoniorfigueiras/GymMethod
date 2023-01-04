@@ -25,11 +25,15 @@
         "ext-mysqli": "*",
         "kartik-v/yii2-widget-typeahead": "*",
         "kartik-v/yii2-widget-select2": "dev-master",
-        "kartik-v/yii2-widget-timepicker": "dev-master",
         "kartik-v/yii2-icons": "@dev",
         "ext-json": "*",
         "ext-gd": "*",
-        "kartik-v/yii2-widget-datepicker": "dev-master"
+        "philippfrenzel/yii2fullcalendar": "3.6.7",
+        "kartik-v/yii2-widget-timepicker": "*",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "yiisoft/yii2-swiftmailer": "^2.1",
+        "kartik-v/yii2-krajee-base": "@dev",
+        "kartik-v/yii2-widget-datetimepicker": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
