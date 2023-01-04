@@ -23,6 +23,8 @@
         "loveorigami/yii2-icofont": "*",
         "2amigos/yii2-ckeditor-widget": "2.1.0",
         "ext-mysqli": "*",
+        "philippfrenzel/yii2fullcalendar": "3.6.7",
+        "kartik-v/yii2-widget-timepicker": "*"
         "paypal/paypal-checkout-sdk": "^1.0",
         "yiisoft/yii2-swiftmailer": "^2.1",
         "kartik-v/yii2-krajee-base": "@dev",

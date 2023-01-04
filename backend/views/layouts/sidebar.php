@@ -22,6 +22,12 @@
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],],
+                    ['label' => 'Aulas', 'icon' => 'store', 'items' => [
+                        ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
+                        ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
+                        ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
+                        ['label' => 'Inscrições', 'icon' => 'store', 'url' => ['/inscricoes'],],
+                    ] ],
                     ['label' => 'Exercicios', 'icon' => 'walking', 'url' => ['/exercicio'],],
                     ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],],
                     ['label' => 'Tipo de Exercicios', 'icon' => 'dumbbell', 'url' => ['/tipoexercicio'],],
