@@ -28,25 +28,7 @@ use hail812\adminlte\widgets\Menu;
             $user = User::findOne(Yii::$app->user->getId());
             echo Menu::widget([
                 'items' => [
-                    /** Loja **/
-                   // ['label' => 'Loja', 'header' => true],
-                    /*[
-                        'label' => 'Loja',
-                        'icon' => 'store',
-                        'visible' => Yii::$app->user->can("funcionario"),
-                        'items' => [
-                            ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("funcionario")],
 
-                            ],
-                    ],*/
-                    ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("consultarProdutos")],
-                    
-                    ['label' => 'Aulas', 'icon' => 'store', 'items' => [
-                        ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
-                        ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
-                        ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
-                        ['label' => 'Inscrições', 'icon' => 'store', 'url' => ['/inscricoes'],],
-                    ] ],
 
                     /** Planos de treino **/
                     ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente/clientes'],'visible' => Yii::$app->user->can("treinador")&&!Yii::$app->user->can("admin")],
@@ -58,13 +40,69 @@ use hail812\adminlte\widgets\Menu;
                     ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamentos")],
 
                     /** Utilizadores **/
-                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],'visible' => Yii::$app->user->can("consultarCliente")&& $user->getRole() != 'treinador'],
-                    ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
-                    ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
-                    ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],'visible' => Yii::$app->user->can("consultarNutricionista")],
+
+                    /** Clientes **/
+                    [
+                        'label' => 'Clientes',
+                        'icon' => 'user',
+                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'items' => [
+                            ['label' => 'Consultar Clientes', 'icon' => 'eye', 'url' => ['/cliente']],
+                            ['label' => 'Criar Clientes', 'icon' => 'plus', 'url' => ['../user/create?userType=cliente']],
+                        ],
+                    ],
+                    /** Funcionarios **/
+                    [
+                        'label' => 'Funcionarios',
+                        'icon' => 'user',
+                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        /*TO-DO METERES OS VISIBLES RBACS*/
+                        'items' => [
+                            ['label' => 'Consultar Funcionarios', 'icon' => 'eye', 'url' => ['/funcionario']],
+                            ['label' => 'Criar Funcionarios', 'icon' => 'plus', 'url' => ['../user/create?userType=funcionario']],
+                        ],
+                    ],
+                    /** Treinadores **/
+                    [
+                        'label' => 'Treinadores',
+                        'icon' => 'user',
+                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'items' => [
+                            ['label' => 'Consultar Treinadores', 'icon' => 'eye', 'url' => ['/treinador']],
+                            ['label' => 'Criar Treinadores', 'icon' => 'plus', 'url' => ['../user/create?userType=treinador']],
+                        ],
+                    ],
+                    /** Nutricionistas **/
+                    [
+                        'label' => 'Nutricionistas',
+                        'icon' => 'user',
+                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'items' => [
+                            ['label' => 'Consultar Nutricionista', 'icon' => 'eye', 'url' => ['/nutricionista']],
+                            ['label' => 'Criar Nutricionistas', 'icon' => 'plus', 'url' => ['../user/create?userType=nutricionista']],
+                        ],
+                    ],
 
                     /** Consultas **/
                     ['label' => 'Consultas', 'url' => ['/consulta'],'visible' => Yii::$app->user->can("consultarConsulta")],
+
+                    /** Consultas **/
+                    ['label' => 'Aulas', 'icon' => 'dumbbell', 'items' => [
+                        ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
+                        ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
+                        ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
+                    ] ],
+
+                    /** Loja **/
+                    [
+                        'label' => 'Loja',
+                        'icon' => 'store',
+                        'visible' => Yii::$app->user->can("consultarProdutos"),
+                        'items' => [
+                            ['label' => 'Consultar Produtos', 'icon' => 'eye', 'url' => ['/produto']],
+                            ['label' => 'Criar Produtos', 'icon' => 'plus', 'url' => ['/produto/create']],
+                        ],
+                    ],
                 ],
 
             ]);
