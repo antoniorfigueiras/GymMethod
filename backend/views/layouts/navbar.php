@@ -27,9 +27,7 @@ use yii\helpers\Html;
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
+           <?= Html::a('<i class="fas fa-sign-out-alt"> Logout</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
         </li>
     </ul>
 </nav>

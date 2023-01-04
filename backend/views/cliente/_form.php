@@ -16,11 +16,13 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telemovel')->textInput() ?>
+    <?= $form->field($model, 'telemovel')->input('number', ['length'=>true])?>
 
-    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nif')->textInput(['type' => 'number'])?>
 
-    <?= $form->field($model, 'altura')->textInput() ?>
+    <?= $form->field($model, 'peso')->textInput(['type' => 'number'])?>
+
+    <?= $form->field($model, 'altura')->textInput(['type' => 'number'])?>
 
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 
@@ -28,7 +30,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true])->textInput(['type' => 'number'])?>
 
     <?= $form->field($modelUser, 'status')->checkbox() ?>
 

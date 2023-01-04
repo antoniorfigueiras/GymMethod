@@ -9,8 +9,9 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\search\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Selecione um cliente';
+$this->title = 'Selecione um exercicio';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -19,24 +20,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
 
 
-                    <?php echo $this->render('_searchClient', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('_searchExercicio', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
+
                         //'filterModel' => $searchModel,
                         'columns' => [
 
 
-                            'nomeproprio',
-                            'apelido',
+                            'nome',
                             [
                                 'format' => 'raw',
-                                'label' => 'Criar plano',
+                                'label' => 'Selecionar',
 
-                                'value' => function($model) {
+                                'value' => function($model) use ($modelPlano) {
 
-                                    return Html::a('<i class="fa fa-check"></i>',
-                                        Url::to(['plano/create', 'idCliente' => $model->user_id]),
+                          return Html::a('<i class="fa fa-check"></i>',
+
+                                        Url::to(['create', 'idExercicio' => $model->id, 'idPlano' => $modelPlano->id]),
                                         [
                                             'id'=>'grid-custom-button',
                                             'data-pjax'=>true,
@@ -46,12 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 }
                             ],
-
-                            //'apelido',
-                            //'codpostal',
-                            //'pais',
-                            //'cidade',
-                            //'morada',
 
 
                         ],

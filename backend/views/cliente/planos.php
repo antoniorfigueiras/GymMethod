@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\ClienteSearch */
+/* @var $searchModel backend\models\search\PlanoTreinoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Clientes';
+$this->title = 'Planos de Treino';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -17,38 +17,39 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Cliente', ['user/create', 'userType' => 'cliente'], ['class' => 'btn btn-success', ]) ?>
+                            <?= Html::a('Criar Plano de Treino', ['cliente/select'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
 
-                    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         //'filterModel' => $searchModel,
                         'columns' => [
-
-
-                            'nomeproprio',
-                            'apelido',
-                            'telemovel',
-                            'nif',
+                                'nome',
                             [
-                                'attribute' => 'user_id',
-                                'label' => 'Estado',
+                                'attribute' => 'cliente_id',
+                                'label' => 'Cliente',
                                 'content' => function ($model) {
-                                    return Html::tag('span', $model->user->status ? 'Ativo' : 'Inativo', [
-                                        'class' => $model->user->status ? 'badge badge-success' : 'badge badge-danger']);
+                                    return $model->cliente->nomeproprio;
                                 }
                             ],
-                            //'apelido',
-                            //'codpostal',
-                            //'pais',
-                            //'cidade',
-                            //'morada',
+                            [
+                                'attribute' => 'instrutor_id',
+                                'label' => 'Instrutor',
+                                'content' => function ($model) {
+                                    return $model->instrutor->nomeproprio;
+                                }
+                            ],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => [],
+                                'template' => '{view} {update}',
+                                'controller' => 'plano'
+                            ],
 
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [

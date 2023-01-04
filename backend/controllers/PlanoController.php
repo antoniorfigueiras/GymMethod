@@ -4,6 +4,9 @@ namespace backend\controllers;
 
 use backend\models\search\ClienteSearch;
 use backend\models\search\ExercicioPlanoSearch;
+use backend\models\search\ExercicioSearch;
+use common\models\Perfil;
+use common\models\User;
 use Yii;
 use common\models\PlanoTreino;
 use backend\models\search\PlanoTreinoSearch;
@@ -29,16 +32,7 @@ class PlanoController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
-                    ],
-                    [
-                        'allow' => true,
                         'roles' => ['treinador'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -57,9 +51,21 @@ class PlanoController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new PlanoTreinoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = Perfil::findOne(Yii::$app->user->getId());
+
+        if ($model->user->getRole() == 'admin')
+        {
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        }
+        else
+        {
+            // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
+            $dataProvider = new ActiveDataProvider([
+                'query' => $model->getPlanos(),
+            ]);
+        }
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -78,8 +84,15 @@ class PlanoController extends Controller
         $model = $this->findModel($id);
 
         // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
+       /* $dataProvider = new ActiveDataProvider([
+            'query' => $model->getExercicioPlanos(),
+        ]);*/
+
         $dataProvider = new ActiveDataProvider([
             'query' => $model->getExercicioPlanos(),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         return $this->render('view', [
@@ -159,8 +172,7 @@ class PlanoController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionSelect()
+    public function actionSelect_client()
     {
         $value = 1;
         $searchModel = new ClienteSearch();
@@ -171,4 +183,5 @@ class PlanoController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
 }

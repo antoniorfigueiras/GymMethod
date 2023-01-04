@@ -2,9 +2,12 @@
 
 namespace backend\controllers;
 
+use backend\models\search\PlanoTreinoSearch;
+use common\models\User;
 use Yii;
 use common\models\Perfil;
 use backend\models\search\ClienteSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,7 +37,7 @@ class ClienteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['index', 'view', 'clientes', 'planos'],
                         'roles' => ['treinador'],
                     ],
                     [
@@ -53,17 +56,53 @@ class ClienteController extends Controller
         ];
     }
 
+    public function actionClientes()
+    {
+        $value = 1;
+        $searchModel = new ClienteSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
+
+        return $this->render('clientes', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     /**
      * Lists all Perfil models.
      * @return mixed
      */
     public function actionIndex()
     {
+        /*$value = 0;
+        $user = new User();
+        $role = $user->getRole();
+        if ($role == 'treinador')
+        {
+            $value = 1;
+        }*/
         $value = 0;
         $searchModel = new ClienteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    public function actionPlanos($id)
+    {
+        $searchModel = new PlanoTreinoSearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+            $model = Perfil::findOne($id);
+
+            // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
+            $dataProvider = new ActiveDataProvider([
+                'query' => $model->getPlanosCliente(),
+            ]);
+
+
+        return $this->render('planos', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

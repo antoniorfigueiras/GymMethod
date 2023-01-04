@@ -60,9 +60,9 @@ class FuncionarioController extends Controller
         $searchModel = new FuncionarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider = new ActiveDataProvider([
+        /*$dataProvider = new ActiveDataProvider([
             'query' => $model->getFuncionarioByRole($role),
-        ]);
+        ]);*/
 
         return $this->render('index', [
             'searchModel' => $searchModel,

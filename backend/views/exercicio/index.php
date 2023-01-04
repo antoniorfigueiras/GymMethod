@@ -35,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'equipamento_id',
                                 'label' => 'Equipamento',
                                 'content' => function ($model) {
-                                    return $model->equipamento->nome;
+                                   if (isset($model->equipamento->nome))
+                                   {
+                                       return $model->equipamento->nome;
+                                   }
+                                   return 'Sem equipamento';
+
                                 }
                             ],
                             [
@@ -46,7 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],
                             'dificuldade',
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => [],
+                                'template' => '{view} {update} {delete}',
+                            ],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [

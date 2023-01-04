@@ -72,7 +72,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['auth_key' => $token, 'status' => self::STATUS_ACTIVE]);
+        //throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
     /**
@@ -209,5 +210,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function getRole()
+    {
+        $arrayAuthRoleItems = Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId());
+        $arrayKeys = array_keys($arrayAuthRoleItems);
+        $role = strtolower($arrayKeys[0]);
+        return $role;
     }
 }

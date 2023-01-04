@@ -40,7 +40,7 @@ class Exercicio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'dificuldade', 'exemplo', 'equipamento_id', 'tipo_exercicio_id'], 'required'],
+            [['nome', 'descricao', 'dificuldade', 'tipo_exercicio_id'], 'required'],
             [['exemplo'], 'string'],
             [['equipamento_id', 'tipo_exercicio_id'], 'integer'],
             [['nome'], 'string', 'max' => 50],

@@ -45,7 +45,7 @@ class NutricionistaSearch extends Perfil
     public function search($params)
     {
         $query = Perfil::find();
-       $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
+       $query->select('perfil.user_id, nomeproprio, apelido, telemovel, nif')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],

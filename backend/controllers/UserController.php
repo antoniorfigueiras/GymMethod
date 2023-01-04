@@ -2,10 +2,7 @@
 
 namespace backend\controllers;
 
-use backend\models\CreateClienteForm;
-use backend\models\CreateNutricionistaForm;
-use backend\models\CreateTreinadorForm;
-use backend\models\CreateFuncionarioForm;
+use backend\models\CreateUserForm;
 use Yii;
 use common\models\User;
 use backend\models\search\UserSearch;
@@ -60,38 +57,12 @@ class UserController extends Controller
      */
     public function actionCreate($userType)
     {
-        if ($userType == 'funcionario')
-        {
-            $model = new CreateFuncionarioForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            $model = new CreateUserForm();
+            if ($model->load(Yii::$app->request->post()) && $model->signup($userType)) {
                 $user = $this->getId();
-                return $this->redirect(['funcionario/create','idUser' => $user->getId()]);
+                return $this->redirect([$userType.'/create','idUser' => $user->getId()]);
             }
-        }
-        if ($userType == 'treinador')
-        {
-            $model = new CreateTreinadorForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $user = $this->getId();
-                return $this->redirect(['treinador/create','idUser' => $user->getId()]);
-            }
-        }
-        if ($userType == 'nutricionista')
-        {
-            $model = new CreateNutricionistaForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $user = $this->getId();
-                return $this->redirect(['nutricionista/create','idUser' => $user->getId()]);
-            }
-        }
-        if ($userType == 'cliente')
-        {
-            $model = new CreateClienteForm();
-            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-                $user = $this->getId();
-                return $this->redirect(['cliente/create','idUser' => $user->getId()]);
-            }
-        }
+
         return $this->render('create', [
             'model' => $model,
         ]);

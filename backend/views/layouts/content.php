@@ -9,6 +9,7 @@ use yii\bootstrap4\Breadcrumbs;
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
+                    <!-- TITULO -->
                     <h1 class="m-0">
                         <?php
                         if (!is_null($this->title)) {
@@ -20,6 +21,7 @@ use yii\bootstrap4\Breadcrumbs;
                     </h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
+                    <!-- Localizacao das paginas -->
                     <?php
                     echo Breadcrumbs::widget([
                         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

@@ -8,12 +8,13 @@ use Yii;
  * This is the model class for table "perfil".
  *
  * @property int $user_id
- * @property int|null $telemovel
+ * @property int $telemovel
+ * @property int $nif
  * @property float|null $peso
  * @property int|null $nif
  * @property int|null $altura
- * @property string|null $nomeproprio
- * @property string|null $apelido
+ * @property string $nomeproprio
+ * @property string $apelido
  * @property string|null $codpostal
  * @property string|null $pais
  * @property string|null $cidade
@@ -37,13 +38,13 @@ class Perfil extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
-            [['user_id', 'altura','telemovel', 'peso', 'codpostal', 'nif'], 'integer'],
-            [['telemovel'], 'string', 'max'=> 9],
-            [['peso'], 'string', 'max' => 3],
-            [['peso'], 'number', 'max' => 300],
+            [['user_id', 'telemovel', 'nomeproprio', 'apelido', 'nif'], 'required','message' => 'Campo obrigatório'],
+            [['user_id', 'telemovel', 'altura', 'nif', 'codpostal'], 'integer'],
+            [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
-            [['codpostal'], 'string', 'max' => 7],
+            [['codpostal'], 'string', 'max' => 8],
+            [['nif'], 'string', 'max' => 9],
+            [['telemovel'], 'string', 'max' => 9, 'message' => 'Campo'],
             [['morada'], 'string', 'max' => 125],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -62,6 +63,7 @@ class Perfil extends \yii\db\ActiveRecord
             'altura' => 'Altura',
             'nomeproprio' => 'Nome',
             'apelido' => 'Apelido',
+            'nif' => 'Nif',
             'codpostal' => 'Codpostal',
             'pais' => 'Pais',
             'cidade' => 'Cidade',
@@ -81,7 +83,7 @@ class Perfil extends \yii\db\ActiveRecord
     }
 
 
-    public function getFuncionarioByRole($role)
+    /*public function getFuncionarioByRole($role)
     {
         $query = Perfil::find();
         $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
@@ -92,6 +94,24 @@ class Perfil extends \yii\db\ActiveRecord
         $query->where('auth_assignment.item_name = "funcionario"');
 
         return $query;
+    }*/
+    /**
+     * Gets query for [[Plano Treinos Cliente]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlanosCliente()
+    {
+        return $this->hasMany(PlanoTreino::class, ['cliente_id' => 'user_id']);
+    }
+    /**
+     * Gets query for [[Plano Treinos Instrutor]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlanos()
+    {
+        return $this->hasMany(PlanoTreino::class, ['instrutor_id' => 'user_id']);
     }
 
 }

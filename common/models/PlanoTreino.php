@@ -82,4 +82,6 @@ class PlanoTreino extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Perfil::class, ['user_id' => 'instrutor_id']);
     }
+
+
 }

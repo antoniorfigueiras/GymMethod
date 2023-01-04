@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Perfil */
 
-$this->title = $model->user_id;
-$this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
+$this->title = $model->nomeproprio;
+$this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -18,11 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        <?= Html::a('Update', ['update', 'id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a('Delete', ['delete', 'id' => $model->user_id], [
+                        <?= Html::a('Atualizar', ['update', 'id' => $model->user_id], [
+                            'class' => 'btn btn-primary',
+                            'hidden' =>  !Yii::$app->user->can("funcionario")]) ?>
+                        <?= Html::a('Desativar', ['delete', 'id' => $model->user_id], [
                             'class' => 'btn btn-danger',
+                            'hidden' =>  !Yii::$app->user->can("funcionario"),
                             'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
+                                'confirm' => 'Tem a certeza que pretende desativar este cliente?',
                                 'method' => 'post',
                             ],
                         ]) ?>
@@ -33,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nomeproprio',
                             'apelido',
                             'telemovel',
+                            'nif',
                             'peso',
                             'altura',
                             'pais',

@@ -17,7 +17,7 @@ class ClienteSearch extends Perfil
     public function rules()
     {
         return [
-            [['user_id', 'telemovel', 'altura'], 'integer'],
+            [['user_id', 'telemovel', 'altura', 'nif'], 'integer'],
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
         ];
@@ -43,7 +43,7 @@ class ClienteSearch extends Perfil
     {
         $query = Perfil::find();
 
-        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel, nif, codpostal')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
@@ -85,8 +85,8 @@ class ClienteSearch extends Perfil
             ->andFilterWhere(['like', 'codpostal', $this->codpostal])
             ->andFilterWhere(['like', 'pais', $this->pais])
             ->andFilterWhere(['like', 'cidade', $this->cidade])
-            ->andFilterWhere(['like', 'morada', $this->morada]);
-
+            ->andFilterWhere(['like', 'morada', $this->morada])
+            ->andFilterWhere(['like', 'nif', $this->nif]);
         return $dataProvider;
     }
 }

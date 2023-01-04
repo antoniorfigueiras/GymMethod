@@ -3,8 +3,10 @@
 namespace backend\controllers;
 
 use backend\models\search\ClienteSearch;
+use backend\models\search\ExercicioSearch;
 use common\models\Exercicio;
 use common\models\Parameterizacao;
+use common\models\PlanoTreino;
 use common\models\TipoExercicio;
 use Yii;
 use common\models\ExercicioPlano;
@@ -68,22 +70,23 @@ class ExercicioplanoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($idPlano)
+   public function actionCreate($idPlano, $idExercicio)
     {
-        $listaExercicios = ArrayHelper::map(Exercicio::find()
+       /* $listaExercicios = ArrayHelper::map(Exercicio::find()
             ->orderBy(['nome' => SORT_ASC])
-            ->all(), 'id', 'nome');
+            ->all(), 'id', 'nome');*/
 
         $model = new ExercicioPlano();
         $modelParameterizacao = new Parameterizacao();
-        $model->plano_id = $idPlano; //Associar o id do plano recebido ao plano_id da tabela exercicio_plano
+
+        $model->plano_id = (int)$idPlano; //Associar o id do plano recebido ao plano_id da tabela exercicio_plano
+        $model->exercicio_id = (int)$idExercicio;
         $modelParameterizacao->data = date("Y/m/d");
         $modelPlano = $model->plano; // Ir buscar o model do plano atraves da relacao do modelo
 
-
         if ($modelParameterizacao->load(Yii::$app->request->post()) && $modelParameterizacao->save()) {
             $model->parameterizacao_id = $modelParameterizacao->id;
-           if($model->load(Yii::$app->request->post()) && $model->save())
+           if($model->save())
            {
                return $this->redirect(['plano/view', 'id' => $idPlano]);
            }
@@ -94,7 +97,22 @@ class ExercicioplanoController extends Controller
             'model' => $model,
             'modelPlano' => $modelPlano,
             'modelParameterizacao' => $modelParameterizacao,
-            'listaExercicios' => $listaExercicios
+            //'listaExercicios' => $listaExercicios
+        ]);
+    }
+    public function actionSelect_exercicio($idPlano)
+    {
+        $searchModel = new ExercicioSearch();
+
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $modelPlano = PlanoTreino::findOne($idPlano); // Ir buscar o model do plano atraves da relacao do modelo
+
+
+        return $this->render('selectExercicio', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'modelPlano' => $modelPlano
         ]);
     }
 
