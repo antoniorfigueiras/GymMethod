@@ -67,10 +67,7 @@ return [
                     'pluralize' => false,
                 ],
             ],
-
         ],
-
-
     ],
     'params' => $params,
 ];

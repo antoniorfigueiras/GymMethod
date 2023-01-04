@@ -7,18 +7,18 @@ use frontend\assets\AppAssetLogin;
 AppAssetLogin::register($this);
 ?>
 <script src="https://www.paypal.com/sdk/js?client-id=AdpBFkNKqEu9-QUssDz1g6lTpwIFdu5a_L4uLt17J5r7liSHVaIn3nQDihWz7hpvzaPvf40UpIjTjy-d&currency=EUR"></script>
-<h3>Order #<?php echo $venda->id ?> summary: </h3>
+<h3>Venda #<?php echo $venda->id ?> detalhes: </h3>
 <hr>
 <div class="row">
     <div class="col">
         <h5>Informação do cliente</h5>
         <table class="table">
             <tr>
-                <th>Firstname</th>
+                <th>Nome</th>
                 <td><?php echo $venda->nomeproprio ?></td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Apelido</th>
                 <td><?php echo $venda->apelido ?></td>
             </tr>
             <tr>
@@ -100,24 +100,10 @@ AppAssetLogin::register($this);
             });
         },
         onApprove: function (data, actions) {
-            console.log(data, actions);
             // This function captures the funds from the transaction.
             return actions.order.capture().then(function (details) {
-                console.log(details);
-                const $form = $('#checkout');
+                const $form = $('#checkout-form');
                 const formData = $form.serializeArray();
-                formData.push({
-                    name: 'transactionId',
-                    value: details.id
-                });
-                formData.push({
-                    name: 'vendaId',
-                    value: data.orderID
-                });
-                formData.push({
-                    name: 'estado',
-                    value: details.status
-                });
                 $.ajax({
                     method: 'post',
                     url: '<?php echo \yii\helpers\Url::to(['carrinho/submeter-pagamento', 'vendaId' => $venda->id])?>',
