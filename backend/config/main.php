@@ -53,13 +53,35 @@ return [
 
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            //'showScriptName' => false,
             // Registar as rotas para a API
             'rules' => [
-                // Perfil
+                // Users
                 ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/perfil',
+                    'controller' => 'api/user',
                     'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'GET get-perfil/{idClient}' => 'get-perfil',
+                    ],
+                    'tokens' => [
+                        '{idClient}' => '<idClient:\\d+>',
+                    ],
+                ],
+                // Auth
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/auth',
+                    'pluralize' => false,
+
+                    // Login
+                    'extraPatterns' =>[
+                        'GET login' => 'login',
+                    ],
+                    'tokens' => [
+                        '{username}' => '<username:\\w+>',
+                        '{password}' => '<password:\\w+>',
+
+                    ],
                 ],
                 // Planos de treino
                 ['class' => 'yii\rest\UrlRule',
@@ -68,7 +90,7 @@ return [
 
                     // GET planos do cliente
                     'extraPatterns' =>[
-                        'GET planos/{idClient}' => 'planos',
+                        'GET get-planos/{idClient}' => 'get-planos',
                     ],
                     'tokens' => [
                         '{idClient}' => '<idClient:\\d+>',
@@ -81,14 +103,25 @@ return [
                     'pluralize' => false,
 
                     'extraPatterns' =>[
-                        'GET exercicios_plano/{idPlano}' => 'exercicios_plano',
-                        'GET parameterizacao_cliente/{idPlano}' => 'parameterizacao_cliente',
-                        'PUT atualizar_parameterizacao_cliente/{idExercicio}' => 'atualizar_parameterizacao_cliente',
+                        'GET exercicios-plano/{idPlano}' => 'exercicios-plano',
+                        'GET parameterizacao-cliente/{idExercicio}' => 'parameterizacao-cliente',
                     ],
                     'tokens' => [
                         '{idPlano}' => '<idPlano:\\d+>',
                         '{idExercicio}' => '<idExercicio:\\d+>',
                         '{plano}' => '<plano:\\d+>',
+                    ],
+                ],
+                // Parameteriacao
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/parameterizacao',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'PUT atualizar-parameterizacao-cliente/{idParameterizacao}' => 'atualizar-parameterizacao-cliente',
+                    ],
+                    'tokens' => [
+                        '{idParameterizacao}' => '<idParameterizacao:\\d+>',
                     ],
                 ],
             ],

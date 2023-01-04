@@ -28,7 +28,7 @@ use hail812\adminlte\widgets\Menu;
         <nav class="mt-2">
             <?php
 
-
+            $user = User::findOne(Yii::$app->user->getId());
             echo Menu::widget([
                 'items' => [
                     /** Loja **/
@@ -54,7 +54,7 @@ use hail812\adminlte\widgets\Menu;
                     ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamentos")],
 
                     /** Utilizadores **/
-                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],'visible' => Yii::$app->user->can("consultarCliente")],
+                    ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente'],'visible' => Yii::$app->user->can("consultarCliente")&& $user->getRole() != 'treinador'],
                     ['label' => 'Funcionarios', 'icon' => 'user', 'url' => ['/funcionario'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
                     ['label' => 'Treinadores', 'icon' => 'user', 'url' => ['/treinador'],'visible' => Yii::$app->user->can("consultarTrabalhador")],
                     ['label' => 'Nutricionistas', 'icon' => 'user', 'url' => ['/nutricionista'],'visible' => Yii::$app->user->can("consultarNutricionista")],
@@ -65,7 +65,7 @@ use hail812\adminlte\widgets\Menu;
 
 
                     ['label' => 'Yii2 PROVIDED', 'header' => true],
-                    //['label' => 'Logout', 'url' => ['site/logout'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->can("loginBO")],
+
                     /* YII & DEBUG*/
                     ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],

@@ -44,11 +44,11 @@ class ExercicioplanoController extends ActiveController
     }
 
     // GET dos exercicios do plano
-    public function actionExercicios_plano($idPlano)
+    public function actionExerciciosPlano($idPlano)
     {
         $model = new $this->modelClass;
         $exercicios = $model::find()
-            ->select(['plano_id', 'nome', 'descricao', 'dificuldade', 'exemplo', 'series', 'repeticoes', 'peso', 'tempo'])//
+            ->select(['exercicio_plano.id', 'nome', 'descricao', 'dificuldade', 'exemplo', 'series', 'repeticoes', 'peso', 'tempo'])//
             ->where(['plano_id'=>$idPlano])
             ->joinWith('exercicio', [])
             ->joinWith('parameterizacao', [])
@@ -59,32 +59,20 @@ class ExercicioplanoController extends ActiveController
     }
 
     //GET parameterizacao cliente
-    public function actionParameterizacao_cliente($idPlano)
+    public function actionParameterizacaoCliente($idExercicio)
     {
         $model = new $this->modelClass;
-        $exercicios = $model::find()
-            ->select(['plano_id','seriesCliente', 'repeticoesCliente', 'pesoCliente', 'tempoCliente'])
-            ->where(['plano_id'=>$idPlano])
+        $parameterizacao = $model::find()
+            ->select(['exercicio_plano.id', 'parameterizacao_id','seriesCliente', 'repeticoesCliente', 'pesoCliente', 'tempoCliente'])
+            ->where(['exercicio_plano.id'=>$idExercicio])
             ->JoinWith('parameterizacao', [])
             ->asArray()
             ->all();
 
-        return $exercicios;
+        return $parameterizacao;
     }
 
-    //GET parameterizacao cliente
-    public function actionAtualizar_parameterizacao_cliente($idPlano)
-    {
-        $model = new $this->modelClass;
-        $exercicios = $model::find()
-            ->select(['plano_id','seriesCliente', 'repeticoesCliente', 'pesoCliente', 'tempoCliente'])
-            ->where(['plano_id'=>$idPlano])
-            ->JoinWith('parameterizacao', [])
-            ->asArray()
-            ->all();
 
-        return $exercicios;
-    }
 
 
 }

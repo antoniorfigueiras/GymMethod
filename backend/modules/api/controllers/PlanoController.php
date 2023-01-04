@@ -2,6 +2,7 @@
 
 namespace backend\modules\api\controllers;
 
+use common\models\Perfil;
 use common\models\PlanoTreino;
 use common\models\User;
 use yii\filters\auth\HttpBasicAuth;
@@ -12,7 +13,7 @@ class PlanoController extends ActiveController
 {
     public $modelClass = 'common\models\PlanoTreino'; // Para ir buscar o modelo a ser usado no controlador
 
-    public function behaviors()
+   public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] =
@@ -32,20 +33,20 @@ class PlanoController extends ActiveController
     }
 
     // Colocar permissões de autorização
-    public function checkAccess($action, $model = null, $params = [])
+    /*public function checkAccess($action, $model = null, $params = [])
     {
-        /*if ($action === 'index') {
+        if ($action === 'index') {
             throw new \yii\web\ForbiddenHttpException('Indisponível!');
-        }*/
-    }
+        }
+    }*/
 
     // GET dos planos do cliente
-    public function actionPlanos($idClient)
+    public function actionGetPlanos($idClient)
     {
        $model = new $this->modelClass;
 
        $planos = $model::find()
-           ->select(['id', 'nome Plano', 'nomeproprio treinador'])
+           ->select(['id', 'nome', 'nomeproprio treinador'])
            ->where(['cliente_id'=>$idClient])
            ->joinWith('instrutor', [])
            ->asArray()
