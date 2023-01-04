@@ -83,6 +83,25 @@ class Produto extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[ItemCarrinho]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\ItemCarrinhoQuery
+     */
+    public function getItensCarrinho()
+    {
+        return $this->hasMany(ItemCarrinho::className(), ['id_produto' => 'id']);
+    }
+
+    /**
+     * Gets query for [[ItemVenda]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\ItemVendaQuery
+     */
+    public function getItensVenda()
+    {
+        return $this->hasMany(ItemVenda::className(), ['id_produto' => 'id']);
+    }
+    /**
      * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
@@ -148,12 +167,7 @@ class Produto extends \yii\db\ActiveRecord
         return Yii::$app->params['frontendUrl'] . '/img/imagem_nao_disponivel.jpg';
     }
 
-    /**
-     * Get short version of the description
-     *
-     * @return string
-     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
-     */
+
     public function getShortDescription()
     {
         return \yii\helpers\StringHelper::truncateWords(strip_tags($this->descricao), 30);

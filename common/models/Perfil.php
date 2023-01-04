@@ -10,6 +10,7 @@ use Yii;
  * @property int $user_id
  * @property int|null $telemovel
  * @property float|null $peso
+ * @property int|null $nif
  * @property int|null $altura
  * @property string|null $nomeproprio
  * @property string|null $apelido
@@ -37,10 +38,12 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'telemovel', 'altura'], 'integer'],
-            [['peso'], 'number'],
+            [['user_id', 'altura','telemovel', 'peso', 'codpostal', 'nif'], 'integer'],
+            [['telemovel'], 'string', 'max'=> 9],
+            [['peso'], 'string', 'max' => 3],
+            [['peso'], 'number', 'max' => 300],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
-            [['codpostal'], 'string', 'max' => 8],
+            [['codpostal'], 'string', 'max' => 7],
             [['morada'], 'string', 'max' => 125],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -63,6 +66,7 @@ class Perfil extends \yii\db\ActiveRecord
             'pais' => 'Pais',
             'cidade' => 'Cidade',
             'morada' => 'Morada',
+            'nif' => 'NIF'
         ];
     }
 
@@ -75,4 +79,19 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+
+
+    public function getFuncionarioByRole($role)
+    {
+        $query = Perfil::find();
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
+            ->from('user');
+        $query->join = [
+            ['JOIN', 'perfil', 'perfil.user_id = user.id'],
+            ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
+        $query->where('auth_assignment.item_name = "funcionario"');
+
+        return $query;
+    }
+
 }

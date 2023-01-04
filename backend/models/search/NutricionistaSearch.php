@@ -45,7 +45,7 @@ class NutricionistaSearch extends Perfil
     public function search($params)
     {
         $query = Perfil::find();
-       $query->select('perfil.user_id, nomeproprio, apelido, telemovel')//perfil.id, perfil.telemovel, perfil.nomeproprio, user.status
+       $query->select('perfil.user_id, nomeproprio, apelido, telemovel')
             ->from('user');
         $query->join = [
             ['JOIN', 'perfil', 'perfil.user_id = user.id'],
@@ -60,7 +60,6 @@ class NutricionistaSearch extends Perfil
         ]);
 
         $dataProvider->sort->attributes['user_id'] = [
-
             'asc' => ['user.status' => SORT_ASC],
             'desc' => ['user.status' => SORT_DESC],
         ];

@@ -8,11 +8,13 @@ use frontend\models\search\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
-/**
+use yii\filters\AccessControl;
+    /**
  * ClienteController implements the CRUD actions for Perfil model.
  */
-class ClienteController extends Controller
+
+
+class ClienteController extends \frontend\base\Controller
 {
     /**
      * {@inheritdoc}
@@ -20,6 +22,14 @@ class ClienteController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'update', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ]]],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -93,20 +103,6 @@ class ClienteController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-    }
-
-    /**
-     * Deletes an existing Perfil model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $user_id User ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($user_id)
-    {
-        $this->findModel($user_id)->delete();
-
-        return $this->redirect(['index']);
     }
 
     /**

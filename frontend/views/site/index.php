@@ -41,23 +41,13 @@ $this->title = 'GymMethod';
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="about.html">Sobre</a></li>
-                                        <li><a href="services.html">Serviços</a></li>
-                                        <li><a href="schedule.html">Horário</a></li>
-                                        <li><a href="gallery.html">gallery</a></li>
                                         <?php
-                                            echo Html::tag('li',Html::a('Loja',['loja']));
-                                        ?>                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog_details.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Element</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                            echo Html::tag('li',Html::a('LOJA',['loja']));
+                                        ?>
                                         <?php
                                         if (!Yii::$app->user->isGuest)
                                         {
-                                            echo Html::tag('li',Html::a('Area CLiente',['cliente/index']));
+                                            echo Html::tag('li',Html::a('AREA CLIENTE',['/cliente/view','user_id'=>Yii::$app->user->id]));
                                         }
                                         ?>
                                     </ul>
@@ -100,9 +90,14 @@ $this->title = 'GymMethod';
                     <div class="row">
                         <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
                             <div class="hero__caption">
-                                <span data-animation="fadeInLeft" data-delay="0.1s">Com António Figueiras</span>
-                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Constrói um corpo perfeito Fica um bicho para uma vida saudável</h1>
-                                <a href="from.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                                <span data-animation="fadeInLeft" data-delay="0.1s">com António Figueiras</span>
+                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Vem fazer parte da elite</h1>
+                                <?php
+                                if (Yii::$app->user->isGuest)
+                                {
+                                    echo Html::a('Registe-se',['signup'], ['class' => 'btn hero-btn'], ['data-animation' => 'fadeInLeft'], ['data-delay' => '0.8s']);
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -114,9 +109,14 @@ $this->title = 'GymMethod';
                     <div class="row">
                         <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
                             <div class="hero__caption">
-                                <span data-animation="fadeInLeft" data-delay="0.1s">with patrick potter</span>
-                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Build Perfect body Shape for good and Healthy life.</h1>
-                                <a href="from.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                                <span data-animation="fadeInLeft" data-delay="0.1s">com Gonçalo Vital</span>
+                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Aqui a saúde é uma prioridade</h1>
+                                <?php
+                                if (Yii::$app->user->isGuest)
+                                {
+                                    echo Html::a('Registe-se',['signup'], ['class' => 'btn hero-btn'], ['data-animation' => 'fadeInLeft'], ['data-delay' => '0.8s']);
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@ $this->title = 'GymMethod';
         </div>
         <!-- Video icon -->
         <div class="video-icon">
-            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i class="fas fa-play"></i></a>
+            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=u_43TaSoRMA"><i class="fas fa-play"></i></a>
         </div>
     </div>
     <!-- slider Area End-->
@@ -143,12 +143,16 @@ $this->title = 'GymMethod';
                     <div class="about-caption">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle3 mb-35">
-                            <span>ABOUT oUR GYM</span>
-                            <h2>Safe Body building proper Solutions That Saves our Valuable Time!</h2>
+                            <span>SOBRE O NOSSO GINÁSIO</span>
+                            <h2>Soluções adequadas para a construção do teu corpo segura e que irá economizar o teu tempo valioso!</h2>
                         </div>
-                        <p class="pera-top">Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replication of the designers is intended.</p>
-                        <p class="mb-65 pera-bottom">Brook presents your services with flexible, convefnient and chient anipurpose layouts. You can select your favorite layouts.</p>
-                        <a href="from.html" class="btn">became a member</a>
+                        <p class="pera-top">Os nossos instrutores estão disponíveis para oferecer os melhores planos de treino adequados ao seu objetivo.</p>
+                        <?php
+                        if (Yii::$app->user->isGuest)
+                        {
+                            echo Html::a('Registe-se',['signup'], ['class' => 'btn']);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -163,12 +167,9 @@ $this->title = 'GymMethod';
                 <div class="row align-items-end justify-content-between">
                     <div class="col-lg-6 col-md-10 col-sm-10">
                         <div class="section-tittle section-tittle2">
-                            <span>oUR sERVICES FOR YOU</span>
-                            <h2>PUSH YOUR LIMITS FORWARD We Offer to you</h2>
+                            <span>OS NOSSOS SERVIÇOS PARA SI</span>
+                            <h2>PUXA OS TEUS LIMITES COM AS NOSSAS OFERTAS</h2>
                         </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
                     </div>
                 </div>
             </div>
@@ -182,11 +183,11 @@ $this->title = 'GymMethod';
                             <i class="flaticon-fitness"></i>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">QUALITY EQUIPMENT</a></h5>
-                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            <h5><a href="#">PLANOS DE TREINO</a></h5>
+                            <p>Planos personalizados para uma melhor adaptação.</p>
                         </div>
                         <div class="img-cap">
-                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            <a href="#" class="">Descobre mais sobre nós<i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -196,11 +197,11 @@ $this->title = 'GymMethod';
                             <i class="flaticon-healthcare-and-medical"></i>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">health caring</a></h5>
-                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            <h5><a href="#">CONSULTAS</a></h5>
+                            <p>Consultas com nutricionistas para analisar o teu desempenho</p>
                         </div>
                         <div class="img-cap">
-                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            <a href="#" class="">Descobre mais sobre nós<i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -210,11 +211,11 @@ $this->title = 'GymMethod';
                             <i class="flaticon-clock"></i>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">gym strategies</a></h5>
-                            <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            <h5><a href="#">AULAS</a></h5>
+                            <p>Horarios semanais com diferentes aulas dependendo do gosto do cliente.</p>
                         </div>
                         <div class="img-cap">
-                            <a href="services.html" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            <a href="#" class="">Descobre mais sobre nós<i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -224,51 +225,6 @@ $this->title = 'GymMethod';
     <!-- Services Area End -->
     <!--? About-2 Area Start -->
     <section class="about-area2 testimonial-area section-padding30 fix">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-11 col-sm-11">
-                    <!-- about-img -->
-                    <div class="about-img2">
-                        <img src="index/img/gallery/about2.png" alt="">
-                        <!-- Shape -->
-                        <div class="shape-qutaion d-none d-sm-block">
-                            <img src="index/img/gallery/qutaion.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-9 col-sm-9">
-                    <div class="about-caption">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle mb-55">
-                            <span>Client Feedback</span>
-                            <h2>What Our Client thik about our gym</h2>
-                        </div>
-                        <!-- Testimonial Start -->
-                        <div class="h1-testimonial-active">
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-caption">
-                                    <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
-                                    <div class="rattiong-caption">
-                                        <span>Jhon Smith<span>Gym Trainer</span> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-caption">
-                                    <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
-                                    <div class="rattiong-caption">
-                                        <span>Jhon Smith<span>Gym Trainer</span> </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Testimonial End -->
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
     <!-- About-2 Area End -->
     <!--? Gallery Area Start -->
@@ -280,9 +236,9 @@ $this->title = 'GymMethod';
                         <div class="gallery-img big-img" style="background-image: url(index/img/gallery/gallery1.png);"></div>
                         <div class="overlay">
                             <div class="overlay-content">
-                                <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
-                                <h3>Best fitness gallery</h3>
-                                <p>Fitness, Body</p>
+                                <a href="#"><i class="ti-arrow-top-right"></i></a>
+                                <h3>GYMMETHOD</h3>
+                                <p>Galeria</p>
                             </div>
                         </div>
                     </div>
@@ -294,9 +250,9 @@ $this->title = 'GymMethod';
                                 <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery2.png);"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
-                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
-                                        <h3>Best fitness gallery</h3>
-                                        <p>Fitness, Body</p>
+                                        <a href="#"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>GYMMETHOD</h3>
+                                        <p>Galeria</p>
                                     </div>
                                 </div>
                             </div>
@@ -306,9 +262,9 @@ $this->title = 'GymMethod';
                                 <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery3.png);"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
-                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
-                                        <h3>Best fitness gallery</h3>
-                                        <p>Fitness, Body</p>
+                                        <a href="#"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>GYMMETHOD</h3>
+                                        <p>Galeria</p>
                                     </div>
                                 </div>
                             </div>
@@ -318,9 +274,9 @@ $this->title = 'GymMethod';
                                 <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery4.png);"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
-                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
-                                        <h3>Best fitness gallery</h3>
-                                        <p>Fitness, Body</p>
+                                        <a href="#"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>GYMMETHOD</h3>
+                                        <p>Galeria</p>
                                     </div>
                                 </div>
                             </div>
@@ -330,9 +286,9 @@ $this->title = 'GymMethod';
                                 <div class="gallery-img small-img" style="background-image: url(index/img/gallery/gallery5.png);"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
-                                        <a href="gallery.html"><i class="ti-arrow-top-right"></i></a>
-                                        <h3>Best fitness gallery</h3>
-                                        <p>Fitness, Body</p>
+                                        <a href="#"><i class="ti-arrow-top-right"></i></a>
+                                        <h3>GYMMETHOD</h3>
+                                        <p>Galeria</p>
                                     </div>
                                 </div>
                             </div>
@@ -343,107 +299,6 @@ $this->title = 'GymMethod';
         </div>
     </div>
     <!-- Gallery Area End -->
-    <!--? Want To work -->
-    <section class="wantToWork-area w-padding">
-        <div class="container">
-            <div class="row align-items-end justify-content-between">
-                <div class="col-lg-6 col-md-9 col-sm-9">
-                    <div class="section-tittle">
-                        <span>oUR TEAM MAMBERS</span>
-                        <h2>Our Most Exprienced Trainers</h2>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3">
-                    <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Want To work End -->
-    <!--? Team Ara Start -->
-    <div class="team-area pb-150">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="index/img/gallery/team1.png" alt="">
-                            <div class="team-caption">
-                                <span>Creative derector</span>
-                                <h3><a href="#">Jhon Sunsaev</a></h3>
-                                <!-- Blog Social -->
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="index/img/gallery/team2.png" alt="">
-                            <div class="team-caption">
-                                <span>Creative derector</span>
-                                <h3><a href="#">Jhon Sunsaev</a></h3>
-                                <!-- Blog Social -->
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="index/img/gallery/team3.png" alt="">
-                            <div class="team-caption">
-                                <span>Creative derector</span>
-                                <h3><a href="#">Jhon Sunsaev</a></h3>
-                                <!-- Blog Social -->
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team Ara End -->
-    <!--? Want To work -->
-    <section class="wantToWork-area w-padding section-bg" data-background="index/img/gallery/section_bg02.png">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10">
-                    <div class="wantToWork-caption">
-                        <h2>April membership offer available Now</h2>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3">
-                    <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Want To work End -->
     <!--? Date Tabs Start -->
     <section class="date-tabs section-padding30">
         <div class="container">
@@ -451,8 +306,8 @@ $this->title = 'GymMethod';
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="section-tittle text-center mb-100">
-                        <span>OUR tIME SCHEDULE</span>
-                        <h2>SELECT THE pERFECT TIME YOU NEED NOW</h2>
+                        <span>O NOSSO HORÁRIO</span>
+                        <h2>SELECIONA O MELHOR HORÁRIO PARA TI</h2>
                     </div>
                 </div>
             </div>
@@ -463,13 +318,13 @@ $this->title = 'GymMethod';
                         <!--Nav Button  -->
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Saturday</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Sunday</a>
-                                <a class="nav-item nav-link active" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Monday</a>
-                                <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Tuesday</a>
-                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Language</a>
-                                <a class="nav-item nav-link" id="nav-six" data-toggle="tab" href="#nav-nav-six" role="tab" aria-controls="nav-contact" aria-selected="false">Thursday</a>
-                                <a class="nav-item nav-link" id="nav-seven" data-toggle="tab" href="#nav-nav-seven" role="tab" aria-controls="nav-seven" aria-selected="false">Friday</a>
+                                <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sábado</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Domingo</a>
+                                <a class="nav-item nav-link active" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Segunda</a>
+                                <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Terça</a>
+                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Quarta</a>
+                                <a class="nav-item nav-link" id="nav-six" data-toggle="tab" href="#nav-nav-six" role="tab" aria-controls="nav-contact" aria-selected="false">Quinta</a>
+                                <a class="nav-item nav-link" id="nav-seven" data-toggle="tab" href="#nav-nav-seven" role="tab" aria-controls="nav-seven" aria-selected="false">Sexta</a>
                             </div>
                         </nav>
                         <!--End Nav Button  -->
@@ -902,125 +757,7 @@ $this->title = 'GymMethod';
 
     </section>
     <!-- Date Tabs End -->
-    <!--? Contact form Start -->
-    <section class="contact-form-main">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-xl-7 col-lg-7">
-                    <div class="form-wrapper">
-                        <!--Section Tittle  -->
-                        <div class="form-tittle">
-                            <div class="row ">
-                                <div class="col-lg-11 col-md-10 col-sm-10">
-                                    <div class="section-tittle">
-                                        <span>Contact Form</span>
-                                        <h2>Feel Free to contact with us!</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Section Tittle  -->
-                        <form id="contact-form" action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box user-icon mb-30">
-                                        <input type="text" name="name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box email-icon mb-30">
-                                        <input type="text" name="email" placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 mb-30">
-                                    <div class="select-itms">
-                                        <select name="select" id="select2">
-                                            <option value="">Boxing</option>
-                                            <option value="">saiful islam</option>
-                                            <option value="">Arafath Miya</option>
-                                            <option value="">Shakil Miya</option>
-                                            <option value="">Tamim Sharker</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box subject-icon mb-30">
-                                        <input type="Email" name="subject" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-box message-icon mb-65">
-                                        <textarea name="message" id="message" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="submit-info">
-                                        <button class="btn" type="submit">Send Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- contact left Img-->
-        <div class="from-left d-none d-lg-block">
-            <img src="index/img/gallery/contact_form.png" alt="">
-        </div>
-    </section>
-    <!-- Contact form End -->
-    <!--? Blog Area Start -->
-    <section class="home-blog-area section-padding30">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row justify-content-center">
-                <div class="col-lg-7 col-md-9 col-sm-10">
-                    <div class="section-tittle text-center mb-100">
-                        <span>rECENT NEWS FORM BLOG</span>
-                        <h2>gYM TIPS news fOR YOU THAT selected by us</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="index/img/gallery/blog1.png" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <span>Creative derector</span>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="index/img/gallery/blog2.png" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <span>Creative derector</span>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Area End -->
+
 </main>
 <footer>
     <!--? Footer Start-->
@@ -1032,12 +769,11 @@ $this->title = 'GymMethod';
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>COMPANY</h4>
+                                <h4>EMPRESA</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#"> Press & Blog</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
+                                    <?php
+                                    echo Html::tag('li',Html::a('Loja',['loja']));
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -1045,7 +781,7 @@ $this->title = 'GymMethod';
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Open hour</h4>
+                                <h4>HORÁRIO</h4>
                                 <ul>
                                     <li><a href="#">Monday 11am-7pm</a></li>
                                     <li><a href="#"> Tuesday-Friday 11am-8pm</a></li>
@@ -1058,13 +794,8 @@ $this->title = 'GymMethod';
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>RESOURCES</h4>
+                                <h4>RECURSOS</h4>
                                 <ul>
-                                    <li><a href="#">Home Insurance</a></li>
-                                    <li><a href="#">Travel Insurance</a></li>
-                                    <li><a href="#"> Car Insurance</a></li>
-                                    <li><a href="#"> Business Insurance</a></li>
-                                    <li><a href="#"> Heal Insurance</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1077,7 +808,6 @@ $this->title = 'GymMethod';
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p class="info1">GThe trade war currently ensuing between te US anfd several natxions around thdhe globe, most fiercely with.</p>
                                 </div>
                             </div>
                             <!-- Footer Social -->
@@ -1097,7 +827,7 @@ $this->title = 'GymMethod';
                     <div class="col-lg-12">
                         <div class="footer-copy-right text-center">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> GYMMETHOD
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>

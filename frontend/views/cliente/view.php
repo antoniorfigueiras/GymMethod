@@ -28,10 +28,6 @@ $this->title = 'GymMethod';
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -39,7 +35,7 @@ $this->title = 'GymMethod';
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <?php
-                echo Html::tag('li',Html::a('Settings',['update','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
+                echo Html::tag('li',Html::a('Perfil',['view','user_id'=>Yii::$app->user->id],['class' => ['dropdown-item']]));
                 ?>
                 <li><a class="dropdown-item" href="../site/logout">Logout</a></li>
             </ul>
@@ -65,21 +61,21 @@ $this->title = 'GymMethod';
                         <div class="row">
                             <div class="col-md-12">
                                 <p>
-                                    <?= Html::a('Update', ['update', 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
+                                    <?= Html::a('Atualizar', ['update', 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
                                 </p>
                                 <?= DetailView::widget([
                                     'model' => $model,
                                     'attributes' => [
-                                        'user_id',
-                                        'telemovel',
-                                        'peso',
-                                        'altura',
                                         'nomeproprio',
                                         'apelido',
+                                        'telemovel',
+                                        'nif',
+                                        'peso',
+                                        'altura',
+                                        'morada',
+                                        'cidade',
                                         'codpostal',
                                         'pais',
-                                        'cidade',
-                                        'morada',
                                     ],
                                 ]) ?>
                             </div>
@@ -93,7 +89,7 @@ $this->title = 'GymMethod';
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                    <div class="text-muted">Copyright &copy; GymMethod 2023</div>
                     <div>
                         <a href="#">Privacy Policy</a>
                         &middot;
