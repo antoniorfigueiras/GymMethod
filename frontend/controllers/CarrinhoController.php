@@ -217,11 +217,6 @@ class CarrinhoController extends \frontend\base\Controller
         {
             $where['created_by'] = currUserId();
         }
-        $venda = Venda::findOne($where);
-        if (!$venda)
-        {
-            throw new NotFoundHttpException();
-        }
 
         /*$req = Yii::$app->request;
         $paypalVendaId = $req->post('vendaId');

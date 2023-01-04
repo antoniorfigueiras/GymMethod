@@ -1,13 +1,14 @@
 <?php
 
-use yii\helpers\Html;
-
 /* @var $this yii\web\View */
-/* @var $model common\models\Produto */
+/* @var $model common\models\Consulta */
 
-$this->title = 'Criar Produto';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Update Consulta: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Consultas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
+
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">

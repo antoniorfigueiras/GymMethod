@@ -23,7 +23,7 @@ use yii\bootstrap5\ActiveForm;
     </div>
 </nav>
 <?php $form = ActiveForm::begin([
-    'id' => 'checkout',
+    'id' => 'checkout-form',
 ]);
 ?>
 <div class="row">
@@ -51,6 +51,7 @@ use yii\bootstrap5\ActiveForm;
                 <h5>Informações da Morada</h5>
             </div>
             <div class="card-body">
+                <?=yii\helpers\Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken)?>
                 <?= $form->field($vendaMorada, 'morada') ?>
                 <?= $form->field($vendaMorada, 'cidade') ?>
                 <?= $form->field($vendaMorada, 'pais') ?>
