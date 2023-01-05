@@ -45,7 +45,6 @@ use hail812\adminlte\widgets\Menu;
                         ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
                         ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
                         ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
-                        ['label' => 'Inscrições', 'icon' => 'store', 'url' => ['/inscricoes'],],
                     ] ],
 
                     /** Planos de treino **/

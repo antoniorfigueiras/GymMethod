@@ -22,32 +22,54 @@ class RbacController extends Controller
 
                         /*** Ginásio ***/
 
-        // Estatisticas do ginasio (admin)
-        $estatisticas = $auth->createPermission('estatisticas');
-        $estatisticas->description = 'Estatisticas';
-        $auth->add($estatisticas);
+        // Dashboard (admin)
+        $dashboard = $auth->createPermission('dashboard');
+        $dashboard->description = 'Dashboard';
+        $auth->add($dashboard);
 
-                        /*** Trabalhadores ***/
+                        /*** Funcionario ***/
 
         // Registar (admin)
-        $adicionarTrabalhador = $auth->createPermission('adicionarTrabalhador');
-        $adicionarTrabalhador->description = 'Adicionar trabalhador';
-        $auth->add($adicionarTrabalhador);
+        $adicionarFuncionario = $auth->createPermission('adicionarFuncionario');
+        $adicionarFuncionario->description = 'Adicionar Funcionario';
+        $auth->add($adicionarFuncionario);
 
         // Editar (admin)
-        $editarTrabalhador = $auth->createPermission('editarTrabalhador');
-        $editarTrabalhador->description = 'Editar trabalhador';
-        $auth->add($editarTrabalhador);
+        $editarFuncionario = $auth->createPermission('editarFuncionario');
+        $editarFuncionario->description = 'Editar Funcionario';
+        $auth->add($editarFuncionario);
 
         // Consultar (admin)
-        $consultarTrabalhador = $auth->createPermission('consultarTrabalhador');
-        $consultarTrabalhador->description = 'Consultar trabalhador';
-        $auth->add($consultarTrabalhador);
+        $consultarFuncionario = $auth->createPermission('consultarFuncionario');
+        $consultarFuncionario->description = 'Consultar Funcionario';
+        $auth->add($consultarFuncionario);
 
         // Desativar (admin)
-        $desativarTrabalhador = $auth->createPermission('desativarTrabalhador');
-        $desativarTrabalhador->description = 'Desativar Trabalhador';
-        $auth->add($desativarTrabalhador);
+        $desativarFuncionario = $auth->createPermission('desativarFuncionario');
+        $desativarFuncionario->description = 'Desativar Funcionario';
+        $auth->add($desativarFuncionario);
+
+                        /*** Treinadores ***/
+
+        // Registar (admin)
+        $adicionarTreinador = $auth->createPermission('adicionarTreinador');
+        $adicionarTreinador->description = 'Adicionar Treinador';
+        $auth->add($adicionarTreinador);
+
+        // Editar (admin)
+        $editarTreinador = $auth->createPermission('editarTreinador');
+        $editarTreinador->description = 'Editar Treinador';
+        $auth->add($editarTreinador);
+
+        // Consultar (admin)
+        $consultarTreinador = $auth->createPermission('consultarTreinador');
+        $consultarTreinador->description = 'Consultar Treinador';
+        $auth->add($consultarTreinador);
+
+        // Desativar (admin)
+        $desativarTreinador = $auth->createPermission('desativarTreinador');
+        $desativarTreinador->description = 'Desativar Treinador';
+        $auth->add($desativarTreinador);
 
                          /*** Nutricionistas ***/
 
@@ -62,7 +84,7 @@ class RbacController extends Controller
         $auth->add($editarNutricionista);
 
         // Consultar (admin)
-        $consultarNutricionista= $auth->createPermission('consultarNutricionista');
+        $consultarNutricionista = $auth->createPermission('consultarNutricionista');
         $consultarNutricionista->description = 'Consultar nutricionista';
         $auth->add($consultarNutricionista);
 
@@ -93,17 +115,18 @@ class RbacController extends Controller
         $desativarCliente->description = 'Desativar cliente';
         $auth->add($desativarCliente);
 
+
                         /*** Aulas ***/
 
         // Adicionar (admin, funcionário)
-        $adicionarAulas = $auth->createPermission('adicionarAulas');
-        $adicionarAulas->description = 'Adicionar aulas';
-        $auth->add($adicionarAulas);
+        $adicionarAula = $auth->createPermission('adicionarAula');
+        $adicionarAula->description = 'Adicionar aula';
+        $auth->add($adicionarAula);
 
         // Editar (admin, funcionário)
-        $editarAulas = $auth->createPermission('editarAulas');
-        $editarAulas->description = 'Editar aulas';
-        $auth->add($editarAulas);
+        $editarAula = $auth->createPermission('editarAula');
+        $editarAula->description = 'Editar aula';
+        $auth->add($editarAula);
 
         // Consultar (admin, funcionário)
         $consultarAula = $auth->createPermission('consultarAula');
@@ -111,33 +134,80 @@ class RbacController extends Controller
         $auth->add($consultarAula);
 
         // Remover (admin, funcionário)
-        $removerAulas = $auth->createPermission('removerAulas');
-        $removerAulas->description = 'Remover aulas';
-        $auth->add($removerAulas);
+        $removerAula = $auth->createPermission('removerAula');
+        $removerAula->description = 'Remover aula';
+        $auth->add($removerAula);
+
+
+                        /*** Modalidades ***/
+
+        // Adicionar (admin, funcionário)
+        $adicionarModalidade = $auth->createPermission('adicionarModalidade');
+        $adicionarModalidade->description = 'Adicionar mobalidade';
+        $auth->add($adicionarModalidade);
+
+        // Editar (admin, funcionário)
+        $editarModalidade = $auth->createPermission('editarModalidade');
+        $editarModalidade->description = 'Editar modalidade';
+        $auth->add($editarModalidade);
+
+        // Consultar (admin, funcionário)
+        $consultarModalidade = $auth->createPermission('consultarModalidade');
+        $consultarModalidade->description = 'Consultar modalidade';
+        $auth->add($consultarModalidade);
+
+        // Remover (admin, funcionário)
+        $removerModalidade = $auth->createPermission('removerModalidade');
+        $removerModalidade->description = 'Remover modalidade';
+        $auth->add($removerModalidade);
 
                         /*** Planos de treino ***/
 
         // Adicionar (admin, treinador)
         $adicionarPlano = $auth->createPermission('adicionarPlano');
-        $adicionarPlano->description = 'Adicionar planotreino';
+        $adicionarPlano->description = 'Adicionar plano treino';
         $auth->add($adicionarPlano);
 
         // Editar (admin, treinador)
         $editarPlano = $auth->createPermission('editarPlano');
-        $editarPlano->description = 'Editar planotreino';
+        $editarPlano->description = 'Editar plano treino';
         $auth->add($editarPlano);
 
         // Consultar (admin, treinador)
         $consultarPlano = $auth->createPermission('consultarPlano');
-        $consultarPlano->description = 'Consultar planotreino';
+        $consultarPlano->description = 'Consultar plano treino';
         $auth->add($consultarPlano);
 
         // Remover (admin, treinador)
         $removerPlano = $auth->createPermission('removerPlano');
-        $removerPlano->description = 'Remover planotreino';
+        $removerPlano->description = 'Remover plano treino';
         $auth->add($removerPlano);
 
-                         /*** Consultas Nutricionista ***/
+
+                        /*** Equipamentos ***/
+
+        // Adicionar (admin, funcionario)
+        $adicionarEquipamento = $auth->createPermission('adicionarEquipamento');
+        $adicionarEquipamento->description = 'Adicionar equipamento';
+        $auth->add($adicionarEquipamento);
+
+        // Editar (admin, funcionario)
+        $editarEquipamento = $auth->createPermission('editarEquipamento');
+        $editarEquipamento->description = 'Editar Equipamento';
+        $auth->add($editarEquipamento);
+
+        // Consultar (admin, funcionario)
+        $consultarEquipamento = $auth->createPermission('consultarEquipamento');
+        $consultarEquipamento->description = 'Consultar equipamento';
+        $auth->add($consultarEquipamento);
+
+        // Remover (admin, funcionario)
+        $removerEquipamento = $auth->createPermission('removerEquipamento');
+        $removerEquipamento->description = 'Remover Equipamento';
+        $auth->add($removerEquipamento);
+
+
+                    /*** Consultas Nutricionista ***/
 
         // Criar (admin, funcionario, nutricionista)
         $criarConsulta = $auth->createPermission('criarConsulta');
@@ -181,27 +251,7 @@ class RbacController extends Controller
         $removerProdutos->description = 'Remover Produtos';
         $auth->add($removerProdutos);
 
-                        /*** Equipamentos ***/
 
-        // Adicionar (admin, funcionario)
-        $adicionarEquipamentos = $auth->createPermission('adicionarEquipamentos');
-        $adicionarEquipamentos->description = 'Adicionar equipamentos';
-        $auth->add($adicionarEquipamentos);
-
-        // Editar (admin, funcionario)
-        $editarEquipamentos = $auth->createPermission('editarEquipamentos');
-        $editarEquipamentos->description = 'Editar Equipamentos';
-        $auth->add($editarEquipamentos);
-
-        // Consultar (admin, funcionario)
-        $consultarEquipamentos = $auth->createPermission('consultarEquipamentos');
-        $consultarEquipamentos->description = 'Consultar equipamentos';
-        $auth->add($consultarEquipamentos);
-
-        // Remover (admin, funcionario)
-        $removerEquipamentos = $auth->createPermission('removerEquipamentos');
-        $removerEquipamentos->description = 'Remover Equipamentos';
-        $auth->add($removerEquipamentos);
 
                         /******* Subscrições *******/
 
@@ -239,66 +289,6 @@ class RbacController extends Controller
         $editarPerfil->description = 'Editar perfil';
         $auth->add($editarPerfil);
 
-                        /*** Produtos/Carrinho ***/
-
-        // Ver Detalhes (cliente)
-        $verDetalhesProdutos = $auth->createPermission('verDetalhesProdutos');
-        $verDetalhesProdutos->description = 'Ver Detalhes Produtos';
-        $auth->add($verDetalhesProdutos);
-
-        // Adicionar (cliente)
-        $adicionarProdutoCarrinho = $auth->createPermission('adicionarProdutoCarrinho');
-        $adicionarProdutoCarrinho->description = 'Adicionar produto ao carrinho';
-        $auth->add($adicionarProdutoCarrinho);
-
-        // Remover (cliente)
-        $removerProdutoCarrinho = $auth->createPermission('removerProdutoCarrinho');
-        $removerProdutoCarrinho->description = 'Remover produto ao carrinho';
-        $auth->add($removerProdutoCarrinho);
-
-        // Alterar (cliente)
-        $alterarQuantidadeProduto = $auth->createPermission('alterarQuantidadeProduto');
-        $alterarQuantidadeProduto->description = 'Alterar quantidade do produto';
-        $auth->add($alterarQuantidadeProduto);
-
-        // Pagar o carrinho (cliente)
-        $pagarCarrinho = $auth->createPermission('pagarCarrinho');
-        $pagarCarrinho->description = 'Pagar carrinho';
-        $auth->add($pagarCarrinho);
-
-                    /*** Compras ***/
-
-        // Comprar (cliente)
-        $comprarProdutos = $auth->createPermission('comprarProdutos');
-        $comprarProdutos->description = 'Comprar produtos';
-        $auth->add($comprarProdutos);
-
-        // Historico compras (cliente)
-        $verHistoricoCompras = $auth->createPermission('verHistoricoCompras');
-        $verHistoricoCompras->description = 'Ver historico de compras';
-        $auth->add($verHistoricoCompras);
-
-        // Pagamento online (cliente)
-        $pagamentoOnline = $auth->createPermission('pagamentoOnline');
-        $pagarCarrinho->description = 'Pagamento online';
-        $auth->add($pagamentoOnline);
-
-        // Alterar dados de envio (cliente)
-        $alterarDadosEnvio = $auth->createPermission('alterarDadosEnvio');
-        $alterarDadosEnvio->description = 'Alterar dados de envio';
-        $auth->add($alterarDadosEnvio);
-
-                    /*** Aulas ***/
-
-        // Visualizar aulas disponiveis (cliente)
-        $visualizarAulas = $auth->createPermission('visualizarAulas');
-        $visualizarAulas->description = 'Visualizar aulas';
-        $auth->add($visualizarAulas);
-
-        // Visualizar historico aulas (cliente)
-        $visualizarHistoricoAulas = $auth->createPermission('visualizarHistoricoAulas');
-        $visualizarHistoricoAulas->description = 'Visualizar historico aulas';
-        $auth->add($visualizarHistoricoAulas);
 
 // Visualizar historico aulas (cliente)
         $mudarEstadoConsulta = $auth->createPermission('mudarEstadoConsulta');
@@ -316,10 +306,14 @@ class RbacController extends Controller
         $auth->addChild($funcionario, $editarCliente);
         $auth->addChild($funcionario, $consultarCliente);
         $auth->addChild($funcionario, $desativarCliente);
-        $auth->addChild($funcionario, $adicionarAulas);
-        $auth->addChild($funcionario, $editarAulas);
+        $auth->addChild($funcionario, $adicionarAula);
+        $auth->addChild($funcionario, $editarAula);
         $auth->addChild($funcionario, $consultarAula);
-        $auth->addChild($funcionario, $removerAulas);
+        $auth->addChild($funcionario, $removerAula);
+        $auth->addChild($funcionario, $adicionarModalidade);
+        $auth->addChild($funcionario, $editarModalidade);
+        $auth->addChild($funcionario, $consultarModalidade);
+        $auth->addChild($funcionario, $removerModalidade);
         $auth->addChild($funcionario, $criarConsulta);
         $auth->addChild($funcionario, $editarConsulta);
         $auth->addChild($funcionario, $consultarConsulta);
@@ -328,10 +322,10 @@ class RbacController extends Controller
         $auth->addChild($funcionario, $editarProdutos);
         $auth->addChild($funcionario, $consultarProdutos);
         $auth->addChild($funcionario, $removerProdutos);
-        $auth->addChild($funcionario, $adicionarEquipamentos);
-        $auth->addChild($funcionario, $editarEquipamentos);
-        $auth->addChild($funcionario, $consultarEquipamentos);
-        $auth->addChild($funcionario, $removerEquipamentos);
+        $auth->addChild($funcionario, $adicionarEquipamento);
+        $auth->addChild($funcionario, $editarEquipamento);
+        $auth->addChild($funcionario, $consultarEquipamento);
+        $auth->addChild($funcionario, $removerEquipamento);
         $auth->addChild($funcionario, $criarSubscricao);
         $auth->addChild($funcionario, $desativarSubscricao);
         $auth->addChild($funcionario, $consultarSubscricao);
@@ -354,6 +348,7 @@ class RbacController extends Controller
         $auth->addChild($nutricionista, $editarConsulta);
         $auth->addChild($nutricionista, $consultarConsulta);
         $auth->addChild($nutricionista, $removerConsulta);
+        $auth->addChild($nutricionista, $consultarCliente);
 
         // Cliente
         $cliente = $auth->createRole('cliente');
@@ -361,40 +356,39 @@ class RbacController extends Controller
         $auth->addChild($cliente, $loginFO);
         $auth->addChild($cliente, $consultarPerfil);
         $auth->addChild($cliente, $editarPerfil);
-        $auth->addChild($cliente, $pagarCarrinho);
-        $auth->addChild($cliente, $comprarProdutos);
-        $auth->addChild($cliente, $verHistoricoCompras);
-        $auth->addChild($cliente, $pagamentoOnline);
-        $auth->addChild($cliente, $alterarDadosEnvio);
-        $auth->addChild($cliente, $visualizarAulas);
-        $auth->addChild($cliente, $visualizarHistoricoAulas);
+
 
         // Admin
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $loginBO);
-        $auth->addChild($admin, $adicionarTrabalhador);
-        $auth->addChild($admin, $editarTrabalhador);
-        $auth->addChild($admin, $consultarTrabalhador);
-        $auth->addChild($admin, $desativarTrabalhador);
+        $auth->addChild($admin, $adicionarFuncionario);
+        $auth->addChild($admin, $editarFuncionario);
+        $auth->addChild($admin, $consultarFuncionario);
+        $auth->addChild($admin, $desativarFuncionario);
+        $auth->addChild($admin, $adicionarTreinador);
+        $auth->addChild($admin, $editarTreinador);
+        $auth->addChild($admin, $consultarTreinador);
+        $auth->addChild($admin, $desativarTreinador);
         $auth->addChild($admin, $adicionarNutricionista);
         $auth->addChild($admin, $editarNutricionista);
         $auth->addChild($admin, $consultarNutricionista);
         $auth->addChild($admin, $desativarNutricionista);
-        $auth->addChild($admin, $estatisticas);
+        $auth->addChild($admin, $dashboard);
         $auth->addChild($admin, $funcionario);
         $auth->addChild($admin, $treinador);
         $auth->addChild($admin, $nutricionista);
-
-
-        /*// Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
+        $auth->addChild($admin, $cliente);
 
         $auth->assign($admin, 1);
         $auth->assign($funcionario, 2);
-        $auth->assign($treinador, 3);
-        $auth->assign($cliente, 4);*/
-
+        $auth->assign($cliente, 4);
+        $auth->assign($cliente, 107);
+        $auth->assign($funcionario, 108);
+        $auth->assign($treinador, 109);
+        $auth->assign($treinador, 110);
+        $auth->assign($nutricionista, 111);
+        $auth->assign($nutricionista, 112);
 
     }
 }
