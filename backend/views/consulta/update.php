@@ -3,10 +3,9 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\Consulta */
 
-$this->title = 'Update Consulta: ' . $model->id;
+$this->title = 'Atualizar Consulta: ' . $model->id . ": ". $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Consultas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="container-fluid">
