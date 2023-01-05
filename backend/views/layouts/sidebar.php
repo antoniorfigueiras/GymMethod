@@ -39,6 +39,17 @@ use hail812\adminlte\widgets\Menu;
                     /** Ginasio **/
                     ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamentos")],
 
+
+                    /** Consultaas **/
+                    [
+                        'label' => 'Consultas',
+                        'icon' => 'stethoscope',
+                        'items' => [
+                            ['label' => 'Consultar Consultas', 'icon' => 'eye', 'url' => ['/consulta']],
+                            ['label' => 'Criar Consultas', 'icon' => 'plus', 'url' => ['/consulta/select_client']],
+                        ],
+                    ],
+
                     /** Utilizadores **/
 
                     /** Clientes **/
@@ -47,15 +58,16 @@ use hail812\adminlte\widgets\Menu;
                         'icon' => 'user',
                         'visible' => Yii::$app->user->can("consultarCliente"),
                         'items' => [
-                            ['label' => 'Consultar Clientes', 'icon' => 'eye', 'url' => ['/cliente']],
-                            ['label' => 'Criar Clientes', 'icon' => 'plus', 'url' => ['../user/create?userType=cliente']],
+                            ['label' => 'Consultar Clientes', 'icon' => 'eye', 'url' => ['/cliente'], ],
+                            ['label' => 'Criar Clientes', 'icon' => 'plus', 'url' => ['../user/create?userType=cliente'],'visible' => Yii::$app->user->can("adicionarCliente"),
+                            ],
                         ],
                     ],
                     /** Funcionarios **/
                     [
                         'label' => 'Funcionarios',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'visible' => Yii::$app->user->can("consultarFuncionario"),
                         /*TO-DO METERES OS VISIBLES RBACS*/
                         'items' => [
                             ['label' => 'Consultar Funcionarios', 'icon' => 'eye', 'url' => ['/funcionario']],
@@ -66,7 +78,7 @@ use hail812\adminlte\widgets\Menu;
                     [
                         'label' => 'Treinadores',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'visible' => Yii::$app->user->can("consultarTreinador"),
                         'items' => [
                             ['label' => 'Consultar Treinadores', 'icon' => 'eye', 'url' => ['/treinador']],
                             ['label' => 'Criar Treinadores', 'icon' => 'plus', 'url' => ['../user/create?userType=treinador']],
@@ -76,18 +88,19 @@ use hail812\adminlte\widgets\Menu;
                     [
                         'label' => 'Nutricionistas',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'visible' => Yii::$app->user->can("consultarNutricionista"),
                         'items' => [
                             ['label' => 'Consultar Nutricionista', 'icon' => 'eye', 'url' => ['/nutricionista']],
                             ['label' => 'Criar Nutricionistas', 'icon' => 'plus', 'url' => ['../user/create?userType=nutricionista']],
                         ],
                     ],
 
-                    /** Consultas **/
-                    ['label' => 'Consultas', 'url' => ['/consulta'],'visible' => Yii::$app->user->can("consultarConsulta")],
 
-                    /** Consultas **/
-                    ['label' => 'Aulas', 'icon' => 'dumbbell', 'items' => [
+                    /** Aulas **/
+                    ['label' => 'Aulas', 'icon' => 'dumbbell',
+                        'visible' => Yii::$app->user->can("consultarAula"),
+
+                        'items' => [
                         ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
                         ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
                         ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],

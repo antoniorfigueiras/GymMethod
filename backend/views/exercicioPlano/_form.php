@@ -33,8 +33,15 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($modelParameterizacao, 'peso')->textInput() ?>
 
 
-    <?= $form->field($modelParameterizacao, 'tempo')->textInput() ?>
+    <?= $form->field($modelParameterizacao, 'tempo')->widget(TimePicker::classname(), [
+        'pluginOptions' => [
+                'defaultTime' => '00:00:00',
+            'showMeridian' => false,
+            'showSeconds' => true,
+            'autoclose' => true,
+        ],
 
+    ]); ?>
 
 
       <?php // $form->field($modelParameterizacao, 'tempo')->widget(TimePicker::classname(), []);?>

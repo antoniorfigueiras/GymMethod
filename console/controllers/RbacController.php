@@ -159,6 +159,11 @@ class RbacController extends Controller
         $removerConsulta->description = 'Remover consulta';
         $auth->add($removerConsulta);
 
+        // Concluir (admin, funcionario, nutricionista)
+        $concluirConsulta = $auth->createPermission('concluirConsulta');
+        $concluirConsulta->description = 'Concluir consulta';
+        $auth->add($concluirConsulta);
+
                         /*** Produtos ***/
 
         // Adicionar (admin, funcionario)
@@ -319,6 +324,7 @@ class RbacController extends Controller
         $auth->addChild($funcionario, $editarConsulta);
         $auth->addChild($funcionario, $consultarConsulta);
         $auth->addChild($funcionario, $removerConsulta);
+        $auth->addChild($funcionario, $concluirConsulta);
         $auth->addChild($funcionario, $adicionarProdutos);
         $auth->addChild($funcionario, $editarProdutos);
         $auth->addChild($funcionario, $consultarProdutos);
@@ -349,6 +355,8 @@ class RbacController extends Controller
         $auth->addChild($nutricionista, $editarConsulta);
         $auth->addChild($nutricionista, $consultarConsulta);
         $auth->addChild($nutricionista, $removerConsulta);
+        $auth->addChild($funcionario, $concluirConsulta);
+
 
         // Cliente
         $cliente = $auth->createRole('cliente');
