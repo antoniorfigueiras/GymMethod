@@ -159,7 +159,7 @@ class ExercicioController extends Controller
                 $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
                 if (in_array($fileType, $allowTypes)) {
                     $image = $file->tempName;
-                    $imgContent = file_get_contents($image);
+                    $imgContent = base64_encode(file_get_contents($image));
 
                     // Insert image content into database
                     $model->exemplo = $imgContent;

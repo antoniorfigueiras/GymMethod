@@ -28,7 +28,7 @@ class ItemCarrinho extends \yii\db\ActiveRecord
 
     public static function getTotalQuantityForUser($currUserId)
     {
-        if (isGuest()) {
+        if (Yii::$app->user->isGuest) {
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             $sum = 0;
             foreach ($itensCarrinho as $itemCarrinho) {

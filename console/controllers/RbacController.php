@@ -300,6 +300,11 @@ class RbacController extends Controller
         $visualizarHistoricoAulas->description = 'Visualizar historico aulas';
         $auth->add($visualizarHistoricoAulas);
 
+// Visualizar historico aulas (cliente)
+        $mudarEstadoConsulta = $auth->createPermission('mudarEstadoConsulta');
+        $mudarEstadoConsulta->description = 'Mudar estado consulta';
+        $auth->add($mudarEstadoConsulta);
+
 
                  /*** Roles ***/
 

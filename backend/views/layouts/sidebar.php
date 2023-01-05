@@ -41,7 +41,7 @@ use hail812\adminlte\widgets\Menu;
                     ],*/
                     ['label' => 'Produtos', 'icon' => 'store', 'url' => ['/produto'],'visible' => Yii::$app->user->can("consultarProdutos")],
                     
-                    ['label' => 'Aulas', 'icon' => 'store', 'items' => [
+                    ['label' => 'Aulas', 'icon' => 'store',  'visible' => Yii::$app->user->can("funcionario"),'items' => [
                         ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas'],],
                         ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas-horario'],],
                         ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 'value' => function($model) use ($modelPlano) {
 
-                          return Html::a('<i class="fa fa-check"></i>',
+                          return Html::a('<i class="fa fa-check"> Selecionar</i>',
 
                                         Url::to(['create', 'idExercicio' => $model->id, 'idPlano' => $modelPlano->id]),
                                         [
