@@ -36,7 +36,7 @@ class SiteController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index'],
-                        'roles' => ['admin', 'funcionario', 'treinador'],
+                        'roles' => ['admin', 'funcionario', 'treinador', 'nutricionista'],
                     ],
                     [
                         'allow' => true,
@@ -99,10 +99,6 @@ class SiteController extends Controller
 
             }else
             {
-                if (Yii::$app->user->can('treinador'))
-                {
-                    return $this->redirect('/plano');
-                }
                 return $this->goBack();
             }
 

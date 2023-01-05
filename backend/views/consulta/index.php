@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Criar Consulta', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Criar Consulta', ['select_client'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -43,16 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'cliente_id',
                                 'label' => 'Cliente',
                                 'content' => function ($model) {
-                                $nomeCliente = $model->cliente->nomeproprio . " " . $model->cliente->apelido;
-                                return $nomeCliente;
+                                    $nomeCompleto = $model->cliente->nomeproprio . " " . $model->cliente->apelido;
+                                    return $nomeCompleto;
                                 }
                             ],
                             [
                                 'attribute' => 'nutricionista_id',
                                 'label' => 'Nutricionista',
                                 'content' => function ($model) {
-                                    $nomeNutricionista = $model->nutricionista->nomeproprio . " " . $model->nutricionista->apelido;
-                                    return $nomeNutricionista;
+                                    $nomeCompleto = $model->nutricionista->nomeproprio . " " . $model->nutricionista->apelido;
+                                    return $nomeCompleto;
                                 }
                             ],
                             [
@@ -66,13 +66,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ]);
                                     } elseif ($model->estado == 1)
                                     {
-                                        return Html::tag('span', 'Realizada', [
+                                        return Html::tag('span', 'Concluida', [
                                             'class' => 'badge badge-success'
                                         ]);
                                     }elseif ($model->estado == 2)
                                     {
                                         return Html::tag('span', 'Cancelada', [
-                                            'class' => 'badge badge-alert'
+                                            'class' => 'badge badge-danger'
                                         ]);
                                     }
 
@@ -81,8 +81,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'style' => 'width: 160px'
                                 ]
                             ],
-                            //'idcliente',
-                            //'created_by',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
