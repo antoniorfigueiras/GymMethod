@@ -34,7 +34,7 @@ class PlanoTreino extends \yii\db\ActiveRecord
         return [
             [['cliente_id', 'instrutor_id'], 'required'],
             [['cliente_id', 'instrutor_id'], 'integer'],
-            [['nome'], 'string', 'max' => 20],
+            [['nome'], 'string', 'max' => 100],
             [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['cliente_id' => 'user_id']],
             [['instrutor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['instrutor_id' => 'user_id']],
         ];

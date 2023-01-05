@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 'value' => function($model) {
 
-                                    return Html::a('<i class="fa fa-check"></i>',
+                                    return Html::a('<i class="fa fa-check"> Selecionar</i>',
                                         Url::to(['plano/create', 'idCliente' => $model->user_id]),
                                         [
                                             'id'=>'grid-custom-button',
