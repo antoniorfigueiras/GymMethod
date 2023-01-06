@@ -20,17 +20,17 @@ $listmodalidades=ArrayHelper::map($modalidades,'id','nome');
 
 <div class="aulas-horario-form">
 
+
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'id_instrutor')->textInput(); ?>
 
     <?= $form->field($model, 'id_modalidade')->dropDownList(
         $listmodalidades,
         ['prompt'=>'Select...']
     ) ?>
 
-    <?= $form->field($model, 'id_instrutor')->textInput() ?>
-    <?= Html::a('Pesquisar Instrutor', ['create'],['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
-
-    <?= $form->field($model, 'diaSemana')->dropDownList([ 'segunda' => 'Segunda', 'terça' => 'Terça', 'quarta' => 'Quarta', 'quinta' => 'Quinta', 'sexta' => 'Sexta', 'sábado' => 'Sábado', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'diaSemana')->dropDownList([ 'segunda' => 'Segunda', 'terça' => 'Terça', 'quarta' => 'Quarta', 'quinta' => 'Quinta', 'sexta' => 'Sexta', 'sábado' => 'Sábado', ], ['prompt' => 'Select...']) ?>
 
     <?= $form->field($model, 'inicio')->widget(TimePicker::className(), [
         'name' => 't1',

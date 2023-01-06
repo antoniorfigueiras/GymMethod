@@ -54,8 +54,9 @@ class TreinadorController extends Controller
      */
     public function actionIndex()
     {
+        $value = 0;
         $searchModel = new TreinadorSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

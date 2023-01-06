@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\search\TreinadorSearch;
 use common\models\AulasHorario;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -76,20 +77,22 @@ class AulasHorarioController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($idTreinador)
     {
         $model = new AulasHorario();
+        $model->id_instrutor = $idTreinador;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
+            'idTreinador' => $idTreinador,
         ]);
     }
 
@@ -143,8 +146,15 @@ class AulasHorarioController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionModal()
+    public function actionSelect()
     {
-        var_dump('teste'); die();
+
+        $value = 1;
+        $searchModel = new TreinadorSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
+        return $this->renderAjax('selectTreinador', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

@@ -12,13 +12,18 @@ use yii\grid\GridView;
 $this->title = 'Modalidades';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="modalidades-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Modalidades', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <?=
+                                Html::a('Criar Modalidade', ['create'], ['class' => 'btn btn-success']);
+                            ?>
+                        </div>
+                    </div>
 
 
     <?= GridView::widget([
@@ -26,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'nome',
             [
                 'class' => ActionColumn::className(),
@@ -37,5 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

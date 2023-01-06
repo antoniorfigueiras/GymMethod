@@ -6,7 +6,7 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-        'cache' => [
+            'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
         'authManager' => [
@@ -19,5 +19,14 @@ return [
             'currencyCode' => 'EUR',
             'locale' => 'EUR',
         ],
+        /*'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'forceCopy' => true,
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'forceCopy' => true,
+                ],
+            ],
+        ],*/
     ],
 ];

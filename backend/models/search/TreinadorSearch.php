@@ -39,7 +39,7 @@ class TreinadorSearch extends Perfil
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $value)
     {
         $query = Perfil::find();
         $query->select('perfil.user_id, nomeproprio, apelido, telemovel, nif')
@@ -49,6 +49,10 @@ class TreinadorSearch extends Perfil
             ['JOIN', 'auth_assignment', 'user.id = auth_assignment.user_id']];
         $query->where('auth_assignment.item_name = "treinador"');
         // add conditions that should always apply here
+        if ($value == 1)
+        {
+            $query->andWhere('user.status = 1');
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
