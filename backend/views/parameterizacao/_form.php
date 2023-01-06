@@ -1,5 +1,6 @@
 <?php
 
+use kartik\time\TimePicker;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
@@ -26,7 +27,14 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'pesoCliente')->textInput() ?>
 
-    <?= $form->field($model, 'tempo')->textInput() ?>
+    <?= $form->field($model, 'tempo')->widget(TimePicker::classname(), [
+        'options' => ['placeholder' => 'Introduza o tempo'],
+        'language' =>'pt',
+        'pluginOptions' => [
+            'autoclose' => true,
+        ],
+
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -97,7 +97,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if(!Yii::$app->user->can('loginBO')){
                 Yii::$app->user->logout();
-                $this->redirect(Url::base(true).'../../../frontend/web');
+                $this->redirect('http://gymmethod.frontend/');
 
             }else
             {
