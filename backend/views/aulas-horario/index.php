@@ -22,7 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <?=
-                                Html::button('Create Aulas Horario', ['value' => Url::toRoute('/aulas-horario/create'),'class' => 'btn btn-success', 'id'=>'modalButton'])
+                                Html::button('Create Aulas Horario', ['value' => Url::toRoute('/aulas-horario/select'),'class' => 'btn btn-success', 'id'=>'modalButton']);
+                                //Html::a('Criar Horário', ['create'], ['class' => 'btn btn-success']);
                             ?>
                         </div>
                     </div>
@@ -44,9 +45,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-                            'id',
-                            'modalidade.nome',
-                            'instrutor.nomeproprio',
+                            [
+                                    'label' => 'Modalide',
+                                    'value' => 'modalidade.nome',
+                            ],
+                            [
+                                'label' => 'Instrutor',
+                                'value' => 'instrutor.nomeproprio',
+                            ],
                             'diaSemana',
                             'inicio',
                             'fim',
@@ -54,9 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             'capacidade',
                             [
                                 'class' => ActionColumn::className(),
+                                'template' => '{view} {update}',
                                 'urlCreator' => function ($action, AulasHorario $model, $key, $index, $column) {
-                                    return Url::toRoute([$action, 'id' => $model->id]);
-                                 }
+                                    if ($action === 'update') {
+                                        return Url::toRoute([$action, 'id' => $model->id]);
+                                    } else{
+                                        return Url::toRoute([$action, 'id' => $model->id]);
+                                    }
+                                }
                             ],
                         ],
                     ]); ?>

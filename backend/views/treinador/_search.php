@@ -12,23 +12,19 @@ use yii\widgets\ActiveForm;
     <div class="col-md-12">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['/aulas-horario/select'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'user_id') ?>
-
     <?= $form->field($model, 'telemovel') ?>
 
-    <?= $form->field($model, 'peso') ?>
+    <?php //$form->field($model, 'peso') ?>
 
-    <?= $form->field($model, 'altura') ?>
+    <?php //$form->field($model, 'altura') ?>
 
-    <?php // echo $form->field($model, 'nomeproprio') ?>
+    <?=  $form->field($model, 'nomeproprio') ?>
 
-    <?php // echo $form->field($model, 'apelido') ?>
+    <?=  $form->field($model, 'apelido') ?>
 
     <?php // echo $form->field($model, 'codpostal') ?>
 
