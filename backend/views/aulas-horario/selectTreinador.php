@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                    'format' => 'raw',
                                    'label' => 'Selecionar',
                                    'value' => function($model) {
-
                                        return Html::a(
 
                                            '<i class="fa fa-check"></i>',

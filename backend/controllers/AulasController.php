@@ -42,18 +42,23 @@ class AulasController extends Controller
         $aulasHorario = AulasHorario::find()->all();
         $aulas = Aulas::find()->all();
 
-        foreach ($aulas as $aula) {
-            $event = new \yii2fullcalendar\models\Event();
-            $event->id = $aula->id;
-            $event->title = $aula->aulasHorario->modalidade->nome;
-            $event->start = $aula->data . ' ' . $aula->aulasHorario->inicio;
-            $event->end = $aula->data . ' ' . $aula->aulasHorario->fim;
-            $events[] = $event;
+        if(empty($aulas)){
+            $this->createAulas();
+            $aulas = Aulas::find()->all();
         }
+            foreach ($aulas as $aula) {
+                $event = new \yii2fullcalendar\models\Event();
+                $event->id = $aula->id;
+                $event->title = $aula->aulasHorario->modalidade->nome;
+                $event->start = $aula->data . ' ' . $aula->aulasHorario->inicio;
+                $event->end = $aula->data . ' ' . $aula->aulasHorario->fim;
+                $events[] = $event;
+            }
 
-        return $this->render('index', [
-            'events' => $events,
-        ]);
+            return $this->render('index', [
+                'events' => $events,
+            ]);
+
     }
 
     /**
@@ -97,7 +102,7 @@ class AulasController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -143,30 +148,30 @@ class AulasController extends Controller
         foreach ($horario as $horario){
 
             $model = new Aulas();
-
-                switch ($horario->diaSemana){
+            if($horario->status != 'Inativo') {
+                switch ($horario->diaSemana) {
                     case 'segunda':
-                        $data = date('Y-m-d',strtotime('next monday'));
+                        $data = date('Y-m-d', strtotime('next monday'));
                         $model->data = $data;
                         break;
                     case 'terça':
-                        $data = date('Y-m-d',strtotime('next Tuesday'));
+                        $data = date('Y-m-d', strtotime('next Tuesday'));
                         $model->data = $data;
                         break;
                     case 'quarta':
-                        $data = date('Y-m-d',strtotime('next Wednesday'));
+                        $data = date('Y-m-d', strtotime('next Wednesday'));
                         $model->data = $data;
                         break;
                     case 'quinta':
-                        $data = date('Y-m-d',strtotime('next Thursday'));
+                        $data = date('Y-m-d', strtotime('next Thursday'));
                         $model->data = $data;
                         break;
                     case 'sexta':
-                        $data = date('Y-m-d',strtotime('next Friday'));
+                        $data = date('Y-m-d', strtotime('next Friday'));
                         $model->data = $data;
                         break;
                     case 'sábado':
-                        $data = date('Y-m-d',strtotime('next Saturday'));
+                        $data = date('Y-m-d', strtotime('next Saturday'));
                         $model->data = $data;
                         break;
                 }
@@ -177,11 +182,11 @@ class AulasController extends Controller
                 $aulas = Aulas::find()
                     ->where(['data' => $model->data, 'id_aulas_horario' => $model->id_aulas_horario])
                     ->exists();
-
-                if($aulas == false){
+                if ($aulas == false) {
                     $model->save();
                 }
             }
+        }
     }
 }
 

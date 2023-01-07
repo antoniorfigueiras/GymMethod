@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\bootstrap5\Modal;
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -20,26 +21,38 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <?=
-                                Html::a('Criar Modalidade', ['create'], ['class' => 'btn btn-success']);
+                            Html::button('Criar Modalidades', ['value' => Url::toRoute('/modalidades/create'),'class' => 'btn btn-success', 'id'=>'modalButton']);
                             ?>
                         </div>
                     </div>
 
+                    <?php
+                    Modal::begin([
+                        'title'=>'Modalidades',
+                        'id'=>'modal',
+                        'size'=>'modal-lg',
+                    ]);
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                    echo "<div id='modalContent'></div>";
 
-            'nome',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Modalidades $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+                    Modal::end();
+                    ?>
+
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+
+                            'nome',
+                            [
+                                'class' => ActionColumn::className(),
+                                'template' => '{view} {update}',
+                                'urlCreator' => function ($action, Modalidades $model, $key, $index, $column) {
+                                    return Url::toRoute([$action, 'id' => $model->id]);
+                                 }
+                            ],
+                        ],
+                    ]); ?>
 
                 </div>
             </div>
