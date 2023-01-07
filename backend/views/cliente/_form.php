@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telemovel')->input('number', ['length'=>true])?>
+    <?= $form->field($model, 'telemovel')->input(['number'])?>
 
     <?= $form->field($model, 'nif')->textInput(['type' => 'number'])?>
 
@@ -31,8 +31,6 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true])->textInput(['type' => 'number'])?>
-
-    <?= $form->field($modelUser, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

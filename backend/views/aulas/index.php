@@ -26,10 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?=
 
-        \yii2fullcalendar\yii2fullcalendar::widget(array(
-            'events'=> $events,
-        ));
-
+            \yii2fullcalendar\yii2fullcalendar::widget(array(
+                'events' => $events,
+            ));
     ?>
 
                 </div>

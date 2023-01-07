@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\TreinadorSearch */
+/* @var $model frontend\models\search\ConsultaSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,27 +12,23 @@ use yii\widgets\ActiveForm;
     <div class="col-md-12">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['/aulas-horario'],
+        'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?php //$form->field($model, 'telemovel') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?php //$form->field($model, 'peso') ?>
+    <?= $form->field($model, 'nome') ?>
 
-    <?php //$form->field($model, 'altura') ?>
+    <?= $form->field($model, 'descricao') ?>
 
-    <?=  $form->field($model, 'nomeproprio') ?>
+    <?= $form->field($model, 'data') ?>
 
-    <?=  $form->field($model, 'apelido') ?>
+    <?= $form->field($model, 'estado') ?>
 
-    <?php // echo $form->field($model, 'codpostal') ?>
+    <?php // echo $form->field($model, 'cliente_id') ?>
 
-    <?php // echo $form->field($model, 'pais') ?>
-
-    <?php // echo $form->field($model, 'cidade') ?>
-
-    <?php // echo $form->field($model, 'morada') ?>
+    <?php // echo $form->field($model, 'nutricionista_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
