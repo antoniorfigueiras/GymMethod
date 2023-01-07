@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <?=
-                                Html::button('Create Aulas Horario', ['value' => Url::toRoute('/aulas-horario/select'),'class' => 'btn btn-success', 'id'=>'modalButton']);
+                                Html::button('Criar Horário', ['value' => Url::toRoute('/aulas-horario/select'),'class' => 'btn btn-success', 'id'=>'modalButton']);
                                 //Html::a('Criar Horário', ['create'], ['class' => 'btn btn-success']);
                             ?>
                         </div>
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php
                     Modal::begin([
-                        'title'=>'Funcionário',
+                        'title'=>'Treinador',
                         'id'=>'modal',
                         'size'=>'modal-lg',
                     ]);
@@ -60,13 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             'capacidade',
                             [
                                 'class' => ActionColumn::className(),
-                                'template' => '{view} {update}',
+                                'template' => '{view} {update} {instrutor}',
+                                'buttons' => [
+                                    'instrutor' => function ($url, $model) {
+                                        return Html::button('<i class="glyphicon glyphicon-search"></i>',['value' => Url::toRoute(['/aulas-horario/instrutor', 'id' => $model->id]),'class' => 'btn btn-default btn-xs model_popUp']);
+                                    },
+                                ],
                                 'urlCreator' => function ($action, AulasHorario $model, $key, $index, $column) {
-                                    if ($action === 'update') {
-                                        return Url::toRoute([$action, 'id' => $model->id]);
-                                    } else{
-                                        return Url::toRoute([$action, 'id' => $model->id]);
-                                    }
+                                    return Url::toRoute([$action, 'id' => $model->id]);
                                 }
                             ],
                         ],

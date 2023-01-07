@@ -108,7 +108,7 @@ class AulasHorarioController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -148,7 +148,6 @@ class AulasHorarioController extends Controller
 
     public function actionSelect()
     {
-
         $value = 1;
         $searchModel = new TreinadorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
@@ -156,5 +155,25 @@ class AulasHorarioController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionInstrutor($id){
+        $value = 1;
+        $searchModel = new TreinadorSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
+        return $this->renderAjax('selectUpdateTreinador', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'id' => $id,
+        ]);
+    }
+
+    public function actionUpdateIdFuncionario($id, $idTreinador){
+        $model = $this->findModel($id);
+
+        $model->id_instrutor = $idTreinador;
+        $model->save();
+
+        return $this->redirect(['index']);
     }
 }
