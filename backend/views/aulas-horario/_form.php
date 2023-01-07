@@ -20,7 +20,6 @@ $listmodalidades=ArrayHelper::map($modalidades,'id','nome');
 
 <div class="aulas-horario-form">
 
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'id_instrutor')->hiddenInput()->label(false) ?>
