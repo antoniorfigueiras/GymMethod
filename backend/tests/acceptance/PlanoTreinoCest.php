@@ -114,7 +114,7 @@ class PlanoTreinoCest
         $I->wait(3);
         $I->click('Inserir Exercicio');
         $I->wait(2);
-        $I->fillField('ExercicioSearch[nome]', 'Pernas');
+        $I->fillField('ExercicioSearch[nome]', 'ExercicioTeste');
         $I->wait(2);
         $I->click('Selecionar');
         $I->wait(2);
