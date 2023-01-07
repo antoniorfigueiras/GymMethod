@@ -40,11 +40,11 @@ class Perfil extends \yii\db\ActiveRecord
             [['user_id', 'telemovel', 'nomeproprio', 'apelido', 'nif'], 'required','message' => 'Campo obrigatório'],
             [['user_id', 'telemovel', 'altura', 'nif', 'codpostal'], 'integer'],
             [['peso'], 'number'],
-            [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
+            [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 25],
             [['codpostal'], 'string', 'max' => 8],
             [['nif'], 'string', 'max' => 9],
             [['telemovel'], 'string', 'max' => 9, 'message' => 'Campo'],
-            [['morada'], 'string', 'max' => 125],
+            [['morada'], 'string', 'max' => 50],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];

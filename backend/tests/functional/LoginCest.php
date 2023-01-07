@@ -4,6 +4,7 @@ namespace backend\tests\functional;
 
 use backend\tests\FunctionalTester;
 use common\fixtures\UserFixture;
+use common\models\User;
 
 /**
  * Class LoginCest
@@ -26,19 +27,45 @@ class LoginCest
             ]
         ];
     }
-    
+    public function _before(FunctionalTester $I)
+    {
+        //  Check the content of fixtures in db
+        $I->seeRecord(User::className(), ['username'=>'admin', 'email'=>'admin@gmail.com']);
+        $I->seeRecord(User::className(), ['username'=>'funcionario', 'email'=>'funcionario@gmail.com']);
+        $I->seeRecord(User::className(), ['username'=>'treinador', 'email'=>'treinador@gmail.com']);
+
+    }
     /**
      * @param FunctionalTester $I
      */
-    public function loginUser(FunctionalTester $I)
+    public function loginAdmin(FunctionalTester $I)
     {
-        $I->amOnRoute('/site/login');
-        $I->fillField('Username', 'admin');
-        $I->fillField('Password', 'admin123');
-        $I->click('login-button');
-
-        $I->see('Logout (admin)', 'form button[type=submit]');
+        $I->amOnRoute('site/login');
+        $I->fillField('LoginForm[username]', 'admin');
+        $I->fillField('LoginForm[password]', 'admin123');
+        $I->click('Login');
+        $I->see('Logout');
         $I->dontSeeLink('Login');
         $I->dontSeeLink('Signup');
+    }
+    public function loginFuncionario(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+        $I->fillField('LoginForm[username]', 'funcionario');
+        $I->fillField('LoginForm[password]', 'funcionario123');
+        $I->click('Login');
+        $I->see('Logout');
+        $I->dontSeeLink('Login');
+
+    }
+    public function loginTreinador(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+        $I->fillField('LoginForm[username]', 'treinador');
+        $I->fillField('LoginForm[password]', 'treinador123');
+        $I->click('Login');
+        $I->see('Logout', );
+        $I->dontSeeLink('Login');
+
     }
 }
