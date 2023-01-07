@@ -124,7 +124,7 @@ class Venda extends \yii\db\ActiveRecord
 
     public function saveItensVenda()
     {
-        $itensCarrinho = ItemCarrinho::getItemsForUser(currUserId());
+        $itensCarrinho = ItemCarrinho::getItemsForUser(Yii::$app->user->id);
         foreach ($itensCarrinho as $itemCarrinho) {
             $vendaItem = new ItemVenda();
             $vendaItem->nome_produto = $itemCarrinho['nome'];

@@ -6,7 +6,7 @@
 $this->title = 'Atualizar Perfil: ' . $model->nomeproprio;
 $this->params['breadcrumbs'][] = ['label' => 'Perfils', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->user_id, 'url' => ['view', 'user_id' => $model->user_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Ãtualizar';
 ?>
 
 <div class="container-fluid">

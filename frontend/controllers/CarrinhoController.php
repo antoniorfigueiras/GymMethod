@@ -46,7 +46,7 @@ class CarrinhoController extends \frontend\base\Controller
 
     public function actionIndex()
     {
-        $itensCarrinho = ItemCarrinho::getItemsForUser(currUserId());
+        $itensCarrinho = ItemCarrinho::getItemsForUser(Yii::$app->user->id);
 
         return $this->render('index', [
             'items' => $itensCarrinho
@@ -111,7 +111,7 @@ class CarrinhoController extends \frontend\base\Controller
 
     public function actionDelete($id)
     {
-        if (isGuest()) {
+        if (Yii::$app->user->isGuest()) {
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             foreach ($itensCarrinho as $i => $itemCarrinho) {
                 if ($itemCarrinho['id'] == $id) {
@@ -121,7 +121,7 @@ class CarrinhoController extends \frontend\base\Controller
             }
             \Yii::$app->session->set(ItemCarrinho::SESSION_KEY, $itensCarrinho);
         } else {
-            ItemCarrinho::deleteAll(['id_produto' => $id, 'created_by' => currUserId()]);
+            ItemCarrinho::deleteAll(['id_produto' => $id, 'created_by' => Yii::$app->user->id]);
         }
 
         return $this->redirect(['index']);
@@ -136,7 +136,7 @@ class CarrinhoController extends \frontend\base\Controller
             throw new NotFoundHttpException("O Produto não existe");
         }
         $quantidade = \Yii::$app->request->post('quantidade');
-        if (isGuest()) {
+        if (Yii::$app->user->isGuest()) {
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             foreach ($itensCarrinho as &$itemCarrinho) {
                 if ($itemCarrinho['id'] === $id) {
@@ -146,21 +146,21 @@ class CarrinhoController extends \frontend\base\Controller
             }
             \Yii::$app->session->set(ItemCarrinho::SESSION_KEY, $itensCarrinho);
         } else {
-            $itemCarrinho = ItemCarrinho::find()->userId(currUserId())->produtoId($id)->one();
+            $itemCarrinho = ItemCarrinho::find()->userId(Yii::$app->user->id)->produtoId($id)->one();
             if ($itemCarrinho) {
                 $itemCarrinho->quantidade = $quantidade;
                 $itemCarrinho->save();
             }
         }
-        return ItemCarrinho::getTotalQuantityForUser(currUserId());
+        return ItemCarrinho::getTotalQuantityForUser(Yii::$app->user->id);
     }
 
 
     public function actionCheckout()
     {
-        $itensCarrinho = ItemCarrinho::getItemsForUser(currUserId());
-        $produtoQuantidade= ItemCarrinho::getTotalQuantityForUser(currUserId());
-        $precoTotal = ItemCarrinho::getTotalPriceForUser(currUserId());
+        $itensCarrinho = ItemCarrinho::getItemsForUser(Yii::$app->user->id);
+        $produtoQuantidade= ItemCarrinho::getTotalQuantityForUser(Yii::$app->user->id);
+        $precoTotal = ItemCarrinho::getTotalPriceForUser(Yii::$app->user->id);
 
         if (empty($itensCarrinho)) {
             return $this->redirect('/site/loja');
@@ -170,7 +170,7 @@ class CarrinhoController extends \frontend\base\Controller
         $venda->preco_total = $precoTotal;
         $venda->estado = Venda::STATUS_DRAFT;
         $venda->created_at = time();
-        $venda->created_by = currUserId();
+        $venda->created_by = Yii::$app->user->id;
         $transacao = Yii::$app->db->beginTransaction();
         if ($venda->load(Yii::$app->request->post())
             && $venda->save()
@@ -186,7 +186,7 @@ class CarrinhoController extends \frontend\base\Controller
         }
 
         $vendaMorada = new VendaMorada();
-        if (!isGuest()) {
+        if (!Yii::$app->user->isGuest) {
             $perfil = Perfil::findOne(Yii::$app->user->getId());
             $user = Yii::$app->user->identity;
 
@@ -213,9 +213,9 @@ class CarrinhoController extends \frontend\base\Controller
     public function actionSubmeterPagamento($vendaId)
     {
         $where = ['id' => $vendaId, 'estado' => Venda::STATUS_DRAFT];
-        if (!isGuest())
+        if (!Yii::$app->user->isGuest())
         {
-            $where['created_by'] = currUserId();
+            $where['created_by'] = Yii::$app->user->id;
         }
 
         /*$req = Yii::$app->request;

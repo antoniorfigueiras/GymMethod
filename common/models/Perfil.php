@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-
 /**
  * This is the model class for table "perfil".
  *
@@ -11,7 +10,6 @@ use Yii;
  * @property int $telemovel
  * @property int $nif
  * @property float|null $peso
- * @property int|null $nif
  * @property int|null $altura
  * @property string $nomeproprio
  * @property string $apelido
@@ -43,8 +41,10 @@ class Perfil extends \yii\db\ActiveRecord
             [['peso'], 'number'],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 55],
             [['codpostal'], 'string', 'max' => 8],
-            [['nif'], 'string', 'max' => 9],
-            [['telemovel'], 'string', 'max' => 9, 'message' => 'Campo'],
+            [['nif'], 'string', 'length' =>9],
+            [['telemovel'], 'string', 'length' =>9],
+            [['peso'], 'string', 'max' => 3],
+            [['altura'], 'string', 'max' => 3],
             [['morada'], 'string', 'max' => 125],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],

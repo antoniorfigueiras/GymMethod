@@ -45,7 +45,7 @@ class ItemCarrinho extends \yii\db\ActiveRecord
 
     public static function getTotalPriceForUser($currUserId)
     {
-        if (isGuest()) {
+        if (Yii::$app->user->isGuest) {
             $itensCarrinho = \Yii::$app->session->get(ItemCarrinho::SESSION_KEY, []);
             $sum = 0;
             foreach ($itensCarrinho as $itemCarrinho) {
@@ -87,7 +87,7 @@ class ItemCarrinho extends \yii\db\ActiveRecord
 
     public static function clearItensCarrinho($currUserId)
     {
-        if (isGuest()) {
+        if (Yii::$app->user->isGuest) {
             Yii::$app->session->remove(ItemCarrinho::SESSION_KEY);
         }else {
             ItemCarrinho::deleteAll( ['created_by' => $currUserId]);
