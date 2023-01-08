@@ -46,3 +46,4 @@ $config =  yii\helpers\ArrayHelper::merge(
     ]
 );
 return $config;
+

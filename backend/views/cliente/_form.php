@@ -23,9 +23,9 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'altura')->textInput(['type' => 'number']) ?>
 
+
     <?php if (Yii::$app->user->can('funcionario')) {
         $form->field($model, 'pais')->textInput(['maxlength' => true]);
-
         $form->field($model, 'cidade')->textInput(['maxlength' => true]);
 
         $form->field($model, 'morada')->textInput(['maxlength' => true]);
