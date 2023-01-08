@@ -105,8 +105,7 @@ class ExercicioController extends Controller
             if (in_array($fileType, $allowTypes)) {
                 $image = $file->tempName;
                 $imgContent = base64_encode(file_get_contents($image));
-                /*var_dump($imgContent);
-                die();*/
+
                 $model->exemplo = $imgContent;
                 $model->save();
 

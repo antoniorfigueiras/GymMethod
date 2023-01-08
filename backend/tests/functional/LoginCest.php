@@ -24,6 +24,10 @@ class LoginCest
             'user' => [
                 'class' => UserFixture::class,
                 'dataFile' => codecept_data_dir() . 'login_data.php'
+            ],
+            'treinador' => [
+                'class' => UserFixture::class,
+                'dataFile' => codecept_data_dir() . 'treinador.php'
             ]
         ];
     }
@@ -63,6 +67,16 @@ class LoginCest
         $I->amOnRoute('site/login');
         $I->fillField('LoginForm[username]', 'treinador');
         $I->fillField('LoginForm[password]', 'treinador123');
+        $I->click('Login');
+        $I->see('Logout', );
+        $I->dontSeeLink('Login');
+
+    }
+    public function loginNutricionista(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+        $I->fillField('LoginForm[username]', 'nutricionista');
+        $I->fillField('LoginForm[password]', 'nutricionista123');
         $I->click('Login');
         $I->see('Logout', );
         $I->dontSeeLink('Login');
