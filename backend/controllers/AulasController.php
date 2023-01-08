@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+
 use common\models\Aulas;
 use common\models\AulasHorario;
+use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -42,10 +44,16 @@ class AulasController extends Controller
         $aulasHorario = AulasHorario::find()->all();
         $aulas = Aulas::find()->all();
 
+        if(empty($aulasHorario)){
+            $_SESSION['horarioError'] = 'É necessário criar aulas antes de aceder ao horário!';
+            return $this->redirect(['./aulas-horario']);
+        }
+
         if(empty($aulas)){
             $this->createAulas();
             $aulas = Aulas::find()->all();
         }
+
             foreach ($aulas as $aula) {
                 $event = new \yii2fullcalendar\models\Event();
                 $event->id = $aula->id;

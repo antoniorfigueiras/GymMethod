@@ -1,5 +1,6 @@
 <?php
 
+
 use common\models\AulasHorario;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -14,6 +15,19 @@ use yii\bootstrap5\Modal;
 $this->title = 'Aulas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php
+    if(isset($_SESSION['horarioError'])){
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['horarioError'];?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php
+        unset($_SESSION['horarioError']);
+    }
+?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
