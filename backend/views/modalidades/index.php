@@ -47,9 +47,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'class' => ActionColumn::className(),
                                 'template' => '{view} {update}',
-                                'urlCreator' => function ($action, Modalidades $model, $key, $index, $column) {
-                                    return Url::toRoute([$action, 'id' => $model->id]);
-                                 }
+                                'buttons' => [
+                                    'view' => function ($url, $model) {
+                                        return Html::button('<i class="fa fa-eye"></i>',['value' => Url::toRoute(['/modalidades/view', 'id' => $model->id]),'class' => 'btn btn-default btn-xs action-button model_popUp']);
+
+                                    },
+                                    'update' => function ($url, $model) {
+                                        return Html::button('<i class="fa fa-pen"></i>',['value' => Url::toRoute(['/modalidades/update', 'id' => $model->id]),'class' => 'btn btn-default btn-xs action-button model_popUp']);
+
+                                    },
+                                ],
                             ],
                         ],
                     ]); ?>

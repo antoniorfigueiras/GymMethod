@@ -3,6 +3,9 @@ actor: UnitTester
 modules:
   enabled:
     - Asserts
-    - Db
+    - Db:
+        dsn: 'mysql:host=localhost;dbname=gymdb_teste'
+        user: 'root'
+        password: 'root'
     - Yii2:
         part: fixtures
