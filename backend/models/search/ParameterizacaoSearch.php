@@ -18,7 +18,7 @@ class ParameterizacaoSearch extends Parameterizacao
     {
         return [
             [['id', 'series', 'seriesCliente', 'repeticoes', 'repeticoesCliente', 'peso', 'pesoCliente'], 'integer'],
-            [['data', 'tempo'], 'safe'],
+            [['tempo'], 'safe'],
         ];
     }
 
@@ -59,7 +59,6 @@ class ParameterizacaoSearch extends Parameterizacao
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'data' => $this->data,
             'series' => $this->series,
             'seriesCliente' => $this->seriesCliente,
             'repeticoes' => $this->repeticoes,

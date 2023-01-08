@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "parameterizacoes".
  *
  * @property int $id
- * @property string $data
  * @property int|null $series
  * @property int|null $seriesCliente
  * @property int|null $repeticoes
@@ -36,8 +35,7 @@ class Parameterizacao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data'], 'required'],
-            [['data', 'tempo','tempoCliente'], 'safe'],
+            [['tempo','tempoCliente'], 'safe'],
             [['series', 'seriesCliente', 'repeticoes', 'repeticoesCliente', 'peso', 'pesoCliente'], 'integer'],
         ];
     }
@@ -49,7 +47,6 @@ class Parameterizacao extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'data' => 'Data',
             'series' => 'Series',
             'seriesCliente' => 'Series Cliente',
             'repeticoes' => 'Repeticoes',

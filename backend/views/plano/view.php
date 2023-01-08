@@ -22,10 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-                    <?php /*  if($model->exercicio->tipoExercicio->nome == 'Aquecimento')
-                       {
-
-                       }*/?>
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
 

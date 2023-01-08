@@ -3,5 +3,10 @@ actor: UnitTester
 bootstrap: false
 modules:
     enabled:
+        - Db:
+              dsn: 'mysql:host=localhost;dbname=gymdb_teste'
+              user: 'root'
+              password: 'root'
+              cleanup: false
         - Yii2:
-            part: fixtures
+              part: [fixtures, orm]

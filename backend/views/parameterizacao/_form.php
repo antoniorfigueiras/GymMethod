@@ -13,27 +13,19 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
-
     <?= $form->field($model, 'series')->textInput() ?>
-
-    <?= $form->field($model, 'seriesCliente')->textInput() ?>
 
     <?= $form->field($model, 'repeticoes')->textInput() ?>
 
-    <?= $form->field($model, 'repeticoesCliente')->textInput() ?>
-
     <?= $form->field($model, 'peso')->textInput() ?>
 
-    <?= $form->field($model, 'pesoCliente')->textInput() ?>
-
     <?= $form->field($model, 'tempo')->widget(TimePicker::classname(), [
-        'options' => ['placeholder' => 'Introduza o tempo'],
-        'language' =>'pt',
         'pluginOptions' => [
+            'defaultTime' => '00:00:00',
+            'showMeridian' => false,
+            'showSeconds' => true,
             'autoclose' => true,
         ],
-
     ]); ?>
 
     <div class="form-group">
