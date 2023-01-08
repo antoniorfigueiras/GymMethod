@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telemovel')->input(['number'])?>
+    <?= $form->field($model, 'telemovel')->input('number', ['maxlength'=>9])?>
 
     <?= $form->field($model, 'nif')->textInput(['type' => 'number'])?>
 

@@ -11,6 +11,16 @@ return [
         'email' => 'admin@gmail.com',
     ],
     [
+        'username' => 'funcionario',
+        'auth_key' => '7g8dIIgrB6uX9ke16CeTx7npIY',
+        // password_0
+        'password_hash' => '$2y$13$w33vOiTs9fNq4JN1mFCar.QEokNkR0nWzO97/cJtbTuBlihzWSbMm',
+        'password_reset_token' => null,
+        'created_at' => '1392559493',
+        'updated_at' => '1392559493',
+        'email' => 'funcionario@gmail.com',
+    ],
+    /*[
         'username' => 'treinador',
         'auth_key' => 'SaUcIs0TaSwLpzZHU9KLW1OR4PBJador',
         // password_0
@@ -21,14 +31,14 @@ return [
         'email' => 'treinador@gmail.com',
     ],
     [
-        'username' => 'funcionario',
-        'auth_key' => '7g8dIIgrB6uX9ke16CeTx7npIY',
+        'username' => 'nutricionista',
+        'auth_key' => 'W0WDfF8Kxb9xcIk0RfdPir2Rqjj6A68A',
         // password_0
-        'password_hash' => '$2y$13$w33vOiTs9fNq4JN1mFCar.QEokNkR0nWzO97/cJtbTuBlihzWSbMm',
+        'password_hash' => '$2y$13$/y0Tb8rOwpQhNTwfr.BmXOYuzuIQD3xRG8e.j3IyslRb5uaphTww.',
         'password_reset_token' => null,
         'created_at' => '1392559493',
         'updated_at' => '1392559493',
-        'email' => 'funcionario@gmail.com',
-    ],
+        'email' => 'nutricionista@gmail.com',
+    ],*/
 
 ];
