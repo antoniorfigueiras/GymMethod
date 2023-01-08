@@ -1,2 +1,8 @@
 suite_namespace: backend\tests\unit
 actor: UnitTester
+modules:
+  enabled:
+    - Asserts
+    - Db
+    - Yii2:
+        part: fixtures

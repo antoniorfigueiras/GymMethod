@@ -20,12 +20,11 @@ $listmodalidades=ArrayHelper::map($modalidades,'id','nome');
 
 <div class="aulas-horario-form">
 
-
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_instrutor')->textInput(); ?>
+    <?= $form->field($model, 'id_instrutor')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'id_modalidade')->dropDownList(
+    <?= $form->field($model, 'id_modalidade')->label('Modalidade')->dropDownList(
         $listmodalidades,
         ['prompt'=>'Select...']
     ) ?>

@@ -21,14 +21,27 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= Html::a('Atualizar', ['update', 'id' => $model->user_id], [
                             'class' => 'btn btn-primary',
                             'hidden' =>  !Yii::$app->user->can("funcionario")]) ?>
-                        <?= Html::a('Desativar', ['delete', 'id' => $model->user_id], [
-                            'class' => 'btn btn-danger',
-                            'hidden' =>  !Yii::$app->user->can("funcionario"),
-                            'data' => [
-                                'confirm' => 'Tem a certeza que pretende desativar este cliente?',
-                                'method' => 'post',
-                            ],
-                        ]) ?>
+                        <?php if ($model->user->status==1){
+                           echo Html::a('Desativar', ['desativar', 'user_id' => $model->user_id], [
+                                'class' => 'btn btn-danger',
+                                'hidden' =>  !Yii::$app->user->can("desativarCliente"),
+                                'data' => [
+                                    'confirm' => 'Tem a certeza que pretende desativar este cliente?',
+                                    'method' => 'post',
+                                ],
+                            ]);
+                        } elseif($model->user->status==0)
+                        {
+                            echo Html::a('Ativar Cliente', ['ativar', 'user_id' => $model->user_id], [
+                                'class' => 'btn btn-info',
+                                'hidden' =>  !Yii::$app->user->can("desativarCliente"),
+                                'data' => [
+                                    'confirm' => 'Tem a certeza que pretende ativar este cliente?',
+                                    'method' => 'post',
+                                ],
+                            ]);
+                        }
+                        ?>
                     </p>
                     <?= DetailView::widget([
                         'model' => $model,

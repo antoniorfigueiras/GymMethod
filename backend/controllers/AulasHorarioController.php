@@ -67,7 +67,7 @@ class AulasHorarioController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -77,10 +77,10 @@ class AulasHorarioController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($idTreinador)
+    public function actionCreate($id)
     {
         $model = new AulasHorario();
-        $model->id_instrutor = $idTreinador;
+        $model->id_instrutor = $id;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -90,9 +90,9 @@ class AulasHorarioController extends Controller
             $model->loadDefaultValues();
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
-            'idTreinador' => $idTreinador,
+            'idTreinador' => $id,
         ]);
     }
 
@@ -108,10 +108,10 @@ class AulasHorarioController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -148,13 +148,34 @@ class AulasHorarioController extends Controller
 
     public function actionSelect()
     {
-
         $value = 1;
         $searchModel = new TreinadorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
-        return $this->renderAjax('selectTreinador', [
+        return $this->render('selectTreinador', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'action' => 'select',
         ]);
+    }
+
+    public function actionInstrutor($id){
+        $value = 1;
+        $searchModel = new TreinadorSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
+        return $this->render('selectUpdateTreinador', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'action' => 'instrutor',
+            'id' => $id,
+        ]);
+    }
+
+    public function actionUpdateIdFuncionario($id, $idTreinador){
+        $model = $this->findModel($id);
+
+        $model->id_instrutor = $idTreinador;
+        $model->save();
+
+        return $this->redirect(['index']);
     }
 }

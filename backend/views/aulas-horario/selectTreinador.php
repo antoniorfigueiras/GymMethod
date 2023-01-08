@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\bootstrap5\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\TreinadorSearch */
@@ -16,8 +17,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+
                     <?php
-                        echo $this->render('../treinador/_search', ['model' => $searchModel]);
+                    Modal::begin([
+                        'title'=>'Treinador',
+                        'id'=>'modal',
+                        'size'=>'modal-lg',
+                    ]);
+
+                    echo "<div id='modalContent'></div>";
+
+                    Modal::end();
+                    ?>
+
+                    <?php
+                        echo $this->render('../treinador/_search', ['model' => $searchModel, 'action' => $action]);
                     ?>
 
                     <?=
@@ -35,28 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                    'format' => 'raw',
                                    'label' => 'Selecionar',
                                    'value' => function($model) {
-
-                                       return Html::a(
-
-                                           '<i class="fa fa-check"></i>',
-
-                                           Url::to(['create', 'idTreinador' => $model->user_id]),
-
-                                           [
-
-                                               'id'=>'grid-custom-button',
-
-                                               'data-pjax'=>true,
-
-                                               'action'=>Url::to(['create', 'idTreinador' => $model->user_id]),
-
-                                               'class'=>'button btn btn-default',
-
-                                               'id'=>'btnFuncionario',
-
-                                           ]
-
-                                       );
+                                       return Html::button('<i class="fa fa-check"></i>',['value' => Url::toRoute(['/aulas-horario/create', 'id' => $model->user_id]),'class' => 'btn btn-default btn-xs action-button model_popUp']);
 
                                    }
 

@@ -3,7 +3,10 @@
 return [
     'components' => [
         'db' => [
-            'dsn' => 'mysql:host=localhost;dbname=yii2advanced_test',
+            'dsn' => 'mysql:host=localhost;dbname=gymdb_teste',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8',
         ],
     ],
 ];

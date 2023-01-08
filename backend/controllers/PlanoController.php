@@ -81,6 +81,7 @@ class PlanoController extends Controller
      */
     public function actionView($id)
     {
+
         $model = $this->findModel($id);
 
         // Data provider para ir buscar todos os exercicios da tabela exercicio_plano associados ao plano atraves da relação do model
@@ -114,6 +115,19 @@ class PlanoController extends Controller
         $model->instrutor_id = Yii::$app->user->id;
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
+            //TODO: Publish
+            $server   = '127.0.0.1';
+            $port     = 1883;
+            $idClient = 'client';
+
+            $mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $idClient);
+
+            $mqtt->connect();
+            $mqtt->publish('teste', 'Plano Criado', 1);
+            $mqtt->disconnect();
+
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

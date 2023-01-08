@@ -53,7 +53,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute'=>'tipo_exercicio_id',
-                                'value'=> $model->tipoExercicio->nome,
+                                 'label' => 'Tipo Exercico',
+                                'value' => function ($model) {
+                                    if (isset($model->tipoExercicio->nome)) {
+                                        return $model->tipoExercicio->nome;
+                                    }
+                                    return 'Sem tipo';
+                                }
                             ],
                         ],
                     ]) ?>
