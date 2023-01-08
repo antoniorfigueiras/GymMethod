@@ -11,26 +11,27 @@ use yii\bootstrap4\ActiveForm;
 <div class="perfil-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?php
+    if (Yii::$app->user->can('funcionario')) {
+        $form->field($model, 'nomeproprio')->textInput(['maxlength' => true]);
+        $form->field($model, 'apelido')->textInput(['maxlength' => true]);
+        $form->field($model, 'telemovel')->input(['number']);
+        $form->field($model, 'nif')->textInput(['type' => 'number']);
+    } ?>
 
-    <?= $form->field($model, 'nomeproprio')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'peso')->textInput(['type' => 'number']) ?>
 
-    <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'altura')->textInput(['type' => 'number']) ?>
 
-    <?= $form->field($model, 'telemovel')->input('number', ['maxlength'=>9])?>
 
-    <?= $form->field($model, 'nif')->textInput(['type' => 'number'])?>
+    <?php if (Yii::$app->user->can('funcionario')) {
+        $form->field($model, 'pais')->textInput(['maxlength' => true]);
+        $form->field($model, 'cidade')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'peso')->textInput(['type' => 'number'])?>
+        $form->field($model, 'morada')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'altura')->textInput(['type' => 'number'])?>
-
-    <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'cidade')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true])->textInput(['type' => 'number'])?>
+        $form->field($model, 'codpostal')->textInput(['maxlength' => true])->textInput(['type' => 'number']);
+    } ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

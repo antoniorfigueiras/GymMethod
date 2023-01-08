@@ -42,7 +42,7 @@ class ClienteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'clientes'],
+                        'actions' => ['index', 'view', 'update', 'clientes'],
                         'roles' => ['nutricionista'],
                     ],
                     [

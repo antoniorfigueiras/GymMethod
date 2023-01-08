@@ -36,6 +36,8 @@ class Consulta extends \yii\db\ActiveRecord
             [['data'], 'safe'],
             [['estado', 'cliente_id', 'nutricionista_id'], 'integer'],
             [['nome'], 'string', 'max' => 125],
+            [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['cliente_id' => 'id']],
+            [['nutricionista_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['nutricionista_id' => 'id']],
         ];
     }
 
