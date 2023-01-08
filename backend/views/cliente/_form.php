@@ -32,8 +32,6 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'codpostal')->textInput(['maxlength' => true])->textInput(['type' => 'number'])?>
 
-    <?= $form->field($modelUser, 'status')->checkbox() ?>
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

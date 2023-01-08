@@ -28,10 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         //'filterModel' => $searchModel,
                         'columns' => [
-
-
-                            'nomeproprio',
-                            'apelido',
+                            [
+                                'attribute' => 'nomeproprio',
+                                'label' => 'Nome',
+                                'value' => function ($model) {
+                                    $nomeCompleto = $model->nomeproprio . " " . $model->apelido;
+                                    return $nomeCompleto;
+                                }
+                            ],
                             'telemovel',
                             'nif',
                             [

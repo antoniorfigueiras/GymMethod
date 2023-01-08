@@ -174,11 +174,20 @@ class ClienteController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($user_id)
+    public function actionDesativar($user_id)
     {
-        $this->findModel($user_id)->delete();
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 0]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
+    }
 
-        return $this->redirect(['index']);
+    public function actionAtivar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 1]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
     }
 
     /**
