@@ -4,7 +4,7 @@ namespace common\fixtures;
 
 use yii\test\ActiveFixture;
 
-class UserFixture extends ActiveFixture
+class PerfilFixture extends ActiveFixture
 {
     public $modelClass = 'common\models\Perfil';
 }
