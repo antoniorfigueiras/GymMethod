@@ -29,27 +29,40 @@ class ClienteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['consultarCliente'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['funcionario'],
+                        'actions' => ['create'],
+                        'roles' => ['adicionarCliente'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'clientes', 'planos'],
-                        'roles' => ['treinador'],
+                        'actions' => ['view'],
+                        'roles' => ['consultarCliente'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'update', 'clientes'],
-                        'roles' => ['nutricionista'],
+                        'actions' => ['update'],
+                        'roles' => ['editarCliente'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'actions' => ['desativar', 'ativar'],
+                        'roles' => ['desativarCliente'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['clientes'],
+                        'roles' => ['consultarCliente'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['planos'],
+                        'roles' => ['consultarCliente'],
+                    ],
+
                 ],
             ],
             'verbs' => [
@@ -78,13 +91,6 @@ class ClienteController extends Controller
      */
     public function actionIndex()
     {
-        /*$value = 0;
-        $user = new User();
-        $role = $user->getRole();
-        if ($role == 'treinador')
-        {
-            $value = 1;
-        }*/
         $value = 0;
         $searchModel = new ClienteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $value);
@@ -157,7 +163,7 @@ class ClienteController extends Controller
     {
         $model = $this->findModel($id);
         $modelUser = $model->user;
-        if (($model->load(Yii::$app->request->post()) && $model->save()) && ($modelUser->load(Yii::$app->request->post()) && $modelUser->save())) {
+        if (($model->load(Yii::$app->request->post()) && $model->save())) {
             return $this->redirect(['view', 'id' => $model->user_id]);
         }
 

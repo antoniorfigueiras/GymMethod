@@ -73,6 +73,7 @@ class ExercicioTest extends \Codeception\Test\Unit
         $model->tipo_exercicio_id = $tipo_exercicio->id;
         $this->assertTrue($model->validate(['tipo_exercicio_id']));
         verify($model->save())->true();
+        $this->assertNotNull( Exercicio::findOne(['id' =>  $model->id]));
     }
 
     public function testUpdateExercicio()

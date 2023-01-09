@@ -3,12 +3,13 @@
 namespace common\tests\unit\models;
 
 use common\models\Consulta;
+use common\models\Perfil;
 use \Tests\Support\UnitTester;
 use Yii;
 use common\fixtures\UserFixture;
 
 /**
- * Login form test
+ * AcceptanceTester form test
  */
 class ConsultaTest extends \Codeception\Test\Unit
 {
@@ -27,59 +28,85 @@ class ConsultaTest extends \Codeception\Test\Unit
         ];
     }
 
-
-    public function testcriarConsulta()
+    public function testcriarConsultaErrado()
     {
         $consulta = new Consulta();
-        $consulta->nome ="Consulta de Nutrição";
-        $consulta->descricao ="Consulta para um plano novo de Nutrição";
-        $consulta->estado ="1";
-        $consulta->data = "2022-12-29 02:10:00";
-        $consulta->cliente_id ="1";
-        $consulta->nutricionista_id ="1";
-        verify($consulta->save())->true();
-    }
-
-    public function testcriarConsultaerrado()
-    {
-        $consulta = new Consulta();
-        $consulta->nome ="Consulta";
-        $consulta->descricao ="Consulta";
-        $consulta->estado ="2";
+        $consulta->nome ="Consultaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        $this->assertFalse($consulta->validate(['nome']));
+        $consulta->descricao =123;
+        $this->assertFalse($consulta->validate(['descricao']));
+        $consulta->estado = "estado";
+        $this->assertFalse($consulta->validate(['estado']));
         $consulta->data = null;
-        $consulta->cliente_id ="1";
-        $consulta->nutricionista_id ="1";
+        $this->assertFalse($consulta->validate(['data']));
+        $consulta->cliente_id = 5;
+        $this->assertFalse($consulta->validate(['cliente_id']));
+        $consulta->nutricionista_id = 6;
+        $this->assertFalse($consulta->validate(['nutricionista_id']));
         verify($consulta->save())->false();
 
     }
 
-    public function testatualizarConsulta()
+
+    public function testcriarConsulta()
     {
+        $cliente = $this->tester->grabFixture('user', 'user3');
+        $nutricionista = $this->tester->grabFixture('user', 'user2');
         $consulta = new Consulta();
         $consulta->nome ="Consulta de Nutrição";
         $consulta->descricao ="Consulta para um plano novo de Nutrição";
-        $consulta->estado ="1";
+        $consulta->estado = 1;
         $consulta->data = "2022-12-29 02:10:00";
-        $consulta->cliente_id ="1";
-        $consulta->nutricionista_id ="1";
+        $consulta->cliente_id = $cliente->id;
+        $consulta->nutricionista_id = $nutricionista->id;
+        verify($consulta->save())->true();
+        $this->assertNotNull(Consulta::findOne(['id' =>  $consulta->id]));
+    }
+
+
+
+    public function testatualizarConsulta()
+    {
+        $cliente = $this->tester->grabFixture('user', 'user3');
+        $nutricionista = $this->tester->grabFixture('user', 'user2');
+        $consulta = new Consulta();
+        $consulta->nome ="Consulta de Nutrição";
+        $consulta->descricao ="Consulta para um plano novo de Nutrição";
+        $consulta->estado =1;
+        $consulta->data = "2022-12-29 02:10:00";
+        $consulta->cliente_id = $cliente->id;
+        $consulta->nutricionista_id = $nutricionista->id;
         $consulta->save();
-        $model=  Consulta::findOne(['id' => $consulta->id]);
-        $model->nome="Consulta Rotina";
-        verify($model->save());
+
+        $model = Consulta::findOne(['id' => $consulta->id]);
+        $model->nome="Consulta Update";
+
+        $model->descricao = 'Descricao Update';
+
+        $model->save();
+
+        $this->assertEquals('Consulta Update', $model->nome);
+        $this->assertEquals('Descricao Update', $model->descricao);
     }
 
     public function testapagarConsulta()
     {
+        $cliente = $this->tester->grabFixture('user', 'user3');
+        $nutricionista = $this->tester->grabFixture('user', 'user2');
         $consulta = new Consulta();
         $consulta->nome ="Consulta de Nutrição";
         $consulta->descricao ="Consulta para um plano novo de Nutrição";
         $consulta->estado ="1";
         $consulta->data = "2022-12-29 02:10:00";
-        $consulta->cliente_id ="1";
-        $consulta->nutricionista_id ="1";
+        $consulta->cliente_id =$cliente->id;
+        $consulta->nutricionista_id =$nutricionista->id;
         $consulta->save();
-        $model=  Consulta::findOne(['id' => $consulta->id]);
-        verify($model->delete());
+
+        $consultaD = Consulta::findOne(['id' => $consulta->id]);
+        $consultaD->delete();
+
+        $this->assertNull(Consulta::findOne(['id' => $consulta->id]));
+
     }
 
 }

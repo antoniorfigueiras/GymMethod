@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
 
 
-                    <?php echo $this->render('_searchExercicio', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('_searchExercicio', ['model' => $searchModel, 'modelPlano' => $modelPlano]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,

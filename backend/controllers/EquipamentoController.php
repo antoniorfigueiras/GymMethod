@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Equipamentos;
 use backend\models\search\EquipamentosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,36 @@ class EquipamentoController extends Controller
     public function behaviors()
     {
         return [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'actions' => ['index'],
+                            'roles' => ['consultarEquipamento'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['view'],
+                            'roles' => ['consultarEquipamento'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['create'],
+                            'roles' => ['adicionarEquipamento'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['update'],
+                            'roles' => ['editarEquipamento'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['delete'],
+                            'roles' => ['removerEquipamento'],
+                        ],
+                    ],
+                ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

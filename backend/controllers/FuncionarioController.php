@@ -27,17 +27,30 @@ class FuncionarioController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['adicionarFuncionario'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'actions' => ['view'],
+                        'roles' => ['consultarFuncionario'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'actions' => ['create'],
+                        'roles' => ['adicionarFuncionario'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarFuncionario'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['desativarFuncionario'],
+                    ],
+
                 ],
             ],
             'verbs' => [
@@ -55,7 +68,7 @@ class FuncionarioController extends Controller
      */
     public function actionIndex()
     {
-        $model = new Perfil();
+
         $role = 'funcionario';
         $searchModel = new FuncionarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

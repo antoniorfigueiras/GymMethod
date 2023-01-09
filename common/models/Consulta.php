@@ -31,11 +31,11 @@ class Consulta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricao'], 'string'],
             [['data', 'cliente_id', 'nutricionista_id', 'nome'], 'required'],
             [['data'], 'safe'],
             [['estado', 'cliente_id', 'nutricionista_id'], 'integer'],
-            [['nome'], 'string', 'max' => 125],
+            [['descricao'], 'string', 'max' => 50],
+            [['nome'], 'string', 'max' => 30],
             [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['cliente_id' => 'id']],
             [['nutricionista_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['nutricionista_id' => 'id']],
         ];

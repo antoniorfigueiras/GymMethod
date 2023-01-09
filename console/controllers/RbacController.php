@@ -295,7 +295,7 @@ class RbacController extends Controller
         $auth->add($editarPerfil);
 
 
-// Visualizar historico aulas (cliente)
+        // Mudar estado consulta (cliente)
         $mudarEstadoConsulta = $auth->createPermission('mudarEstadoConsulta');
         $mudarEstadoConsulta->description = 'Mudar estado consulta';
         $auth->add($mudarEstadoConsulta);

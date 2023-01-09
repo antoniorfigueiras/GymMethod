@@ -5,6 +5,7 @@ namespace backend\controllers;
 use backend\models\search\TreinadorSearch;
 use common\models\AulasHorario;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,17 +21,47 @@ class AulasHorarioController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'actions' =>  ['index'],
+                        'roles' => ['funcionario'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarAula'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['adicionarAula'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarAula'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerAula'],
+                    ],
+
+                ],
+            ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
                     ],
                 ],
-            ]
-        );
+        ];
+
     }
 
     /**
