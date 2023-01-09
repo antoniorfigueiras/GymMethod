@@ -89,9 +89,9 @@ return [
                     'pluralize' => false,
 
                     // GET planos do cliente
-                    'extraPatterns' =>[
+                    /*'extraPatterns' =>[
                         'GET get-planos/{idClient}' => 'get-planos',
-                    ],
+                    ],*/
                     'tokens' => [
                         '{idClient}' => '<idClient:\\d+>',
                         '{plano}' => '<plano:\\d+>',

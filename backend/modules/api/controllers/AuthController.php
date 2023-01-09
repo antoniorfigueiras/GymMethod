@@ -41,9 +41,11 @@ class AuthController extends ActiveController
         if ($user && $user->validatePassword($password))
         {
             $perfil = Perfil::findOne($user->getId());
-            $token = base64_encode($username.":".$password);
-            return ['token' =>$token, 'success' => true, 'perfil' => $perfil];
+           // $token = base64_encode($username.":".$password);
+            $token = $user->auth_key;
+            return ['token' =>$token, 'success' => true, 'user_id' => $perfil->user_id, 'username' => $perfil->nomeproprio];
         }
+
         return ['success' => false];
 
     }
