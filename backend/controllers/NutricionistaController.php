@@ -28,16 +28,28 @@ class NutricionistaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['adicionarNutricionista'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'actions' => ['view'],
+                        'roles' => ['consultarFuncionario'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'actions' => ['create'],
+                        'roles' => ['adicionarNutricionista'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarNutricionista'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['desativarNutricionista'],
                     ],
                 ],
             ],

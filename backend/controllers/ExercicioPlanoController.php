@@ -11,6 +11,7 @@ use common\models\TipoExercicio;
 use Yii;
 use common\models\ExercicioPlano;
 use backend\models\search\ExercicioPlanoSearch;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -27,6 +28,41 @@ class ExercicioplanoController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['select_exercicio'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -81,7 +117,6 @@ class ExercicioplanoController extends Controller
 
         $model->plano_id = (int)$idPlano; //Associar o id do plano recebido ao plano_id da tabela exercicio_plano
         $model->exercicio_id = (int)$idExercicio;
-        $modelParameterizacao->data = date("Y/m/d");
         $modelPlano = $model->plano; // Ir buscar o model do plano atraves da relacao do modelo
 
         if ($modelParameterizacao->load(Yii::$app->request->post()) && $modelParameterizacao->save()) {
@@ -148,7 +183,7 @@ class ExercicioplanoController extends Controller
         $model = $this->findModel($id);
         $model->delete();
         $model->parameterizacao->delete();
-        return $this->redirect(['index']);
+        return $this->redirect(['plano/view', 'id' => $model->plano->id]);
     }
 
     /**

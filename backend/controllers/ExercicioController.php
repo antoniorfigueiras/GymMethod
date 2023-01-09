@@ -31,10 +31,30 @@ class ExercicioController extends Controller
             'access' => [
                 'class' => AccessControl::class,
                 'rules' => [
-
                     [
                         'allow' => true,
-                        'roles' => ['treinador'],
+                        'actions' => ['index'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerPlano'],
                     ],
                 ],
             ],
@@ -105,8 +125,7 @@ class ExercicioController extends Controller
             if (in_array($fileType, $allowTypes)) {
                 $image = $file->tempName;
                 $imgContent = base64_encode(file_get_contents($image));
-                /*var_dump($imgContent);
-                die();*/
+
                 $model->exemplo = $imgContent;
                 $model->save();
 

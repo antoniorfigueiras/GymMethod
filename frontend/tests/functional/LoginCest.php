@@ -19,7 +19,7 @@ class LoginCest
         return [
             'user' => [
                 'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'login_data.php',
+                'dataFile' => codecept_data_dir() . 'admin.php',
             ],
         ];
     }
@@ -60,7 +60,7 @@ class LoginCest
     {
         $I->submitForm('#login-form', $this->formParams('erau', 'password_0'));
         $I->see('Logout (erau)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
+        $I->dontSeeLink('AcceptanceTester');
         $I->dontSeeLink('Signup');
     }
 }

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card">
                 <div class="card-body">
                     <?php
-                    echo $this->render('../treinador/_search', ['model' => $searchModel]);
+                    echo $this->render('../treinador/_search', ['model' => $searchModel, 'action' => $action, 'id' => $id]);
                     ?>
 
                     <?=

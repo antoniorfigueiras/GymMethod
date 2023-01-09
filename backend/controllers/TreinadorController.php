@@ -26,17 +26,30 @@ class TreinadorController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['adicionarTreinador'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'actions' => ['view'],
+                        'roles' => ['consultarTreinador'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'actions' => ['create'],
+                        'roles' => ['adicionarTreinador'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarTreinador'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['desativarTreinador'],
+                    ],
+
                 ],
             ],
             'verbs' => [

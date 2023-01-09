@@ -27,16 +27,28 @@ class ProdutoController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['adicionarProdutos'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['funcionario'],
+                        'actions' => ['view'],
+                        'roles' => ['consultarProdutos'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'actions' => ['create'],
+                        'roles' => ['adicionarProdutos'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarProdutos'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerProdutos'],
                     ],
                 ],
             ],

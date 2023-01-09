@@ -31,9 +31,50 @@ class ConsultaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'concluir', 'cancelar', 'delete', 'select_client', 'select_nutricionista'],
-                        'roles' => ['funcionario', 'nutricionista'],
+                        'actions' => ['index'],
+                        'roles' => ['consultarConsulta'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['criarConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['cancelar'],
+                        'roles' => ['removerConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['concluir'],
+                        'roles' => ['concluirConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['select_client'],
+                        'roles' => ['criarConsulta'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['select_nutricionista'],
+                        'roles' => ['criarConsulta'],
+                    ],
+
                 ],
             ],
             'verbs' => [

@@ -37,13 +37,14 @@ use hail812\adminlte\widgets\Menu;
                     ['label' => 'Tipo de Exercicios', 'url' => ['/tipoexercicio'],'visible' => Yii::$app->user->can("consultarPlano")],
 
                     /** Ginasio **/
-                    ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamentos")],
+                    ['label' => 'Equipamentos', 'icon' => 'dumbbell', 'url' => ['/equipamento'],'visible' => Yii::$app->user->can("consultarEquipamento")],
 
 
-                    /** Consultaas **/
+                    /** Consultas **/
                     [
                         'label' => 'Consultas',
                         'icon' => 'stethoscope',
+                        'visible' => Yii::$app->user->can("consultarConsulta"),
                         'items' => [
                             ['label' => 'Consultar Consultas', 'icon' => 'eye', 'url' => ['/consulta']],
                             ['label' => 'Criar Consultas', 'icon' => 'plus', 'url' => ['/consulta/select_client']],
@@ -56,10 +57,10 @@ use hail812\adminlte\widgets\Menu;
                     [
                         'label' => 'Clientes',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarCliente"),
+                        'visible' => Yii::$app->user->can("adicionarCliente"),
                         'items' => [
                             ['label' => 'Consultar Clientes', 'icon' => 'eye', 'url' => ['/cliente'], ],
-                            ['label' => 'Criar Clientes', 'icon' => 'plus', 'url' => ['../user/create?userType=cliente'],'visible' => Yii::$app->user->can("adicionarCliente"),
+                            ['label' => 'Criar Clientes', 'icon' => 'plus', 'url' => ['../user/create?userType=cliente'],
                             ],
                         ],
                     ],
@@ -68,7 +69,6 @@ use hail812\adminlte\widgets\Menu;
                         'label' => 'Funcionarios',
                         'icon' => 'user',
                         'visible' => Yii::$app->user->can("consultarFuncionario"),
-                        /*TO-DO METERES OS VISIBLES RBACS*/
                         'items' => [
                             ['label' => 'Consultar Funcionarios', 'icon' => 'eye', 'url' => ['/funcionario']],
                             ['label' => 'Criar Funcionarios', 'icon' => 'plus', 'url' => ['../user/create?userType=funcionario']],
@@ -78,7 +78,7 @@ use hail812\adminlte\widgets\Menu;
                     [
                         'label' => 'Treinadores',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarTreinador"),
+                        'visible' => Yii::$app->user->can("adicionarTreinador"),
                         'items' => [
                             ['label' => 'Consultar Treinadores', 'icon' => 'eye', 'url' => ['/treinador']],
                             ['label' => 'Criar Treinadores', 'icon' => 'plus', 'url' => ['../user/create?userType=treinador']],
@@ -88,7 +88,7 @@ use hail812\adminlte\widgets\Menu;
                     [
                         'label' => 'Nutricionistas',
                         'icon' => 'user',
-                        'visible' => Yii::$app->user->can("consultarNutricionista"),
+                        'visible' => Yii::$app->user->can("adicionarNutricionista"),
                         'items' => [
                             ['label' => 'Consultar Nutricionista', 'icon' => 'eye', 'url' => ['/nutricionista']],
                             ['label' => 'Criar Nutricionistas', 'icon' => 'plus', 'url' => ['../user/create?userType=nutricionista']],

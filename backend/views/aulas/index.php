@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Aulas';
+$this->title = 'Horário';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -28,8 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             \yii2fullcalendar\yii2fullcalendar::widget(array(
                 'events' => $events,
+                'options' => [
+                        'lang' => 'pt'
+                ]
             ));
     ?>
+
+
+
 
                 </div>
             </div>

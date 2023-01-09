@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Parameterizacao;
 use backend\models\search\ParameterizacaoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,32 @@ class ParameterizacaoController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+            [
+                'allow' => true,
+                'actions' => ['index'],
+                'roles' => ['adicionarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['view'],
+                'roles' => ['consultarPlano'],
+            ],
+
+            [
+                'allow' => true,
+                'actions' => ['update'],
+                'roles' => ['editarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['delete'],
+                'roles' => ['removerPlano'],
+            ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
