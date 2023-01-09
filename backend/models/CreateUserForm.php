@@ -45,6 +45,7 @@ class CreateUserForm extends Model
      */
     public function signup($userType)
     {
+
         if ($this->validate()) {
             $user = new User();
             $user->username = $this->username;

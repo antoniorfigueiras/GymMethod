@@ -93,6 +93,28 @@ class RbacController extends Controller
         $desativarNutricionista->description = 'Desativar Nutricionista';
         $auth->add($desativarNutricionista);
 
+                        /*** Assistentes ***/
+
+        // Registar (admin)
+        $adicionarAssistente = $auth->createPermission('adicionarAssistente');
+        $adicionarAssistente->description = 'Adicionar Assistente';
+        $auth->add($adicionarAssistente);
+
+        // Editar (admin)
+        $editarAssistente = $auth->createPermission('editarAssistente');
+        $editarAssistente->description = 'Editar Assistente';
+        $auth->add($editarAssistente);
+
+        // Consultar (admin)
+        $consultarAssistente = $auth->createPermission('consultarAssistente');
+        $consultarAssistente->description = 'Consultar Assistente';
+        $auth->add($consultarAssistente);
+
+        // Desativar (admin)
+        $desativarAssistente = $auth->createPermission('desativarAssistente');
+        $desativarAssistente->description = 'Desativar Assistente';
+        $auth->add($desativarAssistente);
+
                         /*** Clientes ***/
 
         // Registar (admin, funcionário)
@@ -275,6 +297,30 @@ class RbacController extends Controller
         $consultarSubscricao->description = 'Consultar Subscricao';
         $auth->add($consultarSubscricao);
 
+                        /******* Book *******/
+        //Adicionar (admin, assistente)
+        $criarBook = $auth->createPermission('criarBook');
+        $criarBook->description = 'Criar book';
+        $auth->add($criarBook);
+
+        //Editar (admin, assistente)
+        $editarBook = $auth->createPermission('editarBook');
+        $editarBook->description = 'Editar book';
+        $auth->add($editarBook);
+
+        //Delete (admin, assistente)
+        $eliminarBook = $auth->createPermission('eliminarBook');
+        $eliminarBook->description = 'Eliminar book';
+        $auth->add($eliminarBook);
+
+        //Consultar (admin, assistente)
+        $consultarBook = $auth->createPermission('consultarBook');
+        $consultarBook->description = 'Consultar book';
+        $auth->add($consultarBook);
+
+
+
+
         /******* FRONTOFFICE *******/
 
                          /*** Login/Perfil***/
@@ -359,6 +405,14 @@ class RbacController extends Controller
         $auth->addChild($cliente, $consultarPerfil);
         $auth->addChild($cliente, $editarPerfil);
 
+        //Assistente
+        $assistente = $auth->createRole('assistente');
+        $auth->add($assistente);
+        $auth->addchild($assistente, $loginBO);
+        $auth->addChild($assistente, $criarBook);
+        $auth->addChild($assistente, $editarBook);
+        $auth->addChild($assistente, $eliminarBook);
+        $auth->addChild($assistente, $consultarBook);
 
         // Admin
         $admin = $auth->createRole('admin');
@@ -381,6 +435,15 @@ class RbacController extends Controller
         $auth->addChild($admin, $treinador);
         $auth->addChild($admin, $nutricionista);
         $auth->addChild($admin, $cliente);
+        $auth->addChild($admin, $criarBook);
+        $auth->addChild($admin, $editarBook);
+        $auth->addChild($admin, $eliminarBook);
+        $auth->addChild($admin, $consultarBook);
+        $auth->addChild($admin, $adicionarAssistente);
+        $auth->addChild($admin, $editarAssistente);
+        $auth->addChild($admin, $consultarAssistente);
+        $auth->addChild($admin, $desativarAssistente);
+
 
         $auth->assign($admin, 1);
         $auth->assign($funcionario, 2);
@@ -391,6 +454,7 @@ class RbacController extends Controller
         $auth->assign($treinador, 110);
         $auth->assign($nutricionista, 111);
         $auth->assign($nutricionista, 112);
-
+        $auth->assign($assistente, 132);
+        $auth->assign($assistente, 133);
     }
 }

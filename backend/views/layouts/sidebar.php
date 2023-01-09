@@ -26,6 +26,7 @@ use hail812\adminlte\widgets\Menu;
             <?php
 
             $user = User::findOne(Yii::$app->user->getId());
+
             echo Menu::widget([
                 'items' => [
 
@@ -94,6 +95,16 @@ use hail812\adminlte\widgets\Menu;
                             ['label' => 'Criar Nutricionistas', 'icon' => 'plus', 'url' => ['../user/create?userType=nutricionista']],
                         ],
                     ],
+                    /** Assistente **/
+                    [
+                        'label' => 'Assistente',
+                        'icon' => 'user',
+                        'visible' => Yii::$app->user->can("adicionarAssistente"),
+                        'items' => [
+                            ['label' => 'Consultar Assistentes', 'icon' => 'eye', 'url' => ['/assistente']],
+                            ['label' => 'Criar Assistente', 'icon' => 'plus', 'url' => ['../user/create?userType=assistente']],
+                        ],
+                    ],
 
 
                     /** Aulas **/
@@ -115,6 +126,15 @@ use hail812\adminlte\widgets\Menu;
                             ['label' => 'Vendas', 'icon' => 'store ', 'url' => ['/venda']],
                             ['label' => 'Consultar Produtos', 'icon' => 'eye', 'url' => ['/produto']],
                             ['label' => 'Criar Produtos', 'icon' => 'plus', 'url' => ['/produto/create']],
+                        ],
+                    ],
+                    /** Book **/
+                    [
+                        'label' => 'Book',
+                        'icon' => 'book',
+                        'visible' => Yii::$app->user->can("consultarBook"),
+                        'items' => [
+                            ['label' => 'Book', 'icon' => 'book ', 'url' => ['/book']],
                         ],
                     ],
                 ],
