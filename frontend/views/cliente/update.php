@@ -48,10 +48,9 @@ $this->title = 'GymMethod';
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Funcionalidades</div>
-                    <a class="nav-link" href="index">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
-                    </a>
+                    <?php
+                    echo Html::a('Consultas',['/consulta/index'],['class' => ['nav-link']]);
+                    ?>
         </nav>
     </div>
     <div id="layoutSidenav_content">

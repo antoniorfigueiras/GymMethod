@@ -22,7 +22,17 @@ $vendaMorada = $model->vendaMorada;
         'attributes' => [
             'id',
             'preco_total:currency',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'format' => 'html',
+                'value' =>function($model) {
+                    if ($model->estado == 0) {
+                        return \yii\bootstrap4\Html::tag('span', 'Completo', ['class' => 'badge badge-success']); }
+                    else if ($model->estado == 1) {
+                        return \yii\bootstrap4\Html::tag('span', 'Pago', ['class' => 'badge badge-secondary']); }
+                    else if ($model->estado == 2) {
+                        return \yii\bootstrap4\Html::tag('span', 'Cancelada', ['class' => 'badge badge-danger']); }}
+            ],
             'nomeproprio',
             'apelido',
             'email:email',
@@ -37,7 +47,7 @@ $vendaMorada = $model->vendaMorada;
             'morada',
             'cidade',
             'pais',
-            'codPostal',
+            'codpostal',
         ],
     ]) ?>
 
@@ -67,5 +77,25 @@ $vendaMorada = $model->vendaMorada;
         <?php endforeach; ?>
         </tbody>
     </table>
+    <?php
+    if ($model->estado==0)
+    {
+        echo Html::a('Venda Paga', ['pago', 'id' => $model->id], [
+            'class' => 'btn btn-info',
+            'data' => [
+                'confirm' => 'Tem a certeza que esta consulta foi paga?',
+                'method' => 'post',
+            ],
+        ]);
+        echo "&nbsp;&nbsp";
+        echo Html::a('Venda Cancelada', ['cancelar', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Tem a certeza que pretende cancelar esta consulta?',
+                'method' => 'post',
+            ],
+        ]);
+    }
+    ?>
 
 </div>

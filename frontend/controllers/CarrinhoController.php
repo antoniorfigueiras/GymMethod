@@ -178,7 +178,7 @@ class CarrinhoController extends \frontend\base\Controller
             && $venda->saveItensVenda()) {
             $transacao->commit();
 
-            //ItemCarrinho::clearItensCarrinho(currUserId());
+            ItemCarrinho::clearItensCarrinho(currUserId());
 
             return $this->render('pay-now', [
                 'venda' => $venda,

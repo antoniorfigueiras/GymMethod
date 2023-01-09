@@ -44,7 +44,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 if ($model->estado == 0) {
                     return \yii\bootstrap4\Html::tag('span', 'Completo', ['class' => 'badge badge-success']); }
                 else if ($model->estado == 1) {
-                    return \yii\bootstrap4\Html::tag('span', 'Pago', ['class' => 'badge badge-secondary']); }}
+                    return \yii\bootstrap4\Html::tag('span', 'Pago', ['class' => 'badge badge-secondary']); }
+                else if ($model->estado == 2) {
+                    return \yii\bootstrap4\Html::tag('span', 'Cancelada', ['class' => 'badge badge-danger']); }
+    }
             ],
             'created_at:datetime',
             //'created_by',
