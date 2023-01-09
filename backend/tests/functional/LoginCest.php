@@ -23,63 +23,47 @@ class LoginCest
         return [
             'user' => [
                 'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'login_data.php'
+                'dataFile' => codecept_data_dir() . 'admin.php'
             ],
-            'treinador' => [
-                'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'treinador.php'
-            ]
         ];
     }
     public function _before(FunctionalTester $I)
     {
         //  Check the content of fixtures in db
-        $I->seeRecord(User::className(), ['username'=>'admin', 'email'=>'admin@gmail.com']);
-        $I->seeRecord(User::className(), ['username'=>'funcionario', 'email'=>'funcionario@gmail.com']);
-        $I->seeRecord(User::className(), ['username'=>'treinador', 'email'=>'treinador@gmail.com']);
-
+        $I->seeRecord(User::className(), ['username'=>'admin']);
     }
-    /**
-     * @param FunctionalTester $I
-     */
-    public function loginAdmin(FunctionalTester $I)
+
+    public function emptyLogin(FunctionalTester $I)
     {
         $I->amOnRoute('site/login');
+        $I->amGoingTo('Login sem credenciais');
+        $I->fillField('LoginForm[username]', '');
+        $I->fillField('LoginForm[password]', '');
+        $I->click('Login');
+        $I->see('Username cannot be blank.');
+        $I->see('Password cannot be blank.');
+    }
+
+    public function wrongCredencials(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+        $I->amGoingTo('Login com credenciais erradas');
+        $I->fillField('LoginForm[username]', 'adminn');
+        $I->fillField('LoginForm[password]', 'admin321');
+        $I->click('Login');
+        $I->see('Incorrect username or password.');
+    }
+
+    public function validLogin(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+        $I->amGoingTo('Login com credenciais certas');
         $I->fillField('LoginForm[username]', 'admin');
         $I->fillField('LoginForm[password]', 'admin123');
         $I->click('Login');
         $I->see('Logout');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
+        $I->see('Bem Vindo: admin');
+        $I->dontSee('Login');
     }
-    public function loginFuncionario(FunctionalTester $I)
-    {
-        $I->amOnRoute('site/login');
-        $I->fillField('LoginForm[username]', 'funcionario');
-        $I->fillField('LoginForm[password]', 'funcionario123');
-        $I->click('Login');
-        $I->see('Logout');
-        $I->dontSeeLink('Login');
 
-    }
-    public function loginTreinador(FunctionalTester $I)
-    {
-        $I->amOnRoute('site/login');
-        $I->fillField('LoginForm[username]', 'treinador');
-        $I->fillField('LoginForm[password]', 'treinador123');
-        $I->click('Login');
-        $I->see('Logout', );
-        $I->dontSeeLink('Login');
-
-    }
-    public function loginNutricionista(FunctionalTester $I)
-    {
-        $I->amOnRoute('site/login');
-        $I->fillField('LoginForm[username]', 'nutricionista');
-        $I->fillField('LoginForm[password]', 'nutricionista123');
-        $I->click('Login');
-        $I->see('Logout', );
-        $I->dontSeeLink('Login');
-
-    }
 }

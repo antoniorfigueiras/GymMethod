@@ -27,15 +27,27 @@ class UserController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'error'],
+                        'actions' => ['index'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['funcionario'],
+                        'actions' => ['view'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout'],
+                        'actions' => ['create'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
                         'roles' => ['@'],
                     ],
                 ],

@@ -32,7 +32,33 @@ class PlanoController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['treinador'],
+                        'actions' => ['index'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['select_client'],
+                        'roles' => ['adicionarPlano'],
                     ],
                 ],
             ],
@@ -54,7 +80,7 @@ class PlanoController extends Controller
         $searchModel = new PlanoTreinoSearch();
         $model = Perfil::findOne(Yii::$app->user->getId());
 
-        if ($model->user->getRole() == 'admin')
+        if (Yii::$app->user->can("admin"))
         {
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         }

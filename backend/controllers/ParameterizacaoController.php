@@ -20,6 +20,31 @@ class ParameterizacaoController extends Controller
     public function behaviors()
     {
         return [
+            [
+                'allow' => true,
+                'actions' => ['index'],
+                'roles' => ['adicionarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['view'],
+                'roles' => ['consultarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['create'],
+                'roles' => ['adicionarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['update'],
+                'roles' => ['editarPlano'],
+            ],
+            [
+                'allow' => true,
+                'actions' => ['delete'],
+                'roles' => ['removerPlano'],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

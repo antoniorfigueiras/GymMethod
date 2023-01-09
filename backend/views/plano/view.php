@@ -35,13 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p>
                         <?= Html::a('Inserir Exercicio', ['exercicioplano/select_exercicio','idPlano' => $model->id], ['class' => 'btn btn-success']) ?>
                         <?php /*= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) */?>
-                        <?= Html::a('Desativar Plano', ['delete', 'id' => $model->id], [
+                        <?php /* Html::a('Desativar Plano', ['delete', 'id' => $model->id], [
                             'class' => 'btn btn-danger',
                             'data' => [
                                 'confirm' => 'Are you sure you want to delete this item?',
                                 'method' => 'post',
                             ],
-                        ]) ?>
+                        ]) */?>
                     </p>
                 </div>
                 <!--.col-md-12-->

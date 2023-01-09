@@ -31,10 +31,30 @@ class ExercicioController extends Controller
             'access' => [
                 'class' => AccessControl::class,
                 'rules' => [
-
                     [
                         'allow' => true,
-                        'roles' => ['treinador'],
+                        'actions' => ['index'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['consultarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['adicionarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['editarPlano'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => ['removerPlano'],
                     ],
                 ],
             ],

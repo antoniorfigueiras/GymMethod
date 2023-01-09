@@ -10,8 +10,8 @@ use yii\helpers\Url;
 
 
     <h3 class="title">
-        <?= Html::encode($model->exercicio->nome),
-        Html::a('Editar Parametros', ['parameterizacao/update', 'id' => $model->parameterizacao->id, 'idplano'=>$model->plano->id], ['class' => 'btn btn-info'])?>
+        <?= Html::encode($model->exercicio->nome) ?>
+        <?= Html::a('Editar Parametros', ['parameterizacao/update', 'id' => $model->parameterizacao->id, 'idplano'=>$model->plano->id], ['class' => 'btn btn-info'])?>
         <?= Html::a('Apagar', ['exercicioplano/delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -34,12 +34,19 @@ use yii\helpers\Url;
             <td> <?= Html::encode($model->parameterizacao->repeticoes) ?></td>
         </tr>
         <tr>
-            <td style="font-weight: bold;">Equipamento:</td>
-            <td> <?= Html::encode($model->exercicio->equipamento->nome) ?></td>
+            <?php if (!is_null($model->exercicio->equipamento)) {
+                ?>
+                <td style="font-weight: bold;">Equipamento:</td>
+                <td> <?= Html::encode($model->exercicio->equipamento->nome) ?></td>
+            <?php } ?>
+
         </tr>
         <tr>
-            <td style="font-weight: bold;">Peso:</td>
-            <td> <?= Html::encode($model->parameterizacao->peso) ?></td>
+            <?php if (!is_null($model->parameterizacao->peso)) {
+                ?>
+                <td style="font-weight: bold;">Peso:</td>
+                <td> <?= Html::encode($model->parameterizacao->peso) ?></td>
+            <?php } ?>
         </tr>
         <tr>
             <?php if (!is_null($model->parameterizacao->tempo)) {

@@ -7,6 +7,7 @@ use backend\tests\UnitTester;
 use Codeception\Test\Unit;
 use common\fixtures\UserFixture;
 use common\models\LoginForm;
+use common\models\Parameterizacao;
 use common\models\Perfil;
 use common\models\User;
 use Yii;
@@ -54,6 +55,7 @@ class PerfilTest extends \Codeception\Test\Unit
         $model->morada = 123213;
         $this->assertFalse($model->validate(['morada']));
         verify($model->save())->false();
+
 
     }
     public function testCreatePerfilSuccessfully()

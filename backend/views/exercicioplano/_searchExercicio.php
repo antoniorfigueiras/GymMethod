@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
     <div class="col-md-12">
 
         <?php $form = ActiveForm::begin([
-            'action' => ['select_exercicio'],
+            'action' => ['select_exercicio', 'idPlano' => $modelPlano->id],
             'method' => 'get',
         ]); ?>
 
@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         <?php // echo $form->field($model, 'tipo_exercicio_id') ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
