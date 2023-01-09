@@ -48,8 +48,8 @@ class NutricionistaController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['delete'],
-                        'roles' => ['desativarNutricionista'],
+                        'actions' => ['desativar', 'ativar'],
+                        'roles' => ['desativarCliente'],
                     ],
                 ],
             ],
@@ -76,6 +76,22 @@ class NutricionistaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionDesativar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 0]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
+    }
+
+    public function actionAtivar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 1]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
     }
 
     /**
@@ -136,19 +152,6 @@ class NutricionistaController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Perfil model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the Perfil model based on its primary key value.

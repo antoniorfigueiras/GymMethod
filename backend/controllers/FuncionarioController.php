@@ -47,8 +47,8 @@ class FuncionarioController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['delete'],
-                        'roles' => ['desativarFuncionario'],
+                        'actions' => ['desativar', 'ativar'],
+                        'roles' => ['desativarCliente'],
                     ],
 
                 ],
@@ -96,6 +96,22 @@ class FuncionarioController extends Controller
         ]);
     }
 
+    public function actionDesativar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 0]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
+    }
+
+    public function actionAtivar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 1]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
+    }
+
     /**
      * Creates a new Perfil model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -137,19 +153,6 @@ class FuncionarioController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Perfil model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $user_id User ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($user_id)
-    {
-        $this->findModel($user_id)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the Perfil model based on its primary key value.

@@ -46,8 +46,8 @@ class TreinadorController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['delete'],
-                        'roles' => ['desativarTreinador'],
+                        'actions' => ['desativar', 'ativar'],
+                        'roles' => ['desativarCliente'],
                     ],
 
                 ],
@@ -75,6 +75,22 @@ class TreinadorController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionDesativar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 0]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
+    }
+
+    public function actionAtivar($user_id)
+    {
+        $model = $this->findModel($user_id);
+        $modelUser = $model->user;
+        $modelUser->updateAttributes(['status' => 1]);
+        return $this->redirect(['view', 'id' => $modelUser->id]);
     }
 
     /**
@@ -130,20 +146,6 @@ class TreinadorController extends Controller
             'model' => $model,
             'modelUser' => $modelUser,
         ]);
-    }
-
-    /**
-     * Deletes an existing Perfil model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
     }
 
     /**
