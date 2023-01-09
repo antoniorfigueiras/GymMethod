@@ -3,27 +3,36 @@
   António Russo Figueiras: 2211864
 
   Gonçalo Vital: 2201099
+  
+  Diogo Julio: 2211859
+  
 ## Descrição
 
-Este projeto consiste na criação de uma aplicação de faturação em que um funcionário pode emitir faturas e cada cliente pode visualizar as suas faturas em formato
-próprio para impressão.
-
+Este projeto consiste na criação de uma aplicação para gestão de todas as atividades associadas a um ginásio.
 ## Utilização
 
 **Dados para utilizar a aplicação**
 
 - Admin
-  - Username: Admin 
-  - Password: admin
+  - Username: admin
+  - Password: admin123
 
 - Cliente 
-  - Username: Ricardo Fazeres 
-  -  Password: 5436
+  - Username: cliente
+  - Password: cliente123
 
 - Funcionario 
-  - Username: Antonio 
-  - Password: 12345
+  - Username: funcionario
+  - Password: funcionario123
 
+- Nutricionista 
+  - Username: nutricionista
+  - Password: nutricionista123
+  
+ - Funcionario 
+  - Username: treinador
+  - Password: treinador123
+  s
 ## Linguagens de programação utilizadas
 
 - JavaScript
