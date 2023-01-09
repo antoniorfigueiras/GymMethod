@@ -68,5 +68,4 @@ class ModalidadesTest extends \Codeception\Test\Unit
         $model=  Modalidades::findOne(['id' => $modalidades->id]);
         verify($model->delete());
     }
-
 }

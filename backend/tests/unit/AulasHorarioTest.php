@@ -5,8 +5,9 @@ namespace backend\tests\Unit;
 
 use backend\tests\UnitTester;
 use common\models\AulasHorario;
+use common\models\Modalidades;
 use common\fixtures\ModalidadesFixture;
-use common\fixtures\UserFixture;
+use common\fixtures\PerfilFixture;
 
 class AulasHorarioTest extends \Codeception\Test\Unit
 {
@@ -18,38 +19,86 @@ class AulasHorarioTest extends \Codeception\Test\Unit
         return [
             'modalidade' => [
                 'class' => ModalidadesFixture::class,
-                'dataFile' => codecept_data_dir() . 'modalidades_data.php'
+                'dataFile' => codecept_data_dir() . 'modalidades.php'
             ],
-            'user' => [
-                'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'user_data.php'
+            'perfil' => [
+                'class' => PerfilFixture::class,
+                'dataFile' => codecept_data_dir() . 'perfil.php'
             ],
         ];
     }
-
-    protected function _before()
-    {
-
-    }
-
 
 
     public function testCreate()
     {
         $aulaHorario = new AulasHorario();
         $modalidade = $this->tester->grabFixture('modalidade', 'modalidade1');
-        $idInstrutor = $this->tester->grabFixture('user', 'user1');
-
-
+        $idInstrutor = $this->tester->grabFixture('perfil', 'perfil1');
 
         $aulaHorario->id_modalidade = $modalidade->id;
-        $aulaHorario->id_instrutor = $idInstrutor->id;
-        $aulaHorario->diaSemana = "2023-01-07";
-        $aulaHorario->inicio = "13:00:00";
-        $aulaHorario->fim = "14:00:00";
+
+        $aulaHorario->id_instrutor = $idInstrutor->user_id;
+
+        $aulaHorario->diaSemana = "segunda";
+
+        $aulaHorario->inicio = '13:00:00';
+
+        $aulaHorario->fim = '14:00:00';
+
         $aulaHorario->capacidade = 10;
+
         $aulaHorario->status = "Ativo";
 
         verify($aulaHorario->save())->true();
+    }
+
+    public function testUpdate()
+    {
+        $aulaHorario = new AulasHorario();
+        $modalidade = $this->tester->grabFixture('modalidade', 'modalidade1');
+        $idInstrutor = $this->tester->grabFixture('perfil', 'perfil1');
+
+        $aulaHorario->id_modalidade = $modalidade->id;
+        $aulaHorario->id_instrutor = $idInstrutor->user_id;
+        $aulaHorario->diaSemana = "segunda";
+        $aulaHorario->inicio = '13:00:00';
+        $aulaHorario->fim = '14:00:00';
+        $aulaHorario->capacidade = 10;
+        $aulaHorario->status = "Ativo";
+
+        $aulaHorario->save();
+
+        $model =  AulasHorario::findOne(['id' => $aulaHorario->id]);
+
+
+        $model->id_modalidade = $modalidade->id;
+        $model->id_instrutor = $idInstrutor->user_id;
+        $model->diaSemana = "terça";
+        $model->inicio = '14:00:00';
+        $model->fim = '15:00:00';
+        $model->capacidade = 10;
+        $model->status = "Inativo";
+
+        verify($model->save())->true();
+    }
+
+    public function testDelete()
+    {
+        $aulaHorario = new AulasHorario();
+        $modalidade = $this->tester->grabFixture('modalidade', 'modalidade1');
+        $idInstrutor = $this->tester->grabFixture('perfil', 'perfil1');
+
+        $aulaHorario->id_modalidade = $modalidade->id;
+        $aulaHorario->id_instrutor = $idInstrutor->user_id;
+        $aulaHorario->diaSemana = "segunda";
+        $aulaHorario->inicio = '13:00:00';
+        $aulaHorario->fim = '14:00:00';
+        $aulaHorario->capacidade = 10;
+        $aulaHorario->status = "Ativo";
+
+        $aulaHorario->save();
+
+        $model=  AulasHorario::findOne(['id' => $aulaHorario->id]);
+        verify($model->delete());
     }
 }
