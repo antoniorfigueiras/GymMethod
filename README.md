@@ -32,12 +32,15 @@ Este projeto consiste na criação de uma aplicação para gestão de todas as a
  - Funcionario 
   - Username: treinador
   - Password: treinador123
-  s
+  
 ## Linguagens de programação utilizadas
 
 - JavaScript
 - CSS
 - PHP
+
+ServerNameBackend : gymmethod.frontend - Directory : c:/wamp64/www/gymmethod/frontend/web
+ServerNameFrontend : gymmethod.backend - Directory : c:/wamp64/www/gymmethod/backend/web
 
 
 ![IPL Logo](https://www.ipleiria.pt/wp-content/themes/ipleiria/img/logo_ipl_header.png)
