@@ -1,9 +1,9 @@
 <?php
 
 
-namespace backend\tests\Unit;
+namespace common\tests\Unit;
 
-use backend\tests\UnitTester;
+use common\tests\UnitTester;
 use common\models\AulasHorario;
 use common\models\Modalidades;
 use common\fixtures\ModalidadesFixture;

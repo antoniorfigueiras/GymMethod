@@ -178,7 +178,7 @@ class CarrinhoController extends \frontend\base\Controller
             && $venda->saveItensVenda()) {
             $transacao->commit();
 
-            ItemCarrinho::clearItensCarrinho(currUserId());
+            ItemCarrinho::clearItensCarrinho(Yii::$app->user->getId());
 
             return $this->render('pay-now', [
                 'venda' => $venda,
@@ -232,7 +232,7 @@ class CarrinhoController extends \frontend\base\Controller
 
         $response = $cliente->execute(new OrdersGetRequest($paypalVendaId));*/
 
-        }
+    }
 
 
 

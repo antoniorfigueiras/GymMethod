@@ -101,9 +101,9 @@ use hail812\adminlte\widgets\Menu;
                         'visible' => Yii::$app->user->can("consultarAula"),
 
                         'items' => [
-                            ['label' => 'Modalidades', 'icon' => 'store', 'url' => ['/modalidades'],],
-                            ['label' => 'Horário', 'icon' => 'store', 'url' => ['/aulas'],],
-                            ['label' => 'Aulas', 'icon' => 'store', 'url' => ['/aulas-horario'],],
+                            ['label' => 'Modalidades', 'icon' => 'bicycle', 'url' => ['/modalidades'],],
+                            ['label' => 'Horário', 'icon' => 'calendar', 'url' => ['/aulas'],],
+                            ['label' => 'Aulas', 'icon' => 'dumbbell', 'url' => ['/aulas-horario'],],
                     ] ],
 
                     /** Loja **/
