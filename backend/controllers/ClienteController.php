@@ -116,6 +116,7 @@ class ClienteController extends Controller
         return $this->render('planos', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 

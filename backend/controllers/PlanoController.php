@@ -153,7 +153,6 @@ class PlanoController extends Controller
             $mqtt->disconnect();
 
 
-
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
