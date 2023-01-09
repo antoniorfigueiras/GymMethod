@@ -30,8 +30,8 @@ Este projeto consiste na criação de uma aplicação para gestão de todas as a
   - Password: nutricionista123
   
  - Funcionario 
-  - Username: treinador
-  - Password: treinador123
+    - Username: treinador
+    - Password: treinador123
   
 ## Linguagens de programação utilizadas
 
