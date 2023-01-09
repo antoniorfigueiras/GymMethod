@@ -52,15 +52,8 @@ $this->title = 'GymMethod';
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Funcionalidades</div>
                     <?php
-                    echo Html::a('Consultas',['../'],['class' => ['nav-link']]);
+                    echo Html::a('Consultas',['/consulta/index'],['class' => ['nav-link']]);
                     ?>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
-                </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logado como:</div>
-                <?= Yii::$app->user->identity->username;?>
-            </div>
         </nav>
     </div>
     <div id="layoutSidenav_content">

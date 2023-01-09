@@ -21,14 +21,16 @@ $(function(){
     $itemQuantidades.change(ev => {
         const $this = $(ev.target);
         let $tr = $this.closest('tr');
+        const $td = $this.closest('td');
         const id =
             $tr.data('id');
         $.ajax({
             method: 'post',
             url: $tr.data('url'),
             data: {id, quantidade: $this.val()},
-            success: function (quantidadeTotal){
-                $carrinhoQuantidade.text(quantidadeTotal);
+            success: function (result){
+                $carrinhoQuantidade.text(result.quantidade);
+                $td.next().text(result.preco);
             }
         })
     })

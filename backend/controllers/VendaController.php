@@ -49,6 +49,17 @@ class VendaController extends Controller
                         'actions' => ['delete'],
                         'roles' => ['funcionario'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['pago'],
+                        'roles' => ['funcionario'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['cancelar'],
+                        'roles' => ['funcionario'],
+                    ],
+
 
                 ],
             ],
@@ -139,6 +150,20 @@ class VendaController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionCancelar($id)
+    {
+        $model = $this->findModel($id);
+        $model->updateAttributes(['estado' => 2]);
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
+    public function actionPago($id)
+    {
+        $model = $this->findModel($id);
+        $model->updateAttributes(['estado' => 1]);
+        return $this->redirect(['view', 'id' => $model->id]);
     }
 
     /**
