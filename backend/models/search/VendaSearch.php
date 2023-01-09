@@ -14,6 +14,9 @@ class VendaSearch extends Venda
     /**
      * {@inheritdoc}
      */
+
+    public $fullname;
+
     public function rules()
     {
         return [
@@ -21,6 +24,15 @@ class VendaSearch extends Venda
             [['preco_total'], 'number'],
             [['nomeproprio', 'apelido', 'email', 'transacao_id', 'paypal_order_id'], 'safe'],
         ];
+    }
+
+    public function fields()
+    {
+        return array_merge(parent::fields(), [
+            'fullname' => function () {
+                return $this->nomeproprio . ' ' . $this->apelido;
+            }
+        ]);
     }
 
     /**
@@ -49,6 +61,12 @@ class VendaSearch extends Venda
             'query' => $query,
         ]);
 
+        $dataProvider->sort->attributes['fullname'] = [
+            'label' => 'Nome',
+            'asc' => ['nomeproprio' => SORT_ASC, 'apelido' => SORT_ASC],
+            'desc' => ['nomeproprio' => SORT_DESC, 'apelido' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -56,6 +74,11 @@ class VendaSearch extends Venda
             // $query->where('0=1');
             return $dataProvider;
         }
+
+        if ($this->fullname) {
+            $query->andWhere("CONCAT(nomeproprio, ' ', apelido) LIKE :fullname", ['fullname' => "%{$this->fullname}%"]);
+        }
+
 
         // grid filtering conditions
         $query->andFilterWhere([

@@ -26,8 +26,10 @@ use yii\db\Exception;
 class Venda extends \yii\db\ActiveRecord
 {
     const STATUS_DRAFT = 0;
-    const STATUS_COMPLETED = 1;
+    const STATUS_PAID = 1;
     const STATUS_FAILED = 2;
+    const STATUS_COMPLETED = 10;
+
 
 
     /**
@@ -70,6 +72,7 @@ class Venda extends \yii\db\ActiveRecord
             'paypal_order_id' => 'Paypal ID',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
+            'fullname' => 'Nome',
         ];
     }
 
@@ -137,6 +140,16 @@ class Venda extends \yii\db\ActiveRecord
             }
         }
         return true;
+    }
+
+    public static function getStatusLabels()
+    {
+        return [
+            self::STATUS_PAID => 'Paid',
+            self::STATUS_COMPLETED => 'Completed',
+            self::STATUS_FAILED => 'Failed',
+            self::STATUS_DRAFT => 'Draft'
+        ];
     }
 
     public function getItensQuantidade()
