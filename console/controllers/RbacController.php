@@ -295,11 +295,6 @@ class RbacController extends Controller
         $auth->add($editarPerfil);
 
 
-        // Mudar estado consulta (cliente)
-        $mudarEstadoConsulta = $auth->createPermission('mudarEstadoConsulta');
-        $mudarEstadoConsulta->description = 'Mudar estado consulta';
-        $auth->add($mudarEstadoConsulta);
-
 
                  /*** Roles ***/
 
@@ -355,7 +350,7 @@ class RbacController extends Controller
         $auth->addChild($nutricionista, $consultarConsulta);
         $auth->addChild($nutricionista, $removerConsulta);
         $auth->addChild($nutricionista, $consultarCliente);
-
+        $auth->addChild($nutricionista, $concluirConsulta);
 
         // Cliente
         $cliente = $auth->createRole('cliente');
