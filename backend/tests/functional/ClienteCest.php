@@ -42,18 +42,42 @@ class ClienteCest
         $I->amOnPage('cliente');
 
         $I->click('Criar Cliente');
-        $I->fillField('User[username]', 'antonio');
-        $I->fillField('User[email]', 'antonio@gmail.com');
-        $I->fillField('User[password]', 'antonio123');
+        $I->fillField('Username', 'antonio');
+        $I->fillField('Email', 'antonio@gmail.com');
+        $I->fillField('Password', 'antonio123');
         $I->click('Guardar');
         $I->fillField('Perfil[nomeproprio]', 'Antonio');
         $I->fillField('Perfil[apelido]', 'Figueiras');
         $I->fillField('Perfil[telemovel]', '910733587');
         $I->fillField('Perfil[nif]', '123456789');
         $I->click('Save');
-        $I->seeRecord(Cliente::className(), ['nomeproprio'=>'Antonio']);
+        $I->seeRecord(User::className(), ['username'=>'antonio']);
     }
 
+    public function editarCliente(FunctionalTester $I)
+    {
+        $I->amOnPage('cliente');
+
+        $I->click('Criar Cliente');
+        $I->fillField('Username', 'antonio');
+        $I->fillField('Email', 'antonio@gmail.com');
+        $I->fillField('Password', 'antonio123');
+        $I->click('Guardar');
+        $I->fillField('Perfil[nomeproprio]', 'Antonio');
+        $I->fillField('Perfil[apelido]', 'Figueiras');
+        $I->fillField('Perfil[telemovel]', '910733587');
+        $I->fillField('Perfil[nif]', '123456789');
+        $I->click('Save');
+
+        $I->see('Antonio');
+        $I->click('Atualizar');
+        $I->fillField('Perfil[apelido]', 'Update');
+        $I->fillField('Perfil[altura]', '180');
+        $I->click('Save');
+        $I->seeRecord(Perfil::className(), ['apelido'=>'Update']);
+
+
+    }
 
 
 }
