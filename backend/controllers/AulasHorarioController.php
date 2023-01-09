@@ -51,6 +51,21 @@ class AulasHorarioController extends Controller
                         'actions' => ['delete'],
                         'roles' => ['removerAula'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['select'],
+                        'roles' => ['adicionarAula'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['instrutor'],
+                        'roles' => ['adicionarAula'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update-id-funcionario'],
+                        'roles' => ['adicionarAula'],
+                    ],
 
                 ],
             ],
