@@ -1,61 +1,63 @@
 <?php
 
-use yii\helpers\Html;
+use yii\bootstrap4\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\VendaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Vendas';
+$this->title = 'Orders';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row mb-2">
-                        <div class="col-md-12">
-                            <?= Html::a('Create Venda', ['create'], ['class' => 'btn btn-success']) ?>
-                        </div>
-                    </div>
+<div class="order-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'id' => 'ordersTable',
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'pager' => [
+            'class' => \yii\bootstrap4\LinkPager::class
+        ],
+        'columns' => [
+            [
+                'attribute' => 'id',
+                'contentOptions' => ['style' => 'width: 80px;']
+            ],
+            [
+                'attribute' => 'fullname',
+                'content' => function ($model) {
+                    return $model->nomeproprio . ' ' . $model->apelido;
+                },
+            ],
+            'preco_total:currency',
+            //'email:email',
+            //'transaction_id',
+            //'paypal_order_id',
+            [
+                'attribute' => 'estado',
+                'content' =>function($model) {
+                if ($model->estado == 0) {
+                    return \yii\bootstrap4\Html::tag('span', 'Completo', ['class' => 'badge badge-success']); }
+                else if ($model->estado == 1) {
+                    return \yii\bootstrap4\Html::tag('span', 'Pago', ['class' => 'badge badge-secondary']); }}
+            ],
+            'created_at:datetime',
+            //'created_by',
+
+            [
+                'class' => 'common\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'contentOptions' => [
+                    'class' => 'td-actions'
+                ]
+            ],
+        ],
+    ]); ?>
 
 
-                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-                    <?= GridView::widget([
-                        'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-
-                            'id',
-                            'preco_total',
-                            'estado',
-                            'nomeproprio',
-                            'apelido',
-                            //'email:email',
-                            //'transacao_id',
-                            //'paypal_order_id',
-                            //'created_at',
-                            //'created_by',
-
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
-                        ],
-                        'summaryOptions' => ['class' => 'summary mb-2'],
-                        'pager' => [
-                            'class' => 'yii\bootstrap4\LinkPager',
-                        ]
-                    ]); ?>
-
-
-                </div>
-                <!--.card-body-->
-            </div>
-            <!--.card-->
-        </div>
-        <!--.col-md-12-->
-    </div>
-    <!--.row-->
 </div>

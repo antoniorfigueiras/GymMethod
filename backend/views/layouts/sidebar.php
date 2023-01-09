@@ -112,6 +112,7 @@ use hail812\adminlte\widgets\Menu;
                         'icon' => 'store',
                         'visible' => Yii::$app->user->can("consultarProdutos"),
                         'items' => [
+                            ['label' => 'Vendas', 'icon' => 'store ', 'url' => ['/venda']],
                             ['label' => 'Consultar Produtos', 'icon' => 'eye', 'url' => ['/produto']],
                             ['label' => 'Criar Produtos', 'icon' => 'plus', 'url' => ['/produto/create']],
                         ],
