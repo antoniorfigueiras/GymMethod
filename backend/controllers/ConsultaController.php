@@ -125,6 +125,17 @@ class ConsultaController extends Controller
         $model->cliente_id = (int)$idCliente;
         $model->nutricionista_id = (int)$idNutricionista;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //TODO: Publish
+            $server   = '127.0.0.1';
+            $port     = 1883;
+
+
+            $mqtt = new \PhpMqtt\Client\MqttClient($server, $port,  Yii::$app->user->id);
+
+            $mqtt->connect();
+            $mqtt->publish('consultas', 'Consulta marcada: '. $model->nome, 1);
+            $mqtt->disconnect();
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -145,6 +156,7 @@ class ConsultaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -157,6 +169,16 @@ class ConsultaController extends Controller
     {
         $model = $this->findModel($id);
         $model->updateAttributes(['estado' => 2]);
+        //TODO: Publish
+        $server   = '127.0.0.1';
+        $port     = 1883;
+
+
+        $mqtt = new \PhpMqtt\Client\MqttClient($server, $port,  Yii::$app->user->id);
+
+        $mqtt->connect();
+        $mqtt->publish('consultas', 'Consulta cancelada: '. $model->nome , 1);
+        $mqtt->disconnect();
         return $this->redirect(['view', 'id' => $model->id]);
     }
 
@@ -164,6 +186,17 @@ class ConsultaController extends Controller
     {
         $model = $this->findModel($id);
         $model->updateAttributes(['estado' => 1]);
+        //TODO: Publish
+        $server   = '127.0.0.1';
+        $port     = 1883;
+
+
+        $mqtt = new \PhpMqtt\Client\MqttClient($server, $port,  Yii::$app->user->id);
+
+        $mqtt->connect();
+        $mqtt->publish('consultas', 'Consulta concluida: '. $model->nome , 1);
+        $mqtt->disconnect();
+
         return $this->redirect(['view', 'id' => $model->id]);
     }
 

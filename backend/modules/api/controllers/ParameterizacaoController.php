@@ -2,6 +2,7 @@
 
 namespace backend\modules\api\controllers;
 
+use backend\modules\api\components\CustomAuth;
 use common\models\Exercicio;
 use common\models\ExercicioPlano;
 use common\models\PlanoTreino;
@@ -19,32 +20,16 @@ class ParameterizacaoController extends ActiveController
 
     public function behaviors()
     {
+        Yii::$app->params['id'] = 0;
         $behaviors = parent::behaviors();
-        $behaviors['authenticator'] =
-            ['class' => HttpBasicAuth::className(),
-                'auth' => [$this, 'auth']
-            ];
+        $behaviors['authenticator'] = [
+            'class' => CustomAuth::className(),
+        ];
         return $behaviors;
     }
 
-    public function auth($username, $password)
-    {
-        $user = User::findByUsername($username);
-        if ($user && $user->validatePassword($password)) {
-            return $user;
-        }
-        throw new \yii\web\ForbiddenHttpException('No authentication');//403
-    }
 
-    // Colocar permissões de autorização
-    public function checkAccess($action, $model = null, $params = [])
-    {
-        /*if ($action === 'index') {
-            throw new \yii\web\ForbiddenHttpException('Indisponível!');
-        }*/
-    }
-
-    //PUT parameterizacao cliente
+    //Atualizar parameterizacao do exercicio
     public function actionAtualizarParameterizacaoCliente($idParameterizacao)
     {
         $request=\Yii::$app->request->post();
@@ -60,7 +45,8 @@ class ParameterizacaoController extends ActiveController
             return ["success" => true];
         }
         else {
-            throw new \yii\web\NotFoundHttpException("Parameterizacao não existe");
+
+            return ["success" => false];
         }
 
     }

@@ -257,6 +257,26 @@ class RbacController extends Controller
         $auth->add($removerProdutos);
 
 
+        // Adicionar (admin, funcionario)
+        $criarTarefa = $auth->createPermission('adicionarProdutos');
+        $adicionarProdutos->description = 'Adicionar Produtos';
+        $auth->add($adicionarProdutos);
+
+        // Editar (admin, funcionario)
+        $editarProdutos = $auth->createPermission('editarProdutos');
+        $editarProdutos->description = 'Editar Produtos';
+        $auth->add($editarProdutos);
+
+        // Consultar (admin, funcionario)
+        $consultarProdutos = $auth->createPermission('consultarProdutos');
+        $consultarProdutos->description = 'Consultar produtos';
+        $auth->add($consultarProdutos);
+
+        // Remover (admin, funcionario)
+        $removerProdutos = $auth->createPermission('removerProdutos');
+        $removerProdutos->description = 'Remover Produtos';
+        $auth->add($removerProdutos);
+
 
                         /******* Subscrições *******/
 

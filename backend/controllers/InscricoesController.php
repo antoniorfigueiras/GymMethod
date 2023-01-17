@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Inscricoes;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -108,12 +109,8 @@ class InscricoesController extends Controller
     {
         $model = new Inscricoes();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [

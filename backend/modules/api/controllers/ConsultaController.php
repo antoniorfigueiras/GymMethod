@@ -3,18 +3,20 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
-use common\models\Perfil;
+use common\models\Exercicio;
+use common\models\ExercicioPlano;
 use common\models\PlanoTreino;
 use common\models\User;
+use Psy\Util\Json;
+use Symfony\Component\Mime\Encoder\Base64Encoder;
 use Yii;
 use yii\filters\auth\HttpBasicAuth;
-use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
 
-class PlanoController extends ActiveController
+class ConsultaController extends ActiveController
 {
-    public $modelClass = 'common\models\PlanoTreino'; // Para ir buscar o modelo a ser usado no controlador
+    public $modelClass = 'common\models\Consulta'; // Para ir buscar o modelo a ser usado no controlador
 
     public function behaviors()
     {
@@ -26,20 +28,20 @@ class PlanoController extends ActiveController
         return $behaviors;
     }
 
-
-    // Obter planos do cliente com o login feito na app mobile
-    public function actionGetPlanos()
+    // Obter consultas marcadas do cliente com o login feito na app mobile
+    public function actionGetConsultasMarcadas()
     {
         $model = new $this->modelClass;
 
-        $planos = $model::find()
-            ->select(['id', 'nome', 'nomeproprio treinador'])
+        $consultas = $model::find()
+            ->select(['id', 'nome', 'descricao', 'data', 'nomeproprio nutricionista'])
             ->where(['cliente_id'=>Yii::$app->params['id']])
-            ->joinWith('instrutor', [])
+            ->andWhere(['estado'=> 0])
+            ->joinWith('nutricionista', [])
             ->asArray()
             ->all();
 
-        return $planos;
+        return $consultas;
     }
 
 }

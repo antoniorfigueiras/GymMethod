@@ -29,7 +29,6 @@ use hail812\adminlte\widgets\Menu;
             echo Menu::widget([
                 'items' => [
 
-
                     /** Planos de treino **/
                     ['label' => 'Clientes', 'icon' => 'user', 'url' => ['/cliente/clientes'],'visible' => Yii::$app->user->can("treinador")&&!Yii::$app->user->can("admin")],
                     ['label' => 'Planos de Treino', 'icon' => 'calendar', 'url' => ['/plano'],'visible' => Yii::$app->user->can("consultarPlano")],
