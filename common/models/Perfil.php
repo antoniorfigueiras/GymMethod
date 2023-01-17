@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $cidade
  * @property string|null $morada
  *
+ * @property Agua[] $aguas
  * @property User $user
  */
 class Perfil extends \yii\db\ActiveRecord
@@ -70,6 +71,16 @@ class Perfil extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[Tarefas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTarefas()
+    {
+        return $this->hasMany(Tarefas::class, ['user_id' => 'user_id']);
+    }
+
+    /**
      * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery
@@ -109,6 +120,16 @@ class Perfil extends \yii\db\ActiveRecord
     public function getPlanos()
     {
         return $this->hasMany(PlanoTreino::class, ['instrutor_id' => 'user_id']);
+    }
+
+    /**
+     * Gets query for [[Aguas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAguas()
+    {
+        return $this->hasMany(Agua::class, ['id_cliente' => 'user_id']);
     }
 
 }

@@ -136,6 +136,7 @@ class PlanoController extends Controller
     public function actionCreate($idCliente)
     {
 
+
         $model = new PlanoTreino();
         $model->cliente_id = (int)$idCliente;
         $model->instrutor_id = Yii::$app->user->id;
@@ -144,14 +145,12 @@ class PlanoController extends Controller
             //TODO: Publish
             $server   = '127.0.0.1';
             $port     = 1883;
-            $idClient = 'client';
 
-            $mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $idClient);
+            $mqtt = new \PhpMqtt\Client\MqttClient($server, $port,  Yii::$app->user->id);
 
             $mqtt->connect();
-            $mqtt->publish('teste', 'Plano Criado', 1);
+            $mqtt->publish('planos', 'Plano Criado: '. $model->nome, 1);
             $mqtt->disconnect();
-
 
             return $this->redirect(['view', 'id' => $model->id]);
         }

@@ -51,6 +51,7 @@ $this->title = 'GymMethod';
                         <?php
                         echo Html::a('Consultas',['/consulta/index'],['class' => ['nav-link']]);
                         ?>
+
         </nav>
     </div>
     <div id="layoutSidenav_content">

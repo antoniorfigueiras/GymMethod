@@ -53,63 +53,21 @@ return [
 
         'urlManager' => [
             'enablePrettyUrl' => true,
-            //'showScriptName' => false,
             // Registar as rotas para a API
             'rules' => [
-                // Users
-                ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/user',
-                    'pluralize' => false,
-
-                    'extraPatterns' =>[
-                        'GET get-perfil/{idClient}' => 'get-perfil',
-                    ],
-                    'tokens' => [
-                        '{idClient}' => '<idClient:\\d+>',
-                    ],
-                ],
-                // Auth
-                ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/auth',
-                    'pluralize' => false,
-
-                    // Login
-                    'extraPatterns' =>[
-                        'GET login' => 'login',
-                    ],
-                    'tokens' => [
-                        '{username}' => '<username:\\w+>',
-                        '{password}' => '<password:\\w+>',
-
-                    ],
-                ],
-                // Planos de treino
-                ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/plano',
-                    'pluralize' => false,
-
-                    // GET planos do cliente
-                    /*'extraPatterns' =>[
-                        'GET get-planos/{idClient}' => 'get-planos',
-                    ],*/
-                    'tokens' => [
-                        '{idClient}' => '<idClient:\\d+>',
-                        '{plano}' => '<plano:\\d+>',
-                    ],
-                ],
                 // Exercicios do plano
                 ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/exercicioplano',
+                    'controller' => 'api/exercicio-plano',
                     'pluralize' => false,
 
                     'extraPatterns' =>[
-                        'GET exercicios-plano/{idPlano}' => 'exercicios-plano',
-                        'GET parameterizacao-cliente/{idExercicio}' => 'parameterizacao-cliente',
+                        'GET get-exercicios-plano/{idPlano}' => 'get-exercicios-plano',
+                        'GET get-exercicio-detalhes/{idExercicioPlano}' => 'get-exercicio-detalhes',
+                        'GET parameterizacao-cliente/{idExercicioPlano}' => 'parameterizacao-cliente',
                     ],
                     'tokens' => [
                         '{idPlano}' => '<idPlano:\\d+>',
-                        '{idExercicio}' => '<idExercicio:\\d+>',
-                        '{plano}' => '<plano:\\d+>',
+                        '{idExercicioPlano}' => '<idExercicioPlano:\\d+>',
                     ],
                 ],
                 // Parameteriacao
@@ -122,6 +80,34 @@ return [
                     ],
                     'tokens' => [
                         '{idParameterizacao}' => '<idParameterizacao:\\d+>',
+                    ],
+                ],
+
+                // Inscricoes
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/inscricoes',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'POST inscrever/{idAula}' => 'inscrever',
+                        'DELETE remover-inscricao/{idInscricao}' => 'remover-inscricao',
+                    ],
+                    'tokens' => [
+                        '{idAula}' => '<idAula:\\d+>',
+                        '{idInscricao}' => '<idInscricao:\\d+>',
+                    ],
+                ],
+
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/agua',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'PUT editar-registo/{idAgua}' => 'editar-registo',
+                        'DELETE remover-registo/{idAgua}' => 'remover-registo',
+                    ],
+                    'tokens' => [
+                        '{idAgua}' => '<idAgua:\\d+>',
                     ],
                 ],
             ],

@@ -2,8 +2,10 @@
 
 namespace backend\modules\api\controllers;
 
+use backend\modules\api\components\CustomAuth;
 use common\models\Perfil;
 use common\models\User;
+use Yii;
 use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
@@ -15,36 +17,21 @@ class UserController extends ActiveController
 
     public function behaviors()
     {
+        Yii::$app->params['id'] = 0;
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className(),
-                //'auth' => [$this, 'auth']
+            'class' => CustomAuth::className(),
         ];
         return $behaviors;
     }
 
-    /*public function auth($username, $password)
-    {
-        $user = User::findByUsername($username);
-        if ($user && $user->validatePassword($password)) {
-            return $user;
-        }
-        throw new \yii\web\ForbiddenHttpException('No authentication');//403
-    }*/
 
-    // Colocar permissões de autorização
-   /* public function checkAccess($action, $model = null, $params = [])
-    {
-        if ($action === 'index') {
-            throw new \yii\web\ForbiddenHttpException('Indisponível!');
-        }
-    }*/
-
-    public function actionGetPerfil($idClient)
+    // Obter perfil do cliente com o login feito na app mobile
+    public function actionGetPerfil()
     {
         $model = new $this->modelClass;
 
-        $perfil = $model::find()->where(['user_id'=>$idClient])->one();
+        $perfil = $model::findOne(Yii::$app->params['id']);
 
         return $perfil;
     }

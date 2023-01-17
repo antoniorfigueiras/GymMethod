@@ -17,10 +17,7 @@ use dosamigos\ckeditor\CKEditor;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'descricao')->widget(CKEditor::class, [
-        'options' => (['rows' => 6]),
-        'preset' => 'basic'
-    ]) ?>
+    <?= $form->field($model, 'descricao')->textInput(['maxlength' => true])?>
 
     <?= $form->field($model, 'data')->widget(DateTimePicker::classname(), [
         'options' => ['placeholder' => 'Introduza a data da consulta'],

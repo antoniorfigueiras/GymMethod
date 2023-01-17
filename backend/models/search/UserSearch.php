@@ -4,12 +4,12 @@ namespace backend\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\User;
+use common\models\Perfil;
 
 /**
- * UserSearch represents the model behind the search form of `common\models\User`.
+ * ClienteSearch represents the model behind the search form of `common\models\Perfil`.
  */
-class UserSearch extends User
+class UserSearch extends Perfil
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,9 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'safe'],
+            [['user_id', 'telemovel', 'altura', 'nif'], 'integer'],
+            [['peso'], 'number'],
+            [['nomeproprio', 'apelido', 'codpostal', 'pais', 'cidade', 'morada'], 'safe'],
         ];
     }
 
@@ -38,16 +39,27 @@ class UserSearch extends User
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $value)
     {
-        $query = User::find();
+        $query = Perfil::find();
+
+        $query->select('perfil.user_id, nomeproprio, apelido, telemovel, nif, codpostal')
+            ->from('user');
+        $query->join = [
+            ['JOIN', 'perfil', 'perfil.user_id = user.id']];
+
+        $query->where('user.status = 1');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        $dataProvider->sort->attributes['user_id'] = [
 
+            'asc' => ['user.status' => SORT_ASC],
+            'desc' => ['user.status' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {
@@ -58,19 +70,19 @@ class UserSearch extends User
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'user_id' => $this->user_id,
+            'telemovel' => $this->telemovel,
+            'peso' => $this->peso,
+            'altura' => $this->altura,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'verification_token', $this->verification_token]);
-
+        $query->andFilterWhere(['like', 'nomeproprio', $this->nomeproprio])
+            ->andFilterWhere(['like', 'apelido', $this->apelido])
+            ->andFilterWhere(['like', 'codpostal', $this->codpostal])
+            ->andFilterWhere(['like', 'pais', $this->pais])
+            ->andFilterWhere(['like', 'cidade', $this->cidade])
+            ->andFilterWhere(['like', 'morada', $this->morada])
+            ->andFilterWhere(['like', 'nif', $this->nif]);
         return $dataProvider;
     }
 }

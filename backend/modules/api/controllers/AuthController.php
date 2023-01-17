@@ -31,19 +31,21 @@ class AuthController extends ActiveController
         throw new \yii\web\ForbiddenHttpException('No authentication');//403
     }
 
-
+    // Fazer login na app mobile
     public function actionLogin()
     {
         $username = isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : null;
         $password = isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW'] : null;
 
         $user = User::findByUsername($username);
+
         if ($user && $user->validatePassword($password))
         {
             $perfil = Perfil::findOne($user->getId());
-           // $token = base64_encode($username.":".$password);
+            $nome = $perfil->nomeproprio. ' ' .$perfil->apelido;
             $token = $user->auth_key;
-            return ['token' =>$token, 'success' => true, 'user_id' => $perfil->user_id, 'username' => $perfil->nomeproprio];
+            // $token = base64_encode($username.":".$password);
+            return ['token' =>$token, 'success' => true, 'user_id' => $perfil->user_id, 'username' => $nome];
         }
 
         return ['success' => false];

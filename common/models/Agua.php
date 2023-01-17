@@ -5,21 +5,23 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "inscricoes".
+ * This is the model class for table "agua".
  *
  * @property int $id
- * @property int|null $id_aula
- * @property int|null $id_cliente
+ * @property string $descricao
+ * @property float $valor
+ * @property int $id_cliente
  *
+ * @property Perfil $cliente
  */
-class Inscricoes extends \yii\db\ActiveRecord
+class Agua extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'inscricoes';
+        return 'agua';
     }
 
     /**
@@ -28,8 +30,10 @@ class Inscricoes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_aula', 'id_cliente'], 'integer'],
-            [['id_aula'], 'exist', 'skipOnError' => true, 'targetClass' => Aulas::class, 'targetAttribute' => ['id_aula' => 'id']],
+            [['descricao', 'valor', 'id_cliente'], 'required'],
+            [['valor'], 'number'],
+            [['id_cliente'], 'integer'],
+            [['descricao'], 'string', 'max' => 20],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['id_cliente' => 'user_id']],
         ];
     }
@@ -41,19 +45,10 @@ class Inscricoes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_aula' => 'Id Aula',
+            'descricao' => 'Descricao',
+            'valor' => 'Valor',
             'id_cliente' => 'Id Cliente',
         ];
-    }
-
-    /**
-     * Gets query for [[Aula]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAula()
-    {
-        return $this->hasOne(Aulas::class, ['id' => 'id_aula']);
     }
 
     /**
