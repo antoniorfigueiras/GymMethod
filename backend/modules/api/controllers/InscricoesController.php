@@ -32,15 +32,16 @@ class InscricoesController extends ActiveController
 
 
     // Inscrever numa aula
-    public function actionInscrever($idAula)
+    public function actionInscrever()
     {
+        $request=\Yii::$app->request->post();
         $model = new $this->modelClass;
-        $modelAula = Aulas::findOne($idAula);
+        $modelAula = Aulas::findOne( $request['idAula']);
         $modelHorario = $modelAula->aulasHorario;
         $inscricoes = Inscricoes::find()->all();
         foreach ($inscricoes as $i)
         {
-            if ($i->id_cliente == Yii::$app->params['id'] && $i->id_aula == $idAula)
+            if ($i->id_cliente == Yii::$app->params['id'] && $i->id_aula == $request['idAula'])
             {
                 return ['success' => false, 'msg' => 'Já se encontra inscrito!'];
             }
@@ -48,7 +49,7 @@ class InscricoesController extends ActiveController
 
         if ($modelAula->ocupacao < $modelHorario->capacidade)
         {
-            $model->id_aula = $idAula;
+            $model->id_aula = $request['idAula'];
             $model->id_cliente = Yii::$app->params['id'];
             $modelAula->ocupacao = $modelAula->ocupacao + 1;
             if ($modelAula->ocupacao == $modelHorario->capacidade)
@@ -57,7 +58,7 @@ class InscricoesController extends ActiveController
             }
             $modelAula->save();
             $model->save();
-            return ['success' => true];
+            return ['success' => true, 'inscricao_id' => $model->id];
         }
         else{
             return ['success' => false];
@@ -81,4 +82,14 @@ class InscricoesController extends ActiveController
         return ['success' => false];
     }
 
+    public function actionGetInscricoes()
+    {
+        $model = new $this->modelClass;
+        $inscricoes = $model::find()
+            ->select(['id', 'id_aula'])
+            ->where(['id_cliente'=>Yii::$app->params['id']])
+            ->all();
+
+        return $inscricoes;
+    }
 }

@@ -28,6 +28,18 @@ class ConsultaController extends ActiveController
         return $behaviors;
     }
 
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        if(Yii::$app->params['id'] = 4)
+        {
+            if($action==="delete")
+            {
+                throw new \yii\web\ForbiddenHttpException('Proibido');
+            }
+        }
+    }
+
+
     // Obter consultas marcadas do cliente com o login feito na app mobile
     public function actionGetConsultasMarcadas()
     {
@@ -36,6 +48,21 @@ class ConsultaController extends ActiveController
         $consultas = $model::find()
             ->select(['id', 'nome', 'descricao', 'data', 'nomeproprio nutricionista'])
             ->where(['cliente_id'=>Yii::$app->params['id']])
+            ->andWhere(['estado'=> 0])
+            ->joinWith('nutricionista', [])
+            ->asArray()
+            ->all();
+
+        return $consultas;
+    }
+
+    public function actionGetConsultasNome($nome)
+    {
+        $model = new $this->modelClass;
+
+        $consultas = $model::find()
+            ->select(['id', 'nome', 'descricao', 'data', 'nomeproprio nutricionista'])
+            ->where(['nome'=> $nome])
             ->andWhere(['estado'=> 0])
             ->joinWith('nutricionista', [])
             ->asArray()

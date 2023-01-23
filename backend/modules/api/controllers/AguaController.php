@@ -37,8 +37,12 @@ class AguaController extends ActiveController
         $model = new $this->modelClass;
         $descricao = Yii::$app->request->post('descricao');
         $valor = Yii::$app->request->post('valor');
+        $data = Yii::$app->request->post('data');
+        $hora = Yii::$app->request->post('hora');
         $model->descricao = $descricao;
         $model->valor = $valor;
+        $model->data = $data;
+        $model->hora = $hora;
         $model->id_cliente =  Yii::$app->params['id'];
         $model->save();
         return ['success' => true];
@@ -47,12 +51,13 @@ class AguaController extends ActiveController
     // Editar registo de agua
     public function actionEditarRegisto($idAgua)
     {
-        $request=Yii::$app->request->post();
         $model = Agua::findOne($idAgua);
 
         if($model) {
             $model->descricao = Yii::$app->request->post('descricao');
             $model->valor = Yii::$app->request->post('valor');
+            $model->data = Yii::$app->request->post('data');
+            $model->hora = Yii::$app->request->post('hora');
             $model->save();
             return ["success" => true];
         }
