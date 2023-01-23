@@ -18,7 +18,6 @@ use Yii;
  * @property string|null $cidade
  * @property string|null $morada
  *
- * @property Agua[] $aguas
  * @property User $user
  */
 class Perfil extends \yii\db\ActiveRecord
@@ -38,12 +37,10 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'telemovel', 'nomeproprio', 'apelido', 'nif'], 'required','message' => 'Campo obrigatório'],
-            [['user_id', 'telemovel', 'altura', 'nif', 'codpostal'], 'integer'],
+            [['user_id', 'telemovel', 'altura', 'nif'], 'integer'],
             [['peso', 'nif', 'telemovel'], 'number'],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 25],
             [['codpostal'], 'string', 'max' => 8],
-            [['nif'], 'string', 'max' => 9],
-            [['telemovel'], 'string', 'max' => 9],
             [['morada'], 'string', 'max' => 50],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -62,22 +59,13 @@ class Perfil extends \yii\db\ActiveRecord
             'altura' => 'Altura',
             'nomeproprio' => 'Nome',
             'apelido' => 'Apelido',
+            'nif' => 'Nif',
             'codpostal' => 'Codpostal',
             'pais' => 'Pais',
             'cidade' => 'Cidade',
             'morada' => 'Morada',
             'nif' => 'NIF'
         ];
-    }
-
-    /**
-     * Gets query for [[Tarefas]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTarefas()
-    {
-        return $this->hasMany(Tarefas::class, ['user_id' => 'user_id']);
     }
 
     /**
@@ -120,16 +108,6 @@ class Perfil extends \yii\db\ActiveRecord
     public function getPlanos()
     {
         return $this->hasMany(PlanoTreino::class, ['instrutor_id' => 'user_id']);
-    }
-
-    /**
-     * Gets query for [[Aguas]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAguas()
-    {
-        return $this->hasMany(Agua::class, ['id_cliente' => 'user_id']);
     }
 
 }
