@@ -56,14 +56,14 @@ class ConsultaController extends ActiveController
         return $consultas;
     }
 
-    public function actionGetConsultasNome($nome)
+    public function actionGetConsultasConcluidas()
     {
         $model = new $this->modelClass;
 
         $consultas = $model::find()
             ->select(['id', 'nome', 'descricao', 'data', 'nomeproprio nutricionista'])
-            ->where(['nome'=> $nome])
-            ->andWhere(['estado'=> 0])
+            ->where(['cliente_id'=>Yii::$app->params['id']])
+            ->andWhere(['estado'=> 1])
             ->joinWith('nutricionista', [])
             ->asArray()
             ->all();

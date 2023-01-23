@@ -36,5 +36,31 @@ class UserController extends ActiveController
         return $perfil;
     }
 
+    public function actionAtualizarPerfil()
+    {
+        $request=\Yii::$app->request->post();
+        $climodel = new $this->modelClass;
+
+        $ret = $climodel::findOne(Yii::$app->params['id']);
+
+        if($ret) {
+            $ret->nomeproprio = $request['nomeproprio'];
+            $ret->apelido = $request['apelido'];
+            $ret->telemovel = $request['telemovel'];
+            $ret->peso = $request['peso'];
+            $ret->altura = $request['altura'];
+            $ret->nif = $request['nif'];
+            $ret->codpostal = $request['codpostal'];
+            $ret->pais = $request['pais'];
+            $ret->cidade = $request['cidade'];
+            $ret->morada = $request['morada'];
+            $ret->save();
+            return ["success" => true];
+        }
+        else {
+
+            return ["success" => false];
+        }
+    }
 
 }
