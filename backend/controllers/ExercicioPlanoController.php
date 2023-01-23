@@ -118,7 +118,7 @@ class ExercicioplanoController extends Controller
         $model->plano_id = (int)$idPlano; //Associar o id do plano recebido ao plano_id da tabela exercicio_plano
         $model->exercicio_id = (int)$idExercicio;
         $modelPlano = $model->plano; // Ir buscar o model do plano atraves da relacao do modelo
-
+        $modelParameterizacao->tempoCliente = '00:00:00';
         if ($modelParameterizacao->load(Yii::$app->request->post()) && $modelParameterizacao->save()) {
             $model->parameterizacao_id = $modelParameterizacao->id;
            if($model->save())

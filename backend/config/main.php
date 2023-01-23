@@ -89,7 +89,7 @@ return [
                     'pluralize' => false,
 
                     'extraPatterns' =>[
-                        'POST inscrever/{idAula}' => 'inscrever',
+                        'POST inscrever' => 'inscrever',
                         'DELETE remover-inscricao/{idInscricao}' => 'remover-inscricao',
                     ],
                     'tokens' => [
@@ -109,6 +109,28 @@ return [
                     'tokens' => [
                         '{idAgua}' => '<idAgua:\\d+>',
                     ],
+                ],
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/consulta',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'DELETE /{id}' => '',
+                        'GET get-consultas-nome/{nome}' => 'get-consultas-nome',
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>',
+                        '{nome}' => '<nome:\w+>',
+                    ],
+                ],
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/calculadora',
+                    'pluralize' => false,
+
+                    'extraPatterns' =>[
+                        'GET pi' => 'pi',
+                    ],
+
                 ],
             ],
         ],

@@ -51,7 +51,7 @@ class ExercicioPlanoController extends ActiveController
         $model = new $this->modelClass;
         $exercicios = $model::find()
             ->select(['exercicio_plano.id as exercicio_plano_id','exercicio.nome', 'equipamentos.nome as equipamento',
-                'descricao', 'dificuldade', 'exemplo', 'series', 'repeticoes', 'peso', 'tempo'])
+                'descricao', 'dificuldade',  'series', 'repeticoes', 'peso', 'tempo', 'exemplo'])
             ->where(['exercicio_plano.id'=>$idExercicioPlano])
             ->joinWith('exercicio', [])
             ->joinWith('exercicio.equipamento', [])

@@ -28,6 +28,18 @@ class ConsultaController extends ActiveController
         return $behaviors;
     }
 
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        if(Yii::$app->params['id'] = 4)
+        {
+            if($action==="delete")
+            {
+                throw new \yii\web\ForbiddenHttpException('Proibido');
+            }
+        }
+    }
+
+
     // Obter consultas marcadas do cliente com o login feito na app mobile
     public function actionGetConsultasMarcadas()
     {

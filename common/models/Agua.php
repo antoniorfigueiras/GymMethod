@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $descricao
  * @property float $valor
+ * @property string $data
+ * @property string $hora
  * @property int $id_cliente
  *
  * @property Perfil $cliente
@@ -30,8 +32,9 @@ class Agua extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricao', 'valor', 'id_cliente'], 'required'],
+            [['descricao', 'valor', 'data', 'hora', 'id_cliente'], 'required'],
             [['valor'], 'number'],
+            [['data', 'hora'], 'safe'],
             [['id_cliente'], 'integer'],
             [['descricao'], 'string', 'max' => 20],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Perfil::class, 'targetAttribute' => ['id_cliente' => 'user_id']],
@@ -47,6 +50,8 @@ class Agua extends \yii\db\ActiveRecord
             'id' => 'ID',
             'descricao' => 'Descricao',
             'valor' => 'Valor',
+            'data' => 'Data',
+            'hora' => 'Hora',
             'id_cliente' => 'Id Cliente',
         ];
     }
