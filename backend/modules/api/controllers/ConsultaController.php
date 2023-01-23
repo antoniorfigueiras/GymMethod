@@ -44,4 +44,19 @@ class ConsultaController extends ActiveController
         return $consultas;
     }
 
+    public function actionGetConsultasConcluidas()
+    {
+        $model = new $this->modelClass;
+
+        $consultas = $model::find()
+            ->select(['id', 'nome', 'descricao', 'data', 'nomeproprio nutricionista'])
+            ->where(['cliente_id'=>Yii::$app->params['id']])
+            ->andWhere(['estado'=> 1])
+            ->joinWith('nutricionista', [])
+            ->asArray()
+            ->all();
+
+        return $consultas;
+    }
+
 }
