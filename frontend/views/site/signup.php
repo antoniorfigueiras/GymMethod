@@ -37,14 +37,19 @@ $this->title = 'GymMethod';
                     <div class="form-group last mb-1">
                         <?= $form->field($model, 'password')->passwordInput() ?>
                     </div>
-                    <div class="form-group first">
-                        <?= $form->field($modelPerfil, 'telemovel')-> textInput(['autofocus' => true]) ?>
-                    </div>
+                 <?= $form->field($modelPerfil, 'imagem')->fileInput()->label('Imagem de perfil'); ?>
+
                     <div class="form-group first">
                         <?= $form->field($modelPerfil, 'nomeproprio')->textInput(['autofocus' => true]) ?>
                     </div>
                     <div class="form-group first">
                         <?= $form->field($modelPerfil, 'apelido')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'telemovel')-> textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="form-group first">
+                        <?= $form->field($modelPerfil, 'nif')-> textInput(['autofocus' => true]) ?>
                     </div>
                     <div class="form-group first">
                         <?= $form->field($modelPerfil, 'codpostal')->textInput(['autofocus' => true]) ?>

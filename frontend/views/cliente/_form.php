@@ -12,6 +12,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'imagem')->fileInput(); ?>
+
     <?= $form->field($model, 'nomeproprio')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'apelido')->textInput(['maxlength' => true]) ?>
