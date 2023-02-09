@@ -45,7 +45,7 @@ class AuthController extends ActiveController
             $nome = $perfil->nomeproprio. ' ' .$perfil->apelido;
             $token = $user->auth_key;
             // $token = base64_encode($username.":".$password);
-            return ['token' =>$token, 'success' => true, 'user_id' => $perfil->user_id, 'username' => $nome];
+            return ['token' =>$token, 'success' => true, 'username' => $nome];
         }
 
         return ['success' => false];

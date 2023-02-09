@@ -7,6 +7,7 @@ use Yii;
  * This is the model class for table "perfil".
  *
  * @property int $user_id
+ * @property resource|null $imagem
  * @property int $telemovel
  * @property int $nif
  * @property float|null $peso
@@ -37,8 +38,9 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'telemovel', 'nomeproprio', 'apelido', 'nif'], 'required','message' => 'Campo obrigatório'],
-            [['user_id', 'telemovel', 'altura', 'nif'], 'integer'],
-            [['peso', 'nif', 'telemovel'], 'number'],
+            [['user_id','altura', 'codpostal'], 'integer'],
+            [['imagem', 'morada'], 'string'],
+            [['peso', 'nif', 'telemovel'],'string', 'max' => 9],
             [['nomeproprio', 'apelido', 'pais', 'cidade'], 'string', 'max' => 25],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -52,6 +54,7 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             'user_id' => 'User ID',
+            'imagem' => 'Imagem',
             'telemovel' => 'Telemovel',
             'peso' => 'Peso',
             'altura' => 'Altura',

@@ -59,7 +59,7 @@ $this->title = 'GymMethod';
             <div class="container-fluid px-4">
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModel,
+                    //'filterModel' => $searchModel,
                     'columns' => [
                         [
                             'attribute' => 'nome',
@@ -74,14 +74,14 @@ $this->title = 'GymMethod';
                                 'style' => 'width: 160px'
                             ]
                         ],
-                        [
+                       /* [
                             'attribute' => 'cliente_id',
                             'label' => 'Cliente',
                             'content' => function ($model) {
                                 $nomeCompleto = $model->cliente->nomeproprio . " " . $model->cliente->apelido;
                                 return $nomeCompleto;
                             }
-                        ],
+                        ],*/
                         [
                             'attribute' => 'nutricionista_id',
                             'label' => 'Nutricionista',

@@ -66,6 +66,11 @@ $this->title = 'GymMethod';
                                 <?= DetailView::widget([
                                     'model' => $model,
                                     'attributes' => [
+                                        [
+                                            'attribute'=>'imagem',
+                                            'value'=> 'data:image/jpg;charset=utf8;base64,'. $model->imagem,
+                                            'format' => ['image',['width'=>'100','height'=>'100']],
+                                        ],
                                         'nomeproprio',
                                         'apelido',
                                         'telemovel',

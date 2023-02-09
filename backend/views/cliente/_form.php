@@ -13,6 +13,7 @@ use yii\bootstrap4\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <?php
     if (Yii::$app->user->can('adicionarCliente')) {
+        echo $form->field($model, 'imagem')->fileInput();
         echo $form->field($model, 'nomeproprio')->textInput(['maxlength' => true]);
         echo $form->field($model, 'apelido')->textInput(['maxlength' => true]);
         echo $form->field($model, 'telemovel')->input(['number']);

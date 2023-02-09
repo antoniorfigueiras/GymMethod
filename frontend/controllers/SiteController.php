@@ -22,6 +22,7 @@ use frontend\models\ContactForm;
 use common\models\Produto;
 use yii\helpers\Url;
 use common\models\User;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -148,9 +149,35 @@ class SiteController extends \frontend\base\Controller
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             $user=$this->getId();
             $modelPerfil->user_id=$user->getId();
-            if($modelPerfil->load(Yii::$app->request->post()) && $modelPerfil->save())
-            {
-                return $this->goHome();
+
+            if ($modelPerfil->load(Yii::$app->request->post())) {
+                $file = UploadedFile::getInstance($modelPerfil, 'imagem');
+
+                if (isset($file)){
+                    // File info
+                    $fileName = $file->name;
+                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                    if (in_array($fileType, $allowTypes)) {
+                        $image = $file->tempName;
+                        $imgContent = base64_encode(file_get_contents($image));
+
+                        $modelPerfil->imagem = $imgContent;
+
+
+                        $modelPerfil->save();
+
+                        return $this->redirect(['site/login']);
+
+                    }
+                }else
+                {
+                    $modelPerfil->imagem = '';
+                    $modelPerfil->save();
+                    return $this->redirect(['site/login']);
+                }
+
             }
         }
 

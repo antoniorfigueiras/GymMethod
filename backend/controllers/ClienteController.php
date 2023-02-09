@@ -12,6 +12,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ClienteController implements the CRUD actions for Perfil model.
@@ -143,8 +144,32 @@ class ClienteController extends Controller
         $model = new Perfil();
         $model->user_id = $idUser;
         $modelUser = $model->user;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->user_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'imagem');
+
+            if (isset($file)){
+                // File info
+                $fileName = $file->name;
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $file->tempName;
+                    $imgContent = base64_encode(file_get_contents($image));
+
+                    $model->imagem = $imgContent;
+                    $model->save();
+
+                    return $this->redirect(['view', 'id' => $model->user_id]);
+
+                }
+            }else
+            {
+                $model->imagem = '';
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->user_id]);
+            }
+
         }
 
         return $this->render('create', [
@@ -164,8 +189,34 @@ class ClienteController extends Controller
     {
         $model = $this->findModel($id);
         $modelUser = $model->user;
-        if (($model->load(Yii::$app->request->post()) && $model->save())) {
-            return $this->redirect(['view', 'id' => $model->user_id]);
+        $img = $model->imagem;
+        if ($model->load(Yii::$app->request->post())){
+            // Get file info
+            $file = UploadedFile::getInstance($model, 'imagem');
+
+            // Se uma imagem for introduzida, introduz esta no campo exemplo
+            if (isset($file)){
+                $fileName = $file->name;
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+                // Allow certain file formats
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $file->tempName;
+                    $imgContent = base64_encode(file_get_contents($image));
+
+                    // Insert image content into database
+                    $model->imagem = $imgContent;
+                    $model->save();
+
+                    return $this->redirect(['view', 'id' => $model->user_id]);
+                }
+            }else
+            {
+
+                $model->imagem = $img;
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->user_id]);
+            }
         }
 
         return $this->render('update', [
