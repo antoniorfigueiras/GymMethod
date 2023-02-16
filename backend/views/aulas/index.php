@@ -19,20 +19,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a('Create Aulas', ['create'], ['class' => 'btn btn-success']) ?>
+                            <?php //Html::a('Create Aulas', ['create'], ['class' => 'btn btn-success']) ?>
+
                         </div>
                     </div>
 
+                    <?= $this->render('_formData', [
+                        'sundays' => $sundays,
+                        'model' => $model,
+                    ]) ?>
 
-    <?=
+                    <?=
 
-            \yii2fullcalendar\yii2fullcalendar::widget(array(
-                'events' => $events,
-                'options' => [
-                        'lang' => 'pt'
-                ]
-            ));
-    ?>
+                            \yii2fullcalendar\yii2fullcalendar::widget(array(
+                                'events' => $events,
+                                'options' => [
+                                        'lang' => 'pt'
+                                ]
+                            ));
+                    ?>
 
 
 
