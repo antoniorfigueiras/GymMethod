@@ -74,13 +74,16 @@ class AulasController extends Controller
         $aulasHorario = AulasHorario::find()->all();
         $aulas = Aulas::find()->all();
 
+        $model = new Aulas();
+        $sundays = $this->getSundays();
+
         if(empty($aulasHorario)){
             $_SESSION['horarioError'] = 'É necessário criar aulas antes de aceder ao horário!';
             return $this->redirect(['./aulas-horario']);
         }
 
         if(empty($aulas)){
-            $this->createAulas();
+            $this->createAulas($sundays[0]);
             $aulas = Aulas::find()->all();
         }
 
@@ -94,7 +97,9 @@ class AulasController extends Controller
             }
 
             return $this->render('index', [
+                'model' => $model,
                 'events' => $events,
+                'sundays' => $sundays,
             ]);
 
     }
@@ -119,7 +124,17 @@ class AulasController extends Controller
      */
     public function actionCreate()
     {
-        $this->createAulas();
+        $model = new Aulas();
+
+        $sundays = $this->getSundays();
+        //var_dump($sundays); die();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $semana = $sundays[$model->data];
+                $this->createAulas($semana);
+            }
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => Aulas::find(),
@@ -178,10 +193,8 @@ class AulasController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function createAulas(){
+    public function createAulas($semana){
         $horario = AulasHorario::find()->all();
-
-
 
         foreach ($horario as $horario){
 
@@ -189,27 +202,27 @@ class AulasController extends Controller
             if($horario->status != 'Inativo') {
                 switch ($horario->diaSemana) {
                     case 'segunda':
-                        $data = date('Y-m-d', strtotime('next monday'));
+                        $data = date('Y-m-d', strtotime('next monday', strtotime($semana)));
                         $model->data = $data;
                         break;
                     case 'terça':
-                        $data = date('Y-m-d', strtotime('next Tuesday'));
+                        $data = date('Y-m-d', strtotime('next Tuesday', strtotime($semana)));
                         $model->data = $data;
                         break;
                     case 'quarta':
-                        $data = date('Y-m-d', strtotime('next Wednesday'));
+                        $data = date('Y-m-d', strtotime('next Wednesday', strtotime($semana)));
                         $model->data = $data;
                         break;
                     case 'quinta':
-                        $data = date('Y-m-d', strtotime('next Thursday'));
+                        $data = date('Y-m-d', strtotime('next Thursday', strtotime($semana)));
                         $model->data = $data;
                         break;
                     case 'sexta':
-                        $data = date('Y-m-d', strtotime('next Friday'));
+                        $data = date('Y-m-d', strtotime('next Friday', strtotime($semana)));
                         $model->data = $data;
                         break;
                     case 'sábado':
-                        $data = date('Y-m-d', strtotime('next Saturday'));
+                        $data = date('Y-m-d', strtotime('next Saturday', strtotime($semana)));
                         $model->data = $data;
                         break;
                 }
@@ -225,6 +238,19 @@ class AulasController extends Controller
                 }
             }
         }
+    }
+
+
+    function getSundays(){
+        $date = date('Y-m-d', strtotime("now"));
+        // Modify the date it contains
+        for($i =0; $i < 5; $i++){
+            $date = date('Y-m-d', strtotime('next sunday', strtotime($date)));
+
+            $days[] = $date;
+        }
+
+        return $days;
     }
 }
 
