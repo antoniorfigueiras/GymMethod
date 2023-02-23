@@ -169,7 +169,7 @@ class FuncionarioController extends Controller
         $model = $this->findModel($id);
         $modelUser = $model->user;
         $img = $model->imagem;
-        if (($model->load(Yii::$app->request->post()) && ($modelUser->load(Yii::$app->request->post()) && $modelUser->save()))){
+        if ($model->load(Yii::$app->request->post())){
             // Get file info
             $file = UploadedFile::getInstance($model, 'imagem');
 
@@ -197,6 +197,7 @@ class FuncionarioController extends Controller
                 return $this->redirect(['view', 'id' => $model->user_id]);
             }
         }
+
         return $this->render('update', [
             'model' => $model,
             'modelUser' => $modelUser,

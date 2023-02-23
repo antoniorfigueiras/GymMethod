@@ -59,7 +59,7 @@ class ParameterizacaoTest extends \Codeception\Test\Unit
 
 
 
-    public function testAtualizarConsulta()
+    public function testAtualizarParameterizacao()
     {
         $params = new Parameterizacao();
         $params->series=1;
@@ -81,7 +81,7 @@ class ParameterizacaoTest extends \Codeception\Test\Unit
         $this->assertEquals(22, $model->repeticoes);
     }
 
-    public function testApagarConsulta()
+    public function testApagarParameterizacao()
     {
         $params = new Parameterizacao();
         $params->series=1;
